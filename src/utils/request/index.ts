@@ -1,7 +1,7 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-11-23 15:16:14
- * @LastEditTime: 2021-12-07 19:56:31
+ * @LastEditTime: 2021-12-10 16:21:49
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/utils/request/index.ts
  * @Description:
@@ -50,7 +50,7 @@ const showStatus = (status: number) => {
       message = "HTTP版本不受支持(505)";
       break;
     default:
-      message = `连接出错(${status})!`;
+      message = `连接出错${status ? `(${status}}` : ""}!`;
   }
   return message;
 };
@@ -105,10 +105,10 @@ instance.interceptors.response.use(
   },
   error => {
     const { config, response } = error;
-    console.log(response);
+    console.log(error, response);
     ElNotification.error({
-      title: showStatus(response.status),
-      message: response.data.data.error,
+      title: showStatus(response?.status),
+      message: response?.data?.data?.error || "系统错误",
       duration: TIME_OUT,
     });
     if (response.status === 401) {

@@ -1,7 +1,7 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2021-11-24 17:42:59
- * @LastEditTime: 2021-12-09 18:34:12
+ * @LastEditTime: 2021-12-10 17:54:47
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/views/login/index.vue
  * @Description: 
@@ -100,7 +100,7 @@ const onSubmit = () => {
         if (code === 200 && success) {
           Local.set("token", userInfo.token);
           await store.commit("user/setUserInfo", userInfo);
-          router.replace("/");
+          router.replace("/menu");
         } else {
           proxy.$message.error(message);
         }
