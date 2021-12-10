@@ -1,0 +1,8 @@
+@function set-color($key) {
+	@return var(--color-#{$key});
+}
+@mixin button($color,$bg, $border) {
+	color: set-color($color);
+	background-color: set-color($bg);
+	border-color: set-color($border);
+}

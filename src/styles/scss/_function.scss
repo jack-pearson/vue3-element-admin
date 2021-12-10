@@ -1,0 +1,18 @@
+@use "sass:math";
+@function getColorCard($color, $level){
+  $hue: hue($color);
+  $saturation: saturation($color);
+  $lightness: lightness($color);
+  $step: 5;
+  @if $level > 5 {
+    $n:$level - 5;
+    $currentLightness: $lightness + ($n * $step);
+    @return hsl($hue, $saturation, math.div(round($currentLightness * 10000), 10000));
+  } @else if $level < 5{
+    $n: 5 - $level;
+    $currentLightness: $lightness - ($n * $step);
+    @return hsl($hue, $saturation, math.div(round($currentLightness * 10000), 10000));
+  } @else {
+    @return $color;
+  }
+};

@@ -1,0 +1,18 @@
+@mixin clearfix {
+  &::before {
+    display: table;
+    content: '';
+  }
+
+  &::after {
+    display: table;
+    clear: both;
+    content: '';
+  }
+}
+
+@mixin text-no-wrap {
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}

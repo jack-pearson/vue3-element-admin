@@ -1,0 +1,10 @@
+.el-button--primary {
+  @include button(white, primary, primary);
+  &:hover,
+  &:focus {
+    @include button(white, primary-6, primary-6);
+  }
+  &:active {
+    @include button(white, primary-4, primary-4);
+  }
+}
