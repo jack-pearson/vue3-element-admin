@@ -1,7 +1,7 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-11-24 17:48:43
- * @LastEditTime: 2021-12-10 17:57:13
+ * @LastEditTime: 2021-12-13 13:32:33
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/router/index.ts
  * @Description:
@@ -13,7 +13,7 @@ import Home from "views/home/index.vue";
 import Layout from "@/layout/index.vue";
 import Menu from "views/system/menu/index.vue";
 import User from "views/system/user/index.vue";
-const routers: Array<RouteRecordRaw> = [
+export const routers: Array<RouteRecordRaw> = [
   { path: "/login", name: "login", component: Login },
   {
     path: "/",
@@ -22,8 +22,15 @@ const routers: Array<RouteRecordRaw> = [
     component: Layout,
     children: [
       { path: "/home", name: "home", component: Home, meta: { title: "message.router.home", icon: "home" } },
-      { path: "/menu", name: "menu", component: Menu, meta: { title: "message.router.menu", icon: "menu" } },
-      { path: "/user", name: "user", component: Menu, meta: { title: "message.router.user", icon: "user" } },
+      {
+        path: "/system",
+        name: "system",
+        redirect: "/system/user",
+        children: [
+          { path: "/menu", name: "menu", component: Menu, meta: { title: "message.router.menu", icon: "menu" } },
+          { path: "/user", name: "user", component: User, meta: { title: "message.router.user", icon: "user" } },
+        ],
+      },
     ],
   },
 ];
