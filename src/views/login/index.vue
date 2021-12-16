@@ -1,7 +1,7 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2021-11-24 17:42:59
- * @LastEditTime: 2021-12-14 17:54:33
+ * @LastEditTime: 2021-12-15 13:29:21
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/views/login/index.vue
  * @Description: 
@@ -54,11 +54,12 @@
 </template>
 
 <script setup lang="ts">
-import { computed, reactive, ref, getCurrentInstance } from "vue";
+import { computed, reactive, ref, getCurrentInstance, onMounted } from "vue";
 import { useStore } from "store/index";
 import LoginService from "api/login";
 import { useRouter } from "vue-router";
 import { Local } from "utils/storage";
+import axios from "axios";
 const store = useStore();
 const router = useRouter();
 const { proxy } = getCurrentInstance() as any;
@@ -67,6 +68,11 @@ const getThemeConfig = computed(() => store.state.themeConfig.themeConfig);
 const form = reactive({
   account: "admin",
   password: "123456",
+});
+onMounted(() => {
+  axios.post("http://192.168.66.100:8080/core/kanban/productionLine").then(res => {
+    console.log(res);
+  });
 });
 const loginRules = reactive({
   account: [

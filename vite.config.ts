@@ -1,7 +1,7 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-11-22 17:31:39
- * @LastEditTime: 2021-12-07 20:11:07
+ * @LastEditTime: 2021-12-15 13:31:08
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/vite.config.ts
  * @Description:
@@ -13,9 +13,7 @@ import WindiCSS from "vite-plugin-windicss";
 import { svgBuilder } from "./src/plugins/svgBuilder";
 import { loadEnv } from "./src/utils/viteBuild";
 
-const { VITE_PORT, VITE_AUTO_OPEN, VITE_API_BASE_URL } = loadEnv();
-
-console.log(VITE_API_BASE_URL, "VITE_API_BASE_URL");
+const { VITE_PORT, VITE_AUTO_OPEN } = loadEnv();
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [vue(), WindiCSS(), svgBuilder("./src/components/svg-icon/svg/")],
