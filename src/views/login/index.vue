@@ -1,7 +1,7 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2021-11-24 17:42:59
- * @LastEditTime: 2021-12-15 13:29:21
+ * @LastEditTime: 2021-12-16 20:19:18
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/views/login/index.vue
  * @Description: 
@@ -105,6 +105,7 @@ const onSubmit = () => {
         const { code, success, data: userInfo, message } = await LoginService.login(form);
         if (code === 200 && success) {
           Local.set("token", userInfo.token);
+          console.log(store, "store");
           await store.commit("user/setUserInfo", userInfo);
           await router.push({ path: "/system/user" });
         } else {

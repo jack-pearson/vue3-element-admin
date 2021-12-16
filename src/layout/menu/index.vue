@@ -1,7 +1,7 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2021-12-07 20:43:53
- * @LastEditTime: 2021-12-09 16:02:26
+ * @LastEditTime: 2021-12-16 20:18:37
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/layout/menu/index.vue
  * @Description: 
@@ -16,7 +16,11 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useStore } from "store/index";
+const store = useStore();
+console.log(store, "store");
+</script>
 
 <style scoped lang="scss">
 .layout-aside-container {
