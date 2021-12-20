@@ -1,7 +1,7 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-11-24 16:13:39
- * @LastEditTime: 2021-12-14 14:14:49
+ * @LastEditTime: 2021-12-20 13:41:56
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/store/index.ts
  * @Description:
@@ -28,7 +28,14 @@ const modules = pathList.reduce((modules: { [x: string]: any }, modulePath: stri
 
 export const key: InjectionKey<Store<RootStateTypes>> = Symbol();
 
-export const store = createStore<RootStateTypes>({ modules });
+export const store = createStore<RootStateTypes>({
+  modules,
+  getters: {
+    getRouterList(state) {
+      return state.router.routerList;
+    },
+  },
+});
 
 export function useStore() {
   return baseUseStore(key);

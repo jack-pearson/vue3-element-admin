@@ -1,7 +1,7 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2021-11-24 17:42:59
- * @LastEditTime: 2021-12-16 20:19:18
+ * @LastEditTime: 2021-12-20 14:33:41
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/views/login/index.vue
  * @Description: 
@@ -59,7 +59,6 @@ import { useStore } from "store/index";
 import LoginService from "api/login";
 import { useRouter } from "vue-router";
 import { Local } from "utils/storage";
-import axios from "axios";
 const store = useStore();
 const router = useRouter();
 const { proxy } = getCurrentInstance() as any;
@@ -68,11 +67,6 @@ const getThemeConfig = computed(() => store.state.themeConfig.themeConfig);
 const form = reactive({
   account: "admin",
   password: "123456",
-});
-onMounted(() => {
-  axios.post("http://192.168.66.100:8080/core/kanban/productionLine").then(res => {
-    console.log(res);
-  });
 });
 const loginRules = reactive({
   account: [
@@ -105,14 +99,13 @@ const onSubmit = () => {
         const { code, success, data: userInfo, message } = await LoginService.login(form);
         if (code === 200 && success) {
           Local.set("token", userInfo.token);
-          console.log(store, "store");
           await store.commit("user/setUserInfo", userInfo);
-          await router.push({ path: "/system/user" });
+          router.push({ path: "/system/user" });
         } else {
           proxy.$message.error(message);
         }
       } catch (error) {
-        console.log(error);
+        console.log(error, "登录请求失败");
       }
       config.loading = false;
     }

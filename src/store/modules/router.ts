@@ -1,7 +1,7 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-12-07 20:12:40
- * @LastEditTime: 2021-12-14 17:24:47
+ * @LastEditTime: 2021-12-20 13:47:09
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/store/modules/router.ts
  * @Description:
@@ -27,10 +27,14 @@ const userModule: Module<RouterStateTypes, RootStateTypes> = {
     async GET_ROUTER({ commit }) {
       return new Promise((resolve, reject) => {
         UserService.getUserMenu()
-          .then(({ data }) => {
-            const newRoute = formatRoutes(data);
-            commit("setRouter", newRoute);
-            resolve(newRoute);
+          .then(result => {
+            if (result.code === 200) {
+              const newRoute = formatRoutes(result.data);
+              commit("setRouter", newRoute);
+              resolve(newRoute);
+            } else {
+              reject(result);
+            }
           })
           .catch(err => {
             reject(err);

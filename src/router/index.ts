@@ -1,24 +1,36 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-11-24 17:48:43
- * @LastEditTime: 2021-12-14 17:56:58
+ * @LastEditTime: 2021-12-20 14:35:12
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/router/index.ts
  * @Description:
  */
-import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
+import { createRouter, createWebHistory, isNavigationFailure, RouteRecordRaw } from "vue-router";
 import NProgress from "nprogress";
 import { store } from "@/store/index";
 import "nprogress/nprogress.css";
-// const NotFoundComponent = { template: "<p>Page not found</p>" };
+import { nextTick } from "vue";
 import Login from "views/login/index.vue";
 import Layout from "@/layout/index.vue";
-import Home from "@/views/home/index.vue";
-export const constantRouters: Array<RouteRecordRaw> = [{ path: "/login", name: "login", component: Login }];
+import { i18n } from "@/i18n/index";
+
+const NotFoundComponent = { template: "<p>Page not found</p>" };
+export const constantRouters: Array<RouteRecordRaw> = [
+  { path: "/login", name: "login", component: Login, meta: { title: "messages.router.home" } },
+  {
+    path: "/404",
+    name: "notFound",
+    component: NotFoundComponent,
+    meta: { title: "404" },
+  },
+];
+
 const router = createRouter({
   history: createWebHistory(),
   routes: constantRouters,
 });
+
 router.beforeEach(async (to, from, next) => {
   NProgress.configure({ showSpinner: false });
   NProgress.start();
@@ -29,24 +41,24 @@ router.beforeEach(async (to, from, next) => {
     const token = localStorage.getItem("token");
     if (!token) {
       next(`/login?redirect=${to.path}&params=${JSON.stringify(to.query ? to.query : to.params)}`);
-      NProgress.done();
     } else {
       const { routerList } = store.state.router;
-      console.log(Array.isArray(routerList), routerList, "routerList");
       if (routerList.length === 0) {
-        const newRouter = await store.dispatch("router/GET_ROUTER");
-        console.log(321);
-        await router.addRoute({
-          path: "/",
-          name: "/",
-          redirect: { name: "system" },
-          component: Layout,
-          children: newRouter,
-        });
-        console.log(router.getRoutes(), router.options, "router.getRoutes()");
-        next({ ...to, replace: true });
+        try {
+          const newRouter = await store.dispatch("router/GET_ROUTER");
+          await router.addRoute({
+            path: "/",
+            name: "/",
+            redirect: { name: "system" },
+            component: Layout,
+            children: newRouter,
+          });
+          next({ ...to, replace: true });
+        } catch (err) {
+          console.log(err, "动态添加路由失败");
+          NProgress.done();
+        }
       } else {
-        console.log(router.getRoutes(), router.options, "router.getRoutes()");
         await next();
       }
     }
@@ -54,7 +66,14 @@ router.beforeEach(async (to, from, next) => {
 });
 
 // 路由加载后
-router.afterEach(() => {
-  NProgress.done();
+router.afterEach((to, from, failure) => {
+  if (isNavigationFailure(failure)) {
+    console.log("error navigation", failure);
+  } else {
+    nextTick(() => {
+      document.title = i18n.global.t(router.currentRoute.value.meta.title as any);
+      NProgress.done();
+    });
+  }
 });
 export default router;

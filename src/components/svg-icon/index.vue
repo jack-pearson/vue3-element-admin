@@ -1,7 +1,7 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2021-12-06 11:09:55
- * @LastEditTime: 2021-12-13 11:39:19
+ * @LastEditTime: 2021-12-20 14:26:21
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/components/svg-icon/index.vue
  * @Description: 
@@ -28,7 +28,6 @@ const props = defineProps({
 
 const iconName = computed(() => `#icon-${props.name}`);
 const svgClass = computed(() => {
-  console.log(props.name, "props.name");
   if (props.name) {
     return `svg-icon icon-${props.name}`;
   }

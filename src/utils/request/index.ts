@@ -1,7 +1,7 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-11-23 15:16:14
- * @LastEditTime: 2021-12-10 16:21:49
+ * @LastEditTime: 2021-12-20 15:09:31
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/utils/request/index.ts
  * @Description:
@@ -10,9 +10,10 @@ import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 import qs from "qs";
 import { HttpGlobalResponse } from "types/global";
 import { ElNotification } from "element-plus";
-import { useRouter } from "vue-router";
-import { Local } from "../storage";
-const router = useRouter();
+import router from "@/router";
+import { Local, Session } from "../storage";
+// import LoginService from "api/login";
+
 const showStatus = (status: number) => {
   let message = "";
   switch (status) {
@@ -105,14 +106,14 @@ instance.interceptors.response.use(
   },
   error => {
     const { config, response } = error;
-    console.log(error, response);
     ElNotification.error({
       title: showStatus(response?.status),
       message: response?.data?.data?.error || "系统错误",
       duration: TIME_OUT,
     });
     if (response.status === 401) {
-      Local.remove("token");
+      Local.clear();
+      Session.clear();
       router.replace({ path: "/login" });
     }
     removePending(config);
