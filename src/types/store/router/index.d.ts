@@ -1,26 +1,14 @@
 /*
  * @Author: jack-pearson
- * @Date: 2021-12-07 20:10:29
- * @LastEditTime: 2021-12-14 14:44:29
+ * @Date: 2021-12-14 14:07:07
+ * @LastEditTime: 2021-12-29 18:12:50
  * @LastEditors: jack-pearson
- * @FilePath: /yh-vue3-admin/src/types/user.d.ts
+ * @FilePath: /yh-vue3-admin/src/types/store/router/index.ts
  * @Description:
  */
-type sexType = "null" | "man" | "girl";
-export interface User {
-  account?: string;
-  token?: string;
-  password?: string;
-  name?: string;
-  email?: string;
-  mobile?: string;
-  phone?: string;
-  age?: number;
-  sex?: sexType;
-  [key: string]: any;
-}
 export type DbBoolean = 0 | 1;
-export class Menu {
+
+export interface Menu {
   id?: number;
   parentId?: number;
   name: string;
@@ -37,4 +25,8 @@ export class Menu {
   sort?: number;
   createTime?: Date;
   updateTime?: Date;
+}
+
+export interface RouterStateTypes {
+  routerList: Menu[];
 }

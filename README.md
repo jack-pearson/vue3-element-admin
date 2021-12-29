@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-11-22 17:31:39
- * @LastEditTime: 2021-12-20 15:24:37
+ * @LastEditTime: 2021-12-29 18:50:03
  * @LastEditors: jack-pearson
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: /yh-vue3-admin/README.md
@@ -26,7 +26,7 @@
 [ ] TagsView 未开始
 [ ] 侧边栏 logo 显示 未开始
 [ ] vue-router 完善中
-[ ] vuex 完善中
+[ ] pinia 完善中
 [ ] Element-plus(安装 vscode插件 ---- element-ui-helper, 这样就有了 ts 的 props 提示)
 [ ] windicss 使用中
 [ ] husky 未开始

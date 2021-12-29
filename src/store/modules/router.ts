@@ -1,36 +1,32 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-12-07 20:12:40
- * @LastEditTime: 2021-12-29 14:37:06
+ * @LastEditTime: 2021-12-29 18:49:35
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/store/modules/router.ts
  * @Description:
  */
-import { Menu } from "@/types/user";
-import { RootStateTypes } from "types/store";
-import { RouterStateTypes } from "types/store/router";
-import { Module } from "vuex";
+import { defineStore } from "pinia";
+import { Menu, RouterStateTypes } from "@/types";
 import { formatRoutes } from "@/utils";
 import UserService from "@/apis/user";
 
-const userModule: Module<RouterStateTypes, RootStateTypes> = {
-  namespaced: true,
-  state: {
+const createState = (): RouterStateTypes => {
+  return {
     routerList: [],
-  },
-  mutations: {
-    setRouter(state, user: Menu[]) {
-      state.routerList = user;
-    },
-  },
+  };
+};
+
+export const routerState = defineStore("routerState", {
+  state: createState,
   actions: {
-    async GET_ROUTER({ commit }) {
+    async getRouterList(): Promise<Menu[]> {
       return new Promise((resolve, reject) => {
         UserService.getUserMenu()
           .then(({ data, code }) => {
             if (code === 200) {
               const newRoute = formatRoutes(data.list);
-              commit("setRouter", newRoute);
+              this.routerList = newRoute;
               resolve(newRoute);
             } else {
               reject(data);
@@ -42,6 +38,4 @@ const userModule: Module<RouterStateTypes, RootStateTypes> = {
       });
     },
   },
-};
-
-export default userModule;
+});

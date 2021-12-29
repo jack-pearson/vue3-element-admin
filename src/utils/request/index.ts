@@ -1,14 +1,14 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-11-23 15:16:14
- * @LastEditTime: 2021-12-20 15:09:31
+ * @LastEditTime: 2021-12-29 18:34:51
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/utils/request/index.ts
  * @Description:
  */
 import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 import qs from "qs";
-import { HttpGlobalResponse } from "types/global";
+import { HttpGlobalResponse } from "@/types";
 import { ElNotification } from "element-plus";
 import router from "@/router";
 import { Local, Session } from "../storage";

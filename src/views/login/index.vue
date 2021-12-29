@@ -1,7 +1,7 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2021-11-24 17:42:59
- * @LastEditTime: 2021-12-20 14:33:41
+ * @LastEditTime: 2021-12-29 18:47:08
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/views/login/index.vue
  * @Description: 
@@ -10,7 +10,7 @@
   <div class="login-page w-full h-full bg-cover">
     <div class="login-content p-5 absolute top-2/4 left-2/4 bg-white rounded overflow-hidden">
       <div class="login-content-main w-4/5 h-full mx-auto my-0">
-        <h4 class="text-dark-300 font-bold pt-10 pb-10 text-3xl tracking-wider text-center whitespace-normal z-10 relative h-auto transition-all">{{ getThemeConfig.loginTitle }} 后台模板</h4>
+        <h4 class="text-dark-300 font-bold pt-10 pb-10 text-3xl tracking-wider text-center whitespace-normal z-10 relative h-auto transition-all">{{ themeConfig.loginTitle }} 后台模板</h4>
         <el-tabs @tab-click="onTabsClick" model-value="account" class="el-tabs">
           <el-tab-pane :label="$t('login.tabs.account')" name="account">
             <transition name="el-zoom-in-center" appear>
@@ -54,16 +54,16 @@
 </template>
 
 <script setup lang="ts">
-import { computed, reactive, ref, getCurrentInstance, onMounted } from "vue";
-import { useStore } from "store/index";
+import { reactive, ref, getCurrentInstance } from "vue";
+import { userState, themeConfigState } from "@/store";
 import LoginService from "api/login";
 import { useRouter } from "vue-router";
 import { Local } from "utils/storage";
-const store = useStore();
+const store = userState();
 const router = useRouter();
+const themeConfig = themeConfigState().themeConfig;
 const { proxy } = getCurrentInstance() as any;
 const show = ref(true);
-const getThemeConfig = computed(() => store.state.themeConfig.themeConfig);
 const form = reactive({
   account: "admin",
   password: "123456",
@@ -99,7 +99,7 @@ const onSubmit = () => {
         const { code, success, data: userInfo, message } = await LoginService.login(form);
         if (code === 200 && success) {
           Local.set("token", userInfo.token);
-          await store.commit("user/setUserInfo", userInfo);
+          await store.setUserInfo(userInfo);
           router.push({ path: "/system/user" });
         } else {
           proxy.$message.error(message);

@@ -1,31 +1,24 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-12-07 20:12:40
- * @LastEditTime: 2021-12-14 14:14:39
+ * @LastEditTime: 2021-12-29 18:31:00
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/store/modules/user.ts
  * @Description:
  */
-import { RootStateTypes } from "types/store";
-import { UserStateTypes } from "types/store/user";
-import { User } from "@/types/user";
-import { Module } from "vuex";
 
-const userModule: Module<UserStateTypes, RootStateTypes> = {
-  namespaced: true,
-  state: {
-    userInfo: {},
-  },
-  mutations: {
-    setUserInfo(state, user: User) {
-      state.userInfo = user;
-    },
+import { defineStore } from "pinia";
+import { User } from "@/types";
+
+export const userState = defineStore("userState", {
+  state: () => {
+    return {
+      userInfo: {} as User,
+    };
   },
   actions: {
-    SET_USER_INFO({ commit }, data: User) {
-      commit("setUserInfo", data);
+    setUserInfo(data: User) {
+      this.userInfo = data;
     },
   },
-};
-
-export default userModule;
+});

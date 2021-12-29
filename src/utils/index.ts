@@ -1,12 +1,12 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-12-13 20:26:12
- * @LastEditTime: 2021-12-29 14:39:38
+ * @LastEditTime: 2021-12-29 18:21:37
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/utils/index.ts
  * @Description:
  */
-import { Menu } from "@/types/user";
+import { Menu } from "@/types";
 const modules = import.meta.glob("/src/**/**.vue");
 /** 对数组进行 component 转换 */
 export const formatRoutes = (data: Menu[]): Menu[] => {

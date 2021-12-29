@@ -1,14 +1,14 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-11-24 17:48:43
- * @LastEditTime: 2021-12-20 14:35:12
+ * @LastEditTime: 2021-12-29 18:47:18
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/router/index.ts
  * @Description:
  */
 import { createRouter, createWebHistory, isNavigationFailure, RouteRecordRaw } from "vue-router";
 import NProgress from "nprogress";
-import { store } from "@/store/index";
+import { routerState } from "@/store";
 import "nprogress/nprogress.css";
 import { nextTick } from "vue";
 import Login from "views/login/index.vue";
@@ -17,7 +17,7 @@ import { i18n } from "@/i18n/index";
 
 const NotFoundComponent = { template: "<p>Page not found</p>" };
 export const constantRouters: Array<RouteRecordRaw> = [
-  { path: "/login", name: "login", component: Login, meta: { title: "messages.router.home" } },
+  { path: "/login", name: "login", component: Login, meta: { title: "home" } },
   {
     path: "/404",
     name: "notFound",
@@ -32,6 +32,7 @@ const router = createRouter({
 });
 
 router.beforeEach(async (to, from, next) => {
+  const store = routerState();
   NProgress.configure({ showSpinner: false });
   NProgress.start();
   if (to.path === "/login") {
@@ -42,10 +43,10 @@ router.beforeEach(async (to, from, next) => {
     if (!token) {
       next(`/login?redirect=${to.path}&params=${JSON.stringify(to.query ? to.query : to.params)}`);
     } else {
-      const { routerList } = store.state.router;
+      const { routerList } = store;
       if (routerList.length === 0) {
         try {
-          const newRouter = await store.dispatch("router/GET_ROUTER");
+          const newRouter = await store.getRouterList();
           await router.addRoute({
             path: "/",
             name: "/",
@@ -71,7 +72,7 @@ router.afterEach((to, from, failure) => {
     console.log("error navigation", failure);
   } else {
     nextTick(() => {
-      document.title = i18n.global.t(router.currentRoute.value.meta.title as any);
+      document.title = i18n.global.t(("messages.router." + router.currentRoute.value.meta.title) as any);
       NProgress.done();
     });
   }
