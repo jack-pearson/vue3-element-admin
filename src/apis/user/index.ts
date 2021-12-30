@@ -1,15 +1,15 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-12-13 20:19:51
- * @LastEditTime: 2021-12-29 18:21:18
+ * @LastEditTime: 2021-12-30 14:02:49
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/apis/user/index.ts
  * @Description:
  */
 import { Menu } from "@/types";
-import request from "request";
+import { request } from "@/utils";
 
-export default class UserService {
+export class UserService {
   public static async getUserMenu() {
     return request<{ list: Menu[] }>({
       url: "/menu/findAll",

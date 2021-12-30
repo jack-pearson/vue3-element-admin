@@ -1,7 +1,7 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-12-07 20:12:40
- * @LastEditTime: 2021-12-29 18:31:00
+ * @LastEditTime: 2021-12-30 13:58:56
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/store/modules/user.ts
  * @Description:

@@ -1,7 +1,7 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-11-23 15:16:14
- * @LastEditTime: 2021-12-29 18:34:51
+ * @LastEditTime: 2021-12-30 14:05:27
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/utils/request/index.ts
  * @Description:
@@ -11,8 +11,8 @@ import qs from "qs";
 import { HttpGlobalResponse } from "@/types";
 import { ElNotification } from "element-plus";
 import router from "@/router";
-import { Local, Session } from "../storage";
-// import LoginService from "api/login";
+import { Local, Session } from "@/utils";
+// import LoginService from "@/apis";
 
 const showStatus = (status: number) => {
   let message = "";
@@ -121,9 +121,7 @@ instance.interceptors.response.use(
   }
 );
 
-const request = async <T = any>(config: AxiosRequestConfig): Promise<HttpGlobalResponse<T>> => {
+export const request = async <T = any>(config: AxiosRequestConfig): Promise<HttpGlobalResponse<T>> => {
   const { data } = await instance.request<HttpGlobalResponse<T>>(config);
   return data;
 };
-
-export default request;

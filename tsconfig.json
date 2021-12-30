@@ -18,35 +18,8 @@
     ],
     "baseUrl": "./",
     "paths": {
-      "request": [
-        "src/utils/request/index.ts"
-      ],
       "@/*": [
         "src/*"
-      ],
-      "api/*": [
-        "src/apis/*"
-      ],
-      "i18n/*": [
-        "src/i18n/*"
-      ],
-      "store/*": [
-        "src/store/*"
-      ],
-      "types/*": [
-        "src/types/*"
-      ],
-      "views/*": [
-        "src/views/*"
-      ],
-      "components/*": [
-        "src/components/*"
-      ],
-      "utils/*": [
-        "src/utils/*"
-      ],
-      "interface/*": [
-        "src/interface/*"
       ],
     },
   },

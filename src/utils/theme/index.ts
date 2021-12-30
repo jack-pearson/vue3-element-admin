@@ -1,14 +1,14 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-12-09 16:16:17
- * @LastEditTime: 2021-12-09 18:33:47
+ * @LastEditTime: 2021-12-30 13:59:37
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/utils/theme.ts
  * @Description:
  */
-import { themeType } from "@/types/store/themeConfig";
+import { themeType } from "@/types";
 import Color from "color";
-import { Local } from "./storage";
+import { Local } from "@/utils";
 
 /**
  * @description: 设置主图色

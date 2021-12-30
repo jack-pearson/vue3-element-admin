@@ -1,43 +1,17 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-12-13 20:26:12
- * @LastEditTime: 2021-12-29 18:21:37
+ * @LastEditTime: 2021-12-30 14:55:01
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/utils/index.ts
  * @Description:
  */
-import { Menu } from "@/types";
-const modules = import.meta.glob("/src/**/**.vue");
-/** 对数组进行 component 转换 */
-export const formatRoutes = (data: Menu[]): Menu[] => {
-  return data.map(v => {
-    if (!v.children) {
-      return {
-        name: v.name,
-        path: v.path,
-        children: [],
-        redirect: v.redirect,
-        isHide: v.isHide,
-        component: modules[v.component],
-        meta: {
-          title: v.meta.title,
-          icon: v.meta.icon,
-          isKeepAlive: v.meta.isKeepAlive,
-        },
-      };
-    }
-    return {
-      name: v.name,
-      path: v.path,
-      children: formatRoutes(v.children),
-      redirect: v.redirect,
-      isHide: v.isHide,
-      component: modules[v.component],
-      meta: {
-        title: v.meta.title,
-        icon: v.meta.icon,
-        isKeepAlive: v.meta.isKeepAlive,
-      },
-    };
-  });
-};
+
+export * from "./router";
+export * from "./request";
+export * from "./formatTime";
+export * from "./storage";
+export * from "./theme";
+export * from "./viteBuild";
+export * from "./i18n";
+export * from "./global";

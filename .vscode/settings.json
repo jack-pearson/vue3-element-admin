@@ -12,5 +12,5 @@
   },
   "typescript.tsdk": "node_modules/typescript/lib",
   "editor.accessibilitySupport": "on",
-  "prettier.printWidth": 500,
+  "prettier.printWidth": 200,
 }

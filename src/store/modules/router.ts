@@ -1,7 +1,7 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-12-07 20:12:40
- * @LastEditTime: 2021-12-29 18:49:35
+ * @LastEditTime: 2021-12-30 14:03:11
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/store/modules/router.ts
  * @Description:
@@ -9,7 +9,7 @@
 import { defineStore } from "pinia";
 import { Menu, RouterStateTypes } from "@/types";
 import { formatRoutes } from "@/utils";
-import UserService from "@/apis/user";
+import { UserService } from "@/apis";
 
 const createState = (): RouterStateTypes => {
   return {

@@ -1,9 +1,9 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-11-24 10:22:02
- * @LastEditTime: 2021-11-24 10:22:36
+ * @LastEditTime: 2021-12-30 14:06:44
  * @LastEditors: jack-pearson
- * @FilePath: /yh-vue3-admin/src/utils/viteBuild.ts
+ * @FilePath: /yh-vue3-admin/src/utils/viteBuild/index.ts
  * @Description:
  */
 import dotenv from "dotenv";
@@ -29,8 +29,7 @@ export function loadEnv(): ViteEnv {
   });
   for (const envName of Object.keys(process.env)) {
     let realName = (process.env as any)[envName].replace(/\\n/g, "\n");
-    realName =
-      realName === "true" ? true : realName === "false" ? false : realName;
+    realName = realName === "true" ? true : realName === "false" ? false : realName;
     if (envName === "VITE_PORT") realName = Number(realName);
     if (envName === "VITE_AUTO_OPEN") realName = Boolean(realName);
     ret[envName] = realName;

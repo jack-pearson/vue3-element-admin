@@ -1,7 +1,7 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2021-11-24 17:42:59
- * @LastEditTime: 2021-12-29 18:47:08
+ * @LastEditTime: 2021-12-30 14:03:32
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/views/login/index.vue
  * @Description: 
@@ -56,9 +56,9 @@
 <script setup lang="ts">
 import { reactive, ref, getCurrentInstance } from "vue";
 import { userState, themeConfigState } from "@/store";
-import LoginService from "api/login";
+import { LoginService } from "@/apis";
 import { useRouter } from "vue-router";
-import { Local } from "utils/storage";
+import { Local } from "@/utils";
 const store = userState();
 const router = useRouter();
 const themeConfig = themeConfigState().themeConfig;

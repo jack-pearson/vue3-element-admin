@@ -1,7 +1,7 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-12-06 11:12:33
- * @LastEditTime: 2021-12-06 11:12:34
+ * @LastEditTime: 2021-12-30 18:33:50
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/plugins/svgBuilder.ts
  * @Description:
@@ -34,7 +34,7 @@ function findSvgFile(dir: PathLike): string[] {
           // console.log(dirent.name)
           let width = 0;
           let height = 0;
-          let content = $2.replace(clearHeightWidth, (s1, s2, s3) => {
+          let content = $2.replace(clearHeightWidth, (s1: any, s2: string, s3: number) => {
             if (s2 === "width") {
               width = s3;
             } else if (s2 === "height") {
@@ -45,10 +45,7 @@ function findSvgFile(dir: PathLike): string[] {
           if (!hasViewBox.test($2)) {
             content += `viewBox="0 0 ${width} ${height}"`;
           }
-          return `<symbol id="${idPerfix}-${dirent.name.replace(
-            ".svg",
-            ""
-          )}" ${content}>`;
+          return `<symbol id="${idPerfix}-${dirent.name.replace(".svg", "")}" ${content}>`;
         })
         .replace("</svg>", "</symbol>");
       svgRes.push(svg);
@@ -58,7 +55,6 @@ function findSvgFile(dir: PathLike): string[] {
 }
 
 export const svgBuilder = (path: string, perfix = "icon"): Plugin => {
-  if (path === "") return;
   idPerfix = perfix;
   const res = findSvgFile(path);
   // console.log(res.length)
@@ -78,3 +74,9 @@ export const svgBuilder = (path: string, perfix = "icon"): Plugin => {
     },
   };
 };
+
+if (import.meta.hot) {
+  import.meta.hot.accept(() => {
+    svgBuilder("./src/components/svg-icon/svg/");
+  });
+}

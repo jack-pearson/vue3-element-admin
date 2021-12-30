@@ -1,7 +1,7 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-11-24 17:48:43
- * @LastEditTime: 2021-12-29 18:47:18
+ * @LastEditTime: 2021-12-30 17:42:04
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/router/index.ts
  * @Description:
@@ -11,9 +11,9 @@ import NProgress from "nprogress";
 import { routerState } from "@/store";
 import "nprogress/nprogress.css";
 import { nextTick } from "vue";
-import Login from "views/login/index.vue";
+import Login from "@/views/login/index.vue";
 import Layout from "@/layout/index.vue";
-import { i18n } from "@/i18n/index";
+import { i18nRouter } from "@/utils";
 
 const NotFoundComponent = { template: "<p>Page not found</p>" };
 export const constantRouters: Array<RouteRecordRaw> = [
@@ -72,7 +72,7 @@ router.afterEach((to, from, failure) => {
     console.log("error navigation", failure);
   } else {
     nextTick(() => {
-      document.title = i18n.global.t(("messages.router." + router.currentRoute.value.meta.title) as any);
+      document.title = i18nRouter(router.currentRoute.value.meta.title as string);
       NProgress.done();
     });
   }
