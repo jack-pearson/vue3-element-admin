@@ -1,9 +1,9 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2021-12-07 20:43:53
- * @LastEditTime: 2021-12-30 17:39:41
+ * @LastEditTime: 2021-12-31 13:45:35
  * @LastEditors: jack-pearson
- * @FilePath: /yh-vue3-admin/src/layout/menu/sidebar.vue
+ * @FilePath: /yh-vue3-admin/src/layout/sidebar/sidebar.vue
  * @Description: 
 -->
 <template>
@@ -11,7 +11,7 @@
     <el-aside class="layout-aside h-full flex">
       <el-scrollbar class="flex-1">
         <el-menu class="flex-auto overflow-y-auto" router :default-active="activeMenu" background-color="transparent" mode="vertical" :collapse-transition="false" :uniqueOpened="true">
-          <SidebarItem v-for="item in menuList" :key="item.id" :route="item" :base-path="item.path" />
+          <SidebarItem v-for="item in menuList" :key="item.id" :route="item" />
         </el-menu>
       </el-scrollbar>
     </el-aside>

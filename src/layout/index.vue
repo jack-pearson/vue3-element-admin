@@ -1,7 +1,7 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2021-12-07 20:32:15
- * @LastEditTime: 2021-12-30 17:32:06
+ * @LastEditTime: 2021-12-31 11:34:41
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/layout/index.vue
  * @Description: 
@@ -14,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-import Menu from "./menu/sidebar.vue";
+import Menu from "./sidebar/sidebar.vue";
 import Main from "./main/index.vue";
 </script>
 

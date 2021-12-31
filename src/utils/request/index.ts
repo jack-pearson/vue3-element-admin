@@ -1,7 +1,7 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-11-23 15:16:14
- * @LastEditTime: 2021-12-30 14:05:27
+ * @LastEditTime: 2021-12-31 11:25:30
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/utils/request/index.ts
  * @Description:
@@ -55,7 +55,7 @@ const showStatus = (status: number) => {
   }
   return message;
 };
-const [TIME_OUT] = [5000];
+const [TIME_OUT] = [10000];
 const pending: Map<any, any> = new Map();
 /* 实例化请求配置 */
 const instance = axios.create({
