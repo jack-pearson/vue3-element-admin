@@ -1,7 +1,7 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-11-22 17:31:39
- * @LastEditTime: 2021-12-15 13:31:08
+ * @LastEditTime: 2021-12-31 16:50:52
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/vite.config.ts
  * @Description:
@@ -21,16 +21,13 @@ export default defineConfig({
     host: "0.0.0.0",
     port: VITE_PORT,
     open: VITE_AUTO_OPEN,
-    // proxy: {
-    // "/api": {
-    //   target: VITE_API_BASE_URL,
-    //   changeOrigin: true,
-    //   rewrite: path => {
-    //     console.log(path, "path");
-    //     return path.replace(/^\/api/, "");
-    //   },
-    // },
-    // },
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@import "@/styles/scss/index.scss";`,
+      },
+    },
   },
   resolve: {
     alias: {

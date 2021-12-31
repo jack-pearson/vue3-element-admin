@@ -1,7 +1,7 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-11-22 17:31:39
- * @LastEditTime: 2021-12-30 14:16:23
+ * @LastEditTime: 2021-12-31 17:06:38
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/main.ts
  * @Description:
@@ -15,8 +15,6 @@ import { pinia } from "@/store";
 import { i18n } from "@/i18n";
 import router from "@/router";
 import { ElComponentSize } from "@/utils";
-import "@/styles/scss/index.scss";
-import "@/styles/icon/index.css";
 import App from "@/App.vue";
 
 const app = createApp(App);

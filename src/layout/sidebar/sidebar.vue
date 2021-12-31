@@ -1,7 +1,7 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2021-12-07 20:43:53
- * @LastEditTime: 2021-12-31 13:45:35
+ * @LastEditTime: 2021-12-31 16:47:10
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/layout/sidebar/sidebar.vue
  * @Description: 
@@ -11,6 +11,7 @@
     <el-aside class="layout-aside h-full flex">
       <el-scrollbar class="flex-1">
         <el-menu class="flex-auto overflow-y-auto" router :default-active="activeMenu" background-color="transparent" mode="vertical" :collapse-transition="false" :uniqueOpened="true">
+          <SidebarLogo />
           <SidebarItem v-for="item in menuList" :key="item.id" :route="item" />
         </el-menu>
       </el-scrollbar>
@@ -24,6 +25,7 @@ export default { name: "Sidebar" };
 
 <script setup lang="ts">
 import SidebarItem from "./SidebarItem.vue";
+import SidebarLogo from "./sidebarLogo.vue";
 import { computed } from "vue";
 import { routerState } from "@/store";
 import { useRoute } from "vue-router";

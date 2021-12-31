@@ -1,7 +1,7 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2021-12-30 15:18:38
- * @LastEditTime: 2021-12-31 13:45:29
+ * @LastEditTime: 2021-12-31 17:28:51
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/layout/sidebar/SidebarItem.vue
  * @Description: 
@@ -42,9 +42,9 @@ const { route } = toRefs(props);
 <style lang="scss" scoped>
 .sub-menu {
   user-select: none;
-  color: #eaeaea;
+  color: var(--menu-default-color);
   :deep(.el-sub-menu__title) {
-    color: #eaeaea;
+    color: var(--menu-default-color);
     &:hover {
       color: var(--color-primary-5);
     }
