@@ -1,17 +1,26 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2021-12-07 20:43:53
- * @LastEditTime: 2021-12-31 16:47:10
+ * @LastEditTime: 2022-01-04 15:25:25
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/layout/sidebar/sidebar.vue
  * @Description: 
 -->
 <template>
-  <div class="layout-aside-container !h-full">
-    <el-aside class="layout-aside h-full flex">
+  <div class="layout-aside-container !h-full" :class="{ 'is-collapsed': settingsConfig.isCollapsed }">
+    <el-aside class="layout-aside w-full h-full flex">
       <el-scrollbar class="flex-1">
-        <el-menu class="flex-auto overflow-y-auto" router :default-active="activeMenu" background-color="transparent" mode="vertical" :collapse-transition="false" :uniqueOpened="true">
-          <SidebarLogo />
+        <SidebarLogo />
+        <el-menu
+          class="flex-auto overflow-y-auto overflow-x-hidden border-r-0"
+          router
+          :default-active="activeMenu"
+          background-color="transparent"
+          mode="vertical"
+          :collapse="settingsConfig.isCollapsed"
+          :collapse-transition="false"
+          :uniqueOpened="true"
+        >
           <SidebarItem v-for="item in menuList" :key="item.id" :route="item" />
         </el-menu>
       </el-scrollbar>
@@ -27,19 +36,24 @@ export default { name: "Sidebar" };
 import SidebarItem from "./SidebarItem.vue";
 import SidebarLogo from "./sidebarLogo.vue";
 import { computed } from "vue";
-import { routerState } from "@/store";
+import { routerState, settingsStore } from "@/store";
 import { useRoute } from "vue-router";
-const state = routerState();
-const { routerList: menuList } = state.$state;
+const routerConfig = routerState();
+const settingsConfig = settingsStore();
+const { routerList: menuList } = routerConfig.$state;
 const currentRoute = useRoute();
 const activeMenu = computed(() => currentRoute.path);
 </script>
 
 <style scoped lang="scss">
 .layout-aside-container {
+  width: 220px;
+  transition: width 0.28s;
+  &.is-collapsed {
+    width: 64px;
+  }
   .layout-aside {
-    width: 220px;
-    background-color: #545c64;
+    background-color: var(--menu-default-bg-color);
     .test {
       background-color: var(--color-primary);
       &:hover {

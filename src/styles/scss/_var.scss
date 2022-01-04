@@ -56,6 +56,7 @@ $--color-info-9: getColorCard($--color-info, 9);
 $white: #ffffff;
 $black: #000000;
 $menu-default-color: #eaeaea;
+$menu-default-bg-color: #545c64;
 html {
   --color-primary: #{$--color-primary};
   --color-primary-1:#{$--color-primary-1};
@@ -110,4 +111,5 @@ html {
   --color-white: #{$white};
   --color-black: #{$black};
   --menu-default-color: #{$menu-default-color};
+  --menu-default-bg-color: #{$menu-default-bg-color};
 }
