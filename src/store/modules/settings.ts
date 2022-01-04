@@ -1,7 +1,7 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-11-24 16:14:10
- * @LastEditTime: 2021-12-31 18:50:51
+ * @LastEditTime: 2022-01-04 16:59:57
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/store/modules/settings.ts
  * @Description:
@@ -13,7 +13,6 @@ const createState = (): settingsType => {
   return {
     themes: {
       locale: "zh-CN",
-      loginTitle: "yh-vue3-admin",
       primary: "#40A9FF",
       success: "#BAE637",
       warning: "#FFC53D",
@@ -21,6 +20,10 @@ const createState = (): settingsType => {
       info: "#ADB5BD",
     },
     isCollapsed: false,
+    config: {
+      loginTitle: "yh-vue3-admin",
+      logoTitle: "yh-vue3-admin",
+    },
   };
 };
 

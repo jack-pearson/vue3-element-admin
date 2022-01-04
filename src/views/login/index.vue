@@ -1,7 +1,7 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2021-11-24 17:42:59
- * @LastEditTime: 2021-12-31 18:45:54
+ * @LastEditTime: 2022-01-04 16:12:17
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/views/login/index.vue
  * @Description: 
@@ -10,11 +10,11 @@
   <div class="login-page w-full h-full bg-cover">
     <div class="login-content p-5 absolute top-2/4 left-2/4 bg-white rounded overflow-hidden">
       <div class="login-content-main w-4/5 h-full mx-auto my-0">
-        <h4 class="text-dark-300 font-bold pt-10 pb-10 text-3xl tracking-wider text-center whitespace-normal z-10 relative h-auto transition-all">{{ themes.loginTitle }} 后台模板</h4>
+        <h4 class="text-dark-300 font-bold pt-10 pb-10 tracking-wider text-center whitespace-normal z-10 relative h-auto transition-all">{{ configStore.loginTitle }} 后台模板</h4>
         <el-tabs @tab-click="onTabsClick" model-value="account" class="el-tabs">
           <el-tab-pane :label="$t('login.tabs.account')" name="account">
             <transition name="el-zoom-in-center" appear>
-              <el-form class="login-content-form w-full pt-5 h-[calc(100%-50px)]" v-if="show" ref="loginForm" :model="form" :rules="loginRules">
+              <el-form class="login-content-form w-full pt-5 h-[calc(100%-50px)]" ref="loginForm" :model="form" :rules="loginRules">
                 <el-form-item prop="account">
                   <el-input v-model="form.account" clearable :placeholder="$t('login.tabs.account')">
                     <template #prefix>
@@ -54,16 +54,15 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, ref, getCurrentInstance } from "vue";
+import { reactive, getCurrentInstance } from "vue";
 import { userState, settingsStore } from "@/store";
 import { LoginService } from "@/apis";
 import { useRouter } from "vue-router";
 import { Local } from "@/utils";
 const store = userState();
 const router = useRouter();
-const { themes } = settingsStore();
+const { config: configStore } = settingsStore();
 const { proxy } = getCurrentInstance() as any;
-const show = ref(true);
 const form = reactive({
   account: "admin",
   password: "123456",
@@ -124,6 +123,9 @@ const onSubmit = () => {
     height: auto;
     min-height: 420px;
     .login-content-main {
+      h4 {
+        font-size: 24px;
+      }
       .el-tabs {
         :deep(.el-tabs__active-bar) {
           background-color: var(--el-text-color-primary);

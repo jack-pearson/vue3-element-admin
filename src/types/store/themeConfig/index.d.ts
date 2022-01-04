@@ -1,7 +1,7 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-11-24 16:23:26
- * @LastEditTime: 2021-12-31 18:42:01
+ * @LastEditTime: 2022-01-04 16:59:38
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/types/store/themeConfig/index.d.ts
  * @Description:
@@ -11,7 +11,6 @@ export type themeType = "primary" | "success" | "warning" | "danger" | "info";
 export interface settingsType {
   themes: {
     locale: localeType;
-    loginTitle: string;
     primary: string;
     success: string;
     warning: string;
@@ -19,4 +18,8 @@ export interface settingsType {
     info: string;
   };
   isCollapsed: boolean;
+  config: {
+    loginTitle: string;
+    logoTitle: string;
+  };
 }

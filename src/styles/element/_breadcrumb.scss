@@ -1,0 +1,19 @@
+
+.el-breadcrumb{
+  .el-breadcrumb__item{
+    .el-breadcrumb__inner{
+      color: var(--text-color-primary);
+      font-weight: normal;
+    }
+    &:not(:last-child){
+      .el-breadcrumb__inner.is-link{
+        &:hover{
+          color: var(--color-primary);
+        }
+      }
+    }
+    &:last-child{
+      opacity: .7;
+    }
+  }
+}

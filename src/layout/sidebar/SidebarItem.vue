@@ -1,7 +1,7 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2021-12-30 15:18:38
- * @LastEditTime: 2022-01-04 15:22:11
+ * @LastEditTime: 2022-01-04 15:41:46
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/layout/sidebar/SidebarItem.vue
  * @Description: 
@@ -9,14 +9,14 @@
 <template>
   <div v-if="!isHide(route)" class="w-full sidebar-item" :class="{ 'is-collapsed': settingsConfig.isCollapsed }">
     <template v-if="!hasChildren(route)">
-      <el-menu-item class="sub-menu" :index="route.path">
+      <el-menu-item class="sub-menu select-none" :index="route.path">
         <template #title>
           <svg-icon :name="route.meta.icon"></svg-icon>
           <span class="ml-3.5">{{ i18nRouter(route.meta.title) }}</span>
         </template>
       </el-menu-item>
     </template>
-    <el-sub-menu v-else class="sub-menu" :index="route.path" popper-append-to-body>
+    <el-sub-menu v-else class="sub-menu select-none" :index="route.path" popper-append-to-body>
       <template #title>
         <svg-icon :name="route.meta.icon"></svg-icon>
         <span v-show="!settingsConfig.isCollapsed" class="ml-3.5">{{ i18nRouter(route.meta.title) }}</span>
@@ -44,7 +44,6 @@ const settingsConfig = settingsStore();
 <style lang="scss" scoped>
 .sidebar-item {
   .sub-menu {
-    user-select: none;
     color: var(--menu-default-color);
     :deep(.el-sub-menu__title) {
       color: var(--menu-default-color);
