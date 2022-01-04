@@ -1,6 +1,7 @@
 
 .el-breadcrumb{
   .el-breadcrumb__item{
+    user-select: none;
     .el-breadcrumb__inner{
       color: var(--text-color-primary);
       font-weight: normal;
