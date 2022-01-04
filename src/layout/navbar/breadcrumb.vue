@@ -1,7 +1,7 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2022-01-04 11:02:01
- * @LastEditTime: 2022-01-04 16:49:07
+ * @LastEditTime: 2022-01-04 17:11:49
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/layout/navbar/breadcrumb.vue
  * @Description: 
@@ -16,10 +16,10 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from "vue";
 import { useRoute, RouteLocationMatched } from "vue-router";
 import { i18nRouter } from "@/utils";
 const route = useRoute();
-const { matched } = route;
 const getMenuRedirect = (breadcrumb: RouteLocationMatched[]) => {
   return breadcrumb.map(item => {
     return {
@@ -32,7 +32,10 @@ const getMenuRedirect = (breadcrumb: RouteLocationMatched[]) => {
     };
   });
 };
-const breadcrumb = getMenuRedirect(matched.filter(item => item.path !== "/"));
+const breadcrumb = computed(() => {
+  const { matched } = route;
+  return getMenuRedirect(matched.filter(item => item.path !== "/"));
+});
 </script>
 <style lang="scss" scoped></style>
 
