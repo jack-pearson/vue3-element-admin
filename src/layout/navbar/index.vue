@@ -1,7 +1,7 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2021-12-31 18:10:15
- * @LastEditTime: 2022-01-04 11:18:23
+ * @LastEditTime: 2022-01-04 18:03:40
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/layout/navbar/index.vue
  * @Description: 
@@ -13,7 +13,9 @@
       <Hamburger />
       <Breadcrumb />
     </div>
-    <div class="navbar-action"></div>
+    <div class="navbar-action flex justify-end">
+      <Search />
+    </div>
   </header>
 </template>
 <script lang="ts">
@@ -23,6 +25,7 @@ export default { name: "Navbar" };
 <script setup lang="ts">
 import Hamburger from "./hamburger.vue";
 import Breadcrumb from "./breadcrumb.vue";
+import Search from "./search.vue";
 </script>
 <style lang="scss" scoped>
 .navbar {

@@ -1,7 +1,7 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-12-30 13:56:29
- * @LastEditTime: 2021-12-30 17:41:29
+ * @LastEditTime: 2022-01-05 10:50:01
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/utils/router/index.ts
  * @Description:
@@ -45,3 +45,11 @@ export const formatRoutes = (data: Menu[]): Menu[] => {
 export const isHide = (route: Menu) => route && route.isHide;
 
 export const hasChildren = (route: Menu) => route && route.children && route.children.length > 0;
+
+export const routeTreeToArray = (routes: Menu[], result: Menu[] = []) => {
+  routes.forEach((node: Menu) => {
+    result.push(node);
+    if (hasChildren(node)) routeTreeToArray(node.children, result);
+  });
+  return result;
+};
