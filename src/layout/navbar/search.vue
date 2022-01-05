@@ -1,14 +1,16 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2022-01-04 17:48:42
- * @LastEditTime: 2022-01-05 11:22:08
+ * @LastEditTime: 2022-01-05 13:39:23
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/layout/navbar/search.vue
  * @Description: 
 -->
 <template>
-  <div class="layout-search">
-    <svg-icon name="search" @click="openSearch" />
+  <div class="layout-search h-full select-none">
+    <div class="icon-wrapper pl-2.5 pr-2.5 h-full flex justify-center items-center cursor-pointer" @click="openSearch">
+      <svg-icon name="search" class="w-full" />
+    </div>
     <el-dialog v-model="openDialog" destroy-on-close :modal="false" fullscreen :show-close="false">
       <el-autocomplete
         v-model="menuQuery"
@@ -17,6 +19,7 @@
         :prefix-icon="Search"
         ref="layoutSearchAutocompleteRef"
         @blur="closeSearch"
+        @select="selectMenu"
       >
         <template #default="{ item }">
           <div class="flex items-center">
@@ -29,12 +32,14 @@
 </template>
 <script setup lang="ts">
 import { ref, nextTick } from "vue";
-import { routerState } from "@/store";
 import { Search } from "@element-plus/icons-vue";
+import { useRouter } from "vue-router";
+import { routerState } from "@/store";
 import { i18nRouter, routeTreeToArray } from "@/utils";
 import { Menu } from "@/types";
 const { routerList: menuList } = routerState();
 const openDialog = ref(false);
+const router = useRouter();
 const menuSearch = (queryString: string, callback: Function) => {
   const result = menu.filter(menuQueryChange(queryString));
   callback(result);
@@ -61,7 +66,9 @@ const menuQueryChange = (queryString: string) => {
     return result;
   };
 };
-
+const selectMenu = (val: any) => {
+  router.push(val.path);
+};
 const closeSearch = () => {
   menuQuery.value = "";
   openDialog.value = false;
@@ -69,6 +76,16 @@ const closeSearch = () => {
 </script>
 <style lang="scss" scoped>
 .layout-search {
+  .icon-wrapper {
+    color: var(--color-text-primary);
+    transition: background 0.28s;
+    &:hover {
+      background: rgba(0, 0, 0, 0.04);
+      .svg-icon {
+        animation: iconAnimation 0.28s ease-in-out;
+      }
+    }
+  }
   ::v-deep(.el-dialog) {
     box-shadow: unset !important;
     border-radius: 0 !important;
