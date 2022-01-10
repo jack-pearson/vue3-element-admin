@@ -1,7 +1,7 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2022-01-05 11:42:35
- * @LastEditTime: 2022-01-10 16:12:28
+ * @LastEditTime: 2022-01-10 17:16:59
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/layout/navbar/zitiSize.vue
  * @Description: 
@@ -14,24 +14,21 @@
       </div>
       <template #dropdown>
         <el-dropdown-menu>
-          <el-dropdown-item command="large">large</el-dropdown-item>
-          <el-dropdown-item command="default">default</el-dropdown-item>
-          <el-dropdown-item command="small">small</el-dropdown-item>
+          <el-dropdown-item v-for="item in componentSize" :key="item" :disabled="item === ElComponentSize" :command="item">{{ item }}</el-dropdown-item>
         </el-dropdown-menu>
       </template>
     </el-dropdown>
   </div>
 </template>
 <script setup lang="ts">
-import { getCurrentInstance } from "vue";
-import { Local } from "@/utils";
-
-const { proxy } = getCurrentInstance() as any;
-const onChangeSize = (command: string | number | object) => {
-  const theme = Local.get("theme") || {};
-  theme.ElComponentSize = command;
-  Local.set("theme", theme);
-  proxy.$ELEMENT.size = command;
+import { Local, componentSize } from "@/utils";
+import { settingsStore } from "@/store";
+const { ElComponentSize, setElementZiTiSize } = settingsStore();
+const onChangeSize = (command: string) => {
+  const themes = Local.get("settingsStore") || ({} as any);
+  themes.ElComponentSize = command;
+  Local.set("settingsStore", themes);
+  setElementZiTiSize(command);
   window.location.reload();
 };
 </script>
