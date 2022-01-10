@@ -1,7 +1,7 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-11-24 16:14:10
- * @LastEditTime: 2022-01-04 16:59:57
+ * @LastEditTime: 2022-01-10 16:01:48
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/store/modules/settings.ts
  * @Description:
@@ -18,6 +18,7 @@ const createState = (): settingsType => {
       warning: "#FFC53D",
       danger: "#FF4D4F",
       info: "#ADB5BD",
+      ElComponentSize: "default",
     },
     isCollapsed: false,
     config: {

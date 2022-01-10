@@ -1,7 +1,7 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-11-24 16:23:26
- * @LastEditTime: 2022-01-04 16:59:38
+ * @LastEditTime: 2022-01-10 16:01:47
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/types/store/themeConfig/index.d.ts
  * @Description:
@@ -16,6 +16,7 @@ export interface settingsType {
     warning: string;
     danger: string;
     info: string;
+    ElComponentSize: string;
   };
   isCollapsed: boolean;
   config: {
