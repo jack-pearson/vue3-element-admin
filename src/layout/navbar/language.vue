@@ -1,41 +1,43 @@
 <!--
  * @Author: jack-pearson
- * @Date: 2022-01-05 11:42:35
- * @LastEditTime: 2022-01-10 18:06:06
+ * @Date: 2022-01-10 17:24:36
+ * @LastEditTime: 2022-01-10 18:07:35
  * @LastEditors: jack-pearson
- * @FilePath: /yh-vue3-admin/src/layout/navbar/zitiSize.vue
+ * @FilePath: /yh-vue3-admin/src/layout/navbar/language.vue
  * @Description: 
 -->
 <template>
-  <div class="layout-ziti h-full select-none">
+  <div class="layout-language h-full select-none">
     <el-dropdown type="primary" :show-timeout="70" :hide-timeout="50" trigger="hover" class="h-full flex items-center" @command="onChangeSize">
       <div class="icon-wrapper pl-2.5 pr-2.5 h-full flex justify-center items-center cursor-pointer">
-        <svg-icon name="ziti" class="w-full pointer-events-none" />
+        <svg-icon :name="language" class="w-full pointer-events-none" />
       </div>
       <template #dropdown>
         <el-dropdown-menu>
-          <el-dropdown-item v-for="item in componentSize" :key="item" :disabled="item === ElComponentSize" :command="item">{{ item }}</el-dropdown-item>
+          <el-dropdown-item v-for="item in i18n" :key="item.value" :disabled="item.value === language" :command="item.value">{{ item.label }}</el-dropdown-item>
         </el-dropdown-menu>
       </template>
     </el-dropdown>
   </div>
 </template>
 <script setup lang="ts">
-import { computed } from "vue";
-import { Local, componentSize } from "@/utils";
+import { getCurrentInstance, computed } from "vue";
+import { Local, i18n } from "@/utils";
 import { settingsStore } from "@/store";
-import { settingsType } from "@/types";
+import { languageType, settingsType } from "@/types";
 const settingsState = settingsStore();
-const onChangeSize = (command: string) => {
+const { proxy } = getCurrentInstance() as any;
+const onChangeSize = (command: languageType) => {
   const settingsStore = (Local.get("settingsStore") || {}) as settingsType;
-  settingsStore.ElComponentSize = command;
+  settingsStore.language = command;
   Local.set("settingsStore", settingsStore);
-  settingsState.setElementZiTiSize(command);
+  settingsState.setLanguage(command);
+  proxy.$i18n.locale = command;
 };
-const ElComponentSize = computed(() => settingsState.ElComponentSize);
+const language = computed(() => settingsState.language);
 </script>
 <style lang="scss" scoped>
-.layout-ziti {
+.layout-language {
   .icon-wrapper {
     color: var(--color-text-primary);
     transition: background 0.28s;
@@ -53,5 +55,5 @@ const ElComponentSize = computed(() => settingsState.ElComponentSize);
 </style>
 
 <script lang="ts">
-export default { name: "LayoutZitiSize" };
+export default { name: "LayoutLanguage" };
 </script>

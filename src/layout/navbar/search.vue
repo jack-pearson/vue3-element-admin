@@ -1,7 +1,7 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2022-01-04 17:48:42
- * @LastEditTime: 2022-01-05 13:39:23
+ * @LastEditTime: 2022-01-10 17:26:25
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/layout/navbar/search.vue
  * @Description: 
@@ -101,5 +101,5 @@ const closeSearch = () => {
 }
 </style>
 <script lang="ts">
-export default { name: "Search" };
+export default { name: "LayoutSearch" };
 </script>

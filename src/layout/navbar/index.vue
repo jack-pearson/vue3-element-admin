@@ -1,7 +1,7 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2021-12-31 18:10:15
- * @LastEditTime: 2022-01-05 11:46:06
+ * @LastEditTime: 2022-01-10 17:46:58
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/layout/navbar/index.vue
  * @Description: 
@@ -10,12 +10,13 @@
 <template>
   <header class="navbar w-full h-12 flex justify-between">
     <div class="navbar-left flex items-center">
-      <Hamburger />
-      <Breadcrumb />
+      <LayoutHamburger />
+      <LayoutBreadcrumb />
     </div>
     <div class="navbar-action flex justify-end items-center">
-      <Search />
-      <ZiTiSize />
+      <LayoutSearch />
+      <LayoutZiTiSize />
+      <LayoutLanguage />
     </div>
   </header>
 </template>
@@ -24,10 +25,11 @@ export default { name: "Navbar" };
 </script>
 
 <script setup lang="ts">
-import Hamburger from "./hamburger.vue";
-import Breadcrumb from "./breadcrumb.vue";
-import Search from "./search.vue";
-import ZiTiSize from "./zitiSize.vue";
+import LayoutHamburger from "./hamburger.vue";
+import LayoutBreadcrumb from "./breadcrumb.vue";
+import LayoutSearch from "./search.vue";
+import LayoutZiTiSize from "./zitiSize.vue";
+import LayoutLanguage from "./language.vue";
 </script>
 <style lang="scss" scoped>
 .navbar {

@@ -1,14 +1,14 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2022-01-04 11:02:01
- * @LastEditTime: 2022-01-04 17:11:49
+ * @LastEditTime: 2022-01-10 17:27:27
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/layout/navbar/breadcrumb.vue
  * @Description: 
 -->
 
 <template>
-  <div class="breadcrumb-wrapper pl-2">
+  <div class="layout-breadcrumb pl-2">
     <el-breadcrumb separator=">">
       <el-breadcrumb-item v-for="item in breadcrumb" :to="{ path: item.to }" :key="item.to">{{ item.meta.title }}</el-breadcrumb-item>
     </el-breadcrumb>
@@ -40,5 +40,5 @@ const breadcrumb = computed(() => {
 <style lang="scss" scoped></style>
 
 <script lang="ts">
-export default { name: "Breadcrumb" };
+export default { name: "LayoutBreadcrumb" };
 </script>
