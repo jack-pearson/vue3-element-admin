@@ -16,7 +16,7 @@ import LocalEn from "@/i18n/lang/en";
 import LoginZhcn from "@/i18n/pages/login/zh-cn";
 import LoginEn from "@/i18n/pages/login/en";
 import { Local } from "@/utils";
-import { settingsType } from "@/types";
+import { settingsStoreType } from "@/types";
 
 // 定义语言国际化内容
 /**
@@ -37,7 +37,7 @@ const messages = {
   },
 };
 const getLocale = () => {
-  const settingsStore = (Local.get("settingsStore") || {}) as settingsType;
+  const settingsStore = (Local.get("settingsStore") || {}) as settingsStoreType;
   return settingsStore.language || "zh-cn";
 };
 // 导出语言国际化

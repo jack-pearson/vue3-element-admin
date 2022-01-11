@@ -1,7 +1,7 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2021-12-10 16:33:42
- * @LastEditTime: 2021-12-10 16:36:16
+ * @LastEditTime: 2022-01-11 18:49:25
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/CHANGELOG.md
  * @Description: 
@@ -16,3 +16,7 @@
 `2021年12月10日`
 
 - 🐞 修复 request 报错提示
+
+`2022年01月11日`
+
+- 🐞 修改 readme, 增加面包屑,个人中心, keep-alive

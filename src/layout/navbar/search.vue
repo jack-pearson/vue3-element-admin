@@ -1,7 +1,7 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2022-01-04 17:48:42
- * @LastEditTime: 2022-01-10 17:26:25
+ * @LastEditTime: 2022-01-11 16:43:49
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/layout/navbar/search.vue
  * @Description: 
@@ -34,10 +34,10 @@
 import { ref, nextTick } from "vue";
 import { Search } from "@element-plus/icons-vue";
 import { useRouter } from "vue-router";
-import { routerState } from "@/store";
+import { routerStore } from "@/store";
 import { i18nRouter, routeTreeToArray } from "@/utils";
 import { Menu } from "@/types";
-const { routerList: menuList } = routerState();
+const { routerList: menuList } = routerStore();
 const openDialog = ref(false);
 const router = useRouter();
 const menuSearch = (queryString: string, callback: Function) => {
@@ -66,7 +66,7 @@ const menuQueryChange = (queryString: string) => {
     return result;
   };
 };
-const selectMenu = (val: any) => {
+const selectMenu = (val: Menu) => {
   router.push(val.path);
 };
 const closeSearch = () => {

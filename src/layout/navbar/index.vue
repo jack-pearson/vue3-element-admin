@@ -1,14 +1,14 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2021-12-31 18:10:15
- * @LastEditTime: 2022-01-10 17:46:58
+ * @LastEditTime: 2022-01-11 14:25:02
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/layout/navbar/index.vue
  * @Description: 
 -->
 
 <template>
-  <header class="navbar w-full h-12 flex justify-between">
+  <header class="layout-navbar w-full h-12 flex justify-between">
     <div class="navbar-left flex items-center">
       <LayoutHamburger />
       <LayoutBreadcrumb />
@@ -17,11 +17,12 @@
       <LayoutSearch />
       <LayoutZiTiSize />
       <LayoutLanguage />
+      <LayoutUser />
     </div>
   </header>
 </template>
 <script lang="ts">
-export default { name: "Navbar" };
+export default { name: "LayoutNavbar" };
 </script>
 
 <script setup lang="ts">
@@ -30,10 +31,13 @@ import LayoutBreadcrumb from "./breadcrumb.vue";
 import LayoutSearch from "./search.vue";
 import LayoutZiTiSize from "./zitiSize.vue";
 import LayoutLanguage from "./language.vue";
+import LayoutUser from "./user.vue";
 </script>
 <style lang="scss" scoped>
-.navbar {
+.layout-navbar {
   line-height: 48px;
+  border-bottom: 1px solid #f1f2f3;
+  background: var(--color-white);
   .navbar-action {
     min-width: 200px;
   }

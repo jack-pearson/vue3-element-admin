@@ -1,7 +1,7 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2021-12-31 13:51:06
- * @LastEditTime: 2022-01-04 17:00:33
+ * @LastEditTime: 2022-01-11 10:37:24
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/layout/sidebar/sidebarLogo.vue
  * @Description: 
@@ -14,7 +14,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import logo from "@/assets/logo.png";
+import logo from "@/assets/img/logo.png";
 import { settingsStore } from "@/store";
 const settingsConfig = settingsStore();
 const { config } = settingsConfig;

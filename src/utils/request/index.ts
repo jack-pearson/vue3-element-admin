@@ -1,7 +1,7 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-11-23 15:16:14
- * @LastEditTime: 2021-12-31 11:25:30
+ * @LastEditTime: 2022-01-11 14:35:03
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/utils/request/index.ts
  * @Description:
@@ -87,7 +87,7 @@ const addPending = (config: AxiosRequestConfig) => {
 /** 请求拦截器 */
 instance.interceptors.request.use(
   (config: any) => {
-    const token = Local.get("token");
+    const token = Session.get("token");
     token && (config.headers.Authorization = `Bearer ${token}`);
     removePending(config);
     addPending(config);

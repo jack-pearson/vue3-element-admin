@@ -1,16 +1,16 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-11-24 16:14:10
- * @LastEditTime: 2022-01-10 17:44:06
+ * @LastEditTime: 2022-01-11 14:27:46
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/store/modules/settings.ts
  * @Description:
  */
 import { defineStore } from "pinia";
-import { settingsType } from "@/types";
+import { settingsStoreType } from "@/types";
 import { Local } from "@/utils";
 
-const createState = (): settingsType => {
+const createState = (): settingsStoreType => {
   return {
     themesState: {
       primary: "#40A9FF",
@@ -29,8 +29,8 @@ const createState = (): settingsType => {
   };
 };
 
-const loadState = (): settingsType => {
-  const state = Local.get("settingsStore") || ({} as settingsType);
+const loadState = (): settingsStoreType => {
+  const state = (Local.get("settingsStore") || {}) as settingsStoreType;
   const newState = Object.assign(createState(), state);
   return newState;
 };
@@ -39,18 +39,18 @@ export const settingsStore = defineStore("settingsStore", {
   state: loadState,
   actions: {
     // 设置布局配置
-    setThemes(themes: settingsType["themesState"]) {
+    setThemes(themes: settingsStoreType["themesState"]) {
       Object.assign(this.themesState, themes);
     },
-    setElementZiTiSize(size: settingsType["ElComponentSize"]) {
+    setElementZiTiSize(size: settingsStoreType["ElComponentSize"]) {
       this.ElComponentSize = size;
     },
     // 设置是否折叠菜单
-    setIsCollapsed(isCollapsed: settingsType["isCollapsed"]) {
+    setIsCollapsed(isCollapsed: settingsStoreType["isCollapsed"]) {
       this.isCollapsed = isCollapsed;
     },
     // 设置语言
-    setLanguage(language: settingsType["language"]) {
+    setLanguage(language: settingsStoreType["language"]) {
       this.language = language;
     },
   },

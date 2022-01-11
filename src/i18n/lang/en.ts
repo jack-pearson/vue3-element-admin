@@ -1,7 +1,7 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-11-24 15:59:57
- * @LastEditTime: 2022-01-04 18:37:14
+ * @LastEditTime: 2022-01-11 13:20:35
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/i18n/lang/en.ts
  * @Description:
@@ -13,8 +13,10 @@ export default {
     system: "system",
     systemMenu: "systemMenu",
     systemUser: "systemUser",
+    profile: "profile",
+    logout: "logout",
   },
   layout: {
-    searchPlaceholder: "菜单搜索: 支持菜单名称、路由路径",
+    searchPlaceholder: "Menu search: Supports menu name and route path",
   },
 };

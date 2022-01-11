@@ -1,9 +1,9 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-12-07 20:15:14
- * @LastEditTime: 2021-12-29 18:12:21
+ * @LastEditTime: 2022-01-11 13:49:56
  * @LastEditors: jack-pearson
- * @FilePath: /yh-vue3-admin/src/types/store/user/index.ts
+ * @FilePath: /yh-vue3-admin/src/types/store/user/index.d.ts
  * @Description:
  */
 type sexType = "null" | "man" | "girl";
@@ -12,6 +12,7 @@ export interface User {
   token?: string;
   password?: string;
   name?: string;
+  avatar?: string;
   email?: string;
   mobile?: string;
   phone?: string;
@@ -20,6 +21,6 @@ export interface User {
   [key: string]: any;
 }
 
-export interface UserStateTypes {
+export interface userStoreTypes {
   userInfo: User;
 }

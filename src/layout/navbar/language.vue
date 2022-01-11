@@ -24,11 +24,11 @@
 import { getCurrentInstance, computed } from "vue";
 import { Local, i18n } from "@/utils";
 import { settingsStore } from "@/store";
-import { languageType, settingsType } from "@/types";
+import { languageType, settingsStoreType } from "@/types";
 const settingsState = settingsStore();
 const { proxy } = getCurrentInstance() as any;
 const onChangeSize = (command: languageType) => {
-  const settingsStore = (Local.get("settingsStore") || {}) as settingsType;
+  const settingsStore = (Local.get("settingsStore") || {}) as settingsStoreType;
   settingsStore.language = command;
   Local.set("settingsStore", settingsStore);
   settingsState.setLanguage(command);

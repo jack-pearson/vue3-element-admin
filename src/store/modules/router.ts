@@ -1,23 +1,23 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-12-07 20:12:40
- * @LastEditTime: 2021-12-30 14:03:11
+ * @LastEditTime: 2022-01-11 16:43:42
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/store/modules/router.ts
  * @Description:
  */
 import { defineStore } from "pinia";
-import { Menu, RouterStateTypes } from "@/types";
+import { Menu, RouterStoreTypes } from "@/types";
 import { formatRoutes } from "@/utils";
 import { UserService } from "@/apis";
 
-const createState = (): RouterStateTypes => {
+const createState = (): RouterStoreTypes => {
   return {
     routerList: [],
   };
 };
 
-export const routerState = defineStore("routerState", {
+export const routerStore = defineStore("routerStore", {
   state: createState,
   actions: {
     async getRouterList(): Promise<Menu[]> {

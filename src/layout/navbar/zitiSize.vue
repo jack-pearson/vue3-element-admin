@@ -24,10 +24,10 @@
 import { computed } from "vue";
 import { Local, componentSize } from "@/utils";
 import { settingsStore } from "@/store";
-import { settingsType } from "@/types";
+import { settingsStoreType } from "@/types";
 const settingsState = settingsStore();
 const onChangeSize = (command: string) => {
-  const settingsStore = (Local.get("settingsStore") || {}) as settingsType;
+  const settingsStore = (Local.get("settingsStore") || {}) as settingsStoreType;
   settingsStore.ElComponentSize = command;
   Local.set("settingsStore", settingsStore);
   settingsState.setElementZiTiSize(command);

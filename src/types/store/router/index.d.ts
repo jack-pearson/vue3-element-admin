@@ -1,7 +1,7 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-12-14 14:07:07
- * @LastEditTime: 2021-12-30 17:26:49
+ * @LastEditTime: 2022-01-11 16:44:28
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/types/store/router/index.d.ts
  * @Description:
@@ -27,6 +27,6 @@ export interface Menu {
   updateTime?: Date;
 }
 
-export interface RouterStateTypes {
+export interface RouterStoreTypes {
   routerList: Menu[];
 }

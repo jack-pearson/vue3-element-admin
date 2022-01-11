@@ -1,7 +1,7 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2021-12-07 20:43:53
- * @LastEditTime: 2022-01-04 15:25:25
+ * @LastEditTime: 2022-01-11 16:43:53
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/layout/sidebar/sidebar.vue
  * @Description: 
@@ -36,9 +36,9 @@ export default { name: "Sidebar" };
 import SidebarItem from "./SidebarItem.vue";
 import SidebarLogo from "./sidebarLogo.vue";
 import { computed } from "vue";
-import { routerState, settingsStore } from "@/store";
+import { routerStore, settingsStore } from "@/store";
 import { useRoute } from "vue-router";
-const routerConfig = routerState();
+const routerConfig = routerStore();
 const settingsConfig = settingsStore();
 const { routerList: menuList } = routerConfig.$state;
 const currentRoute = useRoute();

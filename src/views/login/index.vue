@@ -1,7 +1,7 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2021-11-24 17:42:59
- * @LastEditTime: 2022-01-04 16:12:17
+ * @LastEditTime: 2022-01-11 14:34:12
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/views/login/index.vue
  * @Description: 
@@ -55,11 +55,11 @@
 
 <script setup lang="ts">
 import { reactive, getCurrentInstance } from "vue";
-import { userState, settingsStore } from "@/store";
+import { userStore, settingsStore } from "@/store";
 import { LoginService } from "@/apis";
 import { useRouter } from "vue-router";
-import { Local } from "@/utils";
-const store = userState();
+import { Session } from "@/utils";
+const store = userStore();
 const router = useRouter();
 const { config: configStore } = settingsStore();
 const { proxy } = getCurrentInstance() as any;
@@ -97,7 +97,8 @@ const onSubmit = () => {
       try {
         const { code, success, data: userInfo, message } = await LoginService.login(form);
         if (code === 200 && success) {
-          Local.set("token", userInfo.token);
+          Session.set("token", userInfo.token);
+          Session.set("userInfo", userInfo);
           await store.setUserInfo(userInfo);
           router.push({ path: "/system/user" });
         } else {
