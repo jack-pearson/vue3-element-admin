@@ -1,14 +1,14 @@
 /*
  * @Author: jack-pearson
  * @Date: 2022-01-11 15:10:49
- * @LastEditTime: 2022-01-11 15:42:23
+ * @LastEditTime: 2022-01-12 18:08:16
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/store/modules/tagView.ts
  * @Description:
  */
 import { defineStore } from "pinia";
-import { TagViewStoreType } from "@/types";
-import { Session } from "@/utils";
+import { Menu, TagViewStoreType } from "@/types";
+import { Local } from "@/utils";
 
 const createUser = (): TagViewStoreType => {
   return {
@@ -18,8 +18,8 @@ const createUser = (): TagViewStoreType => {
 };
 
 const loadUser = (): TagViewStoreType => {
-  const visitedViews = (Session.get("visitedViews") || []) as TagViewStoreType["visitedViews"];
-  const cachedViews = (Session.get("cachedViews") || []) as TagViewStoreType["cachedViews"];
+  const visitedViews = (Local.get("visitedViews") || []) as TagViewStoreType["visitedViews"];
+  const cachedViews = (Local.get("cachedViews") || []) as TagViewStoreType["cachedViews"];
   const newUser = Object.assign(createUser(), { visitedViews, cachedViews });
   return newUser;
 };
@@ -27,27 +27,35 @@ const loadUser = (): TagViewStoreType => {
 export const tagViewStore = defineStore("tagViewStore", {
   state: loadUser,
   actions: {
-    addVisitedViews(data: any) {
-      if (this.visitedViews.includes(data.name)) return;
-      this.visitedViews.push(data.name);
+    addVisitedViews(route: Menu) {
+      if (this.visitedViews.find(item => item.name === route.name)) return;
+      this.visitedViews.push(route);
+      this.addLocalVisitedViews();
     },
-    addCachedViews(data: any) {
-      if (this.cachedViews.includes(data.name)) return;
-      if (data.meta.isKeepAlive) this.cachedViews.push(data.name);
+    addCachedViews(route: Menu) {
+      if (this.cachedViews.includes(route.name)) {
+        if (route.meta.isKeepAlive) return;
+        this.removeCachedViews(route.name);
+      } else {
+        this.cachedViews.push(route.name);
+      }
+      this.addLocalCachedViews();
     },
     removeVisitedViews(name: string) {
       this.visitedViews = this.visitedViews.filter(v => v.name !== name);
     },
     removeCachedViews(name: string) {
-      this.cachedViews = this.cachedViews.filter(v => v.name !== name);
+      this.cachedViews = this.cachedViews.filter(v => v !== name);
     },
-    removeTagView(name: string) {
-      this.removeVisitedViews(name);
-      this.removeCachedViews(name);
+    addTagView(route: Menu) {
+      this.addCachedViews(route);
+      this.addVisitedViews(route);
     },
-    addTagView(data: any) {
-      this.addCachedViews(data);
-      this.addVisitedViews(data);
+    addLocalVisitedViews() {
+      Local.set("visitedViews", this.visitedViews);
+    },
+    addLocalCachedViews() {
+      Local.set("cachedViews", this.cachedViews);
     },
   },
 });

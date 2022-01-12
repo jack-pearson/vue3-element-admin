@@ -1,7 +1,7 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2021-12-10 16:33:42
- * @LastEditTime: 2022-01-11 18:49:25
+ * @LastEditTime: 2022-01-12 18:40:16
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/CHANGELOG.md
  * @Description: 
@@ -20,3 +20,7 @@
 `2022年01月11日`
 
 - 🐞 修改 readme, 增加面包屑,个人中心, keep-alive
+
+`2022年01月12日`
+
+- 🐞 keep-alive 修改, tag-view 完成 80%. hamburger 组件完善
