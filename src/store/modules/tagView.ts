@@ -1,7 +1,7 @@
 /*
  * @Author: jack-pearson
  * @Date: 2022-01-11 15:10:49
- * @LastEditTime: 2022-01-12 18:08:16
+ * @LastEditTime: 2022-01-13 17:11:22
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/store/modules/tagView.ts
  * @Description:
@@ -41,8 +41,8 @@ export const tagViewStore = defineStore("tagViewStore", {
       }
       this.addLocalCachedViews();
     },
-    removeVisitedViews(name: string) {
-      this.visitedViews = this.visitedViews.filter(v => v.name !== name);
+    removeVisitedViews(route: Menu) {
+      this.visitedViews = this.visitedViews.filter(v => v.name !== route.name);
     },
     removeCachedViews(name: string) {
       this.cachedViews = this.cachedViews.filter(v => v !== name);
@@ -50,6 +50,24 @@ export const tagViewStore = defineStore("tagViewStore", {
     addTagView(route: Menu) {
       this.addCachedViews(route);
       this.addVisitedViews(route);
+    },
+    closeLeftTagView(route: Menu) {
+      const findIndex = this.visitedViews.findIndex(item => item.name === route.name);
+      this.visitedViews = this.visitedViews.filter((item, index) => {
+        if (index >= findIndex) {
+          return item;
+        }
+      });
+    },
+    closeRightTagView(route: Menu) {
+      const findIndex = this.visitedViews.findIndex(item => item.name === route.name);
+      this.visitedViews.splice(findIndex + 1);
+    },
+    closeOtherTagView(route: Menu) {
+      this.visitedViews = this.visitedViews.filter(item => item.name === route.name);
+    },
+    closeAllTagView() {
+      this.visitedViews = [];
     },
     addLocalVisitedViews() {
       Local.set("visitedViews", this.visitedViews);

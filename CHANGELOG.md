@@ -1,7 +1,7 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2021-12-10 16:33:42
- * @LastEditTime: 2022-01-12 18:40:16
+ * @LastEditTime: 2022-01-13 18:06:57
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/CHANGELOG.md
  * @Description: 
@@ -24,3 +24,7 @@
 `2022年01月12日`
 
 - 🐞 keep-alive 修改, tag-view 完成 80%. hamburger 组件完善
+
+`2022年01月13日`
+
+- 🐞 tagView 完善, 剩下刷新未做, 但是整体来说 tagView 做的很粗糙(后面等着重新设计)

@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-11-22 17:31:39
- * @LastEditTime: 2022-01-11 18:47:48
+ * @LastEditTime: 2022-01-13 18:05:07
  * @LastEditors: jack-pearson
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: /yh-vue3-admin/README.md
@@ -18,7 +18,6 @@
 - [x] 搜索
 - [x] 字体大小
 - [ ] 404页面
-- [ ] 菜单栏切换
 - [ ] 一键黑白
 - [ ] 固定 footer 没做
 - [x] 侧边栏缩进
@@ -35,4 +34,5 @@
 
 ## 待处理 bug
 
-`components>parentView`监听到路由变化的时候, 会打印两次.
+`点击当前的菜单做刷新功能, tagView 同理` 未做
+`tagView` 关闭 右键 等功能做的很粗糙,请指点.

@@ -1,7 +1,7 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-12-30 13:56:29
- * @LastEditTime: 2022-01-05 10:50:01
+ * @LastEditTime: 2022-01-13 13:16:42
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/utils/router/index.ts
  * @Description:
