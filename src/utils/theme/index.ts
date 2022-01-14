@@ -1,15 +1,13 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-12-09 16:16:17
- * @LastEditTime: 2022-01-13 13:16:44
+ * @LastEditTime: 2022-01-14 18:21:52
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/utils/theme/index.ts
  * @Description:
  */
-import { themeType } from "@/types";
+import { settingsStoreType, themeType } from "@/types";
 import Color from "color";
-import { Local } from "@/utils";
-
 /**
  * @description: 设置主图色
  * @param {color} color
@@ -40,5 +38,15 @@ export const setHtmlCssVar = (color: string, theme: themeType) => {
   }
 };
 
-/** 获取 elementUI 组件的 size 属性 */
-export const ElComponentSize: string = Local.get("theme")?.ElComponentSize || "default";
+/**
+ * @description: 页面刷新的时候 设置主题
+ * @param {theme} 主题 store 中的主题配置
+ * @return: null
+ */
+export const setHtmlCssVarBySettings = (theme: settingsStoreType["themesState"]) => {
+  for (const key in theme) {
+    if (Object.prototype.hasOwnProperty.call(theme, key)) {
+      setHtmlCssVar(theme[key as keyof settingsStoreType["themesState"]], key as themeType);
+    }
+  }
+};

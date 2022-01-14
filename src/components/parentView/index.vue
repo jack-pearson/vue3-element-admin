@@ -1,7 +1,7 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2022-01-12 13:21:59
- * @LastEditTime: 2022-01-14 11:50:44
+ * @LastEditTime: 2022-01-14 18:47:30
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/components/parentView/index.vue
  * @Description: 
@@ -29,11 +29,13 @@ const cloneRoute = computed(() => {
     path: route.path,
     meta: route.meta,
   };
-});
+}) as any;
 watch(
   cloneRoute,
-  newRoute => {
-    tagViewState.addTagView(newRoute as Menu);
+  (newRoute: Menu) => {
+    if (newRoute.meta.isTagView) {
+      tagViewState.addTagView(newRoute);
+    }
   },
   { immediate: true }
 );

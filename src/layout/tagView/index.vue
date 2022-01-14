@@ -1,7 +1,7 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2022-01-11 14:03:56
- * @LastEditTime: 2022-01-13 18:02:21
+ * @LastEditTime: 2022-01-14 18:50:03
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/layout/tagView/index.vue
  * @Description: 
@@ -23,7 +23,12 @@
           <div v-if="path === item.path" class="refresh-wrapper rounded-full ml-1 w-4 h-4 flex items-center justify-center" @click.stop="onHandleRefreshTag(item)">
             <svg-icon name="refresh"></svg-icon>
           </div>
-          <div :class="{ 'ml-1': path !== item.path }" class="close-wrapper rounded-full w-4 h-4 flex items-center justify-center" @click.stop="onHandleCloseTag(item)" v-if="visitedViews.length > 1">
+          <div
+            v-if="visitedViews.length > 1 && !item.meta.isAffix"
+            :class="{ 'ml-1': path !== item.path }"
+            class="close-wrapper rounded-full w-4 h-4 flex items-center justify-center"
+            @click.stop="onHandleCloseTag(item)"
+          >
             <svg-icon name="close"></svg-icon>
           </div>
         </li>

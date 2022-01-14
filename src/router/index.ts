@@ -1,7 +1,7 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-11-24 17:48:43
- * @LastEditTime: 2022-01-13 14:10:08
+ * @LastEditTime: 2022-01-14 19:00:09
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/router/index.ts
  * @Description:
@@ -17,7 +17,7 @@ import { i18nRouter, Session } from "@/utils";
 
 const NotFoundComponent = { template: "<p>Page not found</p>" };
 export const constantRouters: Array<RouteRecordRaw> = [
-  { path: "/login", name: "login", component: Login, meta: { title: "home" } },
+  { path: "/login", name: "login", component: Login, meta: { title: "home", isTagView: false } },
   {
     path: "/404",
     name: "notFound",
@@ -47,7 +47,7 @@ router.beforeEach(async (to, from, next) => {
       if (routerList.length === 0) {
         try {
           const newRouter = await store.getRouterList();
-          await router.addRoute({
+          router.addRoute({
             path: "/",
             name: "/",
             redirect: { name: "system" },

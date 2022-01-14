@@ -1,7 +1,7 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-11-24 15:59:57
- * @LastEditTime: 2022-01-11 13:20:39
+ * @LastEditTime: 2022-01-14 13:47:02
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/i18n/lang/zh-cn.ts
  * @Description:
@@ -18,5 +18,9 @@ export default {
   },
   layout: {
     searchPlaceholder: "菜单搜索: 支持菜单名称、路由路径",
+  },
+  settings: {
+    setting: "设置",
+    themeSettings: "主题设置",
   },
 };

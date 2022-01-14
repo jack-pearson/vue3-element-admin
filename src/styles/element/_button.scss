@@ -8,3 +8,17 @@
     @include button(white, primary-4, primary-4);
   }
 }
+.el-button--text{
+  color: var(--color-primary);
+  background-color: transparent;
+  &:hover,
+  &:focus {
+    color: var(--color-primary-9);
+  }
+}
+.el-button.is-plain{
+  &:hover,
+  &:focus {
+    @include button(primary-6, white, primary-6);
+  }
+}

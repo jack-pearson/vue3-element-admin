@@ -1,7 +1,7 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-12-30 13:56:29
- * @LastEditTime: 2022-01-13 13:16:42
+ * @LastEditTime: 2022-01-14 18:54:04
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/utils/router/index.ts
  * @Description:
@@ -19,11 +19,7 @@ export const formatRoutes = (data: Menu[]): Menu[] => {
         redirect: v.redirect,
         isHide: v.isHide,
         component: modules[v.component],
-        meta: {
-          title: v.meta.title,
-          icon: v.meta.icon,
-          isKeepAlive: v.meta.isKeepAlive,
-        },
+        meta: v.meta,
       };
     }
     return {
@@ -33,11 +29,7 @@ export const formatRoutes = (data: Menu[]): Menu[] => {
       redirect: v.redirect,
       isHide: v.isHide,
       component: modules[v.component],
-      meta: {
-        title: v.meta.title,
-        icon: v.meta.icon,
-        isKeepAlive: v.meta.isKeepAlive,
-      },
+      meta: v.meta,
     };
   });
 };

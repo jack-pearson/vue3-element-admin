@@ -1,7 +1,7 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2021-12-07 20:32:15
- * @LastEditTime: 2022-01-12 18:37:51
+ * @LastEditTime: 2022-01-14 18:29:14
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/layout/index.vue
  * @Description: 
@@ -11,7 +11,7 @@
     <Menu />
     <div class="layout-container-main w-full h-full" :class="{ 'is-collapsed': isCollapsed }">
       <Navbar />
-      <TagView />
+      <TagView v-if="isTagsView" />
       <Main />
     </div>
   </el-container>
@@ -25,7 +25,8 @@ import TagView from "./tagView/index.vue";
 import { settingsStore } from "@/store";
 import { computed } from "vue";
 const settingsState = settingsStore();
-const isCollapsed = computed(() => settingsState.isCollapsed);
+const isCollapsed = computed(() => settingsState.config.isCollapsed);
+const isTagsView = computed(() => settingsState.config.isTagsView);
 </script>
 
 <style scoped lang="scss">

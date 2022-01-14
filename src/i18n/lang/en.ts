@@ -1,7 +1,7 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-11-24 15:59:57
- * @LastEditTime: 2022-01-11 13:20:35
+ * @LastEditTime: 2022-01-14 13:46:49
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/i18n/lang/en.ts
  * @Description:
@@ -18,5 +18,9 @@ export default {
   },
   layout: {
     searchPlaceholder: "Menu search: Supports menu name and route path",
+  },
+  settings: {
+    setting: "setting",
+    themeSettings: "themeSettings",
   },
 };

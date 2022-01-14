@@ -1,14 +1,14 @@
 /*
  * @Author: your name
  * @Date: 2021-11-22 11:13:15
- * @LastEditTime: 2022-01-13 13:16:46
+ * @LastEditTime: 2022-01-14 15:38:49
  * @LastEditors: jack-pearson
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: /yh-vue3-admin/src/i18n/index.ts
  */
 import { createI18n } from "vue-i18n";
-import ElementZhCn from "element-plus/lib/locale/lang/zh-cn";
-import ElementEn from "element-plus/lib/locale/lang/en";
+// import ElementZhCn from "element-plus/lib/locale/lang/zh-cn";
+// import ElementEn from "element-plus/lib/locale/lang/en";
 
 import LocalZhCn from "@/i18n/lang/zh-cn";
 import LocalEn from "@/i18n/lang/en";
@@ -25,13 +25,11 @@ import { settingsStoreType } from "@/types";
  * /src/i18n/pages 下的 ts 为各界面的国际化内容
  */
 const messages = {
-  [ElementZhCn.name]: {
-    ...ElementZhCn,
+  ["zh-cn"]: {
     login: LoginZhcn,
     messages: LocalZhCn,
   },
-  [ElementEn.name]: {
-    ...ElementEn,
+  ["en"]: {
     login: LoginEn,
     messages: LocalEn,
   },
@@ -43,6 +41,6 @@ const getLocale = () => {
 // 导出语言国际化
 export const i18n = createI18n({
   locale: getLocale(),
-  fallbackLocale: ElementZhCn.name,
+  fallbackLocale: "zh-cn",
   messages,
 });

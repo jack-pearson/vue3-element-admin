@@ -4,9 +4,14 @@
     "useDefineForClassFields": true,
     "module": "esnext",
     "types": [
-      "element-plus/global.d.ts"
+      "element-plus/global.d.ts",
+      "vite/client"
     ],
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "skipLibCheck": true,
     "moduleResolution": "node",
+    "forceConsistentCasingInFileNames": true,
     "strict": true,
     "jsx": "preserve",
     "sourceMap": true,
@@ -14,7 +19,9 @@
     "esModuleInterop": true,
     "lib": [
       "esnext",
-      "dom"
+      "dom",
+      "dom.iterable",
+      "scripthost"
     ],
     "baseUrl": "./",
     "paths": {
@@ -23,10 +30,4 @@
       ],
     },
   },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.d.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue"
-  ]
 }

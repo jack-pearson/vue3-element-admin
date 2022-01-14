@@ -1,13 +1,13 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2021-12-07 20:43:53
- * @LastEditTime: 2022-01-11 16:43:53
+ * @LastEditTime: 2022-01-14 18:24:30
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/layout/sidebar/sidebar.vue
  * @Description: 
 -->
 <template>
-  <div class="layout-aside-container !h-full" :class="{ 'is-collapsed': settingsConfig.isCollapsed }">
+  <div class="layout-aside-container !h-full" :class="{ 'is-collapsed': settingsConfig.config.isCollapsed }">
     <el-aside class="layout-aside w-full h-full flex">
       <el-scrollbar class="flex-1">
         <SidebarLogo />
@@ -17,7 +17,7 @@
           :default-active="activeMenu"
           background-color="transparent"
           mode="vertical"
-          :collapse="settingsConfig.isCollapsed"
+          :collapse="settingsConfig.config.isCollapsed"
           :collapse-transition="false"
           :uniqueOpened="true"
         >

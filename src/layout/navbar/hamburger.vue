@@ -1,14 +1,14 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2021-12-31 18:29:18
- * @LastEditTime: 2022-01-10 17:27:02
+ * @LastEditTime: 2022-01-14 18:22:59
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/layout/navbar/hamburger.vue
  * @Description: 
 -->
 
 <template>
-  <div class="layout-hamburger pl-2 pr-2 h-full flex items-center justify-center select-none select-none" :class="{ 'is-collapsed': !settingsConfig.isCollapsed }" @click="toggleClick">
+  <div class="layout-hamburger pl-2 pr-2 h-full flex items-center justify-center select-none select-none" :class="{ 'is-collapsed': !settingsConfig.config.isCollapsed }" @click="toggleClick">
     <svg-icon name="hamburger"></svg-icon>
   </div>
 </template>
@@ -16,7 +16,7 @@
 import { settingsStore } from "@/store";
 const settingsConfig = settingsStore();
 const toggleClick = () => {
-  settingsConfig.setIsCollapsed(!settingsConfig.isCollapsed);
+  settingsConfig.setIsCollapsed(!settingsConfig.config.isCollapsed);
 };
 </script>
 <style lang="scss" scoped>

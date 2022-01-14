@@ -1,7 +1,7 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2022-01-10 17:24:36
- * @LastEditTime: 2022-01-10 18:07:35
+ * @LastEditTime: 2022-01-14 18:36:30
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/layout/navbar/language.vue
  * @Description: 
@@ -29,12 +29,12 @@ const settingsState = settingsStore();
 const { proxy } = getCurrentInstance() as any;
 const onChangeSize = (command: languageType) => {
   const settingsStore = (Local.get("settingsStore") || {}) as settingsStoreType;
-  settingsStore.language = command;
+  settingsStore.config.language = command;
   Local.set("settingsStore", settingsStore);
   settingsState.setLanguage(command);
   proxy.$i18n.locale = command;
 };
-const language = computed(() => settingsState.language);
+const language = computed(() => settingsState.config.language);
 </script>
 <style lang="scss" scoped>
 .layout-language {
