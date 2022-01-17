@@ -11,7 +11,7 @@
     <Menu />
     <div class="layout-container-main w-full h-full" :class="{ 'is-collapsed': isCollapsed }">
       <Navbar />
-      <TagView v-if="isTagsView" />
+      <TagView v-if="hasTagsView" />
       <Main />
     </div>
   </el-container>
@@ -26,7 +26,7 @@ import { settingsStore } from "@/store";
 import { computed } from "vue";
 const settingsState = settingsStore();
 const isCollapsed = computed(() => settingsState.config.isCollapsed);
-const isTagsView = computed(() => settingsState.config.isTagsView);
+const hasTagsView = computed(() => settingsState.config.hasTagsView);
 </script>
 
 <style scoped lang="scss">

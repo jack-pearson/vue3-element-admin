@@ -7,7 +7,7 @@
  * @Description: 
 -->
 <template>
-  <el-container class="layout-main overflow-y-auto" :class="{ 'is-tagView': !isTagsView }">
+  <el-container class="layout-main overflow-y-auto" :class="{ 'is-tagView': !hasTagsView }">
     <LayoutParentView />
   </el-container>
 </template>
@@ -17,7 +17,7 @@ import LayoutParentView from "@/layout/routerView/index.vue";
 import { computed } from "vue";
 import { settingsStore } from "@/store";
 const settingsState = settingsStore();
-const isTagsView = computed(() => settingsState.config.isTagsView);
+const hasTagsView = computed(() => settingsState.config.hasTagsView);
 </script>
 
 <style scoped lang="scss">

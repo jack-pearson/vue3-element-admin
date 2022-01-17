@@ -1,7 +1,7 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2021-12-31 18:10:15
- * @LastEditTime: 2022-01-13 18:20:46
+ * @LastEditTime: 2022-01-17 10:33:59
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/layout/navbar/index.vue
  * @Description: 
@@ -17,7 +17,7 @@
       <LayoutSearch />
       <LayoutZiTiSize />
       <LayoutLanguage />
-      <LayoutTheme />
+      <LayoutSettings v-if="settingsState.config.hasGlobalSettings" />
       <LayoutUser />
     </div>
   </header>
@@ -32,8 +32,11 @@ import LayoutBreadcrumb from "./breadcrumb.vue";
 import LayoutSearch from "./search.vue";
 import LayoutZiTiSize from "./zitiSize.vue";
 import LayoutLanguage from "./language.vue";
-import LayoutTheme from "./theme.vue";
+import LayoutSettings from "./settings.vue";
 import LayoutUser from "./user.vue";
+import { settingsStore } from "@/store";
+
+const settingsState = settingsStore();
 </script>
 <style lang="scss" scoped>
 .layout-navbar {

@@ -1,7 +1,7 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-11-24 16:23:26
- * @LastEditTime: 2022-01-14 18:21:08
+ * @LastEditTime: 2022-01-17 10:32:06
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/types/store/settings/index.d.ts
  * @Description:
@@ -20,7 +20,9 @@ export interface settingsStoreType {
   config: {
     loginTitle: string;
     logoTitle: string;
-    isTagsView: boolean;
+    hasTagsView: boolean;
+    hasGlobalSettings: boolean;
+    hasSidebarLogo: boolean;
     language: languageType;
     ElComponentSize: ElComponentSizeType;
     isCollapsed: boolean;

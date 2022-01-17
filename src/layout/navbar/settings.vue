@@ -1,13 +1,13 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2022-01-13 18:19:34
- * @LastEditTime: 2022-01-14 18:28:17
+ * @LastEditTime: 2022-01-17 10:32:35
  * @LastEditors: jack-pearson
- * @FilePath: /yh-vue3-admin/src/layout/navbar/theme.vue
+ * @FilePath: /yh-vue3-admin/src/layout/navbar/settings.vue
  * @Description: 
 -->
 <template>
-  <div class="layout-theme h-full select-none">
+  <div class="layout-settings h-full select-none">
     <div class="icon-wrapper pl-2.5 pr-2.5 h-full flex justify-center items-center cursor-pointer" @click="openSettings">
       <svg-icon name="theme" class="w-full pointer-events-none" />
     </div>
@@ -19,10 +19,18 @@
           <el-color-picker v-model="settings.primary" @change="e => onChangeTheme(e, 'primary')" />
         </div>
 
-        <el-divider content-position="left" class="font-bold">{{ i18nSettings("themeSettings") }}</el-divider>
+        <el-divider content-position="left" class="font-bold">{{ i18nSettings("globalSettings") }}</el-divider>
         <div class="item w-full item flex items-center">
-          <span class="label flex-1">config</span>
-          <el-switch v-model="settings.isTagsView" @change="onChangeTagsView" />
+          <span class="label flex-1">{{ i18nSettings("switchTagsView") }}</span>
+          <el-switch v-model="settings.hasTagsView" @change="e => onChangeGlobalConfig(e, 'tagsView')" />
+        </div>
+        <div class="item w-full item flex items-center">
+          <span class="label flex-1">{{ i18nSettings("switchSidebarLogo") }}</span>
+          <el-switch v-model="settings.hasSidebarLogo" @change="e => onChangeGlobalConfig(e, 'sidebarLogo')" />
+        </div>
+        <div class="item w-full item flex items-center">
+          <span class="label flex-1">{{ i18nSettings("switchGlobalSettings") }}</span>
+          <el-switch v-model="settings.hasGlobalSettings" @change="e => onChangeGlobalConfig(e, 'globalSettings')" />
         </div>
       </div>
     </el-drawer>
@@ -38,14 +46,28 @@ const themes = computed(() => settingsState.themesState);
 const config = computed(() => settingsState.config);
 const settings = reactive({
   primary: themes.value.primary,
-  isTagsView: config.value.isTagsView,
+  hasTagsView: config.value.hasTagsView,
+  hasSidebarLogo: config.value.hasSidebarLogo,
+  hasGlobalSettings: config.value.hasGlobalSettings,
 });
 const onChangeTheme = (val: any, type: string) => {
   settingsState.setThemes({ primary: val });
   setHtmlCssVar(val, "primary");
 };
-const onChangeTagsView = () => {
-  settingsState.setConfig({ isTagsView: settings.isTagsView });
+const onChangeGlobalConfig = (val: any, tag: string) => {
+  switch (tag) {
+    case "tagsView":
+      settingsState.setConfig({ hasTagsView: val });
+      break;
+    case "sidebarLogo":
+      settingsState.setConfig({ hasSidebarLogo: val });
+      break;
+    case "globalSettings":
+      settingsState.setConfig({ hasGlobalSettings: val });
+      break;
+    default:
+      break;
+  }
 };
 const openSettings = () => {
   open.value = true;
@@ -55,7 +77,7 @@ const handleClose = () => {
 };
 </script>
 <style lang="scss" scoped>
-.layout-theme {
+.layout-settings {
   .icon-wrapper {
     color: var(--color-text-primary);
     transition: background 0.28s;
@@ -84,5 +106,5 @@ const handleClose = () => {
 </style>
 
 <script lang="ts">
-export default { name: "LayoutTheme" };
+export default { name: "LayoutSettings" };
 </script>

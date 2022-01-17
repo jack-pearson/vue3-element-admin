@@ -1,7 +1,7 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-11-24 16:14:10
- * @LastEditTime: 2022-01-14 18:34:06
+ * @LastEditTime: 2022-01-17 10:32:28
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/store/modules/settings.ts
  * @Description:
@@ -23,7 +23,9 @@ const createState = (): settingsStoreType => {
       loginTitle: "yh-vue3-admin",
       logoTitle: "yh-vue3-admin",
       ElComponentSize: "default",
-      isTagsView: true,
+      hasTagsView: true,
+      hasGlobalSettings: true,
+      hasSidebarLogo: true,
       isCollapsed: false,
       language: "zh-cn",
     },

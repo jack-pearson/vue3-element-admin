@@ -1,7 +1,7 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2021-12-07 20:43:53
- * @LastEditTime: 2022-01-14 18:24:30
+ * @LastEditTime: 2022-01-17 10:17:25
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/layout/sidebar/sidebar.vue
  * @Description: 
@@ -10,9 +10,10 @@
   <div class="layout-aside-container !h-full" :class="{ 'is-collapsed': settingsConfig.config.isCollapsed }">
     <el-aside class="layout-aside w-full h-full flex">
       <el-scrollbar class="flex-1">
-        <SidebarLogo />
+        <SidebarLogo v-if="settingsConfig.config.hasSidebarLogo" />
         <el-menu
           class="flex-auto overflow-y-auto overflow-x-hidden border-r-0"
+          :class="!settingsConfig.config.hasSidebarLogo ? '!h-full' : ''"
           router
           :default-active="activeMenu"
           background-color="transparent"
