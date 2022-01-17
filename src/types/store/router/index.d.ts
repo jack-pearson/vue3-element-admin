@@ -1,7 +1,7 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-12-14 14:07:07
- * @LastEditTime: 2022-01-14 19:00:45
+ * @LastEditTime: 2022-01-17 14:22:57
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/types/store/router/index.d.ts
  * @Description:
@@ -15,7 +15,7 @@ export interface Menu {
   component: any;
   children: Menu[];
   isHide?: boolean;
-  meta?: {
+  meta: {
     title?: string;
     icon?: string;
     isKeepAlive?: boolean;

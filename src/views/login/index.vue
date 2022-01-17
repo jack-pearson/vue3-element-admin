@@ -1,13 +1,13 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2021-11-24 17:42:59
- * @LastEditTime: 2022-01-11 14:34:12
+ * @LastEditTime: 2022-01-17 14:18:28
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/views/login/index.vue
  * @Description: 
 -->
 <template>
-  <div class="login-page w-full h-full bg-cover">
+  <div class="login-page w-full h-full bg-cover select-none">
     <div class="login-content p-5 absolute top-2/4 left-2/4 bg-white rounded overflow-hidden">
       <div class="login-content-main w-4/5 h-full mx-auto my-0">
         <h4 class="text-dark-300 font-bold pt-10 pb-10 tracking-wider text-center whitespace-normal z-10 relative h-auto transition-all">{{ configStore.loginTitle }} 后台模板</h4>
@@ -18,7 +18,7 @@
                 <el-form-item prop="account">
                   <el-input v-model="form.account" clearable :placeholder="$t('login.tabs.account')">
                     <template #prefix>
-                      <div class="svg-wrapper">
+                      <div class="svg-wrapper flex items-center w-5">
                         <svg-icon name="user"></svg-icon>
                       </div>
                     </template>
@@ -27,12 +27,12 @@
                 <el-form-item prop="password">
                   <el-input :type="config.isShowPassword ? 'text' : 'password'" :placeholder="$t('login.account.passwordPlaceholder')" v-model="form.password" autocomplete="off">
                     <template #prefix>
-                      <div class="svg-wrapper">
+                      <div class="svg-wrapper flex items-center w-5">
                         <svg-icon name="lock"></svg-icon>
                       </div>
                     </template>
                     <template #suffix>
-                      <div class="svg-wrapper">
+                      <div class="svg-wrapper flex items-center w-5 cursor-pointer">
                         <svg-icon :name="config.isShowPassword ? 'invisible_eye' : 'visible_eye'" @click="onChangeVisibleEye"></svg-icon>
                       </div>
                     </template>
@@ -122,7 +122,6 @@ const onSubmit = () => {
     border: 5px solid var(--color-primary-9);
     transition: height 0.2s linear;
     height: auto;
-    min-height: 420px;
     .login-content-main {
       h4 {
         font-size: 24px;
@@ -138,12 +137,6 @@ const onSubmit = () => {
           &:active {
             color: var(--el-text-color-primary);
           }
-        }
-        .svg-wrapper {
-          width: 20px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
         }
       }
     }

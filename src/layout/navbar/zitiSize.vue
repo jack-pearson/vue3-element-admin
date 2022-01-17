@@ -1,7 +1,7 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2022-01-05 11:42:35
- * @LastEditTime: 2022-01-14 18:21:30
+ * @LastEditTime: 2022-01-17 14:20:59
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/layout/navbar/zitiSize.vue
  * @Description: 
@@ -22,14 +22,11 @@
 </template>
 <script setup lang="ts">
 import { computed } from "vue";
-import { Local, componentSize } from "@/utils";
+import { componentSize } from "@/utils";
 import { settingsStore } from "@/store";
-import { ElComponentSizeType, settingsStoreType } from "@/types";
+import { ElComponentSizeType } from "@/types";
 const settingsState = settingsStore();
 const onChangeSize = (command: ElComponentSizeType) => {
-  const settingsStore = (Local.get("settingsStore") || {}) as settingsStoreType;
-  settingsStore.config.ElComponentSize = command;
-  Local.set("settingsStore", settingsStore);
   settingsState.setElementZiTiSize(command);
 };
 const ElComponentSize = computed(() => settingsState.config.ElComponentSize);

@@ -1,7 +1,7 @@
 /*
  * @Author: jack-pearson
  * @Date: 2022-01-11 15:10:49
- * @LastEditTime: 2022-01-13 17:11:22
+ * @LastEditTime: 2022-01-17 14:22:25
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/store/modules/tagView.ts
  * @Description:
@@ -10,7 +10,7 @@ import { defineStore } from "pinia";
 import { Menu, TagViewStoreType } from "@/types";
 import { Local } from "@/utils";
 
-const createUser = (): TagViewStoreType => {
+export const createUser = (): TagViewStoreType => {
   return {
     visitedViews: [],
     cachedViews: [],

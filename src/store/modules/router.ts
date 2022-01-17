@@ -1,7 +1,7 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-12-07 20:12:40
- * @LastEditTime: 2022-01-13 13:16:48
+ * @LastEditTime: 2022-01-17 14:23:18
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/store/modules/router.ts
  * @Description:
@@ -11,14 +11,14 @@ import { Menu, RouterStoreTypes } from "@/types";
 import { formatRoutes } from "@/utils";
 import { UserService } from "@/apis";
 
-const createState = (): RouterStoreTypes => {
+export const createRouter = (): RouterStoreTypes => {
   return {
     routerList: [],
   };
 };
 
 export const routerStore = defineStore("routerStore", {
-  state: createState,
+  state: createRouter,
   actions: {
     async getRouterList(): Promise<Menu[]> {
       return new Promise((resolve, reject) => {
