@@ -1,7 +1,7 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2022-01-11 14:03:56
- * @LastEditTime: 2022-01-14 18:50:03
+ * @LastEditTime: 2022-01-18 14:40:09
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/layout/tagView/index.vue
  * @Description: 
@@ -105,9 +105,9 @@ const onHandleContextMenu = (e: MouseEvent, item: Menu) => {
         }
       }
       &.is-active {
-        background: var(--color-primary-1);
+        background: var(--color-primary);
         color: var(--color-white);
-        border-color: var(--color-primary-1);
+        border-color: var(--color-primary-3);
       }
       &:hover:not(.is-active) {
         background: var(--color-primary-9);

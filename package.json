@@ -14,12 +14,12 @@
     "nprogress": "^0.2.0",
     "pinia": "^2.0.0-rc.10",
     "vue": "^3.2.16",
-    "vue-i18n": "^9.2.0-beta.21",
+    "vue-i18n": "^9.2.0-beta.28",
     "vue-router": "4"
   },
   "devDependencies": {
     "@types/color": "^3.0.2",
-    "@types/node": "^16.11.9",
+    "@types/node": "^17.0.9",
     "@types/nprogress": "^0.2.0",
     "@types/qs": "^6.9.7",
     "@typescript-eslint/eslint-plugin": "^5.4.0",

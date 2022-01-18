@@ -1,7 +1,7 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2022-01-04 17:48:42
- * @LastEditTime: 2022-01-11 16:43:49
+ * @LastEditTime: 2022-01-18 15:59:42
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/layout/navbar/search.vue
  * @Description: 
@@ -68,6 +68,7 @@ const menuQueryChange = (queryString: string) => {
 };
 const selectMenu = (val: Menu) => {
   router.push(val.path);
+  openDialog.value = false;
 };
 const closeSearch = () => {
   menuQuery.value = "";

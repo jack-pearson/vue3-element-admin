@@ -1,7 +1,7 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-11-24 16:14:10
- * @LastEditTime: 2022-01-17 14:23:09
+ * @LastEditTime: 2022-01-18 15:40:05
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/store/modules/settings.ts
  * @Description:
@@ -10,11 +10,11 @@ import { defineStore } from "pinia";
 import { ElComponentSizeType, languageType, settingsStoreType } from "@/types";
 import { Local, setHtmlCssVarBySettings } from "@/utils";
 
-const createSettings = (): settingsStoreType => {
+export const createSettings = (): settingsStoreType => {
   return {
     themesState: {
       primary: "#40A9FF",
-      success: "#BAE637",
+      success: "#67C23A",
       warning: "#FFC53D",
       danger: "#FF4D4F",
       info: "#ADB5BD",

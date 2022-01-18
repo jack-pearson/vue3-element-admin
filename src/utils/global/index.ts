@@ -1,7 +1,7 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-12-30 14:53:28
- * @LastEditTime: 2022-01-10 17:40:36
+ * @LastEditTime: 2022-01-18 18:21:07
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/utils/global/index.ts
  * @Description:
@@ -22,3 +22,15 @@ export const i18n = [
     value: "en",
   },
 ] as const;
+
+export const treeToArray = <T>(tree: T[]) => {
+  let res: T[] = [];
+  for (const item of tree) {
+    const { children, ...i } = item as any;
+    if (children && children.length) {
+      res = res.concat(treeToArray(children));
+    }
+    res.push(i);
+  }
+  return res;
+};

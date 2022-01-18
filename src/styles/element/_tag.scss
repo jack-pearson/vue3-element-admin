@@ -1,0 +1,12 @@
+.el-tag{
+  &.el-tag--success{
+    background-color: var(--color-success-9);
+    border-color: var(--color-success-4);
+    color: var(--color-success-1);
+  }
+  &.el-tag--danger{
+    background-color: var(--color-danger-9);
+    border-color: var(--color-danger-4);
+    color: var(--color-danger-1);
+  }
+}

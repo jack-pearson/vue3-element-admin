@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-11-22 11:13:15
- * @LastEditTime: 2022-01-14 15:38:49
+ * @LastEditTime: 2022-01-18 15:46:49
  * @LastEditors: jack-pearson
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: /yh-vue3-admin/src/i18n/index.ts
@@ -12,9 +12,8 @@ import { createI18n } from "vue-i18n";
 
 import LocalZhCn from "@/i18n/lang/zh-cn";
 import LocalEn from "@/i18n/lang/en";
+import { systemDeptEn, systemDeptZhCn, loginZhCn, loginEn } from "./pages";
 
-import LoginZhcn from "@/i18n/pages/login/zh-cn";
-import LoginEn from "@/i18n/pages/login/en";
 import { Local } from "@/utils";
 import { settingsStoreType } from "@/types";
 
@@ -26,17 +25,19 @@ import { settingsStoreType } from "@/types";
  */
 const messages = {
   ["zh-cn"]: {
-    login: LoginZhcn,
+    login: loginZhCn.default,
     messages: LocalZhCn,
+    systemDept: systemDeptZhCn.default,
   },
   ["en"]: {
-    login: LoginEn,
+    login: loginEn.default,
     messages: LocalEn,
+    systemDept: systemDeptEn.default,
   },
 };
 const getLocale = () => {
   const settingsStore = (Local.get("settingsStore") || {}) as settingsStoreType;
-  return settingsStore.language || "zh-cn";
+  return settingsStore?.config?.language || "zh-cn";
 };
 // 导出语言国际化
 export const i18n = createI18n({

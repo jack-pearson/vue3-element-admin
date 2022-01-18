@@ -1,7 +1,7 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-11-24 17:48:43
- * @LastEditTime: 2022-01-14 19:00:09
+ * @LastEditTime: 2022-01-18 14:35:10
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/router/index.ts
  * @Description:
@@ -10,7 +10,6 @@ import { createRouter, createWebHistory, isNavigationFailure, RouteRecordRaw } f
 import NProgress from "nprogress";
 import { routerStore } from "@/store";
 import "nprogress/nprogress.css";
-import { nextTick } from "vue";
 import Login from "@/views/login/index.vue";
 import Layout from "@/layout/index.vue";
 import { i18nRouter, Session } from "@/utils";
@@ -80,10 +79,8 @@ router.afterEach((to, from, failure) => {
     NProgress.done();
     console.log("error navigation", failure);
   } else {
-    nextTick(() => {
-      document.title = i18nRouter(router.currentRoute.value.meta.title as string);
-      NProgress.done();
-    });
+    document.title = i18nRouter(router.currentRoute.value.meta.title as string);
+    NProgress.done();
   }
 });
 export default router;

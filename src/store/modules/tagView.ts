@@ -1,7 +1,7 @@
 /*
  * @Author: jack-pearson
  * @Date: 2022-01-11 15:10:49
- * @LastEditTime: 2022-01-17 14:22:25
+ * @LastEditTime: 2022-01-18 15:39:57
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/store/modules/tagView.ts
  * @Description:
@@ -10,7 +10,7 @@ import { defineStore } from "pinia";
 import { Menu, TagViewStoreType } from "@/types";
 import { Local } from "@/utils";
 
-export const createUser = (): TagViewStoreType => {
+export const createTagView = (): TagViewStoreType => {
   return {
     visitedViews: [],
     cachedViews: [],
@@ -20,7 +20,7 @@ export const createUser = (): TagViewStoreType => {
 const loadUser = (): TagViewStoreType => {
   const visitedViews = (Local.get("visitedViews") || []) as TagViewStoreType["visitedViews"];
   const cachedViews = (Local.get("cachedViews") || []) as TagViewStoreType["cachedViews"];
-  const newUser = Object.assign(createUser(), { visitedViews, cachedViews });
+  const newUser = Object.assign(createTagView(), { visitedViews, cachedViews });
   return newUser;
 };
 

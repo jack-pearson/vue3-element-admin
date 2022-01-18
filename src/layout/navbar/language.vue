@@ -1,7 +1,7 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2022-01-10 17:24:36
- * @LastEditTime: 2022-01-14 18:36:30
+ * @LastEditTime: 2022-01-18 18:47:49
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/layout/navbar/language.vue
  * @Description: 
@@ -28,7 +28,7 @@ import { languageType, settingsStoreType } from "@/types";
 const settingsState = settingsStore();
 const { proxy } = getCurrentInstance() as any;
 const onChangeSize = (command: languageType) => {
-  const settingsStore = (Local.get("settingsStore") || {}) as settingsStoreType;
+  const settingsStore = (Local.get("settingsStore") || { config: {} }) as settingsStoreType;
   settingsStore.config.language = command;
   Local.set("settingsStore", settingsStore);
   settingsState.setLanguage(command);

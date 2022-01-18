@@ -1,7 +1,7 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-11-23 15:16:14
- * @LastEditTime: 2022-01-11 14:35:03
+ * @LastEditTime: 2022-01-18 17:38:24
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/utils/request/index.ts
  * @Description:
@@ -102,6 +102,13 @@ instance.interceptors.request.use(
 instance.interceptors.response.use(
   (response: AxiosResponse) => {
     removePending(response.config);
+    if (response.data.code === 500) {
+      ElNotification.error({
+        title: "系统错误",
+        message: response.data.message,
+      });
+      return Promise.reject(response);
+    }
     return response;
   },
   error => {
