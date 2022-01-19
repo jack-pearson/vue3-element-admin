@@ -1,7 +1,7 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2021-12-10 16:33:42
- * @LastEditTime: 2022-01-18 18:50:16
+ * @LastEditTime: 2022-01-19 11:23:41
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/CHANGELOG.md
  * @Description: 
@@ -36,3 +36,7 @@
 `2022年01月18日18`
 
 - 🐞 部门管理 完善, 剩下查询 和 新增部门
+
+`2022年01月19日`
+
+- 🐞 部门管理 完善.

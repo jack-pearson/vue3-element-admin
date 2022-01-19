@@ -1,7 +1,7 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2022-01-17 14:49:06
- * @LastEditTime: 2022-01-18 18:46:30
+ * @LastEditTime: 2022-01-19 11:19:27
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/views/system/dept/index.vue
  * @Description: 
@@ -9,9 +9,9 @@
 <template>
   <div class="dept-page w-full">
     <el-row class="mb-4">
-      <el-input placeholder="请输入部门名称" style="max-width: 180px"></el-input>
-      <el-button type="primary" class="ml-4">查询</el-button>
-      <el-button>新增部门</el-button>
+      <el-input placeholder="请输入部门名称" style="max-width: 180px" v-model="searchForm.name"></el-input>
+      <el-button type="primary" class="ml-4" @click="getList">查询</el-button>
+      <el-button @click="handleAdd({ id: 0 })">新增部门</el-button>
     </el-row>
     <el-table :data="tableData" style="width: 100%" row-key="id" border default-expand-all>
       <el-table-column prop="name" :label="i18nSystemDept('table.deptName')" />
@@ -30,7 +30,7 @@
           <el-button type="text" @click="handleEdit(row)">{{ i18nGlobal("edit") }}</el-button>
           <el-popconfirm :title="i18nGlobal('deleteThis')" @confirm="handleDelete(row)">
             <template #reference>
-              <el-button type="text">{{ i18nGlobal("delete") }}</el-button>
+              <el-button type="text" :disabled="row.parentId === 0">{{ i18nGlobal("delete") }}</el-button>
             </template>
           </el-popconfirm>
         </template>
@@ -88,11 +88,14 @@ const resetDialogForm = () => {
   deptForm.value.parentId = 0;
   deptForm.value.id = "";
 };
+const searchForm = ref({
+  name: "",
+});
 const dialogOpen = ref(false);
 const dialogTitle = ref("dialog.addDept");
 const tableData = ref<Dept[]>([]);
 const getList = async () => {
-  const res = await DeptService.findAll();
+  const res = await DeptService.query(searchForm.value);
   tableData.value = res.data;
 };
 getList();
@@ -125,6 +128,7 @@ const onSubmit = () => {
     if (res.code === 200) {
       dialogOpen.value = false;
       getList();
+      resetDialogForm();
     }
   });
 };

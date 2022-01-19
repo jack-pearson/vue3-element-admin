@@ -15,6 +15,9 @@
   &:focus {
     color: var(--color-primary-9);
   }
+  &.is-disabled {
+    color: var(--el-button-disabled-border-color);
+  }
 }
 .el-button.is-plain{
   &:hover,

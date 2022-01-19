@@ -1,7 +1,7 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2022-01-13 13:26:08
- * @LastEditTime: 2022-01-13 18:03:44
+ * @LastEditTime: 2022-01-19 11:15:57
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/layout/tagView/contextmenu.vue
  * @Description: 
@@ -76,12 +76,13 @@ const onHandleCloseOther = () => {
   router.push(currentData.path);
 };
 const onHandleCloseRight = () => {
-  console.log(currentData);
   tagViewState.closeRightTagView(currentData);
+  if (path.value === currentData.path) return;
   router.push(currentData.path);
 };
 const onHandleCloseLeft = () => {
   tagViewState.closeLeftTagView(currentData);
+  if (path.value === currentData.path) return;
   router.push(currentData.path);
 };
 const onHandleCloseAll = () => {
