@@ -1,7 +1,7 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2022-01-17 14:49:06
- * @LastEditTime: 2022-01-19 11:19:27
+ * @LastEditTime: 2022-01-19 14:06:24
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/views/system/dept/index.vue
  * @Description: 
@@ -9,7 +9,7 @@
 <template>
   <div class="dept-page w-full">
     <el-row class="mb-4">
-      <el-input placeholder="请输入部门名称" style="max-width: 180px" v-model="searchForm.name"></el-input>
+      <el-input placeholder="请输入部门名称" style="max-width: 180px" v-model="searchForm.name" clearable></el-input>
       <el-button type="primary" class="ml-4" @click="getList">查询</el-button>
       <el-button @click="handleAdd({ id: 0 })">新增部门</el-button>
     </el-row>
@@ -30,7 +30,7 @@
           <el-button type="text" @click="handleEdit(row)">{{ i18nGlobal("edit") }}</el-button>
           <el-popconfirm :title="i18nGlobal('deleteThis')" @confirm="handleDelete(row)">
             <template #reference>
-              <el-button type="text" :disabled="row.parentId === 0">{{ i18nGlobal("delete") }}</el-button>
+              <el-button type="text">{{ i18nGlobal("delete") }}</el-button>
             </template>
           </el-popconfirm>
         </template>

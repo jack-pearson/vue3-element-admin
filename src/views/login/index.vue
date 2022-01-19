@@ -1,7 +1,7 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2021-11-24 17:42:59
- * @LastEditTime: 2022-01-17 14:18:28
+ * @LastEditTime: 2022-01-19 14:05:23
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/views/login/index.vue
  * @Description: 
@@ -116,6 +116,7 @@ const onSubmit = () => {
 <style lang="scss" scoped>
 .login-page {
   background: url("https://gitee.com/lyt-top/vue-next-admin-images/raw/master/login/bg-login.png") no-repeat;
+  background-size: cover;
   .login-content {
     width: 500px;
     transform: translate(-50%, -50%) translate3d(0, 0, 0);
