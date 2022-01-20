@@ -1,17 +1,17 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2022-01-17 14:49:06
- * @LastEditTime: 2022-01-19 14:06:24
+ * @LastEditTime: 2022-01-20 17:27:11
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/views/system/dept/index.vue
  * @Description: 
 -->
 <template>
-  <div class="dept-page w-full">
+  <div class="dept-page w-full bg-white p-2.5">
     <el-row class="mb-4">
       <el-input placeholder="请输入部门名称" style="max-width: 180px" v-model="searchForm.name" clearable></el-input>
       <el-button type="primary" class="ml-4" @click="getList">查询</el-button>
-      <el-button @click="handleAdd({ id: 0 })">新增部门</el-button>
+      <el-button @click="handleAdd({ id: 1 })">新增部门</el-button>
     </el-row>
     <el-table :data="tableData" style="width: 100%" row-key="id" border default-expand-all>
       <el-table-column prop="name" :label="i18nSystemDept('table.deptName')" />
@@ -70,9 +70,10 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
 import { DeptService } from "@/apis/dept";
-import { Dept } from "@/types";
 import { i18nGlobal, i18nSystemDept, treeToArray } from "@/utils";
+import { Dept } from "@/types";
 
+// 初始化数据 dialog
 const deptForm = ref({
   name: "",
   description: "",
@@ -81,6 +82,7 @@ const deptForm = ref({
   id: "",
 });
 
+// 重置表单
 const resetDialogForm = () => {
   deptForm.value.name = "";
   deptForm.value.description = "";
@@ -88,41 +90,60 @@ const resetDialogForm = () => {
   deptForm.value.parentId = 0;
   deptForm.value.id = "";
 };
+
+// 搜索条件数据
 const searchForm = ref({
   name: "",
 });
+
+// 是否打开 dialog
 const dialogOpen = ref(false);
+// dialog 的 title
 const dialogTitle = ref("dialog.addDept");
+// 表格数据
 const tableData = ref<Dept[]>([]);
+
+// 获取数据
 const getList = async () => {
   const res = await DeptService.query(searchForm.value);
   tableData.value = res.data;
 };
 getList();
+
+// 监听到父级部门名称
 const parentName = computed(() => {
   return deptForm.value.parentId === 0 ? "根节点" : isOpenSetParentName(deptForm.value.parentId);
 });
 
+// 新增部门
 const handleAdd = (row: { id: number }) => {
   deptForm.value.parentId = row.id;
   deptForm.value.id = "";
   dialogTitle.value = "dialog.addDept";
   dialogOpen.value = true;
 };
+
+// 编辑部门
 const handleEdit = (row: any) => {
   dialogOpen.value = true;
   Object.assign(deptForm.value, row);
   dialogTitle.value = "dialog.editDept";
 };
+
+// 获取父级部门名称
 const isOpenSetParentName = (parentDeptId: string | number) => {
   const array = treeToArray(tableData.value);
   const current = array.find(item => item.id === parentDeptId);
   return current?.name;
 };
+
+// 关闭弹窗
 const onBeforeClose = () => {
   dialogOpen.value = false;
   resetDialogForm();
 };
+
+// 提交
 const onSubmit = () => {
   DeptService.update(deptForm.value).then(res => {
     if (res.code === 200) {

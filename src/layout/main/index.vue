@@ -1,16 +1,14 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2021-12-07 20:37:19
- * @LastEditTime: 2022-01-17 13:59:01
+ * @LastEditTime: 2022-01-19 15:53:43
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/layout/main/index.vue
  * @Description: 
 -->
 <template>
-  <el-container class="layout-main overflow-y-auto" :class="{ 'is-tagView': !hasTagsView }">
-    <el-scrollbar class="layout-main-scrollbar p-4 w-full h-full">
-      <LayoutParentView />
-    </el-scrollbar>
+  <el-container class="layout-main overflow-y-auto p-2.5" :class="{ 'is-tagView': !hasTagsView }">
+    <div class="w-full h-auto"><LayoutParentView /></div>
   </el-container>
 </template>
 

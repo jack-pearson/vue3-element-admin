@@ -1,11 +1,13 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-12-07 20:15:14
- * @LastEditTime: 2022-01-11 13:49:56
+ * @LastEditTime: 2022-01-19 17:42:20
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/types/store/user/index.d.ts
  * @Description:
  */
+
+import { PageInfo } from "@/types";
 type sexType = "null" | "man" | "girl";
 export interface User {
   account?: string;
@@ -24,3 +26,7 @@ export interface User {
 export interface userStoreTypes {
   userInfo: User;
 }
+
+export type UserList = PageInfo & {
+  list: User[];
+};

@@ -1,16 +1,15 @@
 /*
  * @Author: jack-pearson
  * @Date: 2022-01-17 17:46:51
- * @LastEditTime: 2022-01-19 11:05:20
+ * @LastEditTime: 2022-01-19 17:35:33
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/apis/dept/index.ts
  * @Description:
  */
 import { request } from "@/utils";
 import { Dept } from "@/types";
-
 export class DeptService {
-  public static async query(params: { name: string }) {
+  public static async query(params?: { name: string }) {
     return request<Dept[]>({
       url: "/dept/query",
       method: "get",

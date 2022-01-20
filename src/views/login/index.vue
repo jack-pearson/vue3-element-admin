@@ -1,7 +1,7 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2021-11-24 17:42:59
- * @LastEditTime: 2022-01-19 14:05:23
+ * @LastEditTime: 2022-01-20 17:21:42
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/views/login/index.vue
  * @Description: 
@@ -100,7 +100,7 @@ const onSubmit = () => {
           Session.set("token", userInfo.token);
           Session.set("userInfo", userInfo);
           await store.setUserInfo(userInfo);
-          router.push({ path: "/system/user" });
+          router.replace({ path: "/system/user" });
         } else {
           proxy.$message.error(message);
         }

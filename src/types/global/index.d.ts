@@ -1,7 +1,7 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-11-24 17:15:44
- * @LastEditTime: 2021-12-31 14:40:52
+ * @LastEditTime: 2022-01-19 17:43:36
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/types/global/index.d.ts
  * @Description:
@@ -11,4 +11,10 @@ export interface HttpGlobalResponse<T = any> {
   success: boolean;
   message: string;
   data: T;
+}
+
+export interface PageInfo {
+  pageNum: number;
+  pageSize: number;
+  total: number;
 }
