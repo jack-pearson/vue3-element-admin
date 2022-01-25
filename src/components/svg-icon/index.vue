@@ -1,7 +1,7 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2021-12-06 11:09:55
- * @LastEditTime: 2022-01-19 16:52:54
+ * @LastEditTime: 2022-01-25 14:55:32
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/components/svg-icon/index.vue
  * @Description: 
@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, computed } from "vue";
+import { computed } from "vue";
 
 const props = defineProps({
   name: {

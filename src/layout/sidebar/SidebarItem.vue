@@ -1,7 +1,7 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2021-12-30 15:18:38
- * @LastEditTime: 2022-01-14 18:23:22
+ * @LastEditTime: 2022-01-25 14:55:36
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/layout/sidebar/SidebarItem.vue
  * @Description: 
@@ -33,7 +33,7 @@ export default {
 
 <script setup lang="ts">
 import { isHide, hasChildren, i18nRouter } from "@/utils";
-import { defineProps, toRefs } from "vue";
+import { toRefs } from "vue";
 import { settingsStore } from "@/store";
 import { Menu } from "@/types";
 const props = defineProps<{ route: Menu }>();

@@ -1,7 +1,7 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-11-23 11:29:01
- * @LastEditTime: 2021-12-07 20:46:13
+ * @LastEditTime: 2022-01-25 14:55:15
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/.eslintrc.js
  * @Description:
@@ -67,5 +67,8 @@ module.exports = {
     "no-unused-vars": "error",
     "no-v-model-argument": "off",
     "no-case-declarations": "off",
+  },
+  globals: {
+    defineProps: "readonly",
   },
 };

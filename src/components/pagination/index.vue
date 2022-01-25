@@ -1,7 +1,7 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2022-01-19 16:39:49
- * @LastEditTime: 2022-01-19 18:01:04
+ * @LastEditTime: 2022-01-25 14:55:28
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/components/pagination/index.vue
  * @Description: 
@@ -23,7 +23,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { defineProps, withDefaults, toRefs, computed, getCurrentInstance } from "vue";
+import { withDefaults, toRefs, computed, getCurrentInstance } from "vue";
 const props = withDefaults(
   defineProps<{
     total?: number;
