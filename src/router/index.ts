@@ -1,7 +1,7 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-11-24 17:48:43
- * @LastEditTime: 2022-01-18 14:35:10
+ * @LastEditTime: 2022-02-07 10:34:01
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/router/index.ts
  * @Description:
@@ -22,6 +22,26 @@ export const constantRouters: Array<RouteRecordRaw> = [
     name: "notFound",
     component: NotFoundComponent,
     meta: { title: "404" },
+  },
+  {
+    path: "/",
+    name: "/",
+    redirect: { path: "/home" },
+    component: Layout,
+    children: [
+      {
+        path: "/profile",
+        name: "profile",
+        component: () => import("@/views/profile/index.vue"),
+        meta: { title: "profile", icon: "profile" },
+      },
+      {
+        path: "/home",
+        name: "home",
+        component: () => import("@/views/home/index.vue"),
+        meta: { title: "home", icon: "home" },
+      },
+    ],
   },
 ];
 
@@ -46,20 +66,8 @@ router.beforeEach(async (to, from, next) => {
       if (routerList.length === 0) {
         try {
           const newRouter = await store.getRouterList();
-          router.addRoute({
-            path: "/",
-            name: "/",
-            redirect: { name: "system" },
-            component: Layout,
-            children: [
-              {
-                path: "/profile",
-                name: "profile",
-                component: () => import("@/views/profile/index.vue"),
-                meta: { title: "profile", icon: "profile" },
-              },
-              ...newRouter,
-            ],
+          newRouter.forEach(item => {
+            router.addRoute(item);
           });
           next({ ...to, replace: true });
         } catch (err) {

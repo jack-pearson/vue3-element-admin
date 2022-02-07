@@ -1,7 +1,7 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-11-24 15:59:57
- * @LastEditTime: 2022-01-18 17:34:16
+ * @LastEditTime: 2022-02-07 14:34:56
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/i18n/lang/en.ts
  * @Description:
@@ -16,6 +16,10 @@ export default {
     profile: "profile",
     logout: "logout",
     dept: "systemDept",
+    nestedRoutes: "Nested Routes",
+    "menu-1": "menu-1",
+    "menu-1-1": "menu-1-1",
+    "menu-1-2": "menu-1-2",
   },
   layout: {
     searchPlaceholder: "Menu search: Supports menu name and route path",

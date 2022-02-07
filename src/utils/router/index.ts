@@ -1,7 +1,7 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-12-30 13:56:29
- * @LastEditTime: 2022-01-14 18:54:04
+ * @LastEditTime: 2022-02-07 11:18:46
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/utils/router/index.ts
  * @Description:
@@ -11,6 +11,15 @@ const modules = import.meta.glob("/src/**/**.vue");
 /** 对数组进行 component 转换 */
 export const formatRoutes = (data: Menu[]): Menu[] => {
   return data.map(v => {
+    const component = () => {
+      if (v.component === "Layout") {
+        return import(`@/layout/index.vue`);
+      } else if (v.component === "ParentView") {
+        return import(`@/components/parentView/index.vue`);
+      } else {
+        return modules[v.component];
+      }
+    };
     if (!v.children) {
       return {
         name: v.name,
@@ -18,7 +27,7 @@ export const formatRoutes = (data: Menu[]): Menu[] => {
         children: [],
         redirect: v.redirect,
         isHide: v.isHide,
-        component: modules[v.component],
+        component: component(),
         meta: v.meta,
       };
     }
@@ -28,7 +37,7 @@ export const formatRoutes = (data: Menu[]): Menu[] => {
       children: formatRoutes(v.children),
       redirect: v.redirect,
       isHide: v.isHide,
-      component: modules[v.component],
+      component: component(),
       meta: v.meta,
     };
   });

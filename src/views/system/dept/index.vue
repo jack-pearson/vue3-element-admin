@@ -1,7 +1,7 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2022-01-17 14:49:06
- * @LastEditTime: 2022-01-20 17:27:11
+ * @LastEditTime: 2022-02-07 13:20:56
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/views/system/dept/index.vue
  * @Description: 
@@ -145,7 +145,7 @@ const onBeforeClose = () => {
 
 // 提交
 const onSubmit = () => {
-  DeptService.update(deptForm.value).then(res => {
+  DeptService.update(deptForm as unknown as Dept).then(res => {
     if (res.code === 200) {
       dialogOpen.value = false;
       getList();
