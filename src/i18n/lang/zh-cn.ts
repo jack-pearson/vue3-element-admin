@@ -1,7 +1,7 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-11-24 15:59:57
- * @LastEditTime: 2022-01-18 17:44:15
+ * @LastEditTime: 2022-02-07 14:35:04
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/i18n/lang/zh-cn.ts
  * @Description:
@@ -16,6 +16,10 @@ export default {
     profile: "个人中心",
     logout: "退出登录",
     dept: "部门管理",
+    nestedRoutes: "嵌套路由",
+    "menu-1": "菜单1",
+    "menu-1-1": "菜单1-1",
+    "menu-1-2": "菜单1-2",
   },
   layout: {
     searchPlaceholder: "菜单搜索: 支持菜单名称、路由路径",

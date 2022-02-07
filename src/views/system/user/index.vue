@@ -1,7 +1,7 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2021-12-10 17:55:40
- * @LastEditTime: 2022-01-20 18:27:04
+ * @LastEditTime: 2022-01-30 14:50:27
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/views/system/user/index.vue
  * @Description: 
@@ -83,7 +83,7 @@ const getDeptTree = async () => {
   const res = await DeptService.query();
   deptTree.value = res.data;
 };
-
+const handleNodeClick = () => {};
 const getUserList = async () => {
   searchForm.loading = true;
   const res = await UserService.query(searchForm);
