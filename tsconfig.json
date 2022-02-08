@@ -4,7 +4,7 @@
     "useDefineForClassFields": true,
     "module": "esnext",
     "types": [
-      "element-plus/global.d.ts",
+      "element-plus/global",
       "vite/client"
     ],
     "allowSyntheticDefaultImports": true,
