@@ -12,6 +12,7 @@ import dotenv from "dotenv";
 export interface ViteEnv {
   VITE_PORT: number;
   VITE_OPEN: boolean;
+  VITE_AUTO_OPEN: string;
   VITE_PUBLIC_PATH: string;
 }
 
