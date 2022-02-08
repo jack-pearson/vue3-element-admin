@@ -46,7 +46,7 @@ export default defineConfig(() => {
                 components: path.resolve(__dirname, "src/components"),
                 utils: path.resolve(__dirname, "src/utils"),
                 interface: path.resolve(__dirname, "src/interface"),
-                // ...extraAlias
+                ...extraAlias
             }
         }
     }
