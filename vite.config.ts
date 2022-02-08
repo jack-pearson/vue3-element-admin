@@ -13,13 +13,18 @@ import WindiCSS from "vite-plugin-windicss";
 import { svgBuilder } from "./src/plugins/svgBuilder";
 import { loadEnv } from "./src/utils/viteBuild";
 
-const { VITE_PORT, VITE_AUTO_OPEN, VITE_IGNORE_I18N_WARNING } = loadEnv();
-export default defineConfig(() => {
+const {
+    VITE_PORT,
+    VITE_AUTO_OPEN,
+    VITE_IGNORE_I18N_WARNING
+} = loadEnv();
+
+export default defineConfig(({ mode }) => {
 
     // 解决警告You are running the esm-bundler build of vue-i18n.
     const extraAlias: { 'vue-i18n'?: string } = {}
-    if (VITE_IGNORE_I18N_WARNING) extraAlias['vue-i18n'] = 'vue-i18n/dist/vue-i18n.cjs.js'
-    
+    if (mode === 'development' && !!VITE_IGNORE_I18N_WARNING) extraAlias['vue-i18n'] = 'vue-i18n/dist/vue-i18n.cjs.js'
+
     return {
         plugins: [vue(), WindiCSS(), svgBuilder("./src/components/svg-icon/svg/")],
         server: {
