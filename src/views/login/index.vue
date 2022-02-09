@@ -100,7 +100,7 @@ const onSubmit = () => {
           Session.set("token", userInfo.token);
           Session.set("userInfo", userInfo);
           await store.setUserInfo(userInfo);
-          router.replace({ path: "/system/user" });
+          router.replace({ path: "/" });
         } else {
           proxy.$message.error(message);
         }
