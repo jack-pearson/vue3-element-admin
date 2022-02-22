@@ -1,7 +1,7 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2022-01-17 14:49:06
- * @LastEditTime: 2022-02-22 16:02:33
+ * @LastEditTime: 2022-02-22 16:37:49
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/views/system/dept/index.vue
  * @Description: 
@@ -168,5 +168,5 @@ const handleDelete = async (row: Dept) => {
 </style>
 
 <script lang="ts">
-export default { name: "Dept" };
+export default { name: "systemDept" };
 </script>
