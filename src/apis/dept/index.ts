@@ -1,7 +1,7 @@
 /*
  * @Author: jack-pearson
  * @Date: 2022-01-17 17:46:51
- * @LastEditTime: 2022-01-19 17:35:33
+ * @LastEditTime: 2022-02-22 15:39:33
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/apis/dept/index.ts
  * @Description:
@@ -23,7 +23,7 @@ export class DeptService {
       data,
     });
   }
-  public static async delete(deptId: string) {
+  public static async delete(deptId: number) {
     return request<Dept[]>({
       url: "/dept/delete/" + deptId,
       method: "delete",
