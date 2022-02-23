@@ -7,36 +7,46 @@
  * @Description: 
 -->
 <template>
-  <div class="layout-tagView w-full">
-    <el-scrollbar class="h-full w-full pl-4 pr-4" ref="scrollbarRef" @wheel.prevent="onHandleScroll">
-      <ul class="layout-tagView-ul h-full flex items-center">
+  <div class="layout-tagView w-full bg-white">
+    <el-scrollbar class="w-full" ref="scrollbarRef" @wheel.prevent="onHandleScroll">
+      <ul class="flex">
         <li
+          :class="[
+            'pr-8 h-10 text-sm select-none flex items-center transition',
+            'after:content(`hellow`)',
+            path === item.path ?
+            'pl-4 bg-$page-bg-color text-$color-primary font-bold cursor-default' :
+            'pl-10 text-$color-info hover:(bg-sky-50 text-$text-color-primary) cursor-pointer',
+          ]"
           v-for="item in visitedViews"
           :key="item.name"
-          :class="{ 'is-active': path === item.path }"
           @click="onHandleClickSwitchRouter(item)"
           @contextmenu="onHandleContextMenu($event, item)"
-          class="layout-tagView-ul-li pl-4 pr-4 h-full relative cursor-pointer select-none flex items-center mr-2.5"
         >
-          <svg-icon name="tagview-round" class="text-white mr-1" v-if="path === item.path"></svg-icon>
+          <!-- <svg-icon name="tagview-round" class="text-$color-primary mr-1" v-if="path === item.path"></svg-icon> -->
+          <svg-icon
+            name="refresh"
+            v-if="path === item.path"
+            class="h-3 w-3 mr-3 hover:animate-spin"
+            @click.stop="onHandleRefreshTag(item)"
+          ></svg-icon>
           <span>{{ i18nRouter(item.meta.title) }}</span>
-          <div v-if="path === item.path" class="refresh-wrapper rounded-full ml-1 w-4 h-4 flex items-center justify-center" @click.stop="onHandleRefreshTag(item)">
-            <svg-icon name="refresh"></svg-icon>
-          </div>
-          <div
+          <svg-icon
+            name="close"
+            class="ml-6 h-2.5 w-2.5 text-$color-info hover:text-$color-danger-4"
             v-if="visitedViews.length > 1 && !item.meta.isAffix"
-            :class="{ 'ml-1': path !== item.path }"
-            class="close-wrapper rounded-full w-4 h-4 flex items-center justify-center"
             @click.stop="onHandleCloseTag(item)"
-          >
-            <svg-icon name="close"></svg-icon>
-          </div>
+          ></svg-icon>
         </li>
       </ul>
     </el-scrollbar>
     <ContextMenu ref="contextmenuRef" />
   </div>
 </template>
+
+<script lang="ts">
+  export default { name: "LayoutTagView" };
+</script>
 <script setup lang="ts">
 import { computed, getCurrentInstance, ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
@@ -72,53 +82,51 @@ const onHandleContextMenu = (e: MouseEvent, item: Menu) => {
   e.preventDefault();
   contextmenuRef.value.openContextmenu({ x, y, current: item });
 };
-</script>
-<style lang="scss" scoped>
-.layout-tagView {
-  height: 34px;
-  border-bottom: 1px solid #f1f2f3;
-  background: var(--color-white);
-  :deep(.el-scrollbar__view) {
-    height: 100%;
-  }
-  .layout-tagView-ul {
-    white-space: nowrap;
-    .layout-tagView-ul-li {
-      border: 1px solid #e6e6e6;
-      border-radius: 2px;
-      font-size: 12px;
-      height: 26px;
-      .close-wrapper,
-      .refresh-wrapper {
-        color: var(--color-text-primary);
-        transition: background 0.28s;
-        .svg-icon {
-          font-size: 8px;
-          animation: iconAnimation 0.28s ease-in-out;
-        }
-        &:hover {
-          background: rgba(0, 0, 0, 0.4);
-          .svg-icon {
-            color: var(--color-white);
-            animation: iconAnimation 0.28s ease-in-out;
-          }
-        }
-      }
-      &.is-active {
-        background: var(--color-primary);
-        color: var(--color-white);
-        border-color: var(--color-primary-3);
-      }
-      &:hover:not(.is-active) {
-        background: var(--color-primary-9);
-        color: var(--color-primary-1);
-        border-color: var(--color-primary);
-      }
-    }
-  }
-}
-</style>
 
-<script lang="ts">
-export default { name: "LayoutTagView" };
 </script>
+
+<style lang="scss" scoped>
+// .layout-tagView {
+//   height: 34px;
+//   border-bottom: 1px solid #f1f2f3;
+//   background: var(--color-white);
+//   :deep(.el-scrollbar__view) {
+//     height: 100%;
+//   }
+//   .layout-tagView-ul {
+//     white-space: nowrap;
+//     .layout-tagView-ul-li {
+//       border: 1px solid #e6e6e6;
+//       border-radius: 2px;
+//       font-size: 12px;
+//       height: 26px;
+//       .close-wrapper,
+//       .refresh-wrapper {
+//         color: var(--color-text-primary);
+//         transition: background 0.28s;
+//         .svg-icon {
+//           font-size: 8px;
+//           animation: iconAnimation 0.28s ease-in-out;
+//         }
+//         &:hover {
+//           background: rgba(0, 0, 0, 0.4);
+//           .svg-icon {
+//             color: var(--color-white);
+//             animation: iconAnimation 0.28s ease-in-out;
+//           }
+//         }
+//       }
+//       &.is-active {
+//         background: var(--color-primary);
+//         color: var(--color-white);
+//         border-color: var(--color-primary-3);
+//       }
+//       &:hover:not(.is-active) {
+//         background: var(--color-primary-9);
+//         color: var(--color-primary-1);
+//         border-color: var(--color-primary);
+//       }
+//     }
+//   }
+// }
+</style>

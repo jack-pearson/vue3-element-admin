@@ -10,9 +10,6 @@
 <template>
   <div class="layout-breadcrumb pl-2">
     <el-breadcrumb separator=">">
-      <el-breadcrumb-item v-if="route.path !== '/home'" :to="{ path: '/' }">{{
-        i18nRouter("home")
-      }}</el-breadcrumb-item>
       <el-breadcrumb-item v-for="item in breadcrumb" :key="item.path">{{
         item.title
       }}</el-breadcrumb-item>

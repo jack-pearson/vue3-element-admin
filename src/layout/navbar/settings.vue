@@ -9,7 +9,7 @@
 <template>
   <div class="layout-settings h-full select-none">
     <div class="icon-wrapper pl-2.5 pr-2.5 h-full flex justify-center items-center cursor-pointer" @click="openSettings">
-      <svg-icon name="theme" class="w-full pointer-events-none" />
+      <svg-icon name="theme" class="pointer-events-none" />
     </div>
     <el-drawer v-model="open" :title="i18nSettings('setting')" direction="rtl" size="300px" :before-close="handleClose">
       <div class="w-full">

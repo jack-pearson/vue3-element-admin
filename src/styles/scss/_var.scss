@@ -58,6 +58,7 @@ $black: #000000;
 $menu-default-color: #eaeaea;
 $menu-default-bg-color: #545c64;
 $text-color-primary: #303133;
+$page-bg-color: #f8f8f8;
 html {
   --color-primary: #{$--color-primary};
   --color-primary-1:#{$--color-primary-1};
@@ -114,4 +115,5 @@ html {
   --menu-default-color: #{$menu-default-color};
   --menu-default-bg-color: #{$menu-default-bg-color};
   --text-color-primary: #{$text-color-primary};
+  --page-bg-color: #{$page-bg-color};
 }

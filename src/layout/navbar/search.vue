@@ -9,7 +9,7 @@
 <template>
   <div class="layout-search h-full select-none">
     <div class="icon-wrapper pl-2.5 pr-2.5 h-full flex justify-center items-center cursor-pointer" @click="openSearch">
-      <svg-icon name="search" class="w-full" />
+      <svg-icon name="search" />
     </div>
     <el-dialog v-model="openDialog" destroy-on-close :modal="false" fullscreen :show-close="false">
       <el-autocomplete

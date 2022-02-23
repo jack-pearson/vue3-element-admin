@@ -7,7 +7,7 @@
  * @Description: 
 -->
 <template>
-  <svg :class="svgClass" v-bind="$attrs" :style="{ color: color }">
+  <svg :class="svgClass" :style="{ color: color }">
     <use :xlink:href="iconName" />
   </svg>
 </template>
@@ -24,21 +24,24 @@ const props = defineProps({
     type: String,
     default: "",
   },
+  pointer: {
+    type: Boolean,
+    default: true
+  }
 });
 
 const iconName = computed(() => `#icon-${props.name}`);
-const svgClass = computed(() => {
-  if (props.name) {
-    return `svg-icon icon-${props.name}`;
+const svgClass = computed(() => ([
+  'svg-icon h-4 w-4',
+  {
+    ['icon-' + props.name]: !!props.name,
+    'cursor-pointer': props.pointer
   }
-  return "svg-icon";
-});
+]));
 </script>
 
 <style lang="scss">
 .svg-icon {
-  width: 1em;
-  height: 1em;
   fill: currentColor;
   vertical-align: middle;
 }

@@ -45,7 +45,7 @@ export const constantRouters: Array<RouteRecordRaw> = [
         path: "/home",
         name: "home",
         component: () => import("@/views/home/index.vue"),
-        meta: { title: "home", icon: "home" },
+        meta: { title: "home", icon: "home", isTagView: true, isAffix: true},
       },
     ],
   },
