@@ -20,7 +20,7 @@ export const createRouter = (): RouterStoreTypes => {
 export const routerStore = defineStore("routerStore", {
   state: createRouter,
   actions: {
-    async getRouterList(): Promise<Menu[]> {
+    getRouterList(): Promise<Menu[]> {
       return new Promise((resolve, reject) => {
         UserService.getUserMenu()
           .then(({ data, code }) => {

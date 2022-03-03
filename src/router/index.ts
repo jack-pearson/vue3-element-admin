@@ -10,23 +10,29 @@ import { createRouter, createWebHistory, isNavigationFailure, RouteRecordRaw } f
 import NProgress from "nprogress";
 import { routerStore } from "@/store";
 import "nprogress/nprogress.css";
-import Login from "@/views/login/index.vue";
-import Layout from "@/layout/index.vue";
 import { i18nRouter, Session } from "@/utils";
 
-const NotFoundComponent = { template: "<p>Page not found</p>" };
+const DEFAULT_PATH = '/home'
+import Login from "@/views/login/index.vue";
+import Layout from "@/layout/index.vue";
+
 export const constantRouters: Array<RouteRecordRaw> = [
-  { path: "/login", name: "login", component: Login, meta: { title: "home", isTagView: false } },
+  {
+    path: "/login",
+    name: "login",
+    component: Login,
+    meta: { title: "home", isTagView: false }
+  },
   {
     path: "/404",
     name: "notFound",
-    component: NotFoundComponent,
+    component: { template: "<p>Page not found</p>" },
     meta: { title: "404" },
   },
   {
     path: "/",
     name: "/",
-    redirect: { path: "/home" },
+    redirect: { path: DEFAULT_PATH },
     component: Layout,
     children: [
       {
@@ -52,32 +58,31 @@ const router = createRouter({
 
 router.beforeEach(async (to, from, next) => {
   const store = routerStore();
+  const { routerList, getRouterList } = store;
+  const token = Session.get("token");
   NProgress.configure({ showSpinner: false });
   NProgress.start();
+
   if (to.path === "/login") {
-    next();
     NProgress.done();
-  } else {
-    const token = Session.get("token");
-    if (!token) {
-      next(`/login?redirect=${to.path}&params=${JSON.stringify(to.query ? to.query : to.params)}`);
-    } else {
-      const { routerList } = store;
-      if (routerList.length === 0) {
-        try {
-          const newRouter = await store.getRouterList();
-          newRouter.forEach(item => {
-            router.addRoute(item);
-          });
-          next({ ...to, replace: true });
-        } catch (err) {
-          console.log(err, "动态添加路由失败");
-          NProgress.done();
-        }
-      } else {
-        await next();
-      }
-    }
+    return next();
+  } 
+  
+  if (!token) {
+    const params = JSON.stringify(to.query ? to.query : to.params)
+    const url =  `/login?redirect=${to.path}&params=${params}`
+    return next(url)
+  }
+  
+  if (routerList.length > 0) return next()
+  
+  try {
+      const newRouter = await getRouterList();
+      newRouter.forEach(item => router.addRoute(item));
+      next({ ...to, replace: true });
+  } catch (err) {
+      console.log(err, "动态添加路由失败");
+      NProgress.done();
   }
 });
 

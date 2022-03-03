@@ -11,34 +11,17 @@ const modules = import.meta.glob("/src/**/**.vue");
 /** 对数组进行 component 转换 */
 export const formatRoutes = (data: Menu[]): Menu[] => {
   return data.map(v => {
-    const component = () => {
-      if (v.component === "Layout") {
-        return import(`@/layout/index.vue`);
-      } else if (v.component === "ParentView") {
-        return import(`@/components/parentView/index.vue`);
-      } else {
-        return modules[v.component];
-      }
-    };
-    if (!v.children) {
-      return {
-        name: v.name,
-        path: v.path,
-        children: [],
-        redirect: v.redirect,
-        isHide: v.isHide,
-        component: component(),
-        meta: v.meta,
-      };
-    }
+    const children = v.children  ? formatRoutes(v.children) : []
+    const component = (() => {
+      if (v.component === "Layout") return () => import(`@/layout/index.vue`)
+      else if (v.component === "ParentView") return () => import(`@/components/parentView/index.vue`)
+      else return modules[v.component]
+    })();
+
     return {
-      name: v.name,
-      path: v.path,
-      children: formatRoutes(v.children),
-      redirect: v.redirect,
-      isHide: v.isHide,
-      component: component(),
-      meta: v.meta,
+      ...v,
+      children,
+      component,
     };
   });
 };

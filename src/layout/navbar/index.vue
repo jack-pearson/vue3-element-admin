@@ -1,19 +1,19 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2021-12-31 18:10:15
- * @LastEditTime: 2022-01-17 10:33:59
+ * @LastEditTime: 2022-02-07 17:25:59
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/layout/navbar/index.vue
  * @Description: 
 -->
 
 <template>
-  <header class="layout-navbar w-full h-12 flex justify-between">
-    <div class="navbar-left flex items-center">
+  <header class="layout-navbar w-full h-12 flex justify-between items-center">
+    <div class="navbar-left flex items-center h-full">
       <LayoutHamburger />
       <LayoutBreadcrumb />
     </div>
-    <div class="navbar-action flex justify-end items-center">
+    <div class="navbar-action flex justify-end items-center h-full">
       <LayoutSearch />
       <LayoutZiTiSize />
       <LayoutLanguage />
@@ -40,7 +40,6 @@ const settingsState = settingsStore();
 </script>
 <style lang="scss" scoped>
 .layout-navbar {
-  line-height: 48px;
   border-bottom: 1px solid #f1f2f3;
   background: var(--color-white);
   .navbar-action {

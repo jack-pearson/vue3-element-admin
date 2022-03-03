@@ -10,7 +10,12 @@
 <template>
   <div class="layout-breadcrumb pl-2">
     <el-breadcrumb separator=">">
-      <el-breadcrumb-item v-for="item in breadcrumb" :to="{ path: item.to }" :key="item.to">{{ item.meta.title }}</el-breadcrumb-item>
+      <el-breadcrumb-item v-if="route.path !== '/home'" :to="{ path: '/' }">{{
+        i18nRouter("home")
+      }}</el-breadcrumb-item>
+      <el-breadcrumb-item v-for="item in breadcrumb" :key="item.path">{{
+        item.title
+      }}</el-breadcrumb-item>
     </el-breadcrumb>
   </div>
 </template>
@@ -20,22 +25,16 @@ import { computed } from "vue";
 import { useRoute, RouteLocationMatched } from "vue-router";
 import { i18nRouter } from "@/utils";
 const route = useRoute();
-const getMenuRedirect = (breadcrumb: RouteLocationMatched[]) => {
-  return breadcrumb.map(item => {
-    return {
-      ...item,
-      meta: {
-        ...item.meta,
-        title: i18nRouter(item.meta.title as string),
-      },
-      to: item.children && item.children.length ? item.redirect : item.path,
-    };
-  });
-};
-const breadcrumb = computed(() => {
-  const { matched } = route;
-  return getMenuRedirect(matched.filter(item => item.path !== "/"));
-});
+
+const getMenuRedirect = (breadcrumb: RouteLocationMatched[]) =>
+  breadcrumb.map(({ meta, path }) => ({
+    title: i18nRouter(meta.title as string),
+    path,
+  }));
+
+const breadcrumb = computed(() =>
+  getMenuRedirect(route.matched.filter((item) => item.path !== "/"))
+);
 </script>
 <style lang="scss" scoped></style>
 

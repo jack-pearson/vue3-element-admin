@@ -1,7 +1,7 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2021-12-10 17:55:40
- * @LastEditTime: 2022-01-30 14:50:27
+ * @LastEditTime: 2022-02-22 16:37:53
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/views/system/user/index.vue
  * @Description: 
@@ -136,5 +136,5 @@ getDeptTree();
 }
 </style>
 <script lang="ts">
-export default { name: "user" };
+export default { name: "systemUser" };
 </script>

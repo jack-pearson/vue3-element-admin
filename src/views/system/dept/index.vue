@@ -1,7 +1,7 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2022-01-17 14:49:06
- * @LastEditTime: 2022-02-07 13:20:56
+ * @LastEditTime: 2022-03-02 15:32:45
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/views/system/dept/index.vue
  * @Description: 
@@ -153,12 +153,11 @@ const onSubmit = () => {
     }
   });
 };
-const handleDelete = (row: Dept) => {
-  DeptService.delete(row.id).then(res => {
-    if (res.code === 200) {
-      getList();
-    }
-  });
+const handleDelete = async (row: Dept) => {
+  const res = await DeptService.delete(row.id);
+  if (res.code === 200) {
+    getList();
+  }
 };
 </script>
 <style lang="scss" scoped>
@@ -167,5 +166,5 @@ const handleDelete = (row: Dept) => {
 </style>
 
 <script lang="ts">
-export default { name: "Dept" };
+export default { name: "systemDept" };
 </script>
