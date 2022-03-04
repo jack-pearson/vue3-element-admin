@@ -1,7 +1,7 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-11-24 16:23:26
- * @LastEditTime: 2022-01-17 10:32:06
+ * @LastEditTime: 2022-03-03 14:10:27
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/types/store/settings/index.d.ts
  * @Description:
@@ -24,6 +24,11 @@ export interface settingsStoreType {
     hasGlobalSettings: boolean;
     hasSidebarLogo: boolean;
     language: languageType;
+    hasZiTi: boolean;
+    hasLanguage: boolean;
+    hasSearch: boolean;
+    hasBreadcrumb: boolean;
+    hasClipboard: boolean;
     ElComponentSize: ElComponentSizeType;
     isCollapsed: boolean;
   };

@@ -1,7 +1,7 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-11-24 16:14:10
- * @LastEditTime: 2022-01-18 15:40:05
+ * @LastEditTime: 2022-03-03 14:10:24
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/store/modules/settings.ts
  * @Description:
@@ -26,6 +26,11 @@ export const createSettings = (): settingsStoreType => {
       hasTagsView: true,
       hasGlobalSettings: true,
       hasSidebarLogo: true,
+      hasBreadcrumb: true,
+      hasZiTi: true,
+      hasSearch: true,
+      hasClipboard: true,
+      hasLanguage: true,
       isCollapsed: false,
       language: "zh-cn",
     },
