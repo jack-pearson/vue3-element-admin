@@ -1,7 +1,7 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2021-12-10 17:55:40
- * @LastEditTime: 2022-02-22 16:37:53
+ * @LastEditTime: 2022-03-15 14:46:04
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/views/system/user/index.vue
  * @Description: 
@@ -11,7 +11,7 @@
     <el-scrollbar class="dept-tree w-60 bg-white">
       <el-tree :data="deptTree" class="h-full" :props="{ children: 'children', label: 'name' }" default-expand-all @node-click="handleNodeClick" />
     </el-scrollbar>
-    <div class="user-table flex-1 ml-5" v-loading="searchForm.loading">
+    <div class="user-table w-[calc(100%-15rem)] ml-5" v-loading="searchForm.loading">
       <el-form inline :model="searchForm" ref="searchFormRef" label-width="120px" class="bg-white mb-4 flex items-center pt-4 pb-4">
         <el-form-item :label="i18nSystemUser('table.account')" prop="account">
           <el-input v-model="searchForm.account" clearable :placeholder="i18nSystemUser('search.accountPlaceholder')"></el-input>
