@@ -1,7 +1,7 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2022-01-11 14:03:56
- * @LastEditTime: 2022-01-18 14:40:09
+ * @LastEditTime: 2022-03-15 17:30:45
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/layout/tagView/index.vue
  * @Description: 
@@ -105,14 +105,14 @@ const onHandleContextMenu = (e: MouseEvent, item: Menu) => {
         }
       }
       &.is-active {
-        background: var(--color-primary);
+        background: var(--el-color-primary);
         color: var(--color-white);
-        border-color: var(--color-primary-3);
+        border-color: var(--el-color-primary-dark-2);
       }
       &:hover:not(.is-active) {
-        background: var(--color-primary-9);
-        color: var(--color-primary-1);
-        border-color: var(--color-primary);
+        background: var(--el-color-primary-light-7);
+        color: var(--el-color-primary-dark-2);
+        border-color: var(--el-color-primary);
       }
     }
   }

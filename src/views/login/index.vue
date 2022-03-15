@@ -1,7 +1,7 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2021-11-24 17:42:59
- * @LastEditTime: 2022-01-20 17:21:42
+ * @LastEditTime: 2022-03-15 17:31:16
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/views/login/index.vue
  * @Description: 
@@ -120,7 +120,7 @@ const onSubmit = () => {
   .login-content {
     width: 500px;
     transform: translate(-50%, -50%) translate3d(0, 0, 0);
-    border: 5px solid var(--color-primary-9);
+    border: 5px solid var(--el-color-primary-light-5);
     transition: height 0.2s linear;
     height: auto;
     .login-content-main {

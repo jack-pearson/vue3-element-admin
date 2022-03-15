@@ -1,14 +1,14 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-11-24 16:14:10
- * @LastEditTime: 2022-03-03 14:10:24
+ * @LastEditTime: 2022-03-15 17:26:59
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/store/modules/settings.ts
  * @Description:
  */
 import { defineStore } from "pinia";
 import { ElComponentSizeType, languageType, settingsStoreType } from "@/types";
-import { Local, setHtmlCssVarBySettings } from "@/utils";
+import { Local } from "@/utils";
 
 export const createSettings = (): settingsStoreType => {
   return {
@@ -40,7 +40,6 @@ export const createSettings = (): settingsStoreType => {
 const loadState = (): settingsStoreType => {
   const state = (Local.get("settingsStore") || {}) as settingsStoreType;
   const newState = Object.assign(createSettings(), state);
-  setHtmlCssVarBySettings(newState.themesState);
   return newState;
 };
 

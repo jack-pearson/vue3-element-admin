@@ -1,7 +1,7 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2021-12-30 15:18:38
- * @LastEditTime: 2022-01-25 14:55:36
+ * @LastEditTime: 2022-03-15 17:30:02
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/layout/sidebar/SidebarItem.vue
  * @Description: 
@@ -48,19 +48,19 @@ const settingsConfig = settingsStore();
     :deep(.el-sub-menu__title) {
       color: var(--menu-default-color);
       &:hover {
-        color: var(--color-primary-5);
+        color: var(--el-color-primary-light-2);
       }
     }
     &:hover {
       background-color: transparent;
-      color: var(--color-primary-5);
+      color: var(--el-color-primary-light-2);
     }
     &.el-menu-item.is-active {
       background-color: transparent;
-      color: var(--color-primary-5);
+      color: var(--el-color-primary-light-2);
     }
     &:active {
-      color: var(--color-primary-8);
+      color: var(--el-color-primary-light-7);
     }
   }
   &.is-collapsed {

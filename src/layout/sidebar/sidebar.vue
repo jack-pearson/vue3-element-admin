@@ -1,14 +1,14 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2021-12-07 20:43:53
- * @LastEditTime: 2022-01-17 10:17:25
+ * @LastEditTime: 2022-03-15 18:02:00
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/layout/sidebar/sidebar.vue
  * @Description: 
 -->
 <template>
   <div class="layout-aside-container !h-full" :class="{ 'is-collapsed': settingsConfig.config.isCollapsed }">
-    <el-aside class="layout-aside w-full h-full flex">
+    <el-aside class="layout-aside !w-full h-full flex">
       <el-scrollbar class="flex-1">
         <SidebarLogo v-if="settingsConfig.config.hasSidebarLogo" />
         <el-menu
@@ -56,12 +56,12 @@ const activeMenu = computed(() => currentRoute.path);
   .layout-aside {
     background-color: var(--menu-default-bg-color);
     .test {
-      background-color: var(--color-primary);
+      background-color: var(--el-color-primary);
       &:hover {
-        background-color: var(--color-primary-6);
+        background-color: var(--el-color-primary-light-2);
       }
       &:active {
-        background-color: var(--color-primary-4);
+        background-color: var(--el-color-primary-dark-2);
       }
     }
   }
