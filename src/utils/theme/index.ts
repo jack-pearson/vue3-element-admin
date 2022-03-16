@@ -1,12 +1,12 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-12-09 16:16:17
- * @LastEditTime: 2022-03-16 14:36:22
+ * @LastEditTime: 2022-03-16 18:32:45
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/utils/theme/index.ts
  * @Description:
  */
-import { themeType } from "@/types";
+import { settingsStoreType, themeType } from "@/types";
 import Color from "color";
 /**
  * @description: 设置主图色
@@ -31,5 +31,13 @@ export const setThemeLight = (color: Color<string>, theme: themeType) => {
     const t = index / 10;
     const hex = color.mix(Color("#ffffff"), t).hex();
     document.documentElement.style.setProperty(`--el-color-${theme}-light-${index}`, hex);
+  }
+};
+
+export const setHtmlCssVarBySettings = (theme: settingsStoreType["themesState"]) => {
+  for (const key in theme) {
+    if (Object.prototype.hasOwnProperty.call(theme, key)) {
+      setHtmlCssVar(theme[key as keyof settingsStoreType["themesState"]], key as themeType);
+    }
   }
 };
