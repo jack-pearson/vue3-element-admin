@@ -1,22 +1,22 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2021-12-31 18:10:15
- * @LastEditTime: 2022-02-07 17:25:59
+ * @LastEditTime: 2022-03-16 14:59:13
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/layout/navbar/index.vue
  * @Description: 
 -->
 
 <template>
-  <header class="layout-navbar w-full h-12 flex justify-between items-center">
+  <header class="layout-navbar bg-$color-white w-full h-12 flex justify-between items-center">
     <div class="navbar-left flex items-center h-full">
-      <LayoutHamburger />
-      <LayoutBreadcrumb />
+      <LayoutHamburger v-if="settingsState.config.hasClipboard" />
+      <LayoutBreadcrumb v-if="settingsState.config.hasBreadcrumb" />
     </div>
     <div class="navbar-action flex justify-end items-center h-full">
-      <LayoutSearch />
-      <LayoutZiTiSize />
-      <LayoutLanguage />
+      <LayoutSearch v-if="settingsState.config.hasSearch" />
+      <LayoutZiTiSize v-if="settingsState.config.hasZiTi" />
+      <LayoutLanguage v-if="settingsState.config.hasLanguage" />
       <LayoutSettings v-if="settingsState.config.hasGlobalSettings" />
       <LayoutUser />
     </div>
@@ -41,7 +41,6 @@ const settingsState = settingsStore();
 <style lang="scss" scoped>
 .layout-navbar {
   border-bottom: 1px solid #f1f2f3;
-  background: var(--color-white);
   .navbar-action {
     min-width: 200px;
   }

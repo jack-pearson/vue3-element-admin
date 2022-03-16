@@ -1,7 +1,7 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-11-24 17:48:43
- * @LastEditTime: 2022-02-07 10:34:01
+ * @LastEditTime: 2022-03-16 16:55:06
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/router/index.ts
  * @Description:
@@ -12,16 +12,17 @@ import { routerStore } from "@/store";
 import "nprogress/nprogress.css";
 import { i18nRouter, Session } from "@/utils";
 
-const DEFAULT_PATH = '/home'
+const DEFAULT_PATH = "/home";
 import Login from "@/views/login/index.vue";
 import Layout from "@/layout/index.vue";
+import { Menu } from "@/types";
 
-export const constantRouters: Array<RouteRecordRaw> = [
+export const constantRouters: Array<RouteRecordRaw | Menu> = [
   {
     path: "/login",
     name: "login",
     component: Login,
-    meta: { title: "home", isTagView: false }
+    meta: { title: "login", isTagView: false },
   },
   {
     path: "/404",
@@ -45,7 +46,7 @@ export const constantRouters: Array<RouteRecordRaw> = [
         path: "/home",
         name: "home",
         component: () => import("@/views/home/index.vue"),
-        meta: { title: "home", icon: "home" },
+        meta: { title: "home", icon: "home", isAffix: true, isTagView: true },
       },
     ],
   },
@@ -66,23 +67,23 @@ router.beforeEach(async (to, from, next) => {
   if (to.path === "/login") {
     NProgress.done();
     return next();
-  } 
-  
-  if (!token) {
-    const params = JSON.stringify(to.query ? to.query : to.params)
-    const url =  `/login?redirect=${to.path}&params=${params}`
-    return next(url)
   }
-  
-  if (routerList.length > 0) return next()
-  
+
+  if (!token) {
+    const params = JSON.stringify(to.query ? to.query : to.params);
+    const url = `/login?redirect=${to.path}&params=${params}`;
+    return next(url);
+  }
+
+  if (routerList.length > 0) return next();
+
   try {
-      const newRouter = await getRouterList();
-      newRouter.forEach(item => router.addRoute(item));
-      next({ ...to, replace: true });
+    const newRouter = await getRouterList();
+    newRouter.forEach(item => router.addRoute(item));
+    next({ ...to, replace: true });
   } catch (err) {
-      console.log(err, "动态添加路由失败");
-      NProgress.done();
+    console.log(err, "动态添加路由失败");
+    NProgress.done();
   }
 });
 
