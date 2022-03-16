@@ -1,7 +1,7 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-11-22 17:31:39
- * @LastEditTime: 2022-03-15 18:07:05
+ * @LastEditTime: 2022-03-16 13:49:34
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/vite.config.ts
  * @Description: https://vitejs.dev/config/
@@ -42,7 +42,7 @@ export default defineConfig(({ mode }) => {
     css: {
       preprocessorOptions: {
         scss: {
-          additionalData: `@use "@/styles/scss/index.scss" as *;`,
+          additionalData: `@use "@/styles/element/index.scss" as *;`,
         },
       },
     },

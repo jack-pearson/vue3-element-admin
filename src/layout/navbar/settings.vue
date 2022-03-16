@@ -1,14 +1,14 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2022-01-13 18:19:34
- * @LastEditTime: 2022-01-17 10:32:35
+ * @LastEditTime: 2022-03-16 15:32:37
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/layout/navbar/settings.vue
  * @Description: 
 -->
 <template>
   <div class="layout-settings h-full select-none">
-    <div class="icon-wrapper pl-2.5 pr-2.5 h-full flex justify-center items-center cursor-pointer" @click="openSettings">
+    <div class="icon-wrapper text-$color-text-primary pl-2.5 pr-2.5 h-full flex justify-center items-center cursor-pointer" @click="openSettings">
       <svg-icon name="theme" class="w-full pointer-events-none" />
     </div>
     <el-drawer v-model="open" :title="i18nSettings('setting')" direction="rtl" size="300px" :before-close="handleClose">
@@ -79,7 +79,6 @@ const handleClose = () => {
 <style lang="scss" scoped>
 .layout-settings {
   .icon-wrapper {
-    color: var(--color-text-primary);
     transition: background 0.28s;
     &:hover {
       background: rgba(0, 0, 0, 0.04);

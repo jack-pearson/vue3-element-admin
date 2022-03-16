@@ -1,7 +1,7 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-11-22 17:31:39
- * @LastEditTime: 2022-03-16 10:32:54
+ * @LastEditTime: 2022-03-16 13:50:07
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/main.ts
  * @Description:
@@ -9,6 +9,7 @@
 import { createApp } from "vue";
 import "virtual:windi.css";
 import "element-plus/dist/index.css";
+import "@/styles/scss/index.scss";
 import svgIcon from "@/components/svg-icon/index.vue";
 import pagination from "@/components/pagination/index.vue";
 import { pinia } from "@/store";
