@@ -1,7 +1,7 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-11-24 16:14:10
- * @LastEditTime: 2022-03-16 18:32:46
+ * @LastEditTime: 2022-03-16 19:02:26
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/store/modules/settings.ts
  * @Description:
@@ -15,9 +15,9 @@ export const createSettings = (): settingsStoreType => {
     themesState: {
       primary: "#40A9FF",
       success: "#67C23A",
-      warning: "#FFC53D",
-      danger: "#FF4D4F",
-      info: "#ADB5BD",
+      warning: "#E6A23C",
+      danger: "#F56C6C",
+      info: "#909399",
     },
     config: {
       loginTitle: "yh-vue3-admin",
