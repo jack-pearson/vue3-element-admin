@@ -1,7 +1,7 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-11-22 17:31:39
- * @LastEditTime: 2022-03-16 13:49:34
+ * @LastEditTime: 2022-03-17 14:12:42
  * @LastEditors: jack-pearson
  * @FilePath: /vue3-element-admin/vite.config.ts
  * @Description: https://vitejs.dev/config/
@@ -9,8 +9,9 @@
 import { defineConfig } from "vite";
 import path from "path";
 import vue from "@vitejs/plugin-vue";
-import Components from "unplugin-vue-components/vite";
-import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
+// 这两个是 element-plus 按需导入(自动导入)的插件
+// import Components from "unplugin-vue-components/vite";
+// import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 import WindiCSS from "vite-plugin-windicss";
 import { svgBuilder } from "./src/plugins/svgBuilder";
 import { loadEnv } from "./src/utils/viteBuild";
@@ -26,13 +27,7 @@ export default defineConfig(({ mode }) => {
       vue(),
       WindiCSS(),
       svgBuilder("./src/components/svg-icon/svg/"),
-      Components({
-        resolvers: [
-          ElementPlusResolver({
-            importStyle: "sass",
-          }),
-        ],
-      }),
+      // Components({ resolvers: [ElementPlusResolver()] })
     ],
     server: {
       host: "0.0.0.0",

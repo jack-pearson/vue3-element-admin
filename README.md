@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-11-22 17:31:39
- * @LastEditTime: 2022-03-17 14:08:51
+ * @LastEditTime: 2022-03-17 14:16:38
  * @LastEditors: jack-pearson
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: /vue3-element-admin/README.md
@@ -30,6 +30,7 @@
 - [x] pinia
 - [x] element-plus(安装 vscode插件 ---- element-ui-helper, 这样就有了 ts 的 props 提示)
 - [x] element-plus 自定义主题. (还可以修改已经自定义好的主题).
+- [x] element-plus 自动导入
 - [x] windicss
 - [ ] husky
 - [x] svg 组件
@@ -82,6 +83,12 @@ element-plus + vue-i18n
 **注意** 修改色值之后刷新没有改变,是因为你肯定通过`页面`修改了`主题`
 
 这个操作会记录再 `localStorage` 中. 同时这个优先级比 上面的步骤 `高`.
+
+## element-plus 自动导入
+
+默认是 **全部导入**  
+因为`按需导入(自动导入)`会出现问题, 开发的时候 太慢.  
+可以开发全部导入, 正式按需导入.
 
 ## windicss
 
