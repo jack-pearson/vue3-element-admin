@@ -3,19 +3,15 @@
  * @Date: 2022-01-04 11:02:01
  * @LastEditTime: 2022-01-10 17:27:27
  * @LastEditors: jack-pearson
- * @FilePath: /yh-vue3-admin/src/layout/navbar/breadcrumb.vue
+ * @FilePath: /vue3-element-admin/src/layout/navbar/breadcrumb.vue
  * @Description: 
 -->
 
 <template>
   <div class="layout-breadcrumb pl-2">
     <el-breadcrumb separator=">">
-      <el-breadcrumb-item v-if="route.path !== '/home'" :to="{ path: '/' }">{{
-        i18nRouter("home")
-      }}</el-breadcrumb-item>
-      <el-breadcrumb-item v-for="item in breadcrumb" :key="item.path">{{
-        item.title
-      }}</el-breadcrumb-item>
+      <el-breadcrumb-item v-if="route.path !== '/home'" :to="{ path: '/' }">{{ i18nRouter("home") }}</el-breadcrumb-item>
+      <el-breadcrumb-item v-for="item in breadcrumb" :key="item.path">{{ item.title }}</el-breadcrumb-item>
     </el-breadcrumb>
   </div>
 </template>
@@ -32,9 +28,7 @@ const getMenuRedirect = (breadcrumb: RouteLocationMatched[]) =>
     path,
   }));
 
-const breadcrumb = computed(() =>
-  getMenuRedirect(route.matched.filter((item) => item.path !== "/"))
-);
+const breadcrumb = computed(() => getMenuRedirect(route.matched.filter(item => item.path !== "/")));
 </script>
 <style lang="scss" scoped></style>
 

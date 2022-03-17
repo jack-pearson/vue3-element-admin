@@ -1,15 +1,15 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2022-01-10 17:24:36
- * @LastEditTime: 2022-01-18 18:47:49
+ * @LastEditTime: 2022-03-16 15:32:07
  * @LastEditors: jack-pearson
- * @FilePath: /yh-vue3-admin/src/layout/navbar/language.vue
+ * @FilePath: /vue3-element-admin/src/layout/navbar/language.vue
  * @Description: 
 -->
 <template>
   <div class="layout-language h-full select-none">
     <el-dropdown type="primary" :show-timeout="70" :hide-timeout="50" trigger="hover" class="h-full flex items-center" @command="onChangeSize">
-      <div class="icon-wrapper pl-2.5 pr-2.5 h-full flex justify-center items-center cursor-pointer">
+      <div class="icon-wrapper text-$color-text-primary pl-2.5 pr-2.5 h-full flex justify-center items-center cursor-pointer">
         <svg-icon :name="language" class="w-full pointer-events-none" />
       </div>
       <template #dropdown>
@@ -39,7 +39,6 @@ const language = computed(() => settingsState.config.language);
 <style lang="scss" scoped>
 .layout-language {
   .icon-wrapper {
-    color: var(--color-text-primary);
     transition: background 0.28s;
     &:hover {
       background: rgba(0, 0, 0, 0.04);

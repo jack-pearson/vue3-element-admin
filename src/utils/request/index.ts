@@ -3,7 +3,7 @@
  * @Date: 2021-11-23 15:16:14
  * @LastEditTime: 2022-01-18 17:38:24
  * @LastEditors: jack-pearson
- * @FilePath: /yh-vue3-admin/src/utils/request/index.ts
+ * @FilePath: /vue3-element-admin/src/utils/request/index.ts
  * @Description:
  */
 import axios, { AxiosRequestConfig, AxiosResponse } from "axios";

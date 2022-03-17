@@ -3,7 +3,7 @@
  * @Date: 2021-12-30 14:09:45
  * @LastEditTime: 2022-01-19 16:17:21
  * @LastEditors: jack-pearson
- * @FilePath: /yh-vue3-admin/src/utils/i18n/index.ts
+ * @FilePath: /vue3-element-admin/src/utils/i18n/index.ts
  * @Description:
  */
 

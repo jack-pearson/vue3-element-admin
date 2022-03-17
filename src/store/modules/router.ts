@@ -3,7 +3,7 @@
  * @Date: 2021-12-07 20:12:40
  * @LastEditTime: 2022-01-17 14:23:18
  * @LastEditors: jack-pearson
- * @FilePath: /yh-vue3-admin/src/store/modules/router.ts
+ * @FilePath: /vue3-element-admin/src/store/modules/router.ts
  * @Description:
  */
 import { defineStore } from "pinia";

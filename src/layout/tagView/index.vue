@@ -1,26 +1,26 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2022-01-11 14:03:56
- * @LastEditTime: 2022-01-18 14:40:09
+ * @LastEditTime: 2022-03-16 15:52:44
  * @LastEditors: jack-pearson
- * @FilePath: /yh-vue3-admin/src/layout/tagView/index.vue
+ * @FilePath: /vue3-element-admin/src/layout/tagView/index.vue
  * @Description: 
 -->
 <template>
-  <div class="layout-tagView w-full">
+  <div class="layout-tagView w-full bg-$color-white">
     <el-scrollbar class="h-full w-full pl-4 pr-4" ref="scrollbarRef" @wheel.prevent="onHandleScroll">
       <ul class="layout-tagView-ul h-full flex items-center">
         <li
           v-for="item in visitedViews"
           :key="item.name"
-          :class="{ 'is-active': path === item.path }"
+          :class="{ 'is-active text-$color-white bg-$el-color-primary': path === item.path }"
           @click="onHandleClickSwitchRouter(item)"
           @contextmenu="onHandleContextMenu($event, item)"
           class="layout-tagView-ul-li pl-4 pr-4 h-full relative cursor-pointer select-none flex items-center mr-2.5"
         >
           <svg-icon name="tagview-round" class="text-white mr-1" v-if="path === item.path"></svg-icon>
           <span>{{ i18nRouter(item.meta.title) }}</span>
-          <div v-if="path === item.path" class="refresh-wrapper rounded-full ml-1 w-4 h-4 flex items-center justify-center" @click.stop="onHandleRefreshTag(item)">
+          <div v-if="path === item.path" class="refresh-wrapper text-$color-text-primary rounded-full ml-1 w-4 h-4 flex items-center justify-center" @click.stop="onHandleRefreshTag(item)">
             <svg-icon name="refresh"></svg-icon>
           </div>
           <div
@@ -77,7 +77,6 @@ const onHandleContextMenu = (e: MouseEvent, item: Menu) => {
 .layout-tagView {
   height: 34px;
   border-bottom: 1px solid #f1f2f3;
-  background: var(--color-white);
   :deep(.el-scrollbar__view) {
     height: 100%;
   }
@@ -90,7 +89,6 @@ const onHandleContextMenu = (e: MouseEvent, item: Menu) => {
       height: 26px;
       .close-wrapper,
       .refresh-wrapper {
-        color: var(--color-text-primary);
         transition: background 0.28s;
         .svg-icon {
           font-size: 8px;
@@ -105,14 +103,12 @@ const onHandleContextMenu = (e: MouseEvent, item: Menu) => {
         }
       }
       &.is-active {
-        background: var(--color-primary);
-        color: var(--color-white);
-        border-color: var(--color-primary-3);
+        border-color: var(--el-color-primary-dark-2);
       }
       &:hover:not(.is-active) {
-        background: var(--color-primary-9);
-        color: var(--color-primary-1);
-        border-color: var(--color-primary);
+        background: var(--el-color-primary-light-7);
+        color: var(--el-color-primary-dark-2);
+        border-color: var(--el-color-primary);
       }
     }
   }

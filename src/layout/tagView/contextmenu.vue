@@ -1,9 +1,9 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2022-01-13 13:26:08
- * @LastEditTime: 2022-01-19 11:15:57
+ * @LastEditTime: 2022-03-15 17:30:06
  * @LastEditors: jack-pearson
- * @FilePath: /yh-vue3-admin/src/layout/tagView/contextmenu.vue
+ * @FilePath: /vue3-element-admin/src/layout/tagView/contextmenu.vue
  * @Description: 
 -->
 
@@ -134,7 +134,7 @@ onUnmounted(() => {
   font-size: 12px;
   .context-menu-ul-li {
     &:hover {
-      background: linear-gradient(45deg, var(--color-primary), var(--color-primary-9));
+      background: linear-gradient(45deg, var(--el-color-primary), var(--el-color-primary-light-7));
     }
   }
 }

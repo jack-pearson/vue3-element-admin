@@ -3,7 +3,7 @@
  * @Date: 2022-03-02 17:43:28
  * @LastEditTime: 2022-03-02 18:41:37
  * @LastEditors: jack-pearson
- * @FilePath: /yh-vue3-admin/src/components/ADialog/index.tsx
+ * @FilePath: /vue3-element-admin/src/components/ADialog/index.tsx
  * @Description:
  */
 

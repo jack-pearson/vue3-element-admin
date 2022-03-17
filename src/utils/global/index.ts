@@ -3,7 +3,7 @@
  * @Date: 2021-12-30 14:53:28
  * @LastEditTime: 2022-01-18 18:21:07
  * @LastEditors: jack-pearson
- * @FilePath: /yh-vue3-admin/src/utils/global/index.ts
+ * @FilePath: /vue3-element-admin/src/utils/global/index.ts
  * @Description:
  */
 export const hasLength = (target: Array<any>) => target && target.length > 0;

@@ -1,9 +1,9 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2021-12-10 17:55:40
- * @LastEditTime: 2022-03-15 14:46:04
+ * @LastEditTime: 2022-03-15 17:31:23
  * @LastEditors: jack-pearson
- * @FilePath: /yh-vue3-admin/src/views/system/user/index.vue
+ * @FilePath: /vue3-element-admin/src/views/system/user/index.vue
  * @Description: 
 -->
 <template>
@@ -108,7 +108,7 @@ getDeptTree();
   }
   :deep(.el-tree-node) {
     .el-tree-node__content:hover {
-      background-color: var(--color-primary-7);
+      background-color: var(--el-color-primary-light-5);
       color: #000;
       .el-tree-node__expand-icon {
         color: #000;
@@ -119,7 +119,7 @@ getDeptTree();
     }
     &.is-current {
       & > .el-tree-node__content {
-        background-color: var(--color-primary-7);
+        background-color: var(--el-color-primary-light-5);
         color: #000;
         .el-tree-node__expand-icon {
           &.is-leaf {

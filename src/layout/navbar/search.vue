@@ -1,14 +1,14 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2022-01-04 17:48:42
- * @LastEditTime: 2022-01-18 15:59:42
+ * @LastEditTime: 2022-03-16 15:32:20
  * @LastEditors: jack-pearson
- * @FilePath: /yh-vue3-admin/src/layout/navbar/search.vue
+ * @FilePath: /vue3-element-admin/src/layout/navbar/search.vue
  * @Description: 
 -->
 <template>
   <div class="layout-search h-full select-none">
-    <div class="icon-wrapper pl-2.5 pr-2.5 h-full flex justify-center items-center cursor-pointer" @click="openSearch">
+    <div class="icon-wrapper text-$color-text-primary pl-2.5 pr-2.5 h-full flex justify-center items-center cursor-pointer" @click="openSearch">
       <svg-icon name="search" class="w-full" />
     </div>
     <el-dialog v-model="openDialog" destroy-on-close :modal="false" fullscreen :show-close="false">
@@ -78,7 +78,6 @@ const closeSearch = () => {
 <style lang="scss" scoped>
 .layout-search {
   .icon-wrapper {
-    color: var(--color-text-primary);
     transition: background 0.28s;
     &:hover {
       background: rgba(0, 0, 0, 0.04);
