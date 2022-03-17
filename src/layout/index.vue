@@ -1,7 +1,7 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2021-12-07 20:32:15
- * @LastEditTime: 2022-01-14 18:29:14
+ * @LastEditTime: 2022-03-17 18:11:56
  * @LastEditors: jack-pearson
  * @FilePath: /vue3-element-admin/src/layout/index.vue
  * @Description:  https://github.com/jack-pearson/vue3-element-admin 
@@ -9,10 +9,7 @@
 <template>
   <el-container class="layout-container h-full">
     <Menu />
-    <div
-      class="layout-container-main w-full h-full"
-      :class="{ 'is-collapsed': isCollapsed }"
-    >
+    <div class="layout-container-main w-full h-full" :class="{ 'is-collapsed': isCollapsed }">
       <Navbar />
       <TagView v-if="hasTagsView" />
       <Main />
