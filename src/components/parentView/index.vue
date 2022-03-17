@@ -4,7 +4,7 @@
  * @LastEditTime: 2022-01-30 14:44:46
  * @LastEditors: jack-pearson
  * @FilePath: /vue3-element-admin/src/components/parentView/index.vue
- * @Description: 
+ * @Description:  https://github.com/jack-pearson/vue3-element-admin 
 -->
 <template>
   <router-view />

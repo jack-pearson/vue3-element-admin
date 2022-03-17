@@ -4,7 +4,7 @@
  * @LastEditTime: 2022-03-17 15:15:36
  * @LastEditors: jack-pearson
  * @FilePath: /vue3-element-admin/src/components/ADialog/index.tsx
- * @Description:
+ * @Description:  https://github.com/jack-pearson/vue3-element-admin
  */
 
 import { defineComponent, onMounted } from "vue";

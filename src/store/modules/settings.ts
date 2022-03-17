@@ -4,7 +4,7 @@
  * @LastEditTime: 2022-03-17 11:31:24
  * @LastEditors: jack-pearson
  * @FilePath: /vue3-element-admin/src/store/modules/settings.ts
- * @Description:
+ * @Description:  https://github.com/jack-pearson/vue3-element-admin
  */
 import { defineStore } from "pinia";
 import { ElComponentSizeType, languageType, settingsStoreType } from "@/types";
@@ -40,7 +40,8 @@ export const createSettings = (): settingsStoreType => {
 };
 
 const loadState = (): settingsStoreType => {
-  const themes = Local.get("themes") || ({} as settingsStoreType["themesState"]);
+  const themes =
+    Local.get("themes") || ({} as settingsStoreType["themesState"]);
   const config = (Local.get("config") || {}) as settingsStoreType["config"];
   const newState = Object.assign(createSettings(), themes, config);
   setHtmlCssVarBySettings(newState.themesState);

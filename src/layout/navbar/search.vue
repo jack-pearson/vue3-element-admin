@@ -4,14 +4,33 @@
  * @LastEditTime: 2022-03-16 15:32:20
  * @LastEditors: jack-pearson
  * @FilePath: /vue3-element-admin/src/layout/navbar/search.vue
- * @Description: 
+ * @Description:  https://github.com/jack-pearson/vue3-element-admin 
 -->
 <template>
   <div class="layout-search h-full select-none">
-    <div class="icon-wrapper text-$color-text-primary pl-2.5 pr-2.5 h-full flex justify-center items-center cursor-pointer" @click="openSearch">
+    <div
+      class="
+        icon-wrapper
+        text-$color-text-primary
+        pl-2.5
+        pr-2.5
+        h-full
+        flex
+        justify-center
+        items-center
+        cursor-pointer
+      "
+      @click="openSearch"
+    >
       <svg-icon name="search" class="w-full" />
     </div>
-    <el-dialog v-model="openDialog" destroy-on-close :modal="false" fullscreen :show-close="false">
+    <el-dialog
+      v-model="openDialog"
+      destroy-on-close
+      :modal="false"
+      fullscreen
+      :show-close="false"
+    >
       <el-autocomplete
         v-model="menuQuery"
         :fetch-suggestions="menuSearch"
@@ -23,7 +42,8 @@
       >
         <template #default="{ item }">
           <div class="flex items-center">
-            <svg-icon :name="item.meta.icon"></svg-icon> <span class="pl-2">{{ i18nRouter(item.meta.title) }}</span>
+            <svg-icon :name="item.meta.icon"></svg-icon>
+            <span class="pl-2">{{ i18nRouter(item.meta.title) }}</span>
           </div>
         </template>
       </el-autocomplete>
@@ -54,14 +74,15 @@ const openSearch = () => {
   });
 };
 const filterMenuList = (menuList: Menu[]) => {
-  return routeTreeToArray(menuList).map(item => (item.isHide ? null : item));
+  return routeTreeToArray(menuList).map((item) => (item.isHide ? null : item));
 };
 const menu = filterMenuList(menuList);
 const menuQueryChange = (queryString: string) => {
   return (restaurant: any) => {
     const result =
       restaurant.path.toLowerCase().indexOf(queryString.toLowerCase()) > -1 ||
-      restaurant.meta.title.toLowerCase().indexOf(queryString.toLowerCase()) > -1 ||
+      restaurant.meta.title.toLowerCase().indexOf(queryString.toLowerCase()) >
+        -1 ||
       i18nRouter(restaurant.meta.title).indexOf(queryString.toLowerCase()) > -1;
     return result;
   };

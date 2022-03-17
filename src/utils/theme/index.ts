@@ -4,7 +4,7 @@
  * @LastEditTime: 2022-03-16 18:32:45
  * @LastEditors: jack-pearson
  * @FilePath: /vue3-element-admin/src/utils/theme/index.ts
- * @Description:
+ * @Description:  https://github.com/jack-pearson/vue3-element-admin
  */
 import { settingsStoreType, themeType } from "@/types";
 import Color from "color";
@@ -30,14 +30,22 @@ export const setThemeLight = (color: Color<string>, theme: themeType) => {
   for (let index = 1; index < 10; index++) {
     const t = index / 10;
     const hex = color.mix(Color("#ffffff"), t).hex();
-    document.documentElement.style.setProperty(`--el-color-${theme}-light-${index}`, hex);
+    document.documentElement.style.setProperty(
+      `--el-color-${theme}-light-${index}`,
+      hex
+    );
   }
 };
 
-export const setHtmlCssVarBySettings = (theme: settingsStoreType["themesState"]) => {
+export const setHtmlCssVarBySettings = (
+  theme: settingsStoreType["themesState"]
+) => {
   for (const key in theme) {
     if (Object.prototype.hasOwnProperty.call(theme, key)) {
-      setHtmlCssVar(theme[key as keyof settingsStoreType["themesState"]], key as themeType);
+      setHtmlCssVar(
+        theme[key as keyof settingsStoreType["themesState"]],
+        key as themeType
+      );
     }
   }
 };

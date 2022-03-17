@@ -4,9 +4,14 @@
  * @LastEditTime: 2022-03-16 16:55:06
  * @LastEditors: jack-pearson
  * @FilePath: /vue3-element-admin/src/router/index.ts
- * @Description:
+ * @Description:  https://github.com/jack-pearson/vue3-element-admin
  */
-import { createRouter, createWebHistory, isNavigationFailure, RouteRecordRaw } from "vue-router";
+import {
+  createRouter,
+  createWebHistory,
+  isNavigationFailure,
+  RouteRecordRaw,
+} from "vue-router";
 import NProgress from "nprogress";
 import { routerStore } from "@/store";
 import "nprogress/nprogress.css";
@@ -79,7 +84,7 @@ router.beforeEach(async (to, from, next) => {
 
   try {
     const newRouter = await getRouterList();
-    newRouter.forEach(item => router.addRoute(item));
+    newRouter.forEach((item) => router.addRoute(item));
     next({ ...to, replace: true });
   } catch (err) {
     console.log(err, "动态添加路由失败");

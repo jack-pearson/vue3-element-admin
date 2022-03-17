@@ -4,7 +4,7 @@
  * @LastEditTime: 2022-01-30 14:45:18
  * @LastEditors: jack-pearson
  * @FilePath: /vue3-element-admin/src/layout/routerView/index.vue
- * @Description: 
+ * @Description:  https://github.com/jack-pearson/vue3-element-admin 
 -->
 <template>
   <router-view v-slot="{ Component }">

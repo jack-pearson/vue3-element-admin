@@ -4,7 +4,7 @@
  * @LastEditTime: 2022-01-25 14:55:28
  * @LastEditors: jack-pearson
  * @FilePath: /vue3-element-admin/src/components/pagination/index.vue
- * @Description: 
+ * @Description:  https://github.com/jack-pearson/vue3-element-admin 
 -->
 
 <template>

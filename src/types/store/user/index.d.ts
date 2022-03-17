@@ -4,7 +4,7 @@
  * @LastEditTime: 2022-01-19 17:42:20
  * @LastEditors: jack-pearson
  * @FilePath: /vue3-element-admin/src/types/store/user/index.d.ts
- * @Description:
+ * @Description:  https://github.com/jack-pearson/vue3-element-admin
  */
 
 import { PageInfo } from "@/types";

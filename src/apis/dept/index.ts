@@ -4,7 +4,7 @@
  * @LastEditTime: 2022-03-17 13:47:06
  * @LastEditors: jack-pearson
  * @FilePath: /vue3-element-admin/src/apis/dept/index.ts
- * @Description:
+ * @Description:  https://github.com/jack-pearson/vue3-element-admin
  */
 import { request } from "@/utils";
 import { Dept } from "@/types";

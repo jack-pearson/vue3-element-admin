@@ -1,10 +1,10 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-11-22 17:31:39
- * @LastEditTime: 2022-03-17 14:12:42
+ * @LastEditTime: 2022-03-17 16:37:53
  * @LastEditors: jack-pearson
  * @FilePath: /vue3-element-admin/vite.config.ts
- * @Description: https://vitejs.dev/config/
+ * @Description:  https://github.com/jack-pearson/vue3-element-admin
  */
 import { defineConfig } from "vite";
 import path from "path";
@@ -21,7 +21,8 @@ const { VITE_PORT, VITE_AUTO_OPEN, VITE_IGNORE_I18N_WARNING } = loadEnv();
 export default defineConfig(({ mode }) => {
   // 解决警告You are running the esm-bundler build of vue-i18n.
   const extraAlias: { "vue-i18n"?: string } = {};
-  if (mode === "development" && !!VITE_IGNORE_I18N_WARNING) extraAlias["vue-i18n"] = "vue-i18n/dist/vue-i18n.cjs.js";
+  if (mode === "development" && !!VITE_IGNORE_I18N_WARNING)
+    extraAlias["vue-i18n"] = "vue-i18n/dist/vue-i18n.cjs.js";
   return {
     plugins: [
       vue(),

@@ -4,7 +4,7 @@
  * @LastEditTime: 2022-01-13 13:16:47
  * @LastEditors: jack-pearson
  * @FilePath: /vue3-element-admin/src/apis/login/index.ts
- * @Description:
+ * @Description:  https://github.com/jack-pearson/vue3-element-admin
  */
 import { request } from "@/utils";
 import { User } from "@/types";

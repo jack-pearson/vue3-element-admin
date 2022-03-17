@@ -4,7 +4,7 @@
  * @LastEditTime: 2022-03-16 14:42:42
  * @LastEditors: jack-pearson
  * @FilePath: /vue3-element-admin/src/types/store/router/index.d.ts
- * @Description:
+ * @Description:  https://github.com/jack-pearson/vue3-element-admin
  */
 export interface Menu {
   id?: number;

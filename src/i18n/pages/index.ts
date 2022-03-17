@@ -4,7 +4,7 @@
  * @LastEditTime: 2022-01-19 16:18:45
  * @LastEditors: jack-pearson
  * @FilePath: /vue3-element-admin/src/i18n/pages/index.ts
- * @Description:
+ * @Description:  https://github.com/jack-pearson/vue3-element-admin
  */
 
 export * from "./system/dept";

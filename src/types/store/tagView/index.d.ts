@@ -6,7 +6,7 @@ import { Menu } from "../router";
  * @LastEditTime: 2022-01-12 14:05:22
  * @LastEditors: jack-pearson
  * @FilePath: /vue3-element-admin/src/types/store/tagView/index.d.ts
- * @Description:
+ * @Description:  https://github.com/jack-pearson/vue3-element-admin
  */
 export interface TagViewStoreType {
   visitedViews: Array<Menu>;

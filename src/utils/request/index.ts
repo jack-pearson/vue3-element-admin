@@ -4,7 +4,7 @@
  * @LastEditTime: 2022-01-18 17:38:24
  * @LastEditors: jack-pearson
  * @FilePath: /vue3-element-admin/src/utils/request/index.ts
- * @Description:
+ * @Description:  https://github.com/jack-pearson/vue3-element-admin
  */
 import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 import qs from "qs";
@@ -71,7 +71,12 @@ const instance = axios.create({
 });
 /** 移除请求 */
 const removePending = (config: AxiosRequestConfig) => {
-  const url = [config.method, config.url, qs.stringify(config.params), qs.stringify(config.data)].join("&");
+  const url = [
+    config.method,
+    config.url,
+    qs.stringify(config.params),
+    qs.stringify(config.data),
+  ].join("&");
   if (pending.has(url)) {
     // 如果在 pending 中存在当前请求标识，需要取消当前请求，并且移除
     pending.delete(url);
@@ -79,7 +84,12 @@ const removePending = (config: AxiosRequestConfig) => {
 };
 /** 添加请求 */
 const addPending = (config: AxiosRequestConfig) => {
-  const url = [config.method, config.url, qs.stringify(config.params), qs.stringify(config.data)].join("&");
+  const url = [
+    config.method,
+    config.url,
+    qs.stringify(config.params),
+    qs.stringify(config.data),
+  ].join("&");
   if (!pending.has(url)) {
     pending.set(url, config);
   }
@@ -111,7 +121,7 @@ instance.interceptors.response.use(
     }
     return response;
   },
-  error => {
+  (error) => {
     const { config, response } = error;
     ElNotification.error({
       title: showStatus(response?.status),
@@ -128,7 +138,9 @@ instance.interceptors.response.use(
   }
 );
 
-export const request = async <T = any>(config: AxiosRequestConfig): Promise<HttpGlobalResponse<T>> => {
+export const request = async <T = any>(
+  config: AxiosRequestConfig
+): Promise<HttpGlobalResponse<T>> => {
   const { data } = await instance.request<HttpGlobalResponse<T>>(config);
   return data;
 };
