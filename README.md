@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-11-22 17:31:39
- * @LastEditTime: 2022-03-17 14:16:38
+ * @LastEditTime: 2022-03-17 15:39:34
  * @LastEditors: jack-pearson
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: /vue3-element-admin/README.md
@@ -18,8 +18,8 @@
 - [ ] 内嵌
 - [ ] 外链
 - [x] 菜单搜索
-- [x] element-plus字体大小(统一调整)
-- [ ] 404页面
+- [x] element-plus 字体大小(统一调整)
+- [ ] 404 页面
 - [ ] 一键黑白
 - [ ] 固定 footer
 - [x] 侧边栏缩进
@@ -28,11 +28,11 @@
 - [x] 侧边栏 logo 显示
 - [x] vue-router
 - [x] pinia
-- [x] element-plus(安装 vscode插件 ---- element-ui-helper, 这样就有了 ts 的 props 提示)
+- [x] element-plus(安装 vscode 插件 ---- element-ui-helper, 这样就有了 ts 的 props 提示)
 - [x] element-plus 自定义主题. (还可以修改已经自定义好的主题).
 - [x] element-plus 自动导入
 - [x] windicss
-- [ ] husky
+- [x] husky
 - [x] svg 组件
 - [x] axios 封装类型提示
 
@@ -47,7 +47,7 @@ element-plus + vue-i18n
 
 通过 `src/store/modules/settings.ts` 中的 **config** 对象里面的 `hasSearch` 属性来控制该组件的显示隐藏.
 
-## element-plus字体大小
+## element-plus 字体大小
 
 - 通过 `el-config-provider` 组件,达到和 `element-plus` UI 库 进行关联.
 - 通过 `src/store/modules/settings.ts` 中的 **config** 对象里面的 `hasZiTi` 属性来控制该组件的显示隐藏.
@@ -77,8 +77,8 @@ element-plus + vue-i18n
 
 ## element 自定义主题
 
-1. 再 `src/styles/element/index.scss`  文件中修改对应的颜色.
-2. 同时需要修改 `src/store/modules/settings.ts`  文件修改成一致的颜色色值.
+1. 再 `src/styles/element/index.scss` 文件中修改对应的颜色.
+2. 同时需要修改 `src/store/modules/settings.ts` 文件修改成一致的颜色色值.
 
 **注意** 修改色值之后刷新没有改变,是因为你肯定通过`页面`修改了`主题`
 
@@ -95,6 +95,22 @@ element-plus + vue-i18n
 为什么选择 Windi CSS? 呢, 在阐述为什么创建 Windi CSS 时，作者曾说：
 
 > 当项目越来越大时（大约几十个组件），使用 Tailwind CSS 最初的编译时间达到了 3s，而热更新时的时间甚至超过了 1s。 - @voorjaar
+
+不用这个的坏处
+
+- 看别人的代码麻烦
+- 改别人的代码麻烦
+- 样式都集中再一个文件中
+- 查找起来很麻烦
+- 自己写同样麻烦
+
+## husky
+
+自己研究了一会发现, `lint-staged` npm 包中说明了 只需要一行命令即可.
+
+```bash
+npx mrm@2 lint-staged
+```
 
 ## svg 组件
 
