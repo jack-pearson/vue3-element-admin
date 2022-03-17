@@ -1,45 +1,20 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2022-01-10 17:24:36
- * @LastEditTime: 2022-03-16 15:32:07
+ * @LastEditTime: 2022-03-17 18:21:31
  * @LastEditors: jack-pearson
  * @FilePath: /vue3-element-admin/src/layout/navbar/language.vue
  * @Description:  https://github.com/jack-pearson/vue3-element-admin 
 -->
 <template>
   <div class="layout-language h-full select-none">
-    <el-dropdown
-      type="primary"
-      :show-timeout="70"
-      :hide-timeout="50"
-      trigger="hover"
-      class="h-full flex items-center"
-      @command="onChangeSize"
-    >
-      <div
-        class="
-          icon-wrapper
-          text-$color-text-primary
-          pl-2.5
-          pr-2.5
-          h-full
-          flex
-          justify-center
-          items-center
-          cursor-pointer
-        "
-      >
+    <el-dropdown type="primary" :show-timeout="70" :hide-timeout="50" trigger="hover" class="h-full flex items-center" @command="onChangeSize">
+      <div class="icon-wrapper text-$color-text-primary pl-2.5 pr-2.5 h-full flex justify-center items-center cursor-pointer">
         <svg-icon :name="language" class="w-full pointer-events-none" />
       </div>
       <template #dropdown>
         <el-dropdown-menu>
-          <el-dropdown-item
-            v-for="item in i18n"
-            :key="item.value"
-            :disabled="item.value === language"
-            :command="item.value"
-            >{{ item.label }}</el-dropdown-item
-          >
+          <el-dropdown-item v-for="item in i18nOption" :key="item.value" :disabled="item.value === language" :command="item.value">{{ item.label }}</el-dropdown-item>
         </el-dropdown-menu>
       </template>
     </el-dropdown>
@@ -47,20 +22,23 @@
 </template>
 <script setup lang="ts">
 import { getCurrentInstance, computed } from "vue";
-import { Local, i18n } from "@/utils";
+import { Local, i18n as i18nOption } from "@/utils";
+import { i18n } from "@/i18n";
 import { settingsStore } from "@/store";
+import { useRoute } from "vue-router";
 import { languageType, settingsStoreType } from "@/types";
 const settingsState = settingsStore();
 const { proxy } = getCurrentInstance() as any;
 const onChangeSize = (command: languageType) => {
-  const settingsStore = (Local.get("settingsStore") || {
-    config: {},
-  }) as settingsStoreType;
-  settingsStore.config.language = command;
-  Local.set("settingsStore", settingsStore);
+  const config = (Local.get("config") || {}) as settingsStoreType["config"];
+  config.language = command;
+  Local.set("config", config);
   settingsState.setLanguage(command);
   proxy.$i18n.locale = command;
+  document.title = i18n.global.t("messages.router." + title.value);
 };
+const route = useRoute();
+const title = computed(() => route.meta.title);
 const language = computed(() => settingsState.config.language);
 </script>
 <style lang="scss" scoped>
