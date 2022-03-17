@@ -49,7 +49,7 @@
     "not dead"
   ],
   "lint-staged": {
-    "*.{js,ts,tsx,vue,css,scss}": "eslint --cache --fix",
+    "*.{js,ts,tsx,vue,css,scss}": "eslint --max-warnings 0 --cache --fix",
     "*.{js,css,md,ts,tsx,vue,scss}": "prettier --write"
   }
 }
