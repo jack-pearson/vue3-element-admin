@@ -3,7 +3,7 @@
  * @Date: 2021-11-22 17:31:39
  * @LastEditTime: 2022-03-16 13:50:07
  * @LastEditors: jack-pearson
- * @FilePath: /yh-vue3-admin/src/main.ts
+ * @FilePath: /vue3-element-admin/src/main.ts
  * @Description:
  */
 import { createApp } from "vue";

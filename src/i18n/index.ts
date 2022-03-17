@@ -4,7 +4,7 @@
  * @LastEditTime: 2022-01-19 16:19:21
  * @LastEditors: jack-pearson
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
- * @FilePath: /yh-vue3-admin/src/i18n/index.ts
+ * @FilePath: /vue3-element-admin/src/i18n/index.ts
  */
 import { createI18n } from "vue-i18n";
 // import ElementZhCn from "element-plus/lib/locale/lang/zh-cn";

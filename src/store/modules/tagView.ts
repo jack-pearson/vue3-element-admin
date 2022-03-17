@@ -3,7 +3,7 @@
  * @Date: 2022-01-11 15:10:49
  * @LastEditTime: 2022-01-18 15:39:57
  * @LastEditors: jack-pearson
- * @FilePath: /yh-vue3-admin/src/store/modules/tagView.ts
+ * @FilePath: /vue3-element-admin/src/store/modules/tagView.ts
  * @Description:
  */
 import { defineStore } from "pinia";

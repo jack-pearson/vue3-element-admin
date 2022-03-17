@@ -3,7 +3,7 @@
  * @Date: 2021-11-24 17:48:43
  * @LastEditTime: 2022-03-16 16:55:06
  * @LastEditors: jack-pearson
- * @FilePath: /yh-vue3-admin/src/router/index.ts
+ * @FilePath: /vue3-element-admin/src/router/index.ts
  * @Description:
  */
 import { createRouter, createWebHistory, isNavigationFailure, RouteRecordRaw } from "vue-router";

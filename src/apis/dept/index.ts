@@ -1,9 +1,9 @@
 /*
  * @Author: jack-pearson
  * @Date: 2022-01-17 17:46:51
- * @LastEditTime: 2022-02-22 15:39:33
+ * @LastEditTime: 2022-03-17 13:47:06
  * @LastEditors: jack-pearson
- * @FilePath: /yh-vue3-admin/src/apis/dept/index.ts
+ * @FilePath: /vue3-element-admin/src/apis/dept/index.ts
  * @Description:
  */
 import { request } from "@/utils";

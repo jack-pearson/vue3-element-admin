@@ -3,7 +3,7 @@
  * @Date: 2022-01-18 14:01:56
  * @LastEditTime: 2022-01-18 17:54:05
  * @LastEditors: jack-pearson
- * @FilePath: /yh-vue3-admin/src/i18n/pages/system/dept/zh-cn.ts
+ * @FilePath: /vue3-element-admin/src/i18n/pages/system/dept/zh-cn.ts
  * @Description:
  */
 // 定义内容

@@ -13,4 +13,12 @@
   "typescript.tsdk": "node_modules/typescript/lib",
   "editor.accessibilitySupport": "on",
   "prettier.printWidth": 200,
+  "markdownlint.config": {
+    "default": true,
+    "MD033": {
+      "allowed_elements": [
+        "img"
+      ]
+    }
+  },
 }

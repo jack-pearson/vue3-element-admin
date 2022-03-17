@@ -3,7 +3,7 @@
  * @Date: 2021-11-23 11:29:01
  * @LastEditTime: 2022-01-25 14:55:15
  * @LastEditors: jack-pearson
- * @FilePath: /yh-vue3-admin/.eslintrc.js
+ * @FilePath: /vue3-element-admin/.eslintrc.js
  * @Description:
  */
 module.exports = {

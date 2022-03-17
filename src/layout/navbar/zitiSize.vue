@@ -3,7 +3,7 @@
  * @Date: 2022-01-05 11:42:35
  * @LastEditTime: 2022-03-16 15:32:57
  * @LastEditors: jack-pearson
- * @FilePath: /yh-vue3-admin/src/layout/navbar/zitiSize.vue
+ * @FilePath: /vue3-element-admin/src/layout/navbar/zitiSize.vue
  * @Description: 
 -->
 <template>

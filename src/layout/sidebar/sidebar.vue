@@ -3,7 +3,7 @@
  * @Date: 2021-12-07 20:43:53
  * @LastEditTime: 2022-03-16 15:46:14
  * @LastEditors: jack-pearson
- * @FilePath: /yh-vue3-admin/src/layout/sidebar/sidebar.vue
+ * @FilePath: /vue3-element-admin/src/layout/sidebar/sidebar.vue
  * @Description: 
 -->
 <template>

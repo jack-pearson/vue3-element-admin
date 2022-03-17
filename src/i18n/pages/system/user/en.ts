@@ -3,7 +3,7 @@
  * @Date: 2021-11-24 15:59:57
  * @LastEditTime: 2022-01-19 17:55:48
  * @LastEditors: jack-pearson
- * @FilePath: /yh-vue3-admin/src/i18n/pages/system/user/en.ts
+ * @FilePath: /vue3-element-admin/src/i18n/pages/system/user/en.ts
  * @Description:
  */
 // 定义内容

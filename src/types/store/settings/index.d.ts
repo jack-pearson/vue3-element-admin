@@ -1,9 +1,9 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-11-24 16:23:26
- * @LastEditTime: 2022-03-17 10:44:48
+ * @LastEditTime: 2022-03-17 11:30:59
  * @LastEditors: jack-pearson
- * @FilePath: /yh-vue3-admin/src/types/store/settings/index.d.ts
+ * @FilePath: /vue3-element-admin/src/types/store/settings/index.d.ts
  * @Description:
  */
 export type languageType = "zh-cn" | "en";
@@ -17,9 +17,11 @@ export interface settingsStoreType {
     danger: string;
     info: string;
   };
-  config: {
+  fixed: {
     loginTitle: string;
     logoTitle: string;
+  };
+  config: {
     hasTagsView: boolean;
     hasGlobalSettings: boolean;
     hasSidebarLogo: boolean;

@@ -1,16 +1,16 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2021-11-24 17:42:59
- * @LastEditTime: 2022-03-15 17:31:16
+ * @LastEditTime: 2022-03-17 11:32:56
  * @LastEditors: jack-pearson
- * @FilePath: /yh-vue3-admin/src/views/login/index.vue
+ * @FilePath: /vue3-element-admin/src/views/login/index.vue
  * @Description: 
 -->
 <template>
   <div class="login-page w-full h-full bg-cover select-none">
     <div class="login-content p-5 absolute top-2/4 left-2/4 bg-white rounded overflow-hidden">
       <div class="login-content-main w-4/5 h-full mx-auto my-0">
-        <h4 class="text-dark-300 font-bold pt-10 pb-10 tracking-wider text-center whitespace-normal z-10 relative h-auto transition-all">{{ configStore.loginTitle }} 后台模板</h4>
+        <h4 class="text-dark-300 font-bold pt-10 pb-10 tracking-wider text-center whitespace-normal z-10 relative h-auto transition-all">{{ fixedStore.loginTitle }} 后台模板</h4>
         <el-tabs @tab-click="onTabsClick" model-value="account" class="el-tabs">
           <el-tab-pane :label="$t('login.tabs.account')" name="account">
             <transition name="el-zoom-in-center" appear>
@@ -61,7 +61,7 @@ import { useRouter } from "vue-router";
 import { Session } from "@/utils";
 const store = userStore();
 const router = useRouter();
-const { config: configStore } = settingsStore();
+const { fixed: fixedStore } = settingsStore();
 const { proxy } = getCurrentInstance() as any;
 const form = reactive({
   account: "admin",

@@ -3,7 +3,7 @@
  * @Date: 2021-12-07 20:37:19
  * @LastEditTime: 2022-01-19 15:53:43
  * @LastEditors: jack-pearson
- * @FilePath: /yh-vue3-admin/src/layout/main/index.vue
+ * @FilePath: /vue3-element-admin/src/layout/main/index.vue
  * @Description: 
 -->
 <template>

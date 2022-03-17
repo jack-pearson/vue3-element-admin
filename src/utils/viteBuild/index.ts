@@ -3,7 +3,7 @@
  * @Date: 2021-11-24 10:22:02
  * @LastEditTime: 2021-12-30 14:06:44
  * @LastEditors: jack-pearson
- * @FilePath: /yh-vue3-admin/src/utils/viteBuild/index.ts
+ * @FilePath: /vue3-element-admin/src/utils/viteBuild/index.ts
  * @Description:
  */
 import dotenv from "dotenv";

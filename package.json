@@ -1,5 +1,5 @@
 {
-  "name": "yh-vue3-admin",
+  "name": "vue3-element-admin",
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",

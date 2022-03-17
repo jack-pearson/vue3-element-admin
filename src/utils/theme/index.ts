@@ -3,7 +3,7 @@
  * @Date: 2021-12-09 16:16:17
  * @LastEditTime: 2022-03-16 18:32:45
  * @LastEditors: jack-pearson
- * @FilePath: /yh-vue3-admin/src/utils/theme/index.ts
+ * @FilePath: /vue3-element-admin/src/utils/theme/index.ts
  * @Description:
  */
 import { settingsStoreType, themeType } from "@/types";

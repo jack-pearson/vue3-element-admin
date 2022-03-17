@@ -3,7 +3,7 @@
  * @Date: 2022-01-13 18:19:34
  * @LastEditTime: 2022-03-17 10:51:45
  * @LastEditors: jack-pearson
- * @FilePath: /yh-vue3-admin/src/layout/navbar/settings.vue
+ * @FilePath: /vue3-element-admin/src/layout/navbar/settings.vue
  * @Description: 
 -->
 <template>

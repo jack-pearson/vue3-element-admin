@@ -1,9 +1,9 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-11-24 16:14:10
- * @LastEditTime: 2022-03-16 19:02:26
+ * @LastEditTime: 2022-03-17 11:31:24
  * @LastEditors: jack-pearson
- * @FilePath: /yh-vue3-admin/src/store/modules/settings.ts
+ * @FilePath: /vue3-element-admin/src/store/modules/settings.ts
  * @Description:
  */
 import { defineStore } from "pinia";
@@ -19,9 +19,11 @@ export const createSettings = (): settingsStoreType => {
       danger: "#F56C6C",
       info: "#909399",
     },
+    fixed: {
+      loginTitle: "vue3-element-admin",
+      logoTitle: "vue3-element-admin",
+    },
     config: {
-      loginTitle: "yh-vue3-admin",
-      logoTitle: "yh-vue3-admin",
       ElComponentSize: "default",
       hasTagsView: true,
       hasGlobalSettings: true,
@@ -38,8 +40,9 @@ export const createSettings = (): settingsStoreType => {
 };
 
 const loadState = (): settingsStoreType => {
-  const state = (Local.get("settingsStore") || {}) as settingsStoreType;
-  const newState = Object.assign(createSettings(), state);
+  const themes = Local.get("themes") || ({} as settingsStoreType["themesState"]);
+  const config = (Local.get("config") || {}) as settingsStoreType["config"];
+  const newState = Object.assign(createSettings(), themes, config);
   setHtmlCssVarBySettings(newState.themesState);
   return newState;
 };
@@ -50,25 +53,25 @@ export const settingsStore = defineStore("settingsStore", {
     // 设置布局配置
     setThemes(themes: Partial<settingsStoreType["themesState"]>) {
       Object.assign(this.themesState, themes);
-      Local.set("settingsStore", this);
+      Local.set("themes", this.themesState);
     },
     setConfig(config: Partial<settingsStoreType["config"]>) {
       Object.assign(this.config, config);
-      Local.set("settingsStore", this);
+      Local.set("config", this.config);
     },
     setElementZiTiSize(size: ElComponentSizeType) {
       this.config.ElComponentSize = size;
-      Local.set("settingsStore", this);
+      Local.set("config", this.config);
     },
     // 设置是否折叠菜单
     setIsCollapsed(isCollapsed: boolean) {
       this.config.isCollapsed = isCollapsed;
-      Local.set("settingsStore", this);
+      Local.set("config", this.config);
     },
     // 设置语言
     setLanguage(language: languageType) {
       this.config.language = language;
-      Local.set("settingsStore", this);
+      Local.set("config", this.config);
     },
   },
 });
