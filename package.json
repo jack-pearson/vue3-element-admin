@@ -4,7 +4,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@element-plus/icons-vue": "^0.2.4",
@@ -28,6 +29,8 @@
     "dotenv": "^10.0.0",
     "eslint": "^8.3.0",
     "eslint-plugin-vue": "^8.1.1",
+    "husky": ">=6",
+    "lint-staged": ">=10",
     "prettier": "^2.4.1",
     "qs": "^6.10.1",
     "sass": "^1.43.4",
@@ -44,5 +47,9 @@
     "> 1%",
     "last 2 versions",
     "not dead"
-  ]
+  ],
+  "lint-staged": {
+    "*.{js,ts,tsx,vue,css,scss}": "eslint --max-warnings 5 --cache --fix",
+    "*.{js,css,md,ts,tsx,vue,scss}": "prettier --write"
+  }
 }
