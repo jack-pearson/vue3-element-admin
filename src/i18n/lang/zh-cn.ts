@@ -1,7 +1,7 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-11-24 15:59:57
- * @LastEditTime: 2022-02-07 14:35:04
+ * @LastEditTime: 2022-03-17 21:08:18
  * @LastEditors: jack-pearson
  * @FilePath: /vue3-element-admin/src/i18n/lang/zh-cn.ts
  * @Description:  https://github.com/jack-pearson/vue3-element-admin
@@ -9,6 +9,7 @@
 // 定义内容
 export default {
   router: {
+    login: "登录",
     home: "首页",
     system: "系统设置",
     menu: "菜单管理",
