@@ -1,7 +1,7 @@
 /*
  * @Author: jack-pearson
  * @Date: 2022-03-02 17:43:28
- * @LastEditTime: 2022-03-02 18:41:37
+ * @LastEditTime: 2022-03-17 15:15:36
  * @LastEditors: jack-pearson
  * @FilePath: /vue3-element-admin/src/components/ADialog/index.tsx
  * @Description:
@@ -18,10 +18,11 @@ export default defineComponent({
     },
   },
   setup(props: { visible: boolean }) {
-    props.visible = false;
+    console.log(props);
     onMounted(() => {
       console.log("ADialog mounted");
     });
+
     return () => (
       <div>
         <div>ADialog</div>
