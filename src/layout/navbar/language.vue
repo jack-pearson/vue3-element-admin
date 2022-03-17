@@ -4,17 +4,42 @@
  * @LastEditTime: 2022-03-16 15:32:07
  * @LastEditors: jack-pearson
  * @FilePath: /vue3-element-admin/src/layout/navbar/language.vue
- * @Description: 
+ * @Description:  https://github.com/jack-pearson/vue3-element-admin 
 -->
 <template>
   <div class="layout-language h-full select-none">
-    <el-dropdown type="primary" :show-timeout="70" :hide-timeout="50" trigger="hover" class="h-full flex items-center" @command="onChangeSize">
-      <div class="icon-wrapper text-$color-text-primary pl-2.5 pr-2.5 h-full flex justify-center items-center cursor-pointer">
+    <el-dropdown
+      type="primary"
+      :show-timeout="70"
+      :hide-timeout="50"
+      trigger="hover"
+      class="h-full flex items-center"
+      @command="onChangeSize"
+    >
+      <div
+        class="
+          icon-wrapper
+          text-$color-text-primary
+          pl-2.5
+          pr-2.5
+          h-full
+          flex
+          justify-center
+          items-center
+          cursor-pointer
+        "
+      >
         <svg-icon :name="language" class="w-full pointer-events-none" />
       </div>
       <template #dropdown>
         <el-dropdown-menu>
-          <el-dropdown-item v-for="item in i18n" :key="item.value" :disabled="item.value === language" :command="item.value">{{ item.label }}</el-dropdown-item>
+          <el-dropdown-item
+            v-for="item in i18n"
+            :key="item.value"
+            :disabled="item.value === language"
+            :command="item.value"
+            >{{ item.label }}</el-dropdown-item
+          >
         </el-dropdown-menu>
       </template>
     </el-dropdown>
@@ -28,7 +53,9 @@ import { languageType, settingsStoreType } from "@/types";
 const settingsState = settingsStore();
 const { proxy } = getCurrentInstance() as any;
 const onChangeSize = (command: languageType) => {
-  const settingsStore = (Local.get("settingsStore") || { config: {} }) as settingsStoreType;
+  const settingsStore = (Local.get("settingsStore") || {
+    config: {},
+  }) as settingsStoreType;
   settingsStore.config.language = command;
   Local.set("settingsStore", settingsStore);
   settingsState.setLanguage(command);

@@ -4,10 +4,13 @@
  * @LastEditTime: 2022-01-19 15:53:43
  * @LastEditors: jack-pearson
  * @FilePath: /vue3-element-admin/src/layout/main/index.vue
- * @Description: 
+ * @Description:  https://github.com/jack-pearson/vue3-element-admin 
 -->
 <template>
-  <el-container class="layout-main overflow-y-auto p-2.5" :class="{ 'is-tagView': !hasTagsView }">
+  <el-container
+    class="layout-main overflow-y-auto p-2.5"
+    :class="{ 'is-tagView': !hasTagsView }"
+  >
     <div class="w-full h-auto"><LayoutParentView /></div>
   </el-container>
 </template>

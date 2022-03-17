@@ -4,7 +4,7 @@
  * @LastEditTime: 2021-12-31 11:25:10
  * @LastEditors: jack-pearson
  * @FilePath: /vue3-element-admin/src/plugins/svgBuilder.ts
- * @Description:
+ * @Description:  https://github.com/jack-pearson/vue3-element-admin
  */
 import { Plugin } from "vite";
 import { readFileSync, readdirSync, PathLike } from "fs";
@@ -34,18 +34,24 @@ function findSvgFile(dir: PathLike): string[] {
           // console.log(dirent.name)
           let width = 0;
           let height = 0;
-          let content = $2.replace(clearHeightWidth, (s1: any, s2: string, s3: number) => {
-            if (s2 === "width") {
-              width = s3;
-            } else if (s2 === "height") {
-              height = s3;
+          let content = $2.replace(
+            clearHeightWidth,
+            (s1: any, s2: string, s3: number) => {
+              if (s2 === "width") {
+                width = s3;
+              } else if (s2 === "height") {
+                height = s3;
+              }
+              return "";
             }
-            return "";
-          });
+          );
           if (!hasViewBox.test($2)) {
             content += `viewBox="0 0 ${width} ${height}"`;
           }
-          return `<symbol id="${idPerfix}-${dirent.name.replace(".svg", "")}" ${content}>`;
+          return `<symbol id="${idPerfix}-${dirent.name.replace(
+            ".svg",
+            ""
+          )}" ${content}>`;
         })
         .replace("</svg>", "</symbol>");
       svgRes.push(svg);

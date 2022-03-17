@@ -4,7 +4,7 @@
  * @LastEditTime: 2022-01-19 17:55:48
  * @LastEditors: jack-pearson
  * @FilePath: /vue3-element-admin/src/i18n/pages/system/user/en.ts
- * @Description:
+ * @Description:  https://github.com/jack-pearson/vue3-element-admin
  */
 // 定义内容
 export default {

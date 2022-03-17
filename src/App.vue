@@ -4,7 +4,7 @@
  * @LastEditTime: 2022-01-14 18:19:26
  * @LastEditors: jack-pearson
  * @FilePath: /vue3-element-admin/src/App.vue
- * @Description: 
+ * @Description:  https://github.com/jack-pearson/vue3-element-admin 
 -->
 
 <template>

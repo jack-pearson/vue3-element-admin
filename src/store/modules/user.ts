@@ -4,7 +4,7 @@
  * @LastEditTime: 2022-01-17 14:23:28
  * @LastEditors: jack-pearson
  * @FilePath: /vue3-element-admin/src/store/modules/user.ts
- * @Description:
+ * @Description:  https://github.com/jack-pearson/vue3-element-admin
  */
 
 import { defineStore } from "pinia";

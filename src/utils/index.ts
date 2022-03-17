@@ -4,7 +4,7 @@
  * @LastEditTime: 2021-12-30 14:55:01
  * @LastEditors: jack-pearson
  * @FilePath: /vue3-element-admin/src/utils/index.ts
- * @Description:
+ * @Description:  https://github.com/jack-pearson/vue3-element-admin
  */
 
 export * from "./router";

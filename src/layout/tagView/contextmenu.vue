@@ -4,19 +4,53 @@
  * @LastEditTime: 2022-03-15 17:30:06
  * @LastEditors: jack-pearson
  * @FilePath: /vue3-element-admin/src/layout/tagView/contextmenu.vue
- * @Description: 
+ * @Description:  https://github.com/jack-pearson/vue3-element-admin 
 -->
 
 <template>
   <transition name="el-zoom-in-center">
-    <div aria-hidden="true" class="context-menu fixed" :style="style" v-if="open">
+    <div
+      aria-hidden="true"
+      class="context-menu fixed"
+      :style="style"
+      v-if="open"
+    >
       <ul class="context-menu-ul bg-white pt-2 rounded pb-2 text-black">
         <li class="context-menu-ul-li pl-4 pr-4 pt-1 pb-1">刷新</li>
-        <li class="context-menu-ul-li pl-4 pr-4 pt-1 pb-1" v-if="hasMenu.close" @click="onHandleClose">关闭</li>
-        <li class="context-menu-ul-li pl-4 pr-4 pt-1 pb-1" v-if="hasMenu.closeOther" @click="onHandleCloseOther">关闭其他</li>
-        <li class="context-menu-ul-li pl-4 pr-4 pt-1 pb-1" v-if="hasMenu.closeLeft" @click="onHandleCloseLeft">关闭左边</li>
-        <li class="context-menu-ul-li pl-4 pr-4 pt-1 pb-1" v-if="hasMenu.closeRight" @click="onHandleCloseRight">关闭右边</li>
-        <li class="context-menu-ul-li pl-4 pr-4 pt-1 pb-1" @click="onHandleCloseAll">关闭所有</li>
+        <li
+          class="context-menu-ul-li pl-4 pr-4 pt-1 pb-1"
+          v-if="hasMenu.close"
+          @click="onHandleClose"
+        >
+          关闭
+        </li>
+        <li
+          class="context-menu-ul-li pl-4 pr-4 pt-1 pb-1"
+          v-if="hasMenu.closeOther"
+          @click="onHandleCloseOther"
+        >
+          关闭其他
+        </li>
+        <li
+          class="context-menu-ul-li pl-4 pr-4 pt-1 pb-1"
+          v-if="hasMenu.closeLeft"
+          @click="onHandleCloseLeft"
+        >
+          关闭左边
+        </li>
+        <li
+          class="context-menu-ul-li pl-4 pr-4 pt-1 pb-1"
+          v-if="hasMenu.closeRight"
+          @click="onHandleCloseRight"
+        >
+          关闭右边
+        </li>
+        <li
+          class="context-menu-ul-li pl-4 pr-4 pt-1 pb-1"
+          @click="onHandleCloseAll"
+        >
+          关闭所有
+        </li>
         <li class="context-menu-ul-li pl-4 pr-4 pt-1 pb-1">当前页全屏</li>
       </ul>
     </div>
@@ -59,7 +93,9 @@ const onHandleClose = () => {
   close(currentData);
 };
 const close = (currentData: Menu) => {
-  const findIndex = visitedViews.value.findIndex((v: Menu) => v.path === currentData.path);
+  const findIndex = visitedViews.value.findIndex(
+    (v: Menu) => v.path === currentData.path
+  );
   const len = visitedViews.value.length;
   if (len === 1) return;
   if (path.value === currentData.path) {
@@ -91,7 +127,15 @@ const onHandleCloseAll = () => {
 };
 
 // eslint-disable-next-line no-unused-vars
-const openContextmenu = ({ x, y, current }: { x: number; y: number; current: Menu }) => {
+const openContextmenu = ({
+  x,
+  y,
+  current,
+}: {
+  x: number;
+  y: number;
+  current: Menu;
+}) => {
   hasMenu.closeLeft = true;
   hasMenu.closeRight = true;
   hasMenu.close = true;
@@ -113,7 +157,9 @@ const hasChecked = (current: Menu) => {
     hasMenu.closeRight = false;
     hasMenu.closeAll = false;
   }
-  const findIndex = visitedViews.value.findIndex(item => item.path === current.path);
+  const findIndex = visitedViews.value.findIndex(
+    (item) => item.path === current.path
+  );
   if (findIndex === len - 1) {
     hasMenu.closeRight = false;
   }
@@ -134,7 +180,11 @@ onUnmounted(() => {
   font-size: 12px;
   .context-menu-ul-li {
     &:hover {
-      background: linear-gradient(45deg, var(--el-color-primary), var(--el-color-primary-light-7));
+      background: linear-gradient(
+        45deg,
+        var(--el-color-primary),
+        var(--el-color-primary-light-7)
+      );
     }
   }
 }

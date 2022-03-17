@@ -4,7 +4,7 @@
  * @LastEditTime: 2022-03-16 13:50:07
  * @LastEditors: jack-pearson
  * @FilePath: /vue3-element-admin/src/main.ts
- * @Description:
+ * @Description:  https://github.com/jack-pearson/vue3-element-admin
  */
 import { createApp } from "vue";
 import "virtual:windi.css";
@@ -20,4 +20,11 @@ import router from "@/router";
 import App from "@/App.vue";
 
 const app = createApp(App);
-app.use(pinia).use(router).use(i18n).component("svg-icon", svgIcon).component("pagination", pagination).use(ElementPlus).mount("#app");
+app
+  .use(pinia)
+  .use(router)
+  .use(i18n)
+  .component("svg-icon", svgIcon)
+  .component("pagination", pagination)
+  .use(ElementPlus)
+  .mount("#app");

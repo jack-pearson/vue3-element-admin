@@ -4,7 +4,7 @@
  * @LastEditTime: 2022-01-19 17:42:42
  * @LastEditors: jack-pearson
  * @FilePath: /vue3-element-admin/src/apis/user/index.ts
- * @Description:
+ * @Description:  https://github.com/jack-pearson/vue3-element-admin
  */
 import { Menu, UserList } from "@/types";
 import { request } from "@/utils";

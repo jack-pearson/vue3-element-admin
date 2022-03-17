@@ -4,7 +4,7 @@
  * @LastEditTime: 2022-01-17 14:23:18
  * @LastEditors: jack-pearson
  * @FilePath: /vue3-element-admin/src/store/modules/router.ts
- * @Description:
+ * @Description:  https://github.com/jack-pearson/vue3-element-admin
  */
 import { defineStore } from "pinia";
 import { Menu, RouterStoreTypes } from "@/types";
@@ -32,7 +32,7 @@ export const routerStore = defineStore("routerStore", {
               reject(data);
             }
           })
-          .catch(err => {
+          .catch((err) => {
             reject(err);
           });
       });

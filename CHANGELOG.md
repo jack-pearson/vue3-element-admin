@@ -4,7 +4,7 @@
  * @LastEditTime: 2022-01-19 11:23:41
  * @LastEditors: jack-pearson
  * @FilePath: /vue3-element-admin/CHANGELOG.md
- * @Description: 
+ * @Description:  https://github.com/jack-pearson/vue3-element-admin
 -->
 
 # vue3-element-admin 更新日志

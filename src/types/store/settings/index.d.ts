@@ -4,7 +4,7 @@
  * @LastEditTime: 2022-03-17 11:30:59
  * @LastEditors: jack-pearson
  * @FilePath: /vue3-element-admin/src/types/store/settings/index.d.ts
- * @Description:
+ * @Description:  https://github.com/jack-pearson/vue3-element-admin
  */
 export type languageType = "zh-cn" | "en";
 export type themeType = "primary" | "success" | "warning" | "danger" | "info";
