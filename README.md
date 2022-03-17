@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-11-22 17:31:39
- * @LastEditTime: 2022-03-17 13:44:32
+ * @LastEditTime: 2022-03-17 14:08:51
  * @LastEditors: jack-pearson
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: /vue3-element-admin/README.md
@@ -63,12 +63,12 @@ element-plus + vue-i18n
 ## TagsView
 
 - 通过 `src/store/modules/settings.ts` 中的 **config** 对象里面的 `hasTagsView` 属性来控制该组件的显示隐藏.
-- 也可以通过 <img src="./src/components/svg-icon/svg/theme.svg" /> 来控制显示隐藏
+- 也可以通过页面中主题 <img src="./src/components/svg-icon/svg/theme.svg" style="width: 20px; height: 20px" /> 来控制显示隐藏
 
 ## 侧边栏 logo 显示
 
 - 通过 `src/store/modules/settings.ts` 中的 **config** 对象里面的 `hasSidebarLogo` 属性来控制该组件的显示隐藏.
-- 也可以通过 <img src="./src/components/svg-icon/svg/theme.svg" /> 来控制显示隐藏
+- 也可以通过页面中主题 <img src="./src/components/svg-icon/svg/theme.svg" style="width: 20px; height: 20px" /> 来控制显示隐藏
 
 ## pinia
 
