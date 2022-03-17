@@ -1,7 +1,7 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-11-24 16:23:26
- * @LastEditTime: 2022-03-03 14:10:27
+ * @LastEditTime: 2022-03-17 10:44:48
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/types/store/settings/index.d.ts
  * @Description:

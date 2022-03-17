@@ -1,7 +1,7 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2022-01-13 18:19:34
- * @LastEditTime: 2022-03-16 15:32:37
+ * @LastEditTime: 2022-03-17 10:51:45
  * @LastEditors: jack-pearson
  * @FilePath: /yh-vue3-admin/src/layout/navbar/settings.vue
  * @Description: 
@@ -18,7 +18,22 @@
           <span class="label flex-1">primary</span>
           <el-color-picker v-model="settings.primary" @change="e => onChangeTheme(e, 'primary')" />
         </div>
-
+        <div class="item w-full item flex items-center">
+          <span class="label flex-1">success</span>
+          <el-color-picker v-model="settings.success" @change="e => onChangeTheme(e, 'success')" />
+        </div>
+        <div class="item w-full item flex items-center">
+          <span class="label flex-1">danger</span>
+          <el-color-picker v-model="settings.danger" @change="e => onChangeTheme(e, 'danger')" />
+        </div>
+        <div class="item w-full item flex items-center">
+          <span class="label flex-1">warning</span>
+          <el-color-picker v-model="settings.warning" @change="e => onChangeTheme(e, 'warning')" />
+        </div>
+        <div class="item w-full item flex items-center">
+          <span class="label flex-1">info</span>
+          <el-color-picker v-model="settings.info" @change="e => onChangeTheme(e, 'info')" />
+        </div>
         <el-divider content-position="left" class="font-bold">{{ i18nSettings("globalSettings") }}</el-divider>
         <div class="item w-full item flex items-center">
           <span class="label flex-1">{{ i18nSettings("switchTagsView") }}</span>
@@ -40,19 +55,20 @@
 import { computed, ref, reactive } from "vue";
 import { i18nSettings, setHtmlCssVar } from "@/utils";
 import { settingsStore } from "@/store";
+import { themeType } from "@/types";
 const open = ref(false);
 const settingsState = settingsStore();
 const themes = computed(() => settingsState.themesState);
 const config = computed(() => settingsState.config);
 const settings = reactive({
-  primary: themes.value.primary,
+  ...themes.value,
   hasTagsView: config.value.hasTagsView,
   hasSidebarLogo: config.value.hasSidebarLogo,
   hasGlobalSettings: config.value.hasGlobalSettings,
 });
-const onChangeTheme = (val: any, type: string) => {
-  settingsState.setThemes({ primary: val });
-  setHtmlCssVar(val, "primary");
+const onChangeTheme = (val: any, type: themeType) => {
+  settingsState.setThemes({ [type as themeType]: val });
+  setHtmlCssVar(val, type);
 };
 const onChangeGlobalConfig = (val: any, tag: string) => {
   switch (tag) {
@@ -88,7 +104,7 @@ const handleClose = () => {
     }
   }
   :deep(.el-drawer__header) {
-    padding: 0px 20px;
+    padding: 10px 20px;
     margin-bottom: 0px;
     border: 1px solid #e6e6e6;
   }
