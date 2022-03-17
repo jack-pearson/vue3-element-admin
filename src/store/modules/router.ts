@@ -1,7 +1,7 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-12-07 20:12:40
- * @LastEditTime: 2022-01-17 14:23:18
+ * @LastEditTime: 2022-03-17 17:26:28
  * @LastEditors: jack-pearson
  * @FilePath: /vue3-element-admin/src/store/modules/router.ts
  * @Description:  https://github.com/jack-pearson/vue3-element-admin
@@ -23,7 +23,7 @@ export const routerStore = defineStore("routerStore", {
     getRouterList(): Promise<Menu[]> {
       return new Promise((resolve, reject) => {
         UserService.getUserMenu()
-          .then(({ data, code }) => {
+          .then(({ data, code }: any) => {
             if (code === 200) {
               const newRoute = formatRoutes(data.list);
               this.routerList = newRoute;

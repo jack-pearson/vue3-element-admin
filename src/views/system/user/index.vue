@@ -1,7 +1,7 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2021-12-10 17:55:40
- * @LastEditTime: 2022-03-15 17:31:23
+ * @LastEditTime: 2022-03-17 17:33:31
  * @LastEditors: jack-pearson
  * @FilePath: /vue3-element-admin/src/views/system/user/index.vue
  * @Description:  https://github.com/jack-pearson/vue3-element-admin 
@@ -9,43 +9,18 @@
 <template>
   <div class="user-page w-full flex h-full">
     <el-scrollbar class="dept-tree w-60 bg-white">
-      <el-tree
-        :data="deptTree"
-        class="h-full"
-        :props="{ children: 'children', label: 'name' }"
-        default-expand-all
-        @node-click="handleNodeClick"
-      />
+      <el-tree :data="deptTree" class="h-full" :props="{ children: 'children', label: 'name' }" default-expand-all @node-click="handleNodeClick" />
     </el-scrollbar>
-    <div
-      class="user-table w-[calc(100%-15rem)] ml-5"
-      v-loading="searchForm.loading"
-    >
-      <el-form
-        inline
-        :model="searchForm"
-        ref="searchFormRef"
-        label-width="120px"
-        class="bg-white mb-4 flex items-center pt-4 pb-4"
-      >
+    <div class="user-table w-[calc(100%-15rem)] ml-5" v-loading="searchForm.loading">
+      <el-form inline :model="searchForm" ref="searchFormRef" label-width="120px" class="bg-white mb-4 flex items-center pt-4 pb-4">
         <el-form-item :label="i18nSystemUser('table.account')" prop="account">
-          <el-input
-            v-model="searchForm.account"
-            clearable
-            :placeholder="i18nSystemUser('search.accountPlaceholder')"
-          ></el-input>
+          <el-input v-model="searchForm.account" clearable :placeholder="i18nSystemUser('search.accountPlaceholder')"></el-input>
         </el-form-item>
         <el-form-item :label="i18nSystemUser('table.nickname')">
-          <el-input
-            v-model="searchForm.name"
-            clearable
-            :placeholder="i18nSystemUser('search.nicknamePlaceholder')"
-          ></el-input>
+          <el-input v-model="searchForm.name" clearable :placeholder="i18nSystemUser('search.nicknamePlaceholder')"></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" class="ml-4" @click="getUserList">{{
-            i18nGlobal("search")
-          }}</el-button>
+          <el-button type="primary" class="ml-4" @click="getUserList">{{ i18nGlobal("search") }}</el-button>
           <el-button @click="resetForm">{{ i18nGlobal("reset") }}</el-button>
         </el-form-item>
       </el-form>
@@ -58,67 +33,24 @@
         </div>
 
         <el-table :data="userTable" border>
-          <el-table-column
-            show-overflow-tooltip
-            :label="i18nSystemUser('table.nickname')"
-            prop="name"
-          >
-          </el-table-column>
-          <el-table-column
-            show-overflow-tooltip
-            :label="i18nSystemUser('table.account')"
-            prop="account"
-          >
-          </el-table-column>
-          <el-table-column
-            show-overflow-tooltip
-            :label="i18nSystemUser('table.avatar')"
-            prop="avatar"
-          >
-          </el-table-column>
-          <el-table-column
-            show-overflow-tooltip
-            :label="i18nSystemUser('table.email')"
-            prop="email"
-          >
-          </el-table-column>
-          <el-table-column
-            show-overflow-tooltip
-            :label="i18nSystemUser('table.mobile')"
-            prop="mobile"
-          >
-          </el-table-column>
-          <el-table-column
-            show-overflow-tooltip
-            :label="i18nSystemUser('table.phone')"
-            prop="phone"
-          >
-          </el-table-column>
-          <el-table-column
-            show-overflow-tooltip
-            :label="i18nSystemUser('table.age')"
-            prop="age"
-          >
-          </el-table-column>
-          <el-table-column
-            show-overflow-tooltip
-            :label="i18nSystemUser('table.sex')"
-          >
+          <el-table-column show-overflow-tooltip :label="i18nSystemUser('table.nickname')" prop="name"> </el-table-column>
+          <el-table-column show-overflow-tooltip :label="i18nSystemUser('table.account')" prop="account"> </el-table-column>
+          <el-table-column show-overflow-tooltip :label="i18nSystemUser('table.avatar')" prop="avatar"> </el-table-column>
+          <el-table-column show-overflow-tooltip :label="i18nSystemUser('table.email')" prop="email"> </el-table-column>
+          <el-table-column show-overflow-tooltip :label="i18nSystemUser('table.mobile')" prop="mobile"> </el-table-column>
+          <el-table-column show-overflow-tooltip :label="i18nSystemUser('table.phone')" prop="phone"> </el-table-column>
+          <el-table-column show-overflow-tooltip :label="i18nSystemUser('table.age')" prop="age"> </el-table-column>
+          <el-table-column show-overflow-tooltip :label="i18nSystemUser('table.sex')">
             <template #default="{ row }">{{ sexFilter(row.sex) }}</template>
           </el-table-column>
         </el-table>
-        <pagination
-          :total="searchForm.total"
-          :page="searchForm.pageNum"
-          :size="searchForm.pageSize"
-          @pagination="onChangePagination"
-        />
+        <pagination :total="searchForm.total" :page="searchForm.pageNum" :size="searchForm.pageSize" @pagination="onChangePagination" />
       </div>
     </div>
   </div>
 </template>
 <script lang="ts" setup>
-import { DeptService, UserService } from "@/apis";
+import { UserService } from "@/apis";
 import { reactive, ref } from "vue";
 import { User } from "@/types";
 import type { ElForm } from "element-plus";
@@ -147,14 +79,10 @@ const resetForm = () => {
   searchForm.pageNum = 1;
   getUserList();
 };
-const getDeptTree = async () => {
-  const res = await DeptService.query();
-  deptTree.value = res.data;
-};
 const handleNodeClick = () => {};
 const getUserList = async () => {
   searchForm.loading = true;
-  const res = await UserService.query(searchForm);
+  const res = (await UserService.query()) as any;
   userTable.value = res.data.list;
   searchForm.total = res.data.total;
   searchForm.pageNum = res.data.pageNum;
@@ -166,7 +94,6 @@ const onChangePagination = (val: any) => {
   getUserList();
 };
 getUserList();
-getDeptTree();
 </script>
 <style lang="scss" scoped>
 .user-page {

@@ -1,58 +1,22 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2021-11-24 17:42:59
- * @LastEditTime: 2022-03-17 11:32:56
+ * @LastEditTime: 2022-03-17 17:41:57
  * @LastEditors: jack-pearson
  * @FilePath: /vue3-element-admin/src/views/login/index.vue
  * @Description:  https://github.com/jack-pearson/vue3-element-admin 
 -->
 <template>
   <div class="login-page w-full h-full bg-cover select-none">
-    <div
-      class="
-        login-content
-        p-5
-        absolute
-        top-2/4
-        left-2/4
-        bg-white
-        rounded
-        overflow-hidden
-      "
-    >
+    <div class="login-content p-5 absolute top-2/4 left-2/4 bg-white rounded overflow-hidden">
       <div class="login-content-main w-4/5 h-full mx-auto my-0">
-        <h4
-          class="
-            text-dark-300
-            font-bold
-            pt-10
-            pb-10
-            tracking-wider
-            text-center
-            whitespace-normal
-            z-10
-            relative
-            h-auto
-            transition-all
-          "
-        >
-          {{ fixedStore.loginTitle }} 后台模板
-        </h4>
+        <h4 class="text-dark-300 font-bold pt-10 pb-10 tracking-wider text-center whitespace-normal z-10 relative h-auto transition-all">{{ fixedStore.loginTitle }} 后台模板</h4>
         <el-tabs @tab-click="onTabsClick" model-value="account" class="el-tabs">
           <el-tab-pane :label="$t('login.tabs.account')" name="account">
             <transition name="el-zoom-in-center" appear>
-              <el-form
-                class="login-content-form w-full pt-5 h-[calc(100%-50px)]"
-                ref="loginForm"
-                :model="form"
-                :rules="loginRules"
-              >
+              <el-form class="login-content-form w-full pt-5 h-[calc(100%-50px)]" ref="loginForm" :model="form" :rules="loginRules">
                 <el-form-item prop="account">
-                  <el-input
-                    v-model="form.account"
-                    clearable
-                    :placeholder="$t('login.tabs.account')"
-                  >
+                  <el-input v-model="form.account" clearable :placeholder="$t('login.tabs.account')">
                     <template #prefix>
                       <div class="svg-wrapper flex items-center w-5">
                         <svg-icon name="user"></svg-icon>
@@ -61,49 +25,28 @@
                   </el-input>
                 </el-form-item>
                 <el-form-item prop="password">
-                  <el-input
-                    :type="config.isShowPassword ? 'text' : 'password'"
-                    :placeholder="$t('login.account.passwordPlaceholder')"
-                    v-model="form.password"
-                    autocomplete="off"
-                  >
+                  <el-input :type="config.isShowPassword ? 'text' : 'password'" :placeholder="$t('login.account.passwordPlaceholder')" v-model="form.password" autocomplete="off">
                     <template #prefix>
                       <div class="svg-wrapper flex items-center w-5">
                         <svg-icon name="lock"></svg-icon>
                       </div>
                     </template>
                     <template #suffix>
-                      <div
-                        class="svg-wrapper flex items-center w-5 cursor-pointer"
-                      >
-                        <svg-icon
-                          :name="
-                            config.isShowPassword
-                              ? 'invisible_eye'
-                              : 'visible_eye'
-                          "
-                          @click="onChangeVisibleEye"
-                        ></svg-icon>
+                      <div class="svg-wrapper flex items-center w-5 cursor-pointer">
+                        <svg-icon :name="config.isShowPassword ? 'invisible_eye' : 'visible_eye'" @click="onChangeVisibleEye"></svg-icon>
                       </div>
                     </template>
                   </el-input>
                 </el-form-item>
                 <el-form-item>
-                  <el-button
-                    type="primary"
-                    class="w-full"
-                    :loading="config.loading"
-                    @click="onSubmit"
-                  >
+                  <el-button type="primary" class="w-full" :loading="config.loading" @click="onSubmit">
                     {{ $t("login.account.accountBtnText") }}
                   </el-button>
                 </el-form-item>
               </el-form>
             </transition>
           </el-tab-pane>
-          <el-tab-pane :label="$t('login.tabs.more')" name="more">
-            {{ $t("login.more.text") }}</el-tab-pane
-          >
+          <el-tab-pane :label="$t('login.tabs.more')" name="more"> {{ $t("login.more.text") }}</el-tab-pane>
         </el-tabs>
       </div>
     </div>
@@ -152,12 +95,7 @@ const onSubmit = () => {
     if (valid) {
       config.loading = true;
       try {
-        const {
-          code,
-          success,
-          data: userInfo,
-          message,
-        } = await LoginService.login(form);
+        const { code, success, data: userInfo, message } = (await LoginService.login()) as any;
         if (code === 200 && success) {
           Session.set("token", userInfo.token);
           Session.set("userInfo", userInfo);
@@ -177,8 +115,7 @@ const onSubmit = () => {
 
 <style lang="scss" scoped>
 .login-page {
-  background: url("https://gitee.com/lyt-top/vue-next-admin-images/raw/master/login/bg-login.png")
-    no-repeat;
+  background: url("https://gitee.com/lyt-top/vue-next-admin-images/raw/master/login/bg-login.png") no-repeat;
   background-size: cover;
   .login-content {
     width: 500px;
