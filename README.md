@@ -1,7 +1,7 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2021-11-22 17:31:39
- * @LastEditTime: 2022-03-17 17:46:23
+ * @LastEditTime: 2022-03-19 00:37:56
  * @LastEditors: jack-pearson
  * @Description:  https://github.com/jack-pearson/vue3-element-admin
  * @FilePath: /vue3-element-admin/README.md
@@ -9,6 +9,7 @@
 
 # Vue 3 + Typescript + Vite + element-plus + i18n + pinia + windicss
 
+[在线预览](https://jack-pearson.github.io/vue3-element-admin/)  
 欢迎大家 PR 和 Star 各种操作.
 
 ## 功能清单

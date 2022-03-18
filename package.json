@@ -1,6 +1,26 @@
 {
   "name": "vue3-element-admin",
-  "version": "0.0.0",
+  "version": "0.0.0-beta.0.0.1",
+  "description": "Vue 3 + Typescript + Vite + element-plus + i18n + pinia + windicss",
+  "author": {
+    "name": "jack-pearson",
+    "email": "qize953463876@gmail.com"
+  },
+  "license": "MIT",
+  "private": false,
+  "keywords": [
+    "Component",
+    "UI",
+    "React"
+  ],
+  "homepage": "https://jack-pearson.github.io/vue3-element-admin/",
+  "bugs": {
+    "url": "https://jack-pearson.github.io/vue3-element-admin/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://jack-pearson.github.io/vue3-element-admin"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
