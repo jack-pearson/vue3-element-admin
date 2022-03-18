@@ -1,7 +1,7 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2021-11-22 17:31:39
- * @LastEditTime: 2022-03-19 00:37:56
+ * @LastEditTime: 2022-03-19 00:40:21
  * @LastEditors: jack-pearson
  * @Description:  https://github.com/jack-pearson/vue3-element-admin
  * @FilePath: /vue3-element-admin/README.md
@@ -115,8 +115,7 @@ npx mrm@2 lint-staged
 
 ## svg 组件
 
-之前再 花裤衩大佬的 `vue-element-admin` 仓库中发现 svg 组件确实特别好用. 根据网上的代码得到了现在的 `svg` 组件
-
+之前再 花裤衩大佬的 `vue-element-admin` 仓库中发现 svg 组件确实特别好用. 根据网上的代码得到了现在的 `svg` 组件  
 **注意** 如果你新增了一个 `svg` 文件,此时并不会热更新, 需要你去 `src/plugins/svgBuilder.ts` 中保存一下 才可以.
 
 ## axios 封装类型提示
@@ -126,8 +125,7 @@ npx mrm@2 lint-staged
 
 ## 待处理 bug
 
-`点击当前的菜单做刷新功能, tagView 同理` 未做
-
-`tagView` 关闭 右键 等功能做的很粗糙,欢迎 pr ⭐️.
-
-`axios` 可以加上无感刷新
+`点击当前的菜单做刷新功能, tagView 同理` 未做  
+`tagView` 关闭 右键 等功能做的很粗糙,欢迎 pr ⭐️.  
+`axios` 可以加上无感刷新  
+`侧边栏导航` width 少了 **1px**
