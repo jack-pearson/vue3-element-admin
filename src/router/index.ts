@@ -1,12 +1,12 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-11-24 17:48:43
- * @LastEditTime: 2022-03-17 18:19:52
+ * @LastEditTime: 2022-03-19 00:21:38
  * @LastEditors: jack-pearson
  * @FilePath: /vue3-element-admin/src/router/index.ts
  * @Description:  https://github.com/jack-pearson/vue3-element-admin
  */
-import { createRouter, createWebHistory, isNavigationFailure, RouteRecordRaw } from "vue-router";
+import { createRouter, createWebHashHistory, isNavigationFailure, RouteRecordRaw } from "vue-router";
 import NProgress from "nprogress";
 import { routerStore } from "@/store";
 import "nprogress/nprogress.css";
@@ -53,7 +53,7 @@ export const constantRouters: Array<RouteRecordRaw | Menu> = [
 ];
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(),
   routes: constantRouters,
 });
 
