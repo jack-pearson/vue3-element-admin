@@ -1,7 +1,7 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-11-24 16:14:10
- * @LastEditTime: 2022-03-17 18:18:42
+ * @LastEditTime: 2022-03-18 23:55:22
  * @LastEditors: jack-pearson
  * @FilePath: /vue3-element-admin/src/store/modules/settings.ts
  * @Description:  https://github.com/jack-pearson/vue3-element-admin
@@ -42,9 +42,11 @@ export const createSettings = (): settingsStoreType => {
 const loadState = (): settingsStoreType => {
   const themesState = Local.get("themes") || ({} as settingsStoreType["themesState"]);
   const config = (Local.get("config") || {}) as settingsStoreType["config"];
-  const newState = Object.assign(createSettings(), { themesState: themesState }, { config: config });
-  setHtmlCssVarBySettings(newState.themesState);
-  return newState;
+  const settings = createSettings();
+  settings.themesState = { ...settings.themesState, ...themesState };
+  settings.config = { ...settings.config, ...config };
+  setHtmlCssVarBySettings(settings.themesState);
+  return settings;
 };
 
 export const settingsStore = defineStore("settingsStore", {
