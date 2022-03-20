@@ -6,3 +6,4 @@ dist-ssr
 yarn-error.log
 package-lock.json
 pnpm-lock.yaml
+.eslintcache

@@ -1,22 +1,48 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2022-01-10 18:13:56
- * @LastEditTime: 2022-01-11 15:20:59
+ * @LastEditTime: 2022-03-16 18:13:07
  * @LastEditors: jack-pearson
- * @FilePath: /yh-vue3-admin/src/layout/navbar/user.vue
- * @Description: 
+ * @FilePath: /vue3-element-admin/src/layout/navbar/user.vue
+ * @Description:  https://github.com/jack-pearson/vue3-element-admin 
 -->
 <template>
   <div class="layout-user h-full select-none flex items-center">
-    <el-dropdown type="primary" :show-timeout="70" :hide-timeout="50" trigger="hover" class="dropdown h-full flex items-center pr-2" @command="onHandleClickCommand">
-      <div class="icon-wrapper pl-2.5 pr-2.5 h-full flex justify-center items-center cursor-pointer">
-        <img class="avatar mr-3" :src="userInfo.avatar ?? avatarDefault" alt="" />
+    <el-dropdown
+      type="primary"
+      :show-timeout="70"
+      :hide-timeout="50"
+      trigger="hover"
+      class="dropdown h-full flex items-center pr-2"
+      @command="onHandleClickCommand"
+    >
+      <div
+        class="
+          icon-wrapper
+          pl-2.5
+          pr-2.5
+          h-full
+          flex
+          justify-center
+          items-center
+          cursor-pointer
+        "
+      >
+        <img
+          class="avatar mr-3"
+          :src="userInfo.avatar ?? avatarDefault"
+          alt=""
+        />
         {{ userInfo.name }}<el-icon class="ml-3"><ArrowDown /></el-icon>
       </div>
       <template #dropdown>
         <el-dropdown-menu>
-          <el-dropdown-item command="/profile">{{ i18nRouter("profile") }}</el-dropdown-item>
-          <el-dropdown-item divided command="logout">{{ i18nRouter("logout") }}</el-dropdown-item>
+          <el-dropdown-item command="/profile">{{
+            i18nRouter("profile")
+          }}</el-dropdown-item>
+          <el-dropdown-item divided command="logout">{{
+            i18nRouter("logout")
+          }}</el-dropdown-item>
         </el-dropdown-menu>
       </template>
     </el-dropdown>
@@ -34,7 +60,7 @@ const onHandleClickCommand = (command: string) => {
   if (command === "logout") {
     Local.clear();
     Session.clear();
-    router.replace("/login");
+    location.reload();
   } else {
     router.push(command);
   }

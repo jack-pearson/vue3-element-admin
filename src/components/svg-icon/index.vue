@@ -3,8 +3,8 @@
  * @Date: 2021-12-06 11:09:55
  * @LastEditTime: 2022-01-25 14:55:32
  * @LastEditors: jack-pearson
- * @FilePath: /yh-vue3-admin/src/components/svg-icon/index.vue
- * @Description: 
+ * @FilePath: /vue3-element-admin/src/components/svg-icon/index.vue
+ * @Description:  https://github.com/jack-pearson/vue3-element-admin 
 -->
 <template>
   <svg :class="svgClass" :style="{ color: color }">

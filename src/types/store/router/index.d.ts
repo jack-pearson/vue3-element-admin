@@ -1,10 +1,10 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-12-14 14:07:07
- * @LastEditTime: 2022-01-17 14:22:57
+ * @LastEditTime: 2022-03-16 14:42:42
  * @LastEditors: jack-pearson
- * @FilePath: /yh-vue3-admin/src/types/store/router/index.d.ts
- * @Description:
+ * @FilePath: /vue3-element-admin/src/types/store/router/index.d.ts
+ * @Description:  https://github.com/jack-pearson/vue3-element-admin
  */
 export interface Menu {
   id?: number;
@@ -16,8 +16,8 @@ export interface Menu {
   children: Menu[];
   isHide?: boolean;
   meta: {
-    title?: string;
-    icon?: string;
+    title: string;
+    icon: string;
     isKeepAlive?: boolean;
     isTagView?: boolean;
     isAffix?: boolean;

@@ -1,16 +1,17 @@
 {
-  "name": "yh-vue3-admin",
+  "name": "vue3-element-admin",
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@element-plus/icons-vue": "^0.2.4",
     "axios": "^0.24.0",
     "color": "^4.1.0",
-    "element-plus": "^2.0.2",
+    "element-plus": "^2.0.4",
     "nprogress": "^0.2.0",
     "pinia": "^2.0.0-rc.10",
     "vue": "^3.2.16",
@@ -28,11 +29,14 @@
     "dotenv": "^10.0.0",
     "eslint": "^8.3.0",
     "eslint-plugin-vue": "^8.1.1",
+    "husky": ">=6",
+    "lint-staged": ">=10",
     "prettier": "^2.4.1",
     "qs": "^6.10.1",
     "sass": "^1.43.4",
     "svg-sprite-loader": "^6.0.11",
     "typescript": "4.5.2",
+    "unplugin-vue-components": "^0.18.0",
     "vite": "^2.6.4",
     "vite-plugin-windicss": "^1.5.1",
     "vue-eslint-parser": "^8.0.1",
@@ -43,5 +47,9 @@
     "> 1%",
     "last 2 versions",
     "not dead"
-  ]
+  ],
+  "lint-staged": {
+    "*.{js,ts,tsx,vue,css,scss}": "eslint --max-warnings 5 --cache --fix",
+    "*.{js,css,md,ts,tsx,vue,scss}": "prettier --write"
+  }
 }

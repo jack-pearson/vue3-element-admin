@@ -3,8 +3,8 @@
  * @Date: 2022-01-19 17:37:30
  * @LastEditTime: 2022-01-20 17:30:48
  * @LastEditors: jack-pearson
- * @FilePath: /yh-vue3-admin/src/types/apis/dept.d.ts
- * @Description:
+ * @FilePath: /vue3-element-admin/src/types/apis/dept.d.ts
+ * @Description:  https://github.com/jack-pearson/vue3-element-admin
  */
 export interface Dept {
   id: number;

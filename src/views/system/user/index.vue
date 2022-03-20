@@ -1,17 +1,17 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2021-12-10 17:55:40
- * @LastEditTime: 2022-02-22 16:37:53
+ * @LastEditTime: 2022-03-17 17:33:31
  * @LastEditors: jack-pearson
- * @FilePath: /yh-vue3-admin/src/views/system/user/index.vue
- * @Description: 
+ * @FilePath: /vue3-element-admin/src/views/system/user/index.vue
+ * @Description:  https://github.com/jack-pearson/vue3-element-admin 
 -->
 <template>
   <div class="user-page w-full flex h-full">
     <el-scrollbar class="dept-tree w-60 bg-white">
       <el-tree :data="deptTree" class="h-full" :props="{ children: 'children', label: 'name' }" default-expand-all @node-click="handleNodeClick" />
     </el-scrollbar>
-    <div class="user-table flex-1 ml-5" v-loading="searchForm.loading">
+    <div class="user-table w-[calc(100%-15rem)] ml-5" v-loading="searchForm.loading">
       <el-form inline :model="searchForm" ref="searchFormRef" label-width="120px" class="bg-white mb-4 flex items-center pt-4 pb-4">
         <el-form-item :label="i18nSystemUser('table.account')" prop="account">
           <el-input v-model="searchForm.account" clearable :placeholder="i18nSystemUser('search.accountPlaceholder')"></el-input>
@@ -50,7 +50,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { DeptService, UserService } from "@/apis";
+import { UserService } from "@/apis";
 import { reactive, ref } from "vue";
 import { User } from "@/types";
 import type { ElForm } from "element-plus";
@@ -79,14 +79,10 @@ const resetForm = () => {
   searchForm.pageNum = 1;
   getUserList();
 };
-const getDeptTree = async () => {
-  const res = await DeptService.query();
-  deptTree.value = res.data;
-};
 const handleNodeClick = () => {};
 const getUserList = async () => {
   searchForm.loading = true;
-  const res = await UserService.query(searchForm);
+  const res = (await UserService.query()) as any;
   userTable.value = res.data.list;
   searchForm.total = res.data.total;
   searchForm.pageNum = res.data.pageNum;
@@ -98,7 +94,6 @@ const onChangePagination = (val: any) => {
   getUserList();
 };
 getUserList();
-getDeptTree();
 </script>
 <style lang="scss" scoped>
 .user-page {
@@ -108,7 +103,7 @@ getDeptTree();
   }
   :deep(.el-tree-node) {
     .el-tree-node__content:hover {
-      background-color: var(--color-primary-7);
+      background-color: var(--el-color-primary-light-5);
       color: #000;
       .el-tree-node__expand-icon {
         color: #000;
@@ -119,7 +114,7 @@ getDeptTree();
     }
     &.is-current {
       & > .el-tree-node__content {
-        background-color: var(--color-primary-7);
+        background-color: var(--el-color-primary-light-5);
         color: #000;
         .el-tree-node__expand-icon {
           &.is-leaf {

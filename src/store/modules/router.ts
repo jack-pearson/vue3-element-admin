@@ -1,10 +1,10 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-12-07 20:12:40
- * @LastEditTime: 2022-01-17 14:23:18
+ * @LastEditTime: 2022-03-17 17:26:28
  * @LastEditors: jack-pearson
- * @FilePath: /yh-vue3-admin/src/store/modules/router.ts
- * @Description:
+ * @FilePath: /vue3-element-admin/src/store/modules/router.ts
+ * @Description:  https://github.com/jack-pearson/vue3-element-admin
  */
 import { defineStore } from "pinia";
 import { Menu, RouterStoreTypes } from "@/types";
@@ -23,7 +23,7 @@ export const routerStore = defineStore("routerStore", {
     getRouterList(): Promise<Menu[]> {
       return new Promise((resolve, reject) => {
         UserService.getUserMenu()
-          .then(({ data, code }) => {
+          .then(({ data, code }: any) => {
             if (code === 200) {
               const newRoute = formatRoutes(data.list);
               this.routerList = newRoute;
@@ -32,7 +32,7 @@ export const routerStore = defineStore("routerStore", {
               reject(data);
             }
           })
-          .catch(err => {
+          .catch((err) => {
             reject(err);
           });
       });

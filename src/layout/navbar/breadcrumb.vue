@@ -3,8 +3,8 @@
  * @Date: 2022-01-04 11:02:01
  * @LastEditTime: 2022-01-10 17:27:27
  * @LastEditors: jack-pearson
- * @FilePath: /yh-vue3-admin/src/layout/navbar/breadcrumb.vue
- * @Description: 
+ * @FilePath: /vue3-element-admin/src/layout/navbar/breadcrumb.vue
+ * @Description:  https://github.com/jack-pearson/vue3-element-admin 
 -->
 
 <template>

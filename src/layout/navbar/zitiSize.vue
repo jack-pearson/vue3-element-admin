@@ -1,10 +1,10 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2022-01-05 11:42:35
- * @LastEditTime: 2022-01-17 14:20:59
+ * @LastEditTime: 2022-03-16 15:32:57
  * @LastEditors: jack-pearson
- * @FilePath: /yh-vue3-admin/src/layout/navbar/zitiSize.vue
- * @Description: 
+ * @FilePath: /vue3-element-admin/src/layout/navbar/zitiSize.vue
+ * @Description:  https://github.com/jack-pearson/vue3-element-admin 
 -->
 <template>
   <div class="layout-ziti h-full select-none">
@@ -14,7 +14,13 @@
       </div>
       <template #dropdown>
         <el-dropdown-menu>
-          <el-dropdown-item v-for="item in componentSize" :key="item" :disabled="item === ElComponentSize" :command="item">{{ item }}</el-dropdown-item>
+          <el-dropdown-item
+            v-for="item in componentSize"
+            :key="item"
+            :disabled="item === ElComponentSize"
+            :command="item"
+            >{{ item }}</el-dropdown-item
+          >
         </el-dropdown-menu>
       </template>
     </el-dropdown>
@@ -34,7 +40,6 @@ const ElComponentSize = computed(() => settingsState.config.ElComponentSize);
 <style lang="scss" scoped>
 .layout-ziti {
   .icon-wrapper {
-    color: var(--color-text-primary);
     transition: background 0.28s;
     &:hover {
       background: rgba(0, 0, 0, 0.04);

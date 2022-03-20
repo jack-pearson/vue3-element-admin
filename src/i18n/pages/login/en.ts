@@ -3,8 +3,8 @@
  * @Date: 2021-11-24 15:59:57
  * @LastEditTime: 2021-12-06 15:13:30
  * @LastEditors: jack-pearson
- * @FilePath: /yh-vue3-admin/src/i18n/pages/login/en.ts
- * @Description:
+ * @FilePath: /vue3-element-admin/src/i18n/pages/login/en.ts
+ * @Description:  https://github.com/jack-pearson/vue3-element-admin
  */
 // 定义内容
 export default {

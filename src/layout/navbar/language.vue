@@ -1,10 +1,10 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2022-01-10 17:24:36
- * @LastEditTime: 2022-01-18 18:47:49
+ * @LastEditTime: 2022-03-17 18:21:31
  * @LastEditors: jack-pearson
- * @FilePath: /yh-vue3-admin/src/layout/navbar/language.vue
- * @Description: 
+ * @FilePath: /vue3-element-admin/src/layout/navbar/language.vue
+ * @Description:  https://github.com/jack-pearson/vue3-element-admin 
 -->
 <template>
   <div class="layout-language h-full select-none">
@@ -14,7 +14,7 @@
       </div>
       <template #dropdown>
         <el-dropdown-menu>
-          <el-dropdown-item v-for="item in i18n" :key="item.value" :disabled="item.value === language" :command="item.value">{{ item.label }}</el-dropdown-item>
+          <el-dropdown-item v-for="item in i18nOption" :key="item.value" :disabled="item.value === language" :command="item.value">{{ item.label }}</el-dropdown-item>
         </el-dropdown-menu>
       </template>
     </el-dropdown>
@@ -22,24 +22,28 @@
 </template>
 <script setup lang="ts">
 import { getCurrentInstance, computed } from "vue";
-import { Local, i18n } from "@/utils";
+import { Local, i18n as i18nOption } from "@/utils";
+import { i18n } from "@/i18n";
 import { settingsStore } from "@/store";
+import { useRoute } from "vue-router";
 import { languageType, settingsStoreType } from "@/types";
 const settingsState = settingsStore();
 const { proxy } = getCurrentInstance() as any;
 const onChangeSize = (command: languageType) => {
-  const settingsStore = (Local.get("settingsStore") || { config: {} }) as settingsStoreType;
-  settingsStore.config.language = command;
-  Local.set("settingsStore", settingsStore);
+  const config = (Local.get("config") || {}) as settingsStoreType["config"];
+  config.language = command;
+  Local.set("config", config);
   settingsState.setLanguage(command);
   proxy.$i18n.locale = command;
+  document.title = i18n.global.t("messages.router." + title.value);
 };
+const route = useRoute();
+const title = computed(() => route.meta.title);
 const language = computed(() => settingsState.config.language);
 </script>
 <style lang="scss" scoped>
 .layout-language {
   .icon-wrapper {
-    color: var(--color-text-primary);
     transition: background 0.28s;
     &:hover {
       background: rgba(0, 0, 0, 0.04);

@@ -3,8 +3,8 @@
  * @Date: 2022-01-19 16:39:49
  * @LastEditTime: 2022-01-25 14:55:28
  * @LastEditors: jack-pearson
- * @FilePath: /yh-vue3-admin/src/components/pagination/index.vue
- * @Description: 
+ * @FilePath: /vue3-element-admin/src/components/pagination/index.vue
+ * @Description:  https://github.com/jack-pearson/vue3-element-admin 
 -->
 
 <template>

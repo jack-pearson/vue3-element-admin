@@ -1,36 +1,89 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2022-01-13 18:19:34
- * @LastEditTime: 2022-01-17 10:32:35
+ * @LastEditTime: 2022-03-17 10:51:45
  * @LastEditors: jack-pearson
- * @FilePath: /yh-vue3-admin/src/layout/navbar/settings.vue
- * @Description: 
+ * @FilePath: /vue3-element-admin/src/layout/navbar/settings.vue
+ * @Description:  https://github.com/jack-pearson/vue3-element-admin 
 -->
 <template>
   <div class="layout-settings h-full select-none">
     <div class="icon-wrapper pl-2.5 pr-2.5 h-full flex justify-center items-center cursor-pointer" @click="openSettings">
       <svg-icon name="theme" class="pointer-events-none" />
     </div>
-    <el-drawer v-model="open" :title="i18nSettings('setting')" direction="rtl" size="300px" :before-close="handleClose">
+    <el-drawer
+      v-model="open"
+      :title="i18nSettings('setting')"
+      direction="rtl"
+      size="300px"
+      :before-close="handleClose"
+    >
       <div class="w-full">
-        <el-divider content-position="left" class="font-bold">{{ i18nSettings("themeSettings") }}</el-divider>
+        <el-divider content-position="left" class="font-bold">{{
+          i18nSettings("themeSettings")
+        }}</el-divider>
         <div class="item w-full item flex items-center">
           <span class="label flex-1">primary</span>
-          <el-color-picker v-model="settings.primary" @change="e => onChangeTheme(e, 'primary')" />
+          <el-color-picker
+            v-model="settings.primary"
+            @change="(e) => onChangeTheme(e, 'primary')"
+          />
         </div>
-
-        <el-divider content-position="left" class="font-bold">{{ i18nSettings("globalSettings") }}</el-divider>
+        <div class="item w-full item flex items-center">
+          <span class="label flex-1">success</span>
+          <el-color-picker
+            v-model="settings.success"
+            @change="(e) => onChangeTheme(e, 'success')"
+          />
+        </div>
+        <div class="item w-full item flex items-center">
+          <span class="label flex-1">danger</span>
+          <el-color-picker
+            v-model="settings.danger"
+            @change="(e) => onChangeTheme(e, 'danger')"
+          />
+        </div>
+        <div class="item w-full item flex items-center">
+          <span class="label flex-1">warning</span>
+          <el-color-picker
+            v-model="settings.warning"
+            @change="(e) => onChangeTheme(e, 'warning')"
+          />
+        </div>
+        <div class="item w-full item flex items-center">
+          <span class="label flex-1">info</span>
+          <el-color-picker
+            v-model="settings.info"
+            @change="(e) => onChangeTheme(e, 'info')"
+          />
+        </div>
+        <el-divider content-position="left" class="font-bold">{{
+          i18nSettings("globalSettings")
+        }}</el-divider>
         <div class="item w-full item flex items-center">
           <span class="label flex-1">{{ i18nSettings("switchTagsView") }}</span>
-          <el-switch v-model="settings.hasTagsView" @change="e => onChangeGlobalConfig(e, 'tagsView')" />
+          <el-switch
+            v-model="settings.hasTagsView"
+            @change="(e) => onChangeGlobalConfig(e, 'tagsView')"
+          />
         </div>
         <div class="item w-full item flex items-center">
-          <span class="label flex-1">{{ i18nSettings("switchSidebarLogo") }}</span>
-          <el-switch v-model="settings.hasSidebarLogo" @change="e => onChangeGlobalConfig(e, 'sidebarLogo')" />
+          <span class="label flex-1">{{
+            i18nSettings("switchSidebarLogo")
+          }}</span>
+          <el-switch
+            v-model="settings.hasSidebarLogo"
+            @change="(e) => onChangeGlobalConfig(e, 'sidebarLogo')"
+          />
         </div>
         <div class="item w-full item flex items-center">
-          <span class="label flex-1">{{ i18nSettings("switchGlobalSettings") }}</span>
-          <el-switch v-model="settings.hasGlobalSettings" @change="e => onChangeGlobalConfig(e, 'globalSettings')" />
+          <span class="label flex-1">{{
+            i18nSettings("switchGlobalSettings")
+          }}</span>
+          <el-switch
+            v-model="settings.hasGlobalSettings"
+            @change="(e) => onChangeGlobalConfig(e, 'globalSettings')"
+          />
         </div>
       </div>
     </el-drawer>
@@ -40,19 +93,20 @@
 import { computed, ref, reactive } from "vue";
 import { i18nSettings, setHtmlCssVar } from "@/utils";
 import { settingsStore } from "@/store";
+import { themeType } from "@/types";
 const open = ref(false);
 const settingsState = settingsStore();
 const themes = computed(() => settingsState.themesState);
 const config = computed(() => settingsState.config);
 const settings = reactive({
-  primary: themes.value.primary,
+  ...themes.value,
   hasTagsView: config.value.hasTagsView,
   hasSidebarLogo: config.value.hasSidebarLogo,
   hasGlobalSettings: config.value.hasGlobalSettings,
 });
-const onChangeTheme = (val: any, type: string) => {
-  settingsState.setThemes({ primary: val });
-  setHtmlCssVar(val, "primary");
+const onChangeTheme = (val: any, type: themeType) => {
+  settingsState.setThemes({ [type as themeType]: val });
+  setHtmlCssVar(val, type);
 };
 const onChangeGlobalConfig = (val: any, tag: string) => {
   switch (tag) {
@@ -79,7 +133,6 @@ const handleClose = () => {
 <style lang="scss" scoped>
 .layout-settings {
   .icon-wrapper {
-    color: var(--color-text-primary);
     transition: background 0.28s;
     &:hover {
       background: rgba(0, 0, 0, 0.04);
@@ -89,7 +142,7 @@ const handleClose = () => {
     }
   }
   :deep(.el-drawer__header) {
-    padding: 0px 20px;
+    padding: 10px 20px;
     margin-bottom: 0px;
     border: 1px solid #e6e6e6;
   }

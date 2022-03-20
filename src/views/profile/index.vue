@@ -1,15 +1,16 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2022-01-11 13:33:47
- * @LastEditTime: 2022-01-11 13:33:48
+ * @LastEditTime: 2022-03-17 16:31:25
  * @LastEditors: jack-pearson
- * @FilePath: /yh-vue3-admin/src/views/profile/index.vue
- * @Description: 
+ * @FilePath: /vue3-element-admin/src/views/profile/index.vue
+ * @Description:  https://github.com/jack-pearson/vue3-element-admin 
 -->
 <template>
-  <div>123</div>
+  <div class="profile">profile</div>
 </template>
-<script setup lang="ts">
-import { reactive, ref } from "vue";
-</script>
+<script setup lang="ts"></script>
 <style lang="scss" scoped></style>
+<script lang="ts">
+export default { name: "profile" };
+</script>
