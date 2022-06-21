@@ -1,14 +1,13 @@
 /*
  * @Author: jack-pearson
  * @Date: 2022-01-11 15:10:49
- * @LastEditTime: 2022-06-21 18:21:18
+ * @LastEditTime: 2022-06-21 18:27:17
  * @LastEditors: jack-pearson
  * @FilePath: /vue3-element-admin/src/store/modules/tagView.ts
  * @Description:  https://github.com/jack-pearson/vue3-element-admin
  */
 import { defineStore } from "pinia";
 import { Menu, TagViewStoreType } from "@/types";
-import { Local } from "@/utils";
 import { route } from "@/hooks";
 export const createTagView = (): TagViewStoreType => {
   return {
@@ -17,20 +16,12 @@ export const createTagView = (): TagViewStoreType => {
   };
 };
 
-const loadUser = (): TagViewStoreType => {
-  const visitedViews = (Local.get("visitedViews") || []) as TagViewStoreType["visitedViews"];
-  const cachedViews = (Local.get("cachedViews") || []) as TagViewStoreType["cachedViews"];
-  const newUser = Object.assign(createTagView(), { visitedViews, cachedViews });
-  return newUser;
-};
-
 export const tagViewStore = defineStore("tagViewStore", {
-  state: loadUser,
+  state: createTagView,
   actions: {
     addVisitedViews(route: Menu) {
       if (this.visitedViews.find((item) => item.name === route.name)) return;
       this.visitedViews.push(route);
-      this.addLocalVisitedViews();
     },
     addCachedViews(route: Menu) {
       if (this.cachedViews.includes(route.name)) {
@@ -39,7 +30,6 @@ export const tagViewStore = defineStore("tagViewStore", {
       } else {
         this.cachedViews.push(route.name);
       }
-      this.addLocalCachedViews();
     },
     removeVisitedViews(route: Menu) {
       this.visitedViews = this.visitedViews.filter((v) => v.name !== route.name);
@@ -50,7 +40,6 @@ export const tagViewStore = defineStore("tagViewStore", {
     addTagView(route: Menu) {
       this.addCachedViews(route);
       this.addVisitedViews(route);
-      this.addLocalVisitedViews();
     },
     closeLeftTagView() {
       const findIndex = this.visitedViews.findIndex((item) => item.name === route.value.name);
@@ -60,7 +49,6 @@ export const tagViewStore = defineStore("tagViewStore", {
           return item;
         }
       });
-      this.addLocalVisitedViews();
     },
     closeRightTagView() {
       const findIndex = this.visitedViews.findIndex((item) => item.name === route.value.name);
@@ -70,22 +58,13 @@ export const tagViewStore = defineStore("tagViewStore", {
           return item;
         }
       });
-      this.addLocalVisitedViews();
     },
     closeOtherTagView() {
       const emitAffixList = this.visitedViews.filter((item) => item.meta.isAffix);
       this.visitedViews = emitAffixList.concat(this.visitedViews.filter((item) => item.name === route.value.name));
-      this.addLocalVisitedViews();
     },
     closeAllTagView() {
       this.visitedViews = this.visitedViews.filter((item) => item.meta.isAffix);
-      this.addLocalVisitedViews();
-    },
-    addLocalVisitedViews() {
-      Local.set("visitedViews", this.visitedViews);
-    },
-    addLocalCachedViews() {
-      Local.set("cachedViews", this.cachedViews);
     },
   },
 });
