@@ -1,7 +1,7 @@
 <!--
  * @Author: jack-pearson
  * @Date: 2022-01-11 14:03:56
- * @LastEditTime: 2022-03-16 15:52:44
+ * @LastEditTime: 2022-06-21 18:18:29
  * @LastEditors: jack-pearson
  * @FilePath: /vue3-element-admin/src/layout/tagView/index.vue
  * @Description:  https://github.com/jack-pearson/vue3-element-admin 
@@ -63,16 +63,30 @@ const onHandleScroll = (e: any) => {
 };
 
 const onHandleRefreshTag = (item: Menu) => {
-  // TODO 待完成
-  console.log(item);
+  router.push({
+    path: "/redirect" + item.path,
+    query: route.query,
+  });
 };
+
 const onHandleCloseTag = (v: Menu) => {
-  contextmenuRef.value.onEmitClose(v);
+  const findIndex = visitedViews.value.findIndex((t: Menu) => t.path === v.path);
+  const len = visitedViews.value.length;
+  if (len === 0) return;
+  if (path.value === v.path) {
+    if (findIndex === len - 1) {
+      router.push(visitedViews.value[findIndex - 1].path);
+    } else {
+      router.push(visitedViews.value[findIndex + 1].path);
+    }
+  }
+  tagViewState.removeCachedViews(v.name);
+  tagViewState.removeVisitedViews(v);
 };
 const onHandleContextMenu = (e: MouseEvent, item: Menu) => {
   const { x, y } = e;
   e.preventDefault();
-  contextmenuRef.value.openContextmenu({ x, y, current: item });
+  contextmenuRef.value.openContextmenu({ x, y });
 };
 </script>
 <style lang="scss" scoped>

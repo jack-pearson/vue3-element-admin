@@ -1,7 +1,7 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-11-24 15:59:57
- * @LastEditTime: 2022-03-17 21:08:14
+ * @LastEditTime: 2022-06-21 17:29:52
  * @LastEditors: jack-pearson
  * @FilePath: /vue3-element-admin/src/i18n/lang/en.ts
  * @Description:  https://github.com/jack-pearson/vue3-element-admin
@@ -21,6 +21,7 @@ export default {
     "menu-1": "menu-1",
     "menu-1-1": "menu-1-1",
     "menu-1-2": "menu-1-2",
+    redirect: "Redirect",
   },
   layout: {
     searchPlaceholder: "Menu search: Supports menu name and route path",

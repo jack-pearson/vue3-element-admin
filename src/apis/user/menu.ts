@@ -123,6 +123,31 @@ export default {
             },
           ],
         },
+        {
+          id: 30,
+          parentId: 1,
+          path: "/redirect",
+          name: "redirectTo",
+          component: "Layout",
+          isHide: true,
+          redirect: "/redirect/:path(.*)",
+          meta: {
+            title: "redirect",
+          },
+          children: [
+            {
+              path: "/redirect/:path(.*)",
+              name: "redirect",
+              id: 301,
+              parentID: 30,
+              isHide: false,
+              component: "/src/views/redirect/index.vue",
+              meta: {
+                title: "redirect",
+              },
+            },
+          ],
+        },
       ],
     },
     code: 200,

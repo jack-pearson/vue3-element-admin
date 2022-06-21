@@ -1,7 +1,7 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-11-24 17:48:43
- * @LastEditTime: 2022-03-19 00:21:38
+ * @LastEditTime: 2022-06-21 17:39:57
  * @LastEditors: jack-pearson
  * @FilePath: /vue3-element-admin/src/router/index.ts
  * @Description:  https://github.com/jack-pearson/vue3-element-admin
@@ -11,12 +11,13 @@ import NProgress from "nprogress";
 import { routerStore } from "@/store";
 import "nprogress/nprogress.css";
 import { i18nRouter, Session } from "@/utils";
+import { route } from "@/hooks";
 
 const DEFAULT_PATH = "/home";
 import Login from "@/views/login/index.vue";
 import Layout from "@/layout/index.vue";
 import { Menu } from "@/types";
-
+NProgress.configure({ showSpinner: false });
 export const constantRouters: Array<RouteRecordRaw | Menu> = [
   {
     path: "/login",
@@ -61,7 +62,6 @@ router.beforeEach(async (to, from, next) => {
   const store = routerStore();
   const { routerList, getRouterList } = store;
   const token = Session.get("token");
-  NProgress.configure({ showSpinner: false });
   NProgress.start();
 
   if (to.path === "/login") {
@@ -89,6 +89,7 @@ router.beforeEach(async (to, from, next) => {
 
 // 路由加载后
 router.afterEach((to, from, failure) => {
+  route.value = to;
   if (isNavigationFailure(failure)) {
     NProgress.done();
     console.log("error navigation", failure);

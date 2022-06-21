@@ -1,7 +1,7 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-11-24 15:59:57
- * @LastEditTime: 2022-03-17 21:08:18
+ * @LastEditTime: 2022-06-21 17:29:57
  * @LastEditors: jack-pearson
  * @FilePath: /vue3-element-admin/src/i18n/lang/zh-cn.ts
  * @Description:  https://github.com/jack-pearson/vue3-element-admin
@@ -21,6 +21,7 @@ export default {
     "menu-1": "菜单1",
     "menu-1-1": "菜单1-1",
     "menu-1-2": "菜单1-2",
+    redirect: "重定向",
   },
   layout: {
     searchPlaceholder: "菜单搜索: 支持菜单名称、路由路径",
