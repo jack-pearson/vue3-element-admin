@@ -1,0 +1,1 @@
+import{_ as e}from"./index.82c16b98.js";import{o,a as r}from"./vendor.59e87ece.js";const s={name:"profile"},t={class:"profile"};function c(n,a,i,p,_,f){return o(),r("div",t,"profile")}var m=e(s,[["render",c]]);export{m as default};

@@ -1,0 +1,1 @@
+import{_ as o}from"./index.82c16b98.js";import{r,o as n,l as t}from"./vendor.59e87ece.js";const s={name:"ParentView"};function c(a,_,p,i,m,d){const e=r("router-view");return n(),t(e)}var l=o(s,[["render",c]]);export{l as default};

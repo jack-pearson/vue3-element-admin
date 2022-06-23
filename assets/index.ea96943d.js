@@ -1,0 +1,1 @@
+import{_ as e}from"./index.82c16b98.js";import{o as s,a as _}from"./vendor.59e87ece.js";const n={name:"systemMenu"},t={class:"menu-page"};function a(o,c,r,d,p,i){return s(),_("div",t,"menu")}var f=e(n,[["render",a],["__scopeId","data-v-0d26cadc"]]);export{f as default};
