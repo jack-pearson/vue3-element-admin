@@ -1,12 +1,12 @@
 /*
  * @Author: jack-pearson
  * @Date: 2021-11-22 17:31:39
- * @LastEditTime: 2022-03-19 00:02:23
+ * @LastEditTime: 2022-06-23 14:33:21
  * @LastEditors: jack-pearson
  * @FilePath: /vue3-element-admin/vite.config.ts
  * @Description:  https://github.com/jack-pearson/vue3-element-admin
  */
-import { defineConfig } from "vite";
+import { defineConfig, loadEnv } from "vite";
 import path from "path";
 import vue from "@vitejs/plugin-vue";
 // 这两个是 element-plus 按需导入(自动导入)的插件
@@ -14,11 +14,10 @@ import vue from "@vitejs/plugin-vue";
 // import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 import WindiCSS from "vite-plugin-windicss";
 import { svgBuilder } from "./src/plugins/svgBuilder";
-import { loadEnv } from "./src/utils/viteBuild";
-
-const { VITE_PORT, VITE_AUTO_OPEN, VITE_IGNORE_I18N_WARNING } = loadEnv();
 
 export default defineConfig(({ mode }) => {
+  const config = loadEnv(mode, "./");
+  const { VITE_IGNORE_I18N_WARNING, VITE_PORT, VITE_AUTO_OPEN } = config;
   // 解决警告You are running the esm-bundler build of vue-i18n.
   const extraAlias: { "vue-i18n"?: string } = {};
   if (mode === "development" && !!VITE_IGNORE_I18N_WARNING) extraAlias["vue-i18n"] = "vue-i18n/dist/vue-i18n.cjs.js";
@@ -32,7 +31,7 @@ export default defineConfig(({ mode }) => {
     ],
     server: {
       host: "0.0.0.0",
-      port: VITE_PORT,
+      port: VITE_PORT as unknown as number,
       open: VITE_AUTO_OPEN,
     },
     css: {
