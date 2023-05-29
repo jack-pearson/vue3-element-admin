@@ -3,6 +3,10 @@
 [在线预览](https://jack-pearson.github.io/vue3-element-admin/)  
 欢迎大家 PR 和 Star 各种操作.
 
+## 版本
+
+node 18.16.0
+
 ## 功能清单
 
 - [x] 多语言

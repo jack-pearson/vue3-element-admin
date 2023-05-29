@@ -1,11 +1,8 @@
 import { defineConfig, loadEnv } from "vite";
+import { createSvgIconsPlugin } from "vite-plugin-svg-icons";
 import path from "path";
 import vue from "@vitejs/plugin-vue";
-// 这两个是 element-plus 按需导入(自动导入)的插件
-// import Components from "unplugin-vue-components/vite";
-// import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 import WindiCSS from "vite-plugin-windicss";
-import { svgBuilder } from "./src/plugins/svgBuilder";
 
 export default defineConfig(({ mode }) => {
   const config = loadEnv(mode, "./");
@@ -18,8 +15,12 @@ export default defineConfig(({ mode }) => {
     plugins: [
       vue(),
       WindiCSS(),
-      svgBuilder("./src/components/svg-icon/svg/"),
-      // Components({ resolvers: [ElementPlusResolver()] })
+      createSvgIconsPlugin({
+        // 指定需要缓存的图标文件夹
+        iconDirs: [path.resolve(process.cwd(), "src/assets/svg")], // 与本地储存地址一致
+        // 指定symbolId格式
+        symbolId: "icon-[name]",
+      }),
     ],
     server: {
       host: "0.0.0.0",
