@@ -81,7 +81,7 @@ export default {
               isHide: false,
               meta: {
                 title: "menu-1",
-                icon: "menu-1",
+                icon: "menu",
                 isKeepAlive: true,
                 isTagView: true,
                 isAffix: false,
@@ -97,7 +97,7 @@ export default {
                   isHide: false,
                   meta: {
                     title: "menu-1-1",
-                    icon: "menu-1-1",
+                    icon: "menu",
                     isKeepAlive: true,
                     isTagView: true,
                     isAffix: false,
@@ -113,7 +113,7 @@ export default {
                   isHide: false,
                   meta: {
                     title: "menu-1-2",
-                    icon: "menu-1-2",
+                    icon: "menu",
                     isKeepAlive: true,
                     isTagView: true,
                     isAffix: false,

@@ -39,6 +39,7 @@ const settingsConfig = settingsStore();
     color: var(--menu-default-color);
     :deep(.el-sub-menu__title) {
       color: var(--menu-default-color);
+      padding-right: 0px;
       &:hover {
         color: var(--el-color-primary-light-2);
       }
