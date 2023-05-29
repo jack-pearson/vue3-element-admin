@@ -1,12 +1,3 @@
-<!--
- * @Author: jack-pearson
- * @Date: 2021-12-10 16:33:42
- * @LastEditTime: 2022-01-19 11:23:41
- * @LastEditors: jack-pearson
- * @FilePath: /vue3-element-admin/CHANGELOG.md
- * @Description:  https://github.com/jack-pearson/vue3-element-admin
--->
-
 # vue3-element-admin 更新日志
 
 🎉🎉🔥 `vue3-element-admin` 基于 vue3.x 、Typescript、vite、Element plus 等，免费开源后台模板

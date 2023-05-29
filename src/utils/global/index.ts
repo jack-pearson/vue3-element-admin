@@ -1,11 +1,3 @@
-/*
- * @Author: jack-pearson
- * @Date: 2021-12-30 14:53:28
- * @LastEditTime: 2022-01-18 18:21:07
- * @LastEditors: jack-pearson
- * @FilePath: /vue3-element-admin/src/utils/global/index.ts
- * @Description:  https://github.com/jack-pearson/vue3-element-admin
- */
 export const hasLength = (target: Array<any>) => target && target.length > 0;
 
 /** element 组件的全局配置size  因为这个是全局的,故写在于此 */

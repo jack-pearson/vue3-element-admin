@@ -1,57 +1,19 @@
-<!--
- * @Author: jack-pearson
- * @Date: 2021-12-30 15:18:38
- * @LastEditTime: 2022-03-16 15:47:10
- * @LastEditors: jack-pearson
- * @FilePath: /vue3-element-admin/src/layout/sidebar/SidebarItem.vue
- * @Description:  https://github.com/jack-pearson/vue3-element-admin 
--->
 <template>
-  <div
-    v-if="!isHide(route)"
-    class="w-full sidebar-item"
-    :class="{ 'is-collapsed': settingsConfig.config.isCollapsed }"
-  >
+  <div v-if="!isHide(route)" class="w-full sidebar-item" :class="{ 'is-collapsed': settingsConfig.config.isCollapsed }">
     <template v-if="!hasChildren(route)">
-      <el-menu-item
-        class="
-          sub-menu
-          active:text-$el-color-primary-light-7
-          hover:(text-$el-color-primary-light-2
-          bg-transparent)
-          select-none
-        "
-        :index="route.path"
-      >
+      <el-menu-item class="sub-menu active:text-$el-color-primary-light-7 hover:(text-$el-color-primary-light-2 bg-transparent) select-none" :index="route.path">
         <template #title>
           <svg-icon :name="route.meta.icon"></svg-icon>
           <span class="ml-3.5">{{ i18nRouter(route.meta.title) }}</span>
         </template>
       </el-menu-item>
     </template>
-    <el-sub-menu
-      v-else
-      class="
-        sub-menu
-        active:text-$el-color-primary-light-7
-        hover:(text-$el-color-primary-light-2
-        bg-transparent)
-        select-none
-      "
-      :index="route.path"
-      popper-append-to-body
-    >
+    <el-sub-menu v-else class="sub-menu active:text-$el-color-primary-light-7 hover:(text-$el-color-primary-light-2 bg-transparent) select-none" :index="route.path" popper-append-to-body>
       <template #title>
         <svg-icon :name="route.meta.icon"></svg-icon>
-        <span v-show="!settingsConfig.config.isCollapsed" class="ml-3.5">{{
-          i18nRouter(route.meta.title)
-        }}</span>
+        <span v-show="!settingsConfig.config.isCollapsed" class="ml-3.5">{{ i18nRouter(route.meta.title) }}</span>
       </template>
-      <SidebarItem
-        v-for="child in route.children"
-        :key="child.id"
-        :route="child"
-      />
+      <SidebarItem v-for="child in route.children" :key="child.id" :route="child" />
     </el-sub-menu>
   </div>
 </template>

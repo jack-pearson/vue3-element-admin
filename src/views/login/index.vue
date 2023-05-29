@@ -1,11 +1,3 @@
-<!--
- * @Author: jack-pearson
- * @Date: 2021-11-24 17:42:59
- * @LastEditTime: 2022-03-19 00:35:42
- * @LastEditors: jack-pearson
- * @FilePath: /vue3-element-admin/src/views/login/index.vue
- * @Description:  https://github.com/jack-pearson/vue3-element-admin 
--->
 <template>
   <div class="login-page w-full h-full bg-cover select-none">
     <div class="login-content p-5 absolute top-2/4 left-2/4 bg-white rounded overflow-hidden">

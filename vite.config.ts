@@ -1,11 +1,3 @@
-/*
- * @Author: jack-pearson
- * @Date: 2021-11-22 17:31:39
- * @LastEditTime: 2022-06-23 14:33:21
- * @LastEditors: jack-pearson
- * @FilePath: /vue3-element-admin/vite.config.ts
- * @Description:  https://github.com/jack-pearson/vue3-element-admin
- */
 import { defineConfig, loadEnv } from "vite";
 import path from "path";
 import vue from "@vitejs/plugin-vue";

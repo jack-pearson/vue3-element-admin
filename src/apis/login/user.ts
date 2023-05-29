@@ -1,11 +1,3 @@
-/*
- * @Author: jack-pearson
- * @Date: 2022-03-17 17:37:21
- * @LastEditTime: 2022-03-17 17:51:16
- * @LastEditors: jack-pearson
- * @FilePath: /vue3-element-admin/src/apis/login/user.ts
- * @Description:
- */
 export default {
   data: {
     token: "test",

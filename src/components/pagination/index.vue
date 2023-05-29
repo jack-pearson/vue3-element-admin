@@ -1,12 +1,3 @@
-<!--
- * @Author: jack-pearson
- * @Date: 2022-01-19 16:39:49
- * @LastEditTime: 2022-01-25 14:55:28
- * @LastEditors: jack-pearson
- * @FilePath: /vue3-element-admin/src/components/pagination/index.vue
- * @Description:  https://github.com/jack-pearson/vue3-element-admin 
--->
-
 <template>
   <div :class="{ hidden: hidden }" class="pagination-container">
     <el-pagination

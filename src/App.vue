@@ -1,12 +1,3 @@
-<!--
- * @Author: jack-pearson
- * @Date: 2021-11-22 17:31:39
- * @LastEditTime: 2022-01-14 18:19:26
- * @LastEditors: jack-pearson
- * @FilePath: /vue3-element-admin/src/App.vue
- * @Description:  https://github.com/jack-pearson/vue3-element-admin 
--->
-
 <template>
   <el-config-provider :locale="locale" :size="ElComponentSize">
     <router-view></router-view>

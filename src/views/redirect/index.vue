@@ -1,11 +1,3 @@
-<!--
- * @Author: jack-pearson
- * @Date: 2022-06-21 16:47:40
- * @LastEditTime: 2022-06-21 18:09:59
- * @LastEditors: jack-pearson
- * @FilePath: /vue3-element-admin/src/views/redirect/index.vue
- * @Description: 
--->
 <template>
   <div></div>
 </template>

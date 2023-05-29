@@ -1,45 +1,12 @@
-<!--
- * @Author: jack-pearson
- * @Date: 2022-01-05 11:42:35
- * @LastEditTime: 2022-03-16 15:32:57
- * @LastEditors: jack-pearson
- * @FilePath: /vue3-element-admin/src/layout/navbar/zitiSize.vue
- * @Description:  https://github.com/jack-pearson/vue3-element-admin 
--->
 <template>
   <div class="layout-ziti h-full select-none">
-    <el-dropdown
-      type="primary"
-      :show-timeout="70"
-      :hide-timeout="50"
-      trigger="hover"
-      class="h-full flex items-center"
-      @command="onChangeSize"
-    >
-      <div
-        class="
-          icon-wrapper
-          text-$color-text-primary
-          pl-2.5
-          pr-2.5
-          h-full
-          flex
-          justify-center
-          items-center
-          cursor-pointer
-        "
-      >
+    <el-dropdown type="primary" :show-timeout="70" :hide-timeout="50" trigger="hover" class="h-full flex items-center" @command="onChangeSize">
+      <div class="icon-wrapper text-$color-text-primary pl-2.5 pr-2.5 h-full flex justify-center items-center cursor-pointer">
         <svg-icon name="ziti" class="w-full pointer-events-none" />
       </div>
       <template #dropdown>
         <el-dropdown-menu>
-          <el-dropdown-item
-            v-for="item in componentSize"
-            :key="item"
-            :disabled="item === ElComponentSize"
-            :command="item"
-            >{{ item }}</el-dropdown-item
-          >
+          <el-dropdown-item v-for="item in componentSize" :key="item" :disabled="item === ElComponentSize" :command="item">{{ item }}</el-dropdown-item>
         </el-dropdown-menu>
       </template>
     </el-dropdown>

@@ -2,22 +2,6 @@
   "[scss]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "fileheader.customMade": {
-    "Author": "jack-pearson", // 文件创建者
-    "Date": "Do not edit",
-    "LastEditTime": "Do not edit",
-    "LastEditors": "jack-pearson", // 文件最后编辑者
-    "FilePath": "Do not edit",
-    "Description": ""
-  },
   "typescript.tsdk": "node_modules/typescript/lib",
   "editor.accessibilitySupport": "on",
-  "markdownlint.config": {
-    "default": true,
-    "MD033": {
-      "allowed_elements": [
-        "img"
-      ]
-    }
-  },
 }

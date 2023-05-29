@@ -1,11 +1,3 @@
-<!--
- * @Author: jack-pearson
- * @Date: 2022-01-11 14:03:56
- * @LastEditTime: 2022-06-21 18:18:29
- * @LastEditors: jack-pearson
- * @FilePath: /vue3-element-admin/src/layout/tagView/index.vue
- * @Description:  https://github.com/jack-pearson/vue3-element-admin 
--->
 <template>
   <div class="layout-tagView w-full bg-$color-white">
     <el-scrollbar class="h-full w-full pl-4 pr-4" ref="scrollbarRef" @wheel.prevent="onHandleScroll">

@@ -1,11 +1,3 @@
-<!--
- * @Author: jack-pearson
- * @Date: 2021-12-10 17:55:40
- * @LastEditTime: 2022-03-17 17:33:31
- * @LastEditors: jack-pearson
- * @FilePath: /vue3-element-admin/src/views/system/user/index.vue
- * @Description:  https://github.com/jack-pearson/vue3-element-admin 
--->
 <template>
   <div class="user-page w-full flex h-full">
     <el-scrollbar class="dept-tree w-60 bg-white">

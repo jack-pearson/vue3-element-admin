@@ -1,11 +1,3 @@
-/*
- * @Author: jack-pearson
- * @Date: 2022-01-18 14:01:56
- * @LastEditTime: 2022-01-19 17:56:10
- * @LastEditors: jack-pearson
- * @FilePath: /vue3-element-admin/src/i18n/pages/system/user/zh-cn.ts
- * @Description:  https://github.com/jack-pearson/vue3-element-admin
- */
 // 定义内容
 export default {
   table: {

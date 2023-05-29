@@ -1,11 +1,3 @@
-/*
- * @Author: jack-pearson
- * @Date: 2021-11-23 16:41:53
- * @LastEditTime: 2022-03-17 17:45:24
- * @LastEditors: jack-pearson
- * @FilePath: /vue3-element-admin/src/apis/login/index.ts
- * @Description:  https://github.com/jack-pearson/vue3-element-admin
- */
 // import { request } from "@/utils";
 import Mock from "./user";
 export class LoginService {

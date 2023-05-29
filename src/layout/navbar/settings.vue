@@ -1,102 +1,43 @@
-<!--
- * @Author: jack-pearson
- * @Date: 2022-01-13 18:19:34
- * @LastEditTime: 2022-03-17 10:51:45
- * @LastEditors: jack-pearson
- * @FilePath: /vue3-element-admin/src/layout/navbar/settings.vue
- * @Description:  https://github.com/jack-pearson/vue3-element-admin 
--->
 <template>
   <div class="layout-settings h-full select-none">
-    <div
-      class="
-        icon-wrapper
-        text-$color-text-primary
-        pl-2.5
-        pr-2.5
-        h-full
-        flex
-        justify-center
-        items-center
-        cursor-pointer
-      "
-      @click="openSettings"
-    >
+    <div class="icon-wrapper text-$color-text-primary pl-2.5 pr-2.5 h-full flex justify-center items-center cursor-pointer" @click="openSettings">
       <svg-icon name="theme" class="w-full pointer-events-none" />
     </div>
-    <el-drawer
-      v-model="open"
-      :title="i18nSettings('setting')"
-      direction="rtl"
-      size="300px"
-      :before-close="handleClose"
-    >
+    <el-drawer v-model="open" :title="i18nSettings('setting')" direction="rtl" size="300px" :before-close="handleClose">
       <div class="w-full">
-        <el-divider content-position="left" class="font-bold">{{
-          i18nSettings("themeSettings")
-        }}</el-divider>
+        <el-divider content-position="left" class="font-bold">{{ i18nSettings("themeSettings") }}</el-divider>
         <div class="item w-full item flex items-center">
           <span class="label flex-1">primary</span>
-          <el-color-picker
-            v-model="settings.primary"
-            @change="(e) => onChangeTheme(e, 'primary')"
-          />
+          <el-color-picker v-model="settings.primary" @change="(e) => onChangeTheme(e, 'primary')" />
         </div>
         <div class="item w-full item flex items-center">
           <span class="label flex-1">success</span>
-          <el-color-picker
-            v-model="settings.success"
-            @change="(e) => onChangeTheme(e, 'success')"
-          />
+          <el-color-picker v-model="settings.success" @change="(e) => onChangeTheme(e, 'success')" />
         </div>
         <div class="item w-full item flex items-center">
           <span class="label flex-1">danger</span>
-          <el-color-picker
-            v-model="settings.danger"
-            @change="(e) => onChangeTheme(e, 'danger')"
-          />
+          <el-color-picker v-model="settings.danger" @change="(e) => onChangeTheme(e, 'danger')" />
         </div>
         <div class="item w-full item flex items-center">
           <span class="label flex-1">warning</span>
-          <el-color-picker
-            v-model="settings.warning"
-            @change="(e) => onChangeTheme(e, 'warning')"
-          />
+          <el-color-picker v-model="settings.warning" @change="(e) => onChangeTheme(e, 'warning')" />
         </div>
         <div class="item w-full item flex items-center">
           <span class="label flex-1">info</span>
-          <el-color-picker
-            v-model="settings.info"
-            @change="(e) => onChangeTheme(e, 'info')"
-          />
+          <el-color-picker v-model="settings.info" @change="(e) => onChangeTheme(e, 'info')" />
         </div>
-        <el-divider content-position="left" class="font-bold">{{
-          i18nSettings("globalSettings")
-        }}</el-divider>
+        <el-divider content-position="left" class="font-bold">{{ i18nSettings("globalSettings") }}</el-divider>
         <div class="item w-full item flex items-center">
           <span class="label flex-1">{{ i18nSettings("switchTagsView") }}</span>
-          <el-switch
-            v-model="settings.hasTagsView"
-            @change="(e) => onChangeGlobalConfig(e, 'tagsView')"
-          />
+          <el-switch v-model="settings.hasTagsView" @change="(e) => onChangeGlobalConfig(e, 'tagsView')" />
         </div>
         <div class="item w-full item flex items-center">
-          <span class="label flex-1">{{
-            i18nSettings("switchSidebarLogo")
-          }}</span>
-          <el-switch
-            v-model="settings.hasSidebarLogo"
-            @change="(e) => onChangeGlobalConfig(e, 'sidebarLogo')"
-          />
+          <span class="label flex-1">{{ i18nSettings("switchSidebarLogo") }}</span>
+          <el-switch v-model="settings.hasSidebarLogo" @change="(e) => onChangeGlobalConfig(e, 'sidebarLogo')" />
         </div>
         <div class="item w-full item flex items-center">
-          <span class="label flex-1">{{
-            i18nSettings("switchGlobalSettings")
-          }}</span>
-          <el-switch
-            v-model="settings.hasGlobalSettings"
-            @change="(e) => onChangeGlobalConfig(e, 'globalSettings')"
-          />
+          <span class="label flex-1">{{ i18nSettings("switchGlobalSettings") }}</span>
+          <el-switch v-model="settings.hasGlobalSettings" @change="(e) => onChangeGlobalConfig(e, 'globalSettings')" />
         </div>
       </div>
     </el-drawer>

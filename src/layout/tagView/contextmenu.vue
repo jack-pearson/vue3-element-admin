@@ -1,12 +1,3 @@
-<!--
- * @Author: jack-pearson
- * @Date: 2022-01-13 13:26:08
- * @LastEditTime: 2022-06-21 18:13:39
- * @LastEditors: jack-pearson
- * @FilePath: /vue3-element-admin/src/layout/tagView/contextmenu.vue
- * @Description:  https://github.com/jack-pearson/vue3-element-admin 
--->
-
 <template>
   <transition name="el-zoom-in-center">
     <div aria-hidden="true" class="context-menu fixed" :style="style" v-if="open">

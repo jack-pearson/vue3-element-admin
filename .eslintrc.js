@@ -1,11 +1,3 @@
-/*
- * @Author: jack-pearson
- * @Date: 2021-11-23 11:29:01
- * @LastEditTime: 2022-01-25 14:55:15
- * @LastEditors: jack-pearson
- * @FilePath: /vue3-element-admin/.eslintrc.js
- * @Description:  https://github.com/jack-pearson/vue3-element-admin
- */
 module.exports = {
   root: true,
   env: {
@@ -19,11 +11,7 @@ module.exports = {
     parser: "@typescript-eslint/parser",
     sourceType: "module",
   },
-  extends: [
-    "plugin:vue/vue3-essential",
-    "plugin:vue/essential",
-    "eslint:recommended",
-  ],
+  extends: ["plugin:vue/vue3-essential", "plugin:vue/essential", "eslint:recommended"],
   plugins: ["vue", "@typescript-eslint"],
   rules: {
     // http://eslint.cn/docs/rules/

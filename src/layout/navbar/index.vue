@@ -1,24 +1,5 @@
-<!--
- * @Author: jack-pearson
- * @Date: 2021-12-31 18:10:15
- * @LastEditTime: 2022-03-16 14:59:13
- * @LastEditors: jack-pearson
- * @FilePath: /vue3-element-admin/src/layout/navbar/index.vue
- * @Description:  https://github.com/jack-pearson/vue3-element-admin 
--->
-
 <template>
-  <header
-    class="
-      layout-navbar
-      bg-$color-white
-      w-full
-      h-12
-      flex
-      justify-between
-      items-center
-    "
-  >
+  <header class="layout-navbar bg-$color-white w-full h-12 flex justify-between items-center">
     <div class="navbar-left flex items-center h-full">
       <LayoutHamburger v-if="settingsState.config.hasClipboard" />
       <LayoutBreadcrumb v-if="settingsState.config.hasBreadcrumb" />

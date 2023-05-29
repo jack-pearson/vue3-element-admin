@@ -1,11 +1,3 @@
-/*
- * @Author: jack-pearson
- * @Date: 2022-01-11 15:10:49
- * @LastEditTime: 2022-06-22 10:44:35
- * @LastEditors: jack-pearson
- * @FilePath: /vue3-element-admin/src/store/modules/tagView.ts
- * @Description:  https://github.com/jack-pearson/vue3-element-admin
- */
 import { defineStore } from "pinia";
 import { Menu, TagViewStoreType } from "@/types";
 import { route } from "@/hooks";

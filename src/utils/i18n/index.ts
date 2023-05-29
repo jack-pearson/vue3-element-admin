@@ -1,12 +1,3 @@
-/*
- * @Author: jack-pearson
- * @Date: 2021-12-30 14:09:45
- * @LastEditTime: 2022-06-21 17:22:00
- * @LastEditors: jack-pearson
- * @FilePath: /vue3-element-admin/src/utils/i18n/index.ts
- * @Description:  https://github.com/jack-pearson/vue3-element-admin
- */
-
 import { i18n } from "@/i18n";
 
 // 路由

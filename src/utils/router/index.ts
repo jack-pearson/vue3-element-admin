@@ -1,11 +1,3 @@
-/*
- * @Author: jack-pearson
- * @Date: 2021-12-30 13:56:29
- * @LastEditTime: 2022-06-21 17:24:11
- * @LastEditors: jack-pearson
- * @FilePath: /vue3-element-admin/src/utils/router/index.ts
- * @Description:  https://github.com/jack-pearson/vue3-element-admin
- */
 import { Menu } from "@/types";
 const modules = import.meta.glob("/src/**/**.vue");
 console.log(modules);

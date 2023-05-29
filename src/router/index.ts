@@ -1,11 +1,3 @@
-/*
- * @Author: jack-pearson
- * @Date: 2021-11-24 17:48:43
- * @LastEditTime: 2022-06-21 17:39:57
- * @LastEditors: jack-pearson
- * @FilePath: /vue3-element-admin/src/router/index.ts
- * @Description:  https://github.com/jack-pearson/vue3-element-admin
- */
 import { createRouter, createWebHashHistory, isNavigationFailure, RouteRecordRaw } from "vue-router";
 import NProgress from "nprogress";
 import { routerStore } from "@/store";

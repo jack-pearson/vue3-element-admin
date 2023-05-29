@@ -1,11 +1,3 @@
-<!--
- * @Author: jack-pearson
- * @Date: 2022-01-10 17:24:36
- * @LastEditTime: 2022-03-17 18:21:31
- * @LastEditors: jack-pearson
- * @FilePath: /vue3-element-admin/src/layout/navbar/language.vue
- * @Description:  https://github.com/jack-pearson/vue3-element-admin 
--->
 <template>
   <div class="layout-language h-full select-none">
     <el-dropdown type="primary" :show-timeout="70" :hide-timeout="50" trigger="hover" class="h-full flex items-center" @command="onChangeSize">

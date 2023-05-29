@@ -1,11 +1,3 @@
-/*
- * @Author: jack-pearson
- * @Date: 2021-11-22 11:13:15
- * @LastEditTime: 2022-03-17 18:23:37
- * @LastEditors: jack-pearson
- * @Description:  https://github.com/jack-pearson/vue3-element-admin
- * @FilePath: /vue3-element-admin/src/i18n/index.ts
- */
 import { createI18n } from "vue-i18n";
 import LocalZhCn from "@/i18n/lang/zh-cn";
 import LocalEn from "@/i18n/lang/en";

@@ -1,19 +1,6 @@
-<!--
- * @Author: jack-pearson
- * @Date: 2021-12-07 20:43:53
- * @LastEditTime: 2022-03-16 15:46:14
- * @LastEditors: jack-pearson
- * @FilePath: /vue3-element-admin/src/layout/sidebar/sidebar.vue
- * @Description:  https://github.com/jack-pearson/vue3-element-admin 
--->
 <template>
-  <div
-    class="layout-aside-container !h-full"
-    :class="{ 'is-collapsed': settingsConfig.config.isCollapsed }"
-  >
-    <el-aside
-      class="layout-aside bg-$menu-default-bg-color !w-full h-full flex"
-    >
+  <div class="layout-aside-container !h-full" :class="{ 'is-collapsed': settingsConfig.config.isCollapsed }">
+    <el-aside class="layout-aside bg-$menu-default-bg-color !w-full h-full flex">
       <el-scrollbar class="flex-1">
         <SidebarLogo v-if="settingsConfig.config.hasSidebarLogo" />
         <el-menu
