@@ -8,7 +8,7 @@
         </template>
       </el-menu-item>
     </template>
-    <el-sub-menu v-else class="sub-menu active:text-$el-color-primary-light-7 hover:(text-$el-color-primary-light-2 bg-transparent) select-none" :index="route.path" popper-append-to-body>
+    <el-sub-menu v-else class="sub-menu active:text-$el-color-primary-light-7 hover:(text-$el-color-primary-light-2 bg-transparent) select-none" :index="route.path" teleported>
       <template #title>
         <svg-icon :name="route.meta.icon"></svg-icon>
         <span v-show="!settingsConfig.config.isCollapsed" class="ml-3.5">{{ i18nRouter(route.meta.title) }}</span>
