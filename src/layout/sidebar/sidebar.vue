@@ -4,8 +4,8 @@
       <el-scrollbar class="flex-1">
         <SidebarLogo v-if="settingsConfig.config.hasSidebarLogo" />
         <el-menu
-          class="flex-auto overflow-y-auto overflow-x-hidden border-r-0"
-          :class="!settingsConfig.config.hasSidebarLogo ? '!h-full' : ''"
+          class="flex-auto overflow-y-auto overflow-x-hidden !border-r-0"
+          :class="{ '!h-full': !settingsConfig.config.hasSidebarLogo }"
           router
           :default-active="activeMenu"
           background-color="transparent"
