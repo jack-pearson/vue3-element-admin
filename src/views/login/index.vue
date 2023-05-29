@@ -107,8 +107,9 @@ const onSubmit = () => {
 
 <style lang="scss" scoped>
 .login-page {
-  background: url("https://gitee.com/lyt-top/vue-next-admin-images/raw/master/login/bg-login.png") no-repeat;
-  background-size: cover;
+  background: #00b09b; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #96c93d, #00b09b); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #96c93d, #00b09b); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   .login-content {
     width: 500px;
     transform: translate(-50%, -50%) translate3d(0, 0, 0);
