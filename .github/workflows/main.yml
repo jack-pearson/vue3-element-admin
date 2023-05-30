@@ -16,9 +16,11 @@ jobs:
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v2 # 来自官方脚本：https://github.com/marketplace/actions/checkout
-
+        with:
+          node-version: 18.16.0
       - name: Install and Build
         run: |
+          node -v
           npm install
           npm run build
 
