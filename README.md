@@ -60,12 +60,12 @@ element-plus + vue-i18n
 ## TagsView
 
 - 通过 `src/store/modules/settings.ts` 中的 **config** 对象里面的 `hasTagsView` 属性来控制该组件的显示隐藏.
-- 也可以通过页面中主题 <img src="./src/components/svg-icon/svg/theme.svg" style="width: 20px; height: 20px" /> 来控制显示隐藏
+- 也可以通过页面中主题 <img src="./src/assets/svg/theme.svg" style="width: 20px; height: 20px" /> 来控制显示隐藏
 
 ## 侧边栏 logo 显示
 
 - 通过 `src/store/modules/settings.ts` 中的 **config** 对象里面的 `hasSidebarLogo` 属性来控制该组件的显示隐藏.
-- 也可以通过页面中主题 <img src="./src/components/svg-icon/svg/theme.svg" style="width: 20px; height: 20px" /> 来控制显示隐藏
+- 也可以通过页面中主题 <img src="./src/assets/svg/theme.svg" style="width: 20px; height: 20px" /> 来控制显示隐藏
 
 ## pinia
 
@@ -79,12 +79,6 @@ element-plus + vue-i18n
 **注意** 修改色值之后刷新没有改变,是因为你肯定通过`页面`修改了`主题`
 
 这个操作会记录再 `localStorage` 中. 同时这个优先级比 上面的步骤 `高`.
-
-## element-plus 自动导入
-
-默认是 **全部导入**  
-因为`按需导入(自动导入)`会出现问题, 开发的时候 太慢.  
-可以开发全部导入, 正式按需导入.
 
 ## windicss
 
@@ -124,6 +118,4 @@ npx mrm@2 lint-staged
 ## 待处理 bug
 
 `点击当前的菜单做刷新功能, tagView 同理` 未做  
-`tagView` 关闭 右键 等功能做的很粗糙,欢迎 pr ⭐️.  
-`axios` 可以加上无感刷新  
-`侧边栏导航` width 少了 **1px**
+`axios` 可以加上无感刷新
