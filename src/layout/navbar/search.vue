@@ -11,7 +11,6 @@
         :prefix-icon="Search"
         ref="layoutSearchAutocompleteRef"
         @blur="closeSearch"
-        @select="selectMenu"
       >
         <template #default="{ item }">
           <div class="flex items-center">
@@ -26,13 +25,13 @@
 <script setup lang="ts">
 import { ref, nextTick } from "vue";
 import { Search } from "@element-plus/icons-vue";
-import { useRouter } from "vue-router";
+// import { useRouter } from "vue-router";
 import { routerStore } from "@/store";
 import { i18nRouter, routeTreeToArray } from "@/utils";
 import { Menu } from "@/types";
 const { routerList: menuList } = routerStore();
 const openDialog = ref(false);
-const router = useRouter();
+// const router = useRouter();
 const menuSearch = (queryString: string, callback: Function) => {
   const result = menu.filter(menuQueryChange(queryString));
   callback(result);
@@ -59,10 +58,10 @@ const menuQueryChange = (queryString: string) => {
     return result;
   };
 };
-const selectMenu = (val: Menu) => {
-  router.push(val.path);
-  openDialog.value = false;
-};
+// const selectMenu = (val: Menu) => {
+//   router.push(val.path);
+//   openDialog.value = false;
+// };
 const closeSearch = () => {
   menuQuery.value = "";
   openDialog.value = false;
