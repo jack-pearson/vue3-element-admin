@@ -35,5 +35,7 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@releases/v3 # 脚本来自： https://github.com/JamesIves/github-pages-deploy-action
         with:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          BRANCH: gh-pages
+          BRANCH: main
           FOLDER: build
+          name: dist
+          path: dist/
