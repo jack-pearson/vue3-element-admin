@@ -3,9 +3,9 @@ name: Build and Deploy
 # 当有新push或者pr时运行
 on:
   push:
-    branches: [main]
+    branches: [ master ]
   pull_request:
-    branches: [main]
+    branches: [ master ]
 
 jobs:
   # 一项叫做build-and-deploy的任务
@@ -20,7 +20,12 @@ jobs:
           node-version: 18.16.0
       - name: Install and Build
         run: |
-          node -v
           npm install
           npm run build
 
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@releases/v3 # 脚本来自： https://github.com/JamesIves/github-pages-deploy-action
+        with:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: build
