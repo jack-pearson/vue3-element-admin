@@ -107,8 +107,7 @@ npx mrm@2 lint-staged
 
 ## svg 组件
 
-之前再 花裤衩大佬的 `vue-element-admin` 仓库中发现 svg 组件确实特别好用. 根据网上的代码得到了现在的 `svg` 组件  
-**注意** 如果你新增了一个 `svg` 文件,此时并不会热更新, 需要你去 `src/plugins/svgBuilder.ts` 中保存一下 才可以.
+更换成`vite-plugin-svg-icons`组件使用.
 
 ## axios 封装类型提示
 
