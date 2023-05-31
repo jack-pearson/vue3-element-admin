@@ -1,0 +1,1 @@
+import{d as n,u as r,h as c,c as u,o as p}from"./index-240dddf8.js";const i=n({__name:"index",setup(_){const e=r(),o=c();console.log(e);const{query:t,params:s}=e,{path:a}=s;return o.replace({path:"/"+a,query:t}),(l,m)=>(p(),u("div"))}});export{i as default};

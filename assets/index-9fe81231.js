@@ -1,0 +1,1 @@
+import{_ as e,c as o,o as s}from"./index-240dddf8.js";const t={name:"profile"},c={class:"profile"};function r(n,a,p,_,i,f){return s(),o("div",c,"profile")}const d=e(t,[["render",r]]);export{d as default};
