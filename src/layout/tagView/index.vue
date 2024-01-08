@@ -10,7 +10,7 @@
           }"
           @click="onHandleClickSwitchRouter(item)"
           @contextmenu="onHandleContextMenu($event, item)"
-          class="layout-tagView-ul-li pl-4 pr-4 h-full relative cursor-pointer select-none flex items-center mr-2.5"
+          class="layout-tagView-ul-li pl-4 pr-4 h-full mr-2.5 relative cursor-pointer select-none flex items-center"
         >
           <svg-icon name="tagview-round" class="text-white mr-1" v-if="path === item.path"></svg-icon>
           <span>{{ i18nRouter(item.meta.title) }}</span>
@@ -51,7 +51,8 @@ const onHandleClickSwitchRouter = (item: Menu) => {
   router.push(item.path);
 };
 const onHandleScroll = (e: any) => {
-  proxy.$refs.scrollbarRef.$refs.wrap$.scrollLeft += e.wheelDelta / 2;
+  const eventDelta = e.wheelDelta || -e.deltaY * 40;
+  proxy.$refs.scrollbarRef.$refs.wrapRef.scrollLeft = eventDelta;
 };
 
 const onHandleRefreshTag = (item: Menu) => {
@@ -83,18 +84,18 @@ const onHandleContextMenu = (e: MouseEvent, item: Menu) => {
 </script>
 <style lang="scss" scoped>
 .layout-tagView {
-  height: 34px;
+  height: 40px;
   border-bottom: 1px solid #f1f2f3;
   :deep(.el-scrollbar__view) {
     height: 100%;
   }
   .layout-tagView-ul {
-    white-space: nowrap;
     .layout-tagView-ul-li {
       border: 1px solid #e6e6e6;
       border-radius: 2px;
       font-size: 12px;
       height: 26px;
+      flex-shrink: 0;
       .close-wrapper,
       .refresh-wrapper {
         transition: background 0.28s;
