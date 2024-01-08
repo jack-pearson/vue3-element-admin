@@ -1,13 +1,13 @@
 <template>
   <transition name="el-zoom-in-center">
     <div aria-hidden="true" class="context-menu fixed" :style="style" v-if="open">
-      <ul class="context-menu-ul bg-white pt-2 rounded pb-2 text-black">
-        <li class="context-menu-ul-li pl-4 pr-4 pt-1 pb-1" @click="onHandleRefreshTag">刷新</li>
-        <li class="context-menu-ul-li pl-4 pr-4 pt-1 pb-1" @click="onHandleCloseOther">关闭其他</li>
-        <li class="context-menu-ul-li pl-4 pr-4 pt-1 pb-1" @click="onHandleCloseLeft">关闭左边</li>
-        <li class="context-menu-ul-li pl-4 pr-4 pt-1 pb-1" @click="onHandleCloseRight">关闭右边</li>
-        <li class="context-menu-ul-li pl-4 pr-4 pt-1 pb-1" @click="onHandleCloseAll">关闭全部</li>
-        <li class="context-menu-ul-li pl-4 pr-4 pt-1 pb-1">当前页全屏</li>
+      <ul class="context-menu-ul bg-white p-2 rounded text-black">
+        <li class="context-menu-ul-li pl-2 pr-2 pt-1 pb-1" @click="onHandleRefreshTag">刷新</li>
+        <li class="context-menu-ul-li pl-2 pr-2 pt-1 pb-1" @click="onHandleCloseOther">关闭其他</li>
+        <li class="context-menu-ul-li pl-2 pr-2 pt-1 pb-1" @click="onHandleCloseLeft">关闭左边</li>
+        <li class="context-menu-ul-li pl-2 pr-2 pt-1 pb-1" @click="onHandleCloseRight">关闭右边</li>
+        <li class="context-menu-ul-li pl-2 pr-2 pt-1 pb-1" @click="onHandleCloseAll">关闭全部</li>
+        <li class="context-menu-ul-li pl-2 pr-2 pt-1 pb-1">当前页全屏</li>
       </ul>
     </div>
   </transition>
@@ -29,7 +29,7 @@ const style = reactive({
 });
 
 const onHandleRefreshTag = () => {
-  router.push({
+  router.replace({
     path: "/redirect" + route.path,
     query: route.query,
   });
@@ -52,13 +52,14 @@ const onHandleCloseAll = () => {
   router.push("/");
 };
 
-// eslint-disable-next-line no-unused-vars
 const openContextmenu = ({ x, y }: { x: number; y: number; current: Menu }) => {
   open.value = true;
   style.left = `${x}px`;
   style.top = `${y}px`;
 };
-
+defineExpose({
+  openContextmenu,
+});
 onMounted(() => {
   document.body.addEventListener("click", closeContextmenu);
 });
@@ -71,7 +72,7 @@ onUnmounted(() => {
   font-size: 12px;
   .context-menu-ul-li {
     &:hover {
-      background: linear-gradient(45deg, var(--el-color-primary), var(--el-color-primary-light-7));
+      background: var(--el-border-color-light);
     }
   }
 }

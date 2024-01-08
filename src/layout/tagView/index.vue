@@ -10,13 +10,10 @@
           }"
           @click="onHandleClickSwitchRouter(item)"
           @contextmenu="onHandleContextMenu($event, item)"
-          class="layout-tagView-ul-li pl-4 pr-4 h-full mr-2.5 relative cursor-pointer select-none flex items-center"
+          class="layout-tagView-ul-li pl-2 pr-2 h-full mr-2.5 relative cursor-pointer select-none flex items-center"
         >
           <svg-icon name="tagview-round" class="text-white mr-1" v-if="path === item.path"></svg-icon>
           <span>{{ i18nRouter(item.meta.title) }}</span>
-          <div v-if="path === item.path" class="refresh-wrapper text-color-text-primary rounded-full ml-1 w-4 h-4 flex items-center justify-center" @click.stop="onHandleRefreshTag(item)">
-            <svg-icon name="refresh"></svg-icon>
-          </div>
           <div
             v-if="visitedViews.length > 1 && !item.meta.isAffix"
             :class="{ 'ml-1': path !== item.path }"
@@ -53,13 +50,6 @@ const onHandleClickSwitchRouter = (item: Menu) => {
 const onHandleScroll = (e: any) => {
   const eventDelta = e.wheelDelta || -e.deltaY * 40;
   proxy.$refs.scrollbarRef.$refs.wrapRef.scrollLeft = eventDelta;
-};
-
-const onHandleRefreshTag = (item: Menu) => {
-  router.replace({
-    path: "/redirect" + item.path,
-    query: route.query,
-  });
 };
 
 const onHandleCloseTag = (v: Menu) => {
