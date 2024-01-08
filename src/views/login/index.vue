@@ -92,7 +92,7 @@ const onSubmit = () => {
           Session.set("token", userInfo.token);
           Session.set("userInfo", userInfo);
           await store.setUserInfo(userInfo);
-          router.replace({ path: "/" });
+          router.replace({ path: "/", query: { keyword: "vue" } });
         } else {
           proxy.$message.error(message);
         }

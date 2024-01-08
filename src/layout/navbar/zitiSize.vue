@@ -1,7 +1,7 @@
 <template>
   <div class="layout-ziti h-full select-none">
     <el-dropdown type="primary" :show-timeout="70" :hide-timeout="50" trigger="hover" class="h-full flex items-center" @command="onChangeSize">
-      <div class="icon-wrapper text-$color-text-primary pl-2.5 pr-2.5 h-full flex justify-center items-center cursor-pointer">
+      <div class="icon-wrapper text-color-text-primary pl-2.5 pr-2.5 h-full flex justify-center items-center cursor-pointer">
         <svg-icon name="ziti" class="w-full pointer-events-none" />
       </div>
       <template #dropdown>

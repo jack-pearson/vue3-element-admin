@@ -1,5 +1,5 @@
 <template>
-  <header class="layout-navbar bg-$color-white w-full h-12 flex justify-between items-center">
+  <header class="layout-navbar bg-color-white w-full h-12 flex justify-between items-center">
     <div class="navbar-left flex items-center h-full">
       <LayoutHamburger v-if="settingsState.config.hasClipboard" />
       <LayoutBreadcrumb v-if="settingsState.config.hasBreadcrumb" />

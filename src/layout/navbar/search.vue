@@ -1,6 +1,6 @@
 <template>
   <div class="layout-search h-full select-none">
-    <div class="icon-wrapper text-$color-text-primary pl-2.5 pr-2.5 h-full flex justify-center items-center cursor-pointer" @click="openSearch">
+    <div class="icon-wrapper text-color-text-primary pl-2.5 pr-2.5 h-full flex justify-center items-center cursor-pointer" @click="openSearch">
       <svg-icon name="search" class="w-full" />
     </div>
     <el-dialog v-model="openDialog" destroy-on-close :modal="false" fullscreen :show-close="false">

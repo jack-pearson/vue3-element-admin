@@ -1,12 +1,12 @@
 <template>
-  <div class="layout-tagView w-full bg-$color-white">
+  <div class="layout-tagView w-full bg-color-white">
     <el-scrollbar class="h-full w-full pl-4 pr-4" ref="scrollbarRef" @wheel.prevent="onHandleScroll">
       <ul class="layout-tagView-ul h-full flex items-center">
         <li
           v-for="item in visitedViews"
           :key="item.name"
           :class="{
-            'is-active text-$color-white bg-$el-color-primary': path === item.path,
+            'is-active text-color-white bg-el-color-primary': path === item.path,
           }"
           @click="onHandleClickSwitchRouter(item)"
           @contextmenu="onHandleContextMenu($event, item)"
@@ -14,7 +14,7 @@
         >
           <svg-icon name="tagview-round" class="text-white mr-1" v-if="path === item.path"></svg-icon>
           <span>{{ i18nRouter(item.meta.title) }}</span>
-          <div v-if="path === item.path" class="refresh-wrapper text-$color-text-primary rounded-full ml-1 w-4 h-4 flex items-center justify-center" @click.stop="onHandleRefreshTag(item)">
+          <div v-if="path === item.path" class="refresh-wrapper text-color-text-primary rounded-full ml-1 w-4 h-4 flex items-center justify-center" @click.stop="onHandleRefreshTag(item)">
             <svg-icon name="refresh"></svg-icon>
           </div>
           <div
@@ -55,7 +55,7 @@ const onHandleScroll = (e: any) => {
 };
 
 const onHandleRefreshTag = (item: Menu) => {
-  router.push({
+  router.replace({
     path: "/redirect" + item.path,
     query: route.query,
   });

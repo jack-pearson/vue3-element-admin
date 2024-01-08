@@ -1,6 +1,6 @@
 <template>
   <div class="layout-aside-container !h-full" :class="{ 'is-collapsed': settingsConfig.config.isCollapsed }">
-    <el-aside class="layout-aside bg-$menu-default-bg-color !w-full h-full flex">
+    <el-aside class="layout-aside bg-menu-default-bg-color !w-full h-full flex">
       <el-scrollbar class="flex-1">
         <SidebarLogo v-if="settingsConfig.config.hasSidebarLogo" />
         <el-menu

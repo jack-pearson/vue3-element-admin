@@ -1,9 +1,9 @@
 import { createApp } from "vue";
-import "virtual:windi.css";
 import "virtual:svg-icons-register";
+import "@/styles/scss/index.scss";
+import "@/styles/tailwind/index.css";
 import ElementPlus from "element-plus";
 import "element-plus/dist/index.css";
-import "@/styles/scss/index.scss";
 import svgIcon from "@/components/svgIcon/index.vue";
 import pagination from "@/components/pagination/index.vue";
 import { pinia } from "@/store";

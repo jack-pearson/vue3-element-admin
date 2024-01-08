@@ -1,14 +1,14 @@
 <template>
   <div v-if="!isHide(route)" class="w-full sidebar-item" :class="{ 'is-collapsed': settingsConfig.config.isCollapsed }">
     <template v-if="!hasChildren(route)">
-      <el-menu-item class="sub-menu active:text-$el-color-primary-light-7 hover:(text-$el-color-primary-light-2 bg-transparent) select-none" :index="route.path">
+      <el-menu-item class="sub-menu active:text-el-color-primary-light-7 hover:(text-el-color-primary-light-2 bg-transparent) select-none" :index="route.path">
         <template #title>
           <svg-icon :name="route.meta.icon"></svg-icon>
           <span class="ml-3.5">{{ i18nRouter(route.meta.title) }}</span>
         </template>
       </el-menu-item>
     </template>
-    <el-sub-menu v-else class="sub-menu active:text-$el-color-primary-light-7 hover:(text-$el-color-primary-light-2 bg-transparent) select-none" :index="route.path" teleported>
+    <el-sub-menu v-else class="sub-menu active:text-el-color-primary-light-7 hover:(text-el-color-primary-light-2 bg-transparent) select-none" :index="route.path" teleported>
       <template #title>
         <svg-icon :name="route.meta.icon"></svg-icon>
         <span v-show="!settingsConfig.config.isCollapsed" class="ml-3.5">{{ i18nRouter(route.meta.title) }}</span>

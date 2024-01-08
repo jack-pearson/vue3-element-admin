@@ -6,8 +6,8 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
-import ElementZhCn from "element-plus/lib/locale/lang/zh-cn";
-import ElementEn from "element-plus/lib/locale/lang/en";
+import ElementZhCn from "element-plus/es/locale/lang/zh-cn";
+import ElementEn from "element-plus/es/locale/lang/en";
 import { settingsStore } from "@/store";
 const settingsState = settingsStore();
 const ElComponentSize = computed(() => settingsState.config.ElComponentSize);

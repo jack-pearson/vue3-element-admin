@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory, isNavigationFailure, RouteRecordRaw } from "vue-router";
+import { createRouter, createWebHistory, isNavigationFailure, RouteRecordRaw } from "vue-router";
 import NProgress from "nprogress";
 import { routerStore } from "@/store";
 import "nprogress/nprogress.css";
@@ -36,7 +36,7 @@ export const constantRouters: Array<RouteRecordRaw | Menu> = [
         meta: { title: "profile", icon: "profile" },
       },
       {
-        path: "/home",
+        path: "/home/:id?",
         name: "home",
         component: () => import("@/views/home/index.vue"),
         meta: { title: "home", icon: "home", isAffix: true, isTagView: true },
@@ -46,7 +46,7 @@ export const constantRouters: Array<RouteRecordRaw | Menu> = [
 ];
 
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory(),
   routes: constantRouters,
 });
 

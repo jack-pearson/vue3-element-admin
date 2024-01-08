@@ -1,4 +1,4 @@
-# Vue 3 + Typescript + Vite + element-plus + i18n + pinia + windicss
+# Vue 3 + Typescript + Vite + element-plus + i18n + pinia + tailwindcss
 
 [在线预览](https://jack-pearson.github.io/vue3-element-admin/)  
 欢迎大家 PR 和 Star 各种操作.
@@ -80,14 +80,11 @@ element-plus + vue-i18n
 
 这个操作会记录再 `localStorage` 中. 同时这个优先级比 上面的步骤 `高`.
 
-## windicss
-
-为什么选择 Windi CSS? 呢, 在阐述为什么创建 Windi CSS 时，作者曾说：
+## Tailwind CSS
 
 > 当项目越来越大时（大约几十个组件），使用 Tailwind CSS 最初的编译时间达到了 3s，而热更新时的时间甚至超过了 1s。 - @voorjaar
 
 官网地址(https://www.tailwindcss.cn/docs/installation)
-windicss 是 tailwindcss 的封装.所以详细的需要看 tailwindcss
 
 不用这个的坏处
 

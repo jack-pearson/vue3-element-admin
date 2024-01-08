@@ -2,7 +2,7 @@ import { defineConfig, loadEnv } from "vite";
 import { createSvgIconsPlugin } from "vite-plugin-svg-icons";
 import path from "path";
 import vue from "@vitejs/plugin-vue";
-import WindiCSS from "vite-plugin-windicss";
+import tailwindcss from  'tailwindcss';
 
 export default defineConfig(({ mode }) => {
   const config = loadEnv(mode, "./");
@@ -11,10 +11,9 @@ export default defineConfig(({ mode }) => {
   const extraAlias: { "vue-i18n"?: string } = {};
   if (mode === "development" && !!VITE_IGNORE_I18N_WARNING) extraAlias["vue-i18n"] = "vue-i18n/dist/vue-i18n.cjs.js";
   return {
-    base: "/vue3-element-admin/",
     plugins: [
       vue(),
-      WindiCSS(),
+      
       createSvgIconsPlugin({
         // 指定需要缓存的图标文件夹
         iconDirs: [path.resolve(process.cwd(), "src/assets/svg")], // 与本地储存地址一致
@@ -22,12 +21,20 @@ export default defineConfig(({ mode }) => {
         symbolId: "icon-[name]",
       }),
     ],
+    optimizeDeps: {
+      include: ['element-plus']
+    },
     server: {
       host: "0.0.0.0",
       port: VITE_PORT as unknown as number,
       open: VITE_AUTO_OPEN,
     },
     css: {
+      postcss: {
+        plugins: [
+          tailwindcss, 
+        ]
+      },
       preprocessorOptions: {
         scss: {
           additionalData: `@use "@/styles/element/index.scss" as *;`,
