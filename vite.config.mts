@@ -9,11 +9,10 @@ export default defineConfig(({ mode }) => {
   const { VITE_IGNORE_I18N_WARNING, VITE_PORT, VITE_AUTO_OPEN } = config;
   // 解决警告You are running the esm-bundler build of vue-i18n.
   const extraAlias: { "vue-i18n"?: string } = {};
-  if (mode === "development" && !!VITE_IGNORE_I18N_WARNING) extraAlias["vue-i18n"] = "vue-i18n/dist/vue-i18n.cjs.js";
+  if (mode === "development" && VITE_IGNORE_I18N_WARNING) extraAlias["vue-i18n"] = "vue-i18n/dist/vue-i18n.cjs.js";
   return {
     plugins: [
       vue(),
-      
       createSvgIconsPlugin({
         // 指定需要缓存的图标文件夹
         iconDirs: [path.resolve(process.cwd(), "src/assets/svg")], // 与本地储存地址一致

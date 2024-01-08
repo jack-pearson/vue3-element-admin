@@ -5,27 +5,6 @@
     </div>
     <el-drawer v-model="open" :title="i18nSettings('setting')" direction="rtl" size="300px" :before-close="handleClose">
       <div class="w-full">
-        <el-divider content-position="left" class="font-bold">{{ i18nSettings("themeSettings") }}</el-divider>
-        <div class="item w-full item flex items-center">
-          <span class="label flex-1">primary</span>
-          <el-color-picker v-model="settings.primary" @change="(e) => onChangeTheme(e, 'primary')" />
-        </div>
-        <div class="item w-full item flex items-center">
-          <span class="label flex-1">success</span>
-          <el-color-picker v-model="settings.success" @change="(e) => onChangeTheme(e, 'success')" />
-        </div>
-        <div class="item w-full item flex items-center">
-          <span class="label flex-1">danger</span>
-          <el-color-picker v-model="settings.danger" @change="(e) => onChangeTheme(e, 'danger')" />
-        </div>
-        <div class="item w-full item flex items-center">
-          <span class="label flex-1">warning</span>
-          <el-color-picker v-model="settings.warning" @change="(e) => onChangeTheme(e, 'warning')" />
-        </div>
-        <div class="item w-full item flex items-center">
-          <span class="label flex-1">info</span>
-          <el-color-picker v-model="settings.info" @change="(e) => onChangeTheme(e, 'info')" />
-        </div>
         <el-divider content-position="left" class="font-bold">{{ i18nSettings("globalSettings") }}</el-divider>
         <div class="item w-full item flex items-center">
           <span class="label flex-1">{{ i18nSettings("switchTagsView") }}</span>
@@ -45,23 +24,17 @@
 </template>
 <script setup lang="ts">
 import { computed, ref, reactive } from "vue";
-import { i18nSettings, setHtmlCssVar } from "@/utils";
+import { i18nSettings } from "@/utils";
 import { settingsStore } from "@/store";
-import { themeType } from "@/types";
 const open = ref(false);
 const settingsState = settingsStore();
-const themes = computed(() => settingsState.themesState);
 const config = computed(() => settingsState.config);
 const settings = reactive({
-  ...themes.value,
   hasTagsView: config.value.hasTagsView,
   hasSidebarLogo: config.value.hasSidebarLogo,
   hasGlobalSettings: config.value.hasGlobalSettings,
 });
-const onChangeTheme = (val: any, type: themeType) => {
-  settingsState.setThemes({ [type as themeType]: val });
-  setHtmlCssVar(val, type);
-};
+
 const onChangeGlobalConfig = (val: any, tag: string) => {
   switch (tag) {
     case "tagsView":

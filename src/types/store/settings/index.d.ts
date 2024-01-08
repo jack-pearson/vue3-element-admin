@@ -1,14 +1,6 @@
 export type languageType = "zh-cn" | "en";
-export type themeType = "primary" | "success" | "warning" | "danger" | "info";
 export type ElComponentSizeType = "default" | "small" | "large";
 export interface settingsStoreType {
-  themesState: {
-    primary: string;
-    success: string;
-    warning: string;
-    danger: string;
-    info: string;
-  };
   fixed: {
     loginTitle: string;
     logoTitle: string;
