@@ -13,13 +13,18 @@ jobs:
       # 下载仓库代码
       - uses: actions/checkout@v2
 
-      # 缓存依赖
+      - name: Use Node.js 18.16.0
+        uses: actions/setup-node@v2
+        with:
+          node-version: 18.16.0
+
+       # 缓存依赖
       - name: Get yarn cache
         id: yarn-cache
-        run: echo "::set-output name=dir::$(yarn cache dir)"
+        run: echo "YARN_CACHE_DIR=$(yarn cache dir)" >> $GITHUB_ENV
       - uses: actions/cache@v1
         with:
-          path: ${{ steps.yarn-cache.outputs.dir }}
+          path: ${{ env.YARN_CACHE_DIR }}
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
