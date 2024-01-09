@@ -29,6 +29,7 @@ import { Search } from "@element-plus/icons-vue";
 import { useRouter } from "vue-router";
 import { routerStore } from "@/store";
 import { i18nRouter, routeTreeToArray } from "@/utils";
+import { route } from "@/hooks";
 import { Menu } from "@/types";
 const { routerList: menuList } = routerStore();
 const openDialog = ref(false);
@@ -44,9 +45,7 @@ console.log(menu, "menu");
 const layoutSearchAutocompleteRef = ref();
 const menuQuery = ref("");
 const menuSearch = (queryString: string, callback: Function) => {
-  console.log(queryString, "queryString");
   const result = menu.filter(menuQueryChange(queryString));
-  console.log(result, "result");
   callback(result);
 };
 const openSearch = () => {
@@ -67,8 +66,9 @@ const menuQueryChange = (queryString: string) => {
   };
 };
 const selectMenu = (val: Menu) => {
-  console.log(val, "val");
-  router.push(val.path);
+  if (val.path !== route.value.path && val.redirect !== route.value.path) {
+    router.push(val.path);
+  }
   openDialog.value = false;
 };
 const closeSearch = () => {
