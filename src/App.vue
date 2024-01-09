@@ -13,6 +13,7 @@ const settingsState = settingsStore();
 const ElComponentSize = computed(() => settingsState.config.ElComponentSize);
 const language = computed(() => settingsState.config.language);
 const locale = computed(() => {
+  console.log(language.value, "language.value");
   switch (language.value) {
     case "zh-cn":
       return ElementZhCn;

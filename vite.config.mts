@@ -34,11 +34,6 @@ export default defineConfig(({ mode }) => {
           tailwindcss, 
         ]
       },
-      preprocessorOptions: {
-        scss: {
-          additionalData: `@use "@/styles/element/index.scss" as *;`,
-        },
-      },
     },
     resolve: {
       alias: {

@@ -11,6 +11,7 @@
         :prefix-icon="Search"
         ref="layoutSearchAutocompleteRef"
         @blur="closeSearch"
+        @select="(item: any | Menu) => selectMenu(item)"
       >
         <template #default="{ item }">
           <div class="flex items-center">
@@ -25,30 +26,37 @@
 <script setup lang="ts">
 import { ref, nextTick } from "vue";
 import { Search } from "@element-plus/icons-vue";
-// import { useRouter } from "vue-router";
+import { useRouter } from "vue-router";
 import { routerStore } from "@/store";
 import { i18nRouter, routeTreeToArray } from "@/utils";
 import { Menu } from "@/types";
 const { routerList: menuList } = routerStore();
 const openDialog = ref(false);
-// const router = useRouter();
-const menuSearch = (queryString: string, callback: Function) => {
-  const result = menu.filter(menuQueryChange(queryString));
-  callback(result);
+const router = useRouter();
+const filterMenuList = (menuList: Menu[]) => {
+  console.log(menuList, "menuList");
+  const list = routeTreeToArray(menuList);
+  console.log(list, "list");
+  return list.map((item) => (item.isHide ? null : item));
 };
+const menu = filterMenuList(menuList);
+console.log(menu, "menu");
 const layoutSearchAutocompleteRef = ref();
 const menuQuery = ref("");
+const menuSearch = (queryString: string, callback: Function) => {
+  console.log(queryString, "queryString");
+  const result = menu.filter(menuQueryChange(queryString));
+  console.log(result, "result");
+  callback(result);
+};
 const openSearch = () => {
   openDialog.value = true;
   nextTick(() => {
     menuQuery.value = "";
-    layoutSearchAutocompleteRef.value.focus();
+    // layoutSearchAutocompleteRef.value.focus();
   });
 };
-const filterMenuList = (menuList: Menu[]) => {
-  return routeTreeToArray(menuList).map((item) => (item.isHide ? null : item));
-};
-const menu = filterMenuList(menuList);
+
 const menuQueryChange = (queryString: string) => {
   return (restaurant: any) => {
     const result =
@@ -58,10 +66,11 @@ const menuQueryChange = (queryString: string) => {
     return result;
   };
 };
-// const selectMenu = (val: Menu) => {
-//   router.push(val.path);
-//   openDialog.value = false;
-// };
+const selectMenu = (val: Menu) => {
+  console.log(val, "val");
+  router.push(val.path);
+  openDialog.value = false;
+};
 const closeSearch = () => {
   menuQuery.value = "";
   openDialog.value = false;

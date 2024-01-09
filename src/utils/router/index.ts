@@ -26,7 +26,7 @@ export const hasChildren = (route: Menu) => route && route.children && route.chi
 export const routeTreeToArray = (routes: Menu[], result: Menu[] = []) => {
   routes.forEach((node: Menu) => {
     result.push(node);
-    if (hasChildren(node)) routeTreeToArray(node.children, result);
+    if (hasChildren(node) && !isHide(node)) routeTreeToArray(node.children, result);
   });
   return result;
 };

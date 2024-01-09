@@ -8,6 +8,7 @@ import { route } from "@/hooks";
 const DEFAULT_PATH = "/home";
 import Login from "@/views/login/index.vue";
 import Layout from "@/layout/index.vue";
+import Redirect from "@/views/redirect/index.vue";
 import { Menu } from "@/types";
 NProgress.configure({ showSpinner: false });
 export const constantRouters: Array<RouteRecordRaw | Menu> = [
@@ -40,6 +41,30 @@ export const constantRouters: Array<RouteRecordRaw | Menu> = [
         name: "home",
         component: () => import("@/views/home/index.vue"),
         meta: { title: "home", icon: "home", isAffix: true, isTagView: true },
+      },
+    ],
+  },
+  {
+    id: 30,
+    parentId: 1,
+    path: "/redirect",
+    name: "redirectTo",
+    component: Layout,
+    isHide: true,
+    redirect: "/redirect/:path(.*)",
+    meta: {
+      title: "redirect",
+    },
+    children: [
+      {
+        children: [],
+        path: "/redirect/:path(.*)",
+        name: "redirect",
+        isHide: false,
+        component: Redirect,
+        meta: {
+          title: "redirect",
+        },
       },
     ],
   },

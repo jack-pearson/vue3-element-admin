@@ -3,13 +3,13 @@ export interface Menu {
   parentId?: number;
   name: string;
   path: string;
-  redirect: string;
+  redirect?: string;
   component: any;
-  children: Menu[];
+  children: Menu[] | [];
   isHide?: boolean;
   meta: {
     title: string;
-    icon: string;
+    icon?: string;
     isKeepAlive?: boolean;
     isTagView?: boolean;
     isAffix?: boolean;
