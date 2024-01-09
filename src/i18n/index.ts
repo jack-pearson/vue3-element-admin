@@ -30,6 +30,7 @@ const getLocale = () => {
 };
 // 导出语言国际化
 export const i18n = createI18n({
+  legacy: false,
   locale: getLocale(),
   fallbackLocale: "zh-cn",
   messages,

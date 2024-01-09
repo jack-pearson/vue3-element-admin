@@ -27,6 +27,9 @@ const onChangeSize = (command: languageType) => {
   Local.set("config", config);
   settingsState.setLanguage(command);
   proxy.$i18n.locale = command;
+  // i18n.global.locale.value = command;
+  console.log(proxy.$i18n);
+  console.log(i18n);
   document.title = i18n.global.t("messages.router." + title.value);
 };
 const title = computed(() => route.value.meta.title);

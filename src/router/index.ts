@@ -10,6 +10,7 @@ import Login from "@/views/login/index.vue";
 import Layout from "@/layout/index.vue";
 import Redirect from "@/views/redirect/index.vue";
 import { Menu } from "@/types";
+
 NProgress.configure({ showSpinner: false });
 export const constantRouters: Array<RouteRecordRaw | Menu> = [
   {
