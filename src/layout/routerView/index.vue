@@ -9,17 +9,16 @@
 </template>
 <script lang="ts" setup>
 import { watch, computed } from "vue";
-import { useRoute } from "vue-router";
+import { route } from "@/hooks";
 import { tagViewStore } from "@/store";
 import { Menu } from "@/types";
 const tagViewState = tagViewStore();
 const cachedViews = computed(() => tagViewState.cachedViews) as any;
-const route = useRoute();
 const cloneRoute = computed(() => {
   return {
-    name: route.name,
-    path: route.path,
-    meta: route.meta,
+    name: route.value.name,
+    path: route.value.path,
+    meta: route.value.meta,
   };
 }) as any;
 watch(
@@ -29,7 +28,7 @@ watch(
       tagViewState.addTagView(newRoute);
     }
   },
-  { immediate: true }
+  { immediate: true },
 );
 </script>
 <style lang="scss" scoped></style>

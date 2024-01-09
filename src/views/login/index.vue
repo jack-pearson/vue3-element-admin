@@ -49,10 +49,9 @@
 import { reactive, getCurrentInstance } from "vue";
 import { userStore, settingsStore } from "@/store";
 import { LoginService } from "@/apis";
-import { useRouter } from "vue-router";
+import { router } from "@/hooks";
 import { Session } from "@/utils";
 const store = userStore();
-const router = useRouter();
 const { fixed: fixedStore } = settingsStore();
 const { proxy } = getCurrentInstance() as any;
 const form = reactive({
@@ -92,7 +91,7 @@ const onSubmit = () => {
           Session.set("token", userInfo.token);
           Session.set("userInfo", userInfo);
           await store.setUserInfo(userInfo);
-          router.replace({ path: "/", query: { keyword: "vue" } });
+          router.value.replace({ path: "/", query: { keyword: "vue" } });
         } else {
           proxy.$message.error(message);
         }

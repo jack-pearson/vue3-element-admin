@@ -30,22 +30,20 @@
 </template>
 <script setup lang="ts">
 import { computed, getCurrentInstance, ref } from "vue";
-import { useRoute, useRouter } from "vue-router";
+import { route, router } from "@/hooks";
 import ContextMenu from "./contextmenu.vue";
 import { i18nRouter } from "@/utils";
 import { tagViewStore } from "@/store";
 import { Menu } from "@/types";
 
-const route = useRoute();
-const router = useRouter();
 const contextmenuRef = ref<any>(null);
 const tagViewState = tagViewStore();
 const { proxy } = getCurrentInstance() as any;
 const visitedViews = computed(() => tagViewState.visitedViews);
-const path = computed(() => route.path);
+const path = computed(() => route.value.path);
 const onHandleClickSwitchRouter = (item: Menu) => {
   if (item.path === path.value) return;
-  router.push(item.path);
+  router.value.push(item.path);
 };
 const onHandleScroll = (e: any) => {
   const eventDelta = e.wheelDelta || -e.deltaY * 40;
@@ -58,9 +56,9 @@ const onHandleCloseTag = (v: Menu) => {
   if (len === 0) return;
   if (path.value === v.path) {
     if (findIndex === len - 1) {
-      router.push(visitedViews.value[findIndex - 1].path);
+      router.value.push(visitedViews.value[findIndex - 1].path);
     } else {
-      router.push(visitedViews.value[findIndex + 1].path);
+      router.value.push(visitedViews.value[findIndex + 1].path);
     }
   }
   tagViewState.removeCachedViews(v.name);

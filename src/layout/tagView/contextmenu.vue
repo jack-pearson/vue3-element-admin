@@ -14,12 +14,10 @@
 </template>
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, reactive } from "vue";
-import { useRouter, useRoute } from "vue-router";
+import { route, router } from "@/hooks";
 import { tagViewStore } from "@/store";
 import { Menu } from "@/types";
 
-const route = useRoute();
-const router = useRouter();
 const open = ref<boolean>(false);
 const tagViewState = tagViewStore();
 const style = reactive({
@@ -29,9 +27,9 @@ const style = reactive({
 });
 
 const onHandleRefreshTag = () => {
-  router.replace({
-    path: "/redirect" + route.path,
-    query: route.query,
+  router.value.replace({
+    path: "/redirect" + route.value.path,
+    query: route.value.query,
   });
 };
 const closeContextmenu = () => {
@@ -49,7 +47,7 @@ const onHandleCloseLeft = () => {
 };
 const onHandleCloseAll = () => {
   tagViewState.closeAllTagView();
-  router.push("/");
+  router.value.push("/");
 };
 
 const openContextmenu = ({ x, y }: { x: number; y: number; current: Menu }) => {

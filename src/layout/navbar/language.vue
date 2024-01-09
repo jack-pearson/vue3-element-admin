@@ -17,7 +17,7 @@ import { getCurrentInstance, computed } from "vue";
 import { Local, i18n as i18nOption } from "@/utils";
 import { i18n } from "@/i18n";
 import { settingsStore } from "@/store";
-import { useRoute } from "vue-router";
+import { route } from "@/hooks";
 import { languageType, settingsStoreType } from "@/types";
 const settingsState = settingsStore();
 const { proxy } = getCurrentInstance() as any;
@@ -29,8 +29,7 @@ const onChangeSize = (command: languageType) => {
   proxy.$i18n.locale = command;
   document.title = i18n.global.t("messages.router." + title.value);
 };
-const route = useRoute();
-const title = computed(() => route.meta.title);
+const title = computed(() => route.value.meta.title);
 const language = computed(() => settingsState.config.language);
 </script>
 <style lang="scss" scoped>

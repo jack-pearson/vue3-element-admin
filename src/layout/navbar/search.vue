@@ -26,14 +26,12 @@
 <script setup lang="ts">
 import { ref, nextTick } from "vue";
 import { Search } from "@element-plus/icons-vue";
-import { useRouter } from "vue-router";
 import { routerStore } from "@/store";
 import { i18nRouter, routeTreeToArray } from "@/utils";
-import { route } from "@/hooks";
+import { route, router } from "@/hooks";
 import { Menu } from "@/types";
 const { routerList: menuList } = routerStore();
 const openDialog = ref(false);
-const router = useRouter();
 const filterMenuList = (menuList: Menu[]) => {
   console.log(menuList, "menuList");
   const list = routeTreeToArray(menuList);
@@ -67,7 +65,7 @@ const menuQueryChange = (queryString: string) => {
 };
 const selectMenu = (val: Menu) => {
   if (val.path !== route.value.path && val.redirect !== route.value.path) {
-    router.push(val.path);
+    router.value.push(val.path);
   }
   openDialog.value = false;
 };

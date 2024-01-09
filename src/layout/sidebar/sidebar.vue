@@ -6,13 +6,13 @@
         <el-menu
           class="flex-auto overflow-y-auto overflow-x-hidden !border-r-0"
           :class="{ '!h-full': !settingsConfig.config.hasSidebarLogo }"
-          router
           :default-active="activeMenu"
           background-color="transparent"
           mode="vertical"
           :collapse="settingsConfig.config.isCollapsed"
           :collapse-transition="false"
           :uniqueOpened="true"
+          @select="handleSelect"
         >
           <SidebarItem v-for="item in menuList" :key="item.id" :route="item" />
         </el-menu>
@@ -29,13 +29,15 @@ export default { name: "Sidebar" };
 import SidebarItem from "./SidebarItem.vue";
 import SidebarLogo from "./sidebarLogo.vue";
 import { computed } from "vue";
+import { route, router } from "@/hooks";
 import { routerStore, settingsStore } from "@/store";
-import { useRoute } from "vue-router";
 const routerConfig = routerStore();
 const settingsConfig = settingsStore();
 const { routerList: menuList } = routerConfig.$state;
-const currentRoute = useRoute();
-const activeMenu = computed(() => currentRoute.path);
+const activeMenu = computed(() => route.value.path);
+const handleSelect = (key: string) => {
+  if (key !== activeMenu.value) router.value.push(key);
+};
 </script>
 
 <style scoped lang="scss">

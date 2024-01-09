@@ -17,18 +17,17 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import { userStore } from "@/store";
-import { useRouter } from "vue-router";
+import { router } from "@/hooks";
 import { i18nRouter, Local, Session } from "@/utils";
 import { ArrowDown } from "@element-plus/icons-vue";
 import avatarDefault from "@/assets/img/profile.jpg";
-const router = useRouter();
 const onHandleClickCommand = (command: string) => {
   if (command === "logout") {
     Local.clear();
     Session.clear();
     location.reload();
   } else {
-    router.push(command);
+    router.value.push(command);
   }
 };
 const userState = userStore();

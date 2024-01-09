@@ -9,9 +9,9 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
-import { useRoute, RouteLocationMatched } from "vue-router";
+import { RouteLocationMatched } from "vue-router";
 import { i18nRouter } from "@/utils";
-const route = useRoute();
+import { route } from "@/hooks";
 
 const getMenuRedirect = (breadcrumb: RouteLocationMatched[]) =>
   breadcrumb.map(({ meta, path }) => ({
@@ -19,7 +19,7 @@ const getMenuRedirect = (breadcrumb: RouteLocationMatched[]) =>
     path,
   }));
 
-const breadcrumb = computed(() => getMenuRedirect(route.matched.filter((item) => item.path !== "/")));
+const breadcrumb = computed(() => getMenuRedirect(route.value.matched.filter((item) => item.path !== "/")));
 </script>
 <style lang="scss" scoped></style>
 
