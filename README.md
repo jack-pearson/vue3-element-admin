@@ -32,7 +32,7 @@ node 18.16.0
 - [x] svg 组件
 - [x] axios 封装类型提示
 
-## 多语言
+## 多语言 (有 bug)
 
 element-plus + vue-i18n
 
@@ -71,15 +71,6 @@ element-plus + vue-i18n
 
 因为 **vuex** 没有类型提示, 改用 pinia 来做`状态管理`
 
-## element 自定义主题
-
-1. 再 `src/styles/element/index.scss` 文件中修改对应的颜色.
-2. 同时需要修改 `src/store/modules/settings.ts` 文件修改成一致的颜色色值.
-
-**注意** 修改色值之后刷新没有改变,是因为你肯定通过`页面`修改了`主题`
-
-这个操作会记录再 `localStorage` 中. 同时这个优先级比 上面的步骤 `高`.
-
 ## Tailwind CSS
 
 > 当项目越来越大时（大约几十个组件），使用 Tailwind CSS 最初的编译时间达到了 3s，而热更新时的时间甚至超过了 1s。 - @voorjaar
@@ -110,8 +101,3 @@ npx mrm@2 lint-staged
 
 根据网上资料, 和自己的判断对 `axios` 进行了封装操作.达到 `传参` 和 `返回值` 有类型提示.  
 **例子:** 再 `src/apis/login/index.ts` 中
-
-## 待处理 bug
-
-`点击当前的菜单做刷新功能, tagView 同理` 未做  
-`axios` 可以加上无感刷新
