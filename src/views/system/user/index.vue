@@ -12,8 +12,8 @@
           <el-input v-model="searchForm.name" clearable :placeholder="i18nSystemUser('search.nicknamePlaceholder')"></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" class="ml-4" @click="getUserList">{{ i18nGlobal("search") }}</el-button>
-          <el-button @click="resetForm">{{ i18nGlobal("reset") }}</el-button>
+          <el-button type="primary" class="ml-4" @click="getUserList">{{ i18nGlobal('search') }}</el-button>
+          <el-button @click="resetForm">{{ i18nGlobal('reset') }}</el-button>
         </el-form-item>
       </el-form>
       <div class="p-2 bg-white">
@@ -42,50 +42,49 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { UserService } from "@/apis";
-import { reactive, ref } from "vue";
-import { User } from "@/types";
-import type { ElForm } from "element-plus";
-import { i18nSystemUser, i18nGlobal } from "@/utils";
-import { sexFilter } from "@/filter";
-import { Dept } from "@/types";
+import { UserService } from '@/apis'
+import { reactive, ref } from 'vue'
+import type { User, Dept } from '@/types'
+import type { ElForm } from 'element-plus'
+import { i18nSystemUser, i18nGlobal } from '@/utils'
+import { sexFilter } from '@/filter'
 
 // searchForm 的 ref 引用 用来校验和重置表单
-const searchFormRef = ref<InstanceType<typeof ElForm>>();
+const searchFormRef = ref<InstanceType<typeof ElForm>>()
 
 // 搜索的表单
 const searchForm = reactive({
-  name: "",
-  account: "",
+  name: '',
+  account: '',
   deptId: 1,
   pageNum: 1,
   pageSize: 10,
   total: 0,
-  loading: true,
-});
-const deptTree = ref<Dept[]>([]);
-const userTable = ref<User[]>([]);
+  loading: true
+})
+const deptTree = ref<Dept[]>([])
+const userTable = ref<User[]>([])
 const resetForm = () => {
-  if (!searchFormRef.value) return;
-  searchFormRef.value.resetFields();
-  searchForm.pageNum = 1;
-  getUserList();
-};
-const handleNodeClick = () => {};
+  if (!searchFormRef.value) return
+  searchFormRef.value.resetFields()
+  searchForm.pageNum = 1
+  getUserList()
+}
+const handleNodeClick = () => {}
 const getUserList = async () => {
-  searchForm.loading = true;
-  const res = (await UserService.query()) as any;
-  userTable.value = res.data.list;
-  searchForm.total = res.data.total;
-  searchForm.pageNum = res.data.pageNum;
-  searchForm.pageSize = res.data.pageSize;
-  searchForm.loading = false;
-};
+  searchForm.loading = true
+  const res = (await UserService.query()) as any
+  userTable.value = res.data.list
+  searchForm.total = res.data.total
+  searchForm.pageNum = res.data.pageNum
+  searchForm.pageSize = res.data.pageSize
+  searchForm.loading = false
+}
 const onChangePagination = (val: any) => {
-  searchForm.pageNum = val.page;
-  getUserList();
-};
-getUserList();
+  searchForm.pageNum = val.page
+  getUserList()
+}
+getUserList()
 </script>
 <style lang="scss" scoped>
 .user-page {
@@ -123,5 +122,5 @@ getUserList();
 }
 </style>
 <script lang="ts">
-export default { name: "systemUser" };
+export default { name: 'systemUser' }
 </script>

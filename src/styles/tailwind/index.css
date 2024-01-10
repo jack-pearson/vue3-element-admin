@@ -1,3 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+.page {
+  @apply bg-white w-full h-full rounded-md p-4;
+}
