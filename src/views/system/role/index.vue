@@ -3,10 +3,10 @@
     <transition name="fade">
       <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch">
         <el-form-item label="角色名称" prop="roleName">
-          <el-input class="w240" v-model="queryParams.roleName" placeholder="请输入角色名称" clearable />
+          <el-input class="!w-60" v-model="queryParams.roleName" placeholder="请输入角色名称" clearable />
         </el-form-item>
         <el-form-item label="状态" prop="status">
-          <el-select v-model="queryParams.status" placeholder="角色状态" clearable>
+          <el-select v-model="queryParams.status" placeholder="角色状态" clearable class="!w-60">
             <el-option v-for="dict in roleStausOptions" :key="dict.value" :label="dict.label" :value="dict.value" />
           </el-select>
         </el-form-item>
@@ -19,7 +19,7 @@
         </el-form-item>
       </el-form>
     </transition>
-    <el-row :gutter="10" class="mb8">
+    <el-row :gutter="10" class="mb-3">
       <el-col :span="1.5">
         <el-button type="primary" plain :icon="Plus" @click="handleAdd">新增</el-button>
       </el-col>
@@ -29,7 +29,7 @@
       <table-utils v-model:show-search="showSearch" :columns="columns" @queryTable="getList"></table-utils>
     </el-row>
 
-    <el-table v-loading="loading" :data="roleList" @selection-change="handleSelectionChange">
+    <el-table v-loading="loading" :data="roleList" @selection-change="handleSelectionChange" border>
       <el-table-column type="selection" width="55" align="center" />
       <el-table-column label="角色编号" prop="roleId" width="120" v-if="columns[0].visible" />
       <el-table-column label="角色名称" prop="roleName" :show-overflow-tooltip="true" width="150" />
@@ -49,13 +49,17 @@
     </el-table>
 
     <pagination :total="queryParams.total" :page="queryParams.pageNum" :size="queryParams.pageSize" @pagination="handleChangePagination" />
+
+    <editRole ref="editRoleRef" />
   </div>
 </template>
 
 <script lang="ts" setup>
 import { ref } from 'vue'
 import { Search, Refresh, Delete, Plus, Edit } from '@element-plus/icons-vue'
-import { formatDate } from '@/utils'
+import editRole from './editRole.vue'
+import type { Ref } from 'vue'
+const editRoleRef = ref<InstanceType<typeof editRole>>() as Ref<InstanceType<typeof editRole>>
 const queryParams = ref({
   pageNum: 1,
   pageSize: 10,
@@ -92,7 +96,9 @@ const columns = ref([
 ])
 const handleQuery = () => {}
 const resetQuery = () => {}
-const handleAdd = () => {}
+const handleAdd = () => {
+  editRoleRef.value.openModel(1)
+}
 const handleDelete = (row) => {}
 const handleChangePagination = () => {}
 const handleSelectionChange = (selection) => {
