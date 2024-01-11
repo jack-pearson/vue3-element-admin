@@ -32,7 +32,7 @@ node 18.16.0
 - [x] svg 组件
 - [x] axios 封装类型提示
 
-## 多语言 (有 bug)
+## 多语言
 
 element-plus + vue-i18n
 

@@ -1,5 +1,5 @@
 <template>
-  <div :class="{ hidden: hidden }" class="pagination-container">
+  <div :class="{ hidden: hidden }" class="pagination-container flex justify-center">
     <el-pagination
       :background="background"
       :current-page="currentPage"
@@ -14,37 +14,37 @@
   </div>
 </template>
 <script setup lang="ts">
-import { withDefaults, toRefs, computed, getCurrentInstance } from "vue";
+import { withDefaults, toRefs, computed, getCurrentInstance } from 'vue'
 const props = withDefaults(
   defineProps<{
-    total?: number;
-    page?: number;
-    size?: number;
-    pageSizes?: number[];
-    layout?: string;
-    background?: boolean;
+    total?: number
+    page?: number
+    size?: number
+    pageSizes?: number[]
+    layout?: string
+    background?: boolean
   }>(),
   {
     total: 0,
     page: 1,
     size: 20,
     pageSizes: () => [10, 20, 30, 50],
-    layout: "total, sizes, prev, pager, next, jumper",
-    background: true,
+    layout: 'total, sizes, prev, pager, next, jumper',
+    background: true
   }
-);
+)
 
-const { total, page, pageSizes, size, layout, background } = toRefs(props);
-const { proxy } = getCurrentInstance() as any;
-const currentPage = computed(() => page.value);
-const hidden = computed(() => total.value === 0);
-const pageSize = computed(() => size.value);
+const { total, page, pageSizes, size, layout, background } = toRefs(props)
+const { proxy } = getCurrentInstance() as any
+const currentPage = computed(() => page.value)
+const hidden = computed(() => total.value === 0)
+const pageSize = computed(() => size.value)
 const handleSizeChange = (val: number) => {
-  proxy.$emit("pagination", { page: currentPage.value, limit: val });
-};
+  proxy.$emit('pagination', { page: currentPage.value, limit: val })
+}
 const handleCurrentChange = (val: number) => {
-  proxy.$emit("pagination", { page: val, limit: pageSize.value });
-};
+  proxy.$emit('pagination', { page: val, limit: pageSize.value })
+}
 </script>
 <style lang="scss" scoped>
 .pagination-container {
@@ -58,5 +58,5 @@ const handleCurrentChange = (val: number) => {
 </style>
 
 <script lang="ts">
-export default { name: "Pagination" };
+export default { name: 'PaginationComponent' }
 </script>

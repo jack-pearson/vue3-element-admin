@@ -1,33 +1,11 @@
 {
-  "compilerOptions": {
-    "target": "esnext",
-    "useDefineForClassFields": true,
-    "module": "esnext",
-    "types": [
-      "element-plus/global.d.ts",
-      "vite/client"
-    ],
-    "allowSyntheticDefaultImports": true,
-    "experimentalDecorators": true,
-    "skipLibCheck": true,
-    "moduleResolution": "node",
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "jsx": "preserve",
-    "sourceMap": true,
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "lib": [
-      "esnext",
-      "dom",
-      "dom.iterable",
-      "scripthost"
-    ],
-    "baseUrl": "./",
-    "paths": {
-      "@/*": [
-        "src/*"
-      ],
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
     },
-  },
+    {
+      "path": "./tsconfig.app.json"
+    }
+  ]
 }
