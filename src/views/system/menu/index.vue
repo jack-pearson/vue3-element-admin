@@ -5,5 +5,5 @@
 <style lang="scss" scoped></style>
 
 <script lang="ts">
-export default { name: "systemMenu" };
+export default { name: 'SystemMenu' }
 </script>

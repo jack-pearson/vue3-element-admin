@@ -68,6 +68,22 @@ export default {
                 isTagView: true,
                 isAffix: false
               }
+            },
+            {
+              id: 104,
+              parentId: 10,
+              path: '/system/dept',
+              name: 'systemDept',
+              component: '/src/views/system/dept/index.vue',
+              redirect: null,
+              isHide: false,
+              meta: {
+                title: 'dept',
+                icon: 'user',
+                isKeepAlive: true,
+                isTagView: true,
+                isAffix: false
+              }
             }
           ]
         },
