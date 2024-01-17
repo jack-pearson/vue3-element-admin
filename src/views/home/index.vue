@@ -1,9 +1,10 @@
 <template>
-  <div>{{ i18nRouter("home") }}</div>
+  <div>首页</div>
 </template>
 
-<script setup lang="ts">
-import { i18nRouter } from "@/utils";
-</script>
+<script setup lang="ts"></script>
 
 <style lang="scss" scoped></style>
+<script lang="ts">
+export default { name: 'HomePage' }
+</script>

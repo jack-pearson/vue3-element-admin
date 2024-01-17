@@ -122,6 +122,23 @@ instance.interceptors.response.use(
 )
 
 export const request = async <T = any>(config: AxiosRequestConfig): Promise<HttpGlobalResponse<T>> => {
-  const { data } = await instance.request<HttpGlobalResponse<T>>(config)
-  return data
+  return new Promise((resolve, reject) => {
+    instance
+      .request<HttpGlobalResponse<T>>(config)
+      .then((res) => {
+        resolve(res.data)
+      })
+      .catch((error: any) => {
+        const { response = { data: {} } } = error
+        ElNotification.error({
+          title: showStatus(response?.status),
+          message: response?.data?.message,
+          duration: 10000
+        })
+        removePending({ ...config, data: JSON.stringify(config.data) })
+        const { data } = response
+        console.error('🐞 接口: ', config.url, data)
+        reject(data)
+      })
+  })
 }

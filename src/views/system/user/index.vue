@@ -1,94 +1,120 @@
 <template>
-  <div class="user-page w-full flex h-full">
-    <el-scrollbar class="dept-tree w-60 bg-white">
-      <el-tree :data="deptTree" class="h-full" :props="{ children: 'children', label: 'name' }" default-expand-all @node-click="handleNodeClick" />
-    </el-scrollbar>
-    <div class="user-table w-[calc(100%-15rem)] ml-5" v-loading="searchForm.loading">
-      <el-form inline :model="searchForm" ref="searchFormRef" label-width="120px" class="bg-white mb-4 flex items-center pt-4 pb-4">
-        <el-form-item :label="i18nSystemUser('table.account')" prop="account">
-          <el-input v-model="searchForm.account" clearable :placeholder="i18nSystemUser('search.accountPlaceholder')"></el-input>
-        </el-form-item>
-        <el-form-item :label="i18nSystemUser('table.nickname')">
-          <el-input v-model="searchForm.name" clearable :placeholder="i18nSystemUser('search.nicknamePlaceholder')"></el-input>
-        </el-form-item>
-        <el-form-item>
-          <el-button type="primary" class="ml-4" @click="getUserList">{{ i18nGlobal('search') }}</el-button>
-          <el-button @click="resetForm">{{ i18nGlobal('reset') }}</el-button>
-        </el-form-item>
-      </el-form>
-      <div class="p-2 bg-white">
-        <div class="table-header flex">
-          <div class="table-header-title w-40 text-left">用户列表</div>
-          <div class="table-header-actives flex-1 flex justify-end">
-            <el-button type="primary">新增</el-button>
-          </div>
-        </div>
+  <div class="user-page page w-full h-full">
+    <el-form class="mb-3" :model="searchParams" ref="queryFormRef" :inline="true" v-show="showSearch">
+      <el-form-item label="用户昵称" prop="name">
+        <el-input class="!w-60" v-model="searchParams.name" placeholder="请输入用户名称" clearable />
+      </el-form-item>
+      <el-form-item label="状态" prop="status">
+        <ElSelect v-model="searchParams.status" placeholder="用户状态" clearable class="!w-60">
+          <el-option v-for="user in userStausOptions" :key="user.value" :label="user.label" :value="user.value" />
+        </ElSelect>
+      </el-form-item>
+      <el-form-item>
+        <el-button type="primary" :icon="Search" @click="handleQuery">搜索</el-button>
+        <el-button :icon="Refresh" @click="resetQuery">重置</el-button>
+      </el-form-item>
+    </el-form>
 
-        <el-table :data="userTable" border>
-          <el-table-column show-overflow-tooltip :label="i18nSystemUser('table.nickname')" prop="name"> </el-table-column>
-          <el-table-column show-overflow-tooltip :label="i18nSystemUser('table.account')" prop="account"> </el-table-column>
-          <el-table-column show-overflow-tooltip :label="i18nSystemUser('table.avatar')" prop="avatar"> </el-table-column>
-          <el-table-column show-overflow-tooltip :label="i18nSystemUser('table.email')" prop="email"> </el-table-column>
-          <el-table-column show-overflow-tooltip :label="i18nSystemUser('table.mobile')" prop="mobile"> </el-table-column>
-          <el-table-column show-overflow-tooltip :label="i18nSystemUser('table.phone')" prop="phone"> </el-table-column>
-          <el-table-column show-overflow-tooltip :label="i18nSystemUser('table.age')" prop="age"> </el-table-column>
-          <el-table-column show-overflow-tooltip :label="i18nSystemUser('table.sex')">
-            <template #default="{ row }">{{ sexFilter(row.sex) }}</template>
-          </el-table-column>
-        </el-table>
-        <pagination :total="searchForm.total" :page="searchForm.pageNum" :size="searchForm.pageSize" @pagination="onChangePagination" />
-      </div>
-    </div>
+    <el-row :gutter="10" class="mb-3">
+      <el-col :span="1.5">
+        <el-button type="primary" plain :icon="Plus" @click="handleAdd">新增</el-button>
+      </el-col>
+      <table-utils v-model:show-search="showSearch" @queryTable="getUserList"></table-utils>
+    </el-row>
+
+    <el-table v-loading="loading" :data="userList" border>
+      <el-table-column type="selection" width="55" align="center" />
+      <el-table-column label="用户昵称" prop="name" width="120" />
+      <el-table-column label="用户账户" prop="account" :show-overflow-tooltip="true" width="150" />
+      <el-table-column label="状态" align="center" prop="status" width="100"> </el-table-column>
+      <el-table-column label="email" prop="email" :show-overflow-tooltip="true" width="150" />
+      <el-table-column label="phone" align="center" prop="手机号" width="100"> </el-table-column>
+      <el-table-column label="age" align="center" prop="age" width="100"> </el-table-column>
+      <el-table-column label="sex" align="center" prop="sex" width="100"> </el-table-column>
+      <el-table-column label="avatar" align="center" prop="avatar" width="100"> </el-table-column>
+      <el-table-column label="创建时间" align="center" prop="createTime" width="180" :show-overflow-tooltip="true"> </el-table-column>
+      <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
+        <template #default="{ row }">
+          <el-link type="primary" class="mr-2" :icon="Edit" @click="handleUpdate(row)">修改</el-link>
+          <el-popconfirm title="你确定要删除这个吗?" confirm-button-text="删除" @confirm="handleDelete(row)">
+            <template #reference>
+              <el-link type="primary" class="mr-2" :icon="Delete">删除</el-link>
+            </template>
+          </el-popconfirm>
+        </template>
+      </el-table-column>
+    </el-table>
+
+    <pagination :total="searchParams.total" :page="searchParams.pageNum" :size="searchParams.pageSize" @pagination="handleChangePagination" />
+
+    <editUser ref="editUserRef" />
   </div>
 </template>
 <script lang="ts" setup>
-import { UserService } from '@/apis'
-import { reactive, ref } from 'vue'
-import type { User, Dept } from '@/types'
-import type { ElForm } from 'element-plus'
-import { i18nSystemUser, i18nGlobal } from '@/utils'
-import { sexFilter } from '@/filter'
+import { ref, provide } from 'vue'
+import type { Ref } from 'vue'
+import type { User } from '@/types'
+import { Search, Refresh, Plus, Delete, Edit } from '@element-plus/icons-vue'
+import { SystemUserService } from '@/apis'
+import type { FormInstance } from 'element-plus'
+import editUser from './editUser.vue'
 
-// searchForm 的 ref 引用 用来校验和重置表单
-const searchFormRef = ref<InstanceType<typeof ElForm>>()
-
+const editUserRef = ref<InstanceType<typeof editUser>>() as Ref<InstanceType<typeof editUser>>
+const queryFormRef = ref<FormInstance>() as Ref<FormInstance>
+const showSearch = ref(true)
+const userStausOptions = [
+  { label: '启用', value: '1' },
+  { label: '禁用', value: '0' }
+]
+const loading = ref(false)
 // 搜索的表单
-const searchForm = reactive({
+const searchParams = ref({
   name: '',
-  account: '',
-  deptId: 1,
   pageNum: 1,
   pageSize: 10,
   total: 0,
-  loading: true
+  status: ''
 })
-const deptTree = ref<Dept[]>([])
-const userTable = ref<User[]>([])
-const resetForm = () => {
-  if (!searchFormRef.value) return
-  searchFormRef.value.resetFields()
-  searchForm.pageNum = 1
+const userList = ref<User[]>([])
+
+const handleQuery = () => {
+  searchParams.value.pageNum = 1
   getUserList()
 }
-const handleNodeClick = () => {}
+const resetQuery = () => {
+  queryFormRef.value.resetFields()
+  searchParams.value.pageNum = 1
+  getUserList()
+}
+const handleAdd = () => {
+  editUserRef.value.openModel(1)
+}
 const getUserList = async () => {
-  searchForm.loading = true
-  const res = (await UserService.query()) as any
-  userTable.value = res.data.list
-  searchForm.total = res.data.total
-  searchForm.pageNum = res.data.pageNum
-  searchForm.pageSize = res.data.pageSize
-  searchForm.loading = false
-}
-const onChangePagination = (val: any) => {
-  searchForm.pageNum = val.page
-  getUserList()
+  loading.value = true
+  const { data } = await SystemUserService.query(searchParams.value)
+  userList.value = data.list
+  searchParams.value.total = data.total
+  loading.value = false
 }
 getUserList()
+const handleDelete = async (row: User) => {
+  await SystemUserService.delete(row.id)
+  getUserList()
+}
+const handleUpdate = (row: User) => {
+  editUserRef.value.openModel(2, { ...row })
+}
+const handleChangePagination = ({ page, limit }) => {
+  console.log(page, limit, 'page, limit')
+  searchParams.value.pageNum = page
+  searchParams.value.pageSize = limit
+  getUserList()
+}
+
+provide('getUserList', getUserList)
 </script>
 <style lang="scss" scoped>
 .user-page {
-  border-radius: 5px;
   :deep(.el-form-item) {
     margin-bottom: 0;
   }

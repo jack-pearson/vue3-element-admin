@@ -3,28 +3,22 @@ import type { RouteRecordRaw } from 'vue-router'
 import NProgress from 'nprogress'
 import { routerStore } from '@/store'
 import 'nprogress/nprogress.css'
-import { i18nRouter, Session } from '@/utils'
+import { Session } from '@/utils'
 import { route } from '@/hooks'
 
 const DEFAULT_PATH = '/home'
 import Login from '@/views/login/index.vue'
 import Layout from '@/layout/index.vue'
 import Redirect from '@/views/redirect/index.vue'
-import type { Menu } from '@/types'
+import PageNotFound from '@/components/pageNotFound/index.vue'
 
 NProgress.configure({ showSpinner: false })
-export const constantRouters: Array<RouteRecordRaw | Menu> = [
+export const constantRouters: Array<RouteRecordRaw> = [
   {
     path: '/login',
     name: 'login',
     component: Login,
     meta: { title: 'login', isTagView: false }
-  },
-  {
-    path: '/404',
-    name: 'notFound',
-    component: { template: '<p>Page not found</p>' },
-    meta: { title: '404' }
   },
   {
     path: '/',
@@ -39,20 +33,18 @@ export const constantRouters: Array<RouteRecordRaw | Menu> = [
         meta: { title: 'profile', icon: 'profile' }
       },
       {
-        path: '/home/:id?',
+        path: '/home',
         name: 'home',
         component: () => import('@/views/home/index.vue'),
         meta: { title: 'home', icon: 'home', isAffix: true, isTagView: true }
       }
+      // 404 页面没搞好.
     ]
   },
   {
-    id: 30,
-    parentId: 1,
     path: '/redirect',
     name: 'redirectTo',
     component: Layout,
-    isHide: true,
     redirect: '/redirect/:path(.*)',
     meta: {
       title: 'redirect'
@@ -62,7 +54,6 @@ export const constantRouters: Array<RouteRecordRaw | Menu> = [
         children: [],
         path: '/redirect/:path(.*)',
         name: 'redirect',
-        isHide: false,
         component: Redirect,
         meta: {
           title: 'redirect'
@@ -98,7 +89,13 @@ router.beforeEach(async (to, from, next) => {
 
   try {
     const newRouter = await getRouterList()
-    newRouter.forEach((item) => router.addRoute(item))
+    newRouter.forEach((item) => router.addRoute(item as unknown as RouteRecordRaw))
+    router.addRoute({
+      path: '/:pathMatch(.*)*',
+      name: 'notFound',
+      component: PageNotFound,
+      meta: { title: 'notFound', isTagView: false }
+    })
     next({ ...to, replace: true })
   } catch (err) {
     console.log(err, '动态添加路由失败')
@@ -113,7 +110,7 @@ router.afterEach((to, from, failure) => {
     NProgress.done()
     console.log('error navigation', failure)
   } else {
-    document.title = i18nRouter(router.currentRoute.value.meta.title as string)
+    document.title = router.currentRoute.value.meta.title as string
     NProgress.done()
   }
 })

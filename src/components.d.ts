@@ -5,6 +5,7 @@ declare module 'vue' {
     ElBreadcrumb: (typeof import('element-plus/es'))['ElBreadcrumb']
     ElBreadcrumbItem: (typeof import('element-plus/es'))['ElBreadcrumbItem']
     ElButton: (typeof import('element-plus/es'))['ElButton']
+    ElRadioGroup: (typeof import('element-plus/es'))['ElRadioGroup']
     ElColorPicker: (typeof import('element-plus/es'))['ElColorPicker']
     ElConfigProvider: (typeof import('element-plus/es'))['ElConfigProvider']
     ElContainer: (typeof import('element-plus/es'))['ElContainer']
@@ -37,6 +38,7 @@ declare module 'vue' {
     ParentView: (typeof import('./components/parentView/index.vue'))['default']
     SvgIcon: (typeof import('./components/svg-icon/index.vue'))['default']
     TableUtils: (typeof import('./components/tableUtils/index.vue'))['default']
+    PageNotFound: (typeof import('./components/pageNotFound/index.vue'))['default']
   }
 }
 
