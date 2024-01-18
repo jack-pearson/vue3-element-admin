@@ -39,6 +39,7 @@ const contextmenuRef = ref<any>(null)
 const tagViewState = tagViewStore()
 const { proxy } = getCurrentInstance() as any
 const visitedViews = computed(() => tagViewState.visitedViews)
+console.log(visitedViews, 'visitedViews')
 const path = computed(() => route.value.path)
 const onHandleClickSwitchRouter = (item: IRouter) => {
   if (item.path === path.value) return
@@ -66,7 +67,7 @@ const onHandleCloseTag = (v: IRouter) => {
 const onHandleContextMenu = (e: MouseEvent, item: IRouter) => {
   const { x, y } = e
   e.preventDefault()
-  contextmenuRef.value.openContextmenu({ x, y })
+  contextmenuRef.value.openContextmenu({ x, y, current: item })
 }
 </script>
 <style lang="scss" scoped>

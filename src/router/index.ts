@@ -36,7 +36,7 @@ export const constantRouters: Array<RouteRecordRaw> = [
         path: '/home',
         name: 'home',
         component: () => import('@/views/home/index.vue'),
-        meta: { title: 'home', icon: 'home', isAffix: true, isTagView: true }
+        meta: { title: '首页', icon: 'home', isAffix: true, isTagView: true }
       }
       // 404 页面没搞好.
     ]
