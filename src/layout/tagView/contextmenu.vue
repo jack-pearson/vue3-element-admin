@@ -13,57 +13,57 @@
   </transition>
 </template>
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, reactive } from "vue";
-import { route, router } from "@/hooks";
-import { tagViewStore } from "@/store";
-import { Menu } from "@/types";
+import { ref, onMounted, onUnmounted, reactive } from 'vue'
+import { route, router } from '@/hooks'
+import { tagViewStore } from '@/store'
+import type { IMenuItem } from '@/types'
 
-const open = ref<boolean>(false);
-const tagViewState = tagViewStore();
+const open = ref<boolean>(false)
+const tagViewState = tagViewStore()
 const style = reactive({
-  left: "0px",
-  top: "0px",
-  "z-index": 9999,
-});
+  left: '0px',
+  top: '0px',
+  'z-index': 9999
+})
 
 const onHandleRefreshTag = () => {
   router.value.replace({
-    path: "/redirect" + route.value.path,
-    query: route.value.query,
-  });
-};
+    path: '/redirect' + route.value.path,
+    query: route.value.query
+  })
+}
 const closeContextmenu = () => {
-  open.value = false;
-};
+  open.value = false
+}
 
 const onHandleCloseOther = () => {
-  tagViewState.closeOtherTagView();
-};
+  tagViewState.closeOtherTagView()
+}
 const onHandleCloseRight = () => {
-  tagViewState.closeRightTagView();
-};
+  tagViewState.closeRightTagView()
+}
 const onHandleCloseLeft = () => {
-  tagViewState.closeLeftTagView();
-};
+  tagViewState.closeLeftTagView()
+}
 const onHandleCloseAll = () => {
-  tagViewState.closeAllTagView();
-  router.value.push("/");
-};
+  tagViewState.closeAllTagView()
+  router.value.push('/')
+}
 
-const openContextmenu = ({ x, y }: { x: number; y: number; current: Menu }) => {
-  open.value = true;
-  style.left = `${x}px`;
-  style.top = `${y}px`;
-};
+const openContextmenu = ({ x, y }: { x: number; y: number; current: IMenuItem }) => {
+  open.value = true
+  style.left = `${x}px`
+  style.top = `${y}px`
+}
 defineExpose({
-  openContextmenu,
-});
+  openContextmenu
+})
 onMounted(() => {
-  document.body.addEventListener("click", closeContextmenu);
-});
+  document.body.addEventListener('click', closeContextmenu)
+})
 onUnmounted(() => {
-  document.body.removeEventListener("click", closeContextmenu);
-});
+  document.body.removeEventListener('click', closeContextmenu)
+})
 </script>
 <style lang="scss" scoped>
 .context-menu-ul {
@@ -77,5 +77,5 @@ onUnmounted(() => {
 </style>
 
 <script lang="ts">
-export default { name: "ContextMenu" };
+export default { name: 'ContextMenu' }
 </script>
