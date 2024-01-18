@@ -31,21 +31,17 @@ export const tagViewStore = defineStore('tagViewStore', {
       this.visitedViews = [...affixList, ...noAffixList]
     },
     addCachedViews(route: IRouter) {
-      if (this.cachedViews.includes(route.name)) {
-        if (route.meta.isKeepAlive) return
-        this.removeCachedViews(route.name as string)
-      } else {
-        this.cachedViews.push(route.name)
+      if (!this.cachedViews.includes(route.name)) {
+        if (route.meta.cache) this.cachedViews.push(route.name)
       }
     },
     removeVisitedViews(route: IRouter) {
       this.visitedViews = this.visitedViews.filter((v) => v.name !== route.name)
     },
-    removeCachedViews(name: string) {
-      this.cachedViews = this.cachedViews.filter((v) => v !== name)
+    removeCachedViews(route: IRouter) {
+      this.cachedViews = this.cachedViews.filter((v) => v !== route.name)
     },
     addTagView(route: IRouter) {
-      console.log(route, 'addTagView')
       this.addCachedViews(route)
       this.addVisitedViews(route)
     },
@@ -55,6 +51,9 @@ export const tagViewStore = defineStore('tagViewStore', {
         if (item.meta.isAffix) return item
         if (index >= findIndex) {
           return item
+        } else {
+          this.removeVisitedViews(item)
+          this.removeCachedViews(item)
         }
       })
       router.value.push(route)
@@ -65,17 +64,35 @@ export const tagViewStore = defineStore('tagViewStore', {
         if (item.meta.isAffix) return item
         if (findIndex >= index) {
           return item
+        } else {
+          this.removeVisitedViews(item)
+          this.removeCachedViews(item)
         }
       })
       router.value.push(route)
     },
     closeOtherTagView(route: IRouter) {
-      const emitAffixList = this.visitedViews.filter((item) => item.meta.isAffix)
-      this.visitedViews = emitAffixList
+      this.visitedViews = this.visitedViews.filter((item) => {
+        if (item.meta.isAffix) return item
+        if (item.name === route.name) {
+          return item
+        } else {
+          this.removeVisitedViews(item)
+          this.removeCachedViews(item)
+        }
+      })
       router.value.push(route)
     },
     closeAllTagView() {
-      this.visitedViews = this.visitedViews.filter((item) => item.meta.isAffix)
+      this.visitedViews = this.visitedViews.filter((item) => {
+        if (item.meta.isAffix) {
+          return item
+        } else {
+          this.removeVisitedViews(item)
+          this.removeCachedViews(item)
+        }
+      })
+      router.value.push('/')
     }
   }
 })

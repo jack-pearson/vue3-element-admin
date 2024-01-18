@@ -13,7 +13,10 @@ import { route } from '@/hooks'
 import { tagViewStore } from '@/store'
 import type { IRouter } from '@/types'
 const tagViewState = tagViewStore()
-const cachedViews = computed(() => tagViewState.cachedViews) as any
+const cachedViews = computed(() => {
+  console.log(tagViewState.cachedViews, 'tagViewState.cachedViews')
+  return tagViewState.cachedViews
+})
 const cloneRoute = computed(() => {
   return {
     name: route.value.name,

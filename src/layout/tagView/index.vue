@@ -61,7 +61,7 @@ const onHandleCloseTag = (v: IRouter) => {
       router.value.push(visitedViews.value[findIndex + 1].path)
     }
   }
-  tagViewState.removeCachedViews(v.name as string)
+  tagViewState.removeCachedViews(v)
   tagViewState.removeVisitedViews(v)
 }
 const onHandleContextMenu = (e: MouseEvent, item: IRouter) => {

@@ -46,7 +46,6 @@ const onHandleCloseLeft = () => {
 }
 const onHandleCloseAll = () => {
   tagViewState.closeAllTagView()
-  router.value.push('/')
 }
 
 const openContextmenu = ({ x, y, current }: { x: number; y: number; current: IRouter }) => {
