@@ -11,12 +11,12 @@
         :prefix-icon="Search"
         ref="layoutSearchAutocompleteRef"
         @blur="closeSearch"
-        @select="(item: any | Menu) => selectMenu(item)"
+        @select="(item: any | IRouter) => selectMenu(item)"
       >
         <template #default="{ item }">
           <div class="flex items-center">
             <svg-icon :name="item.meta.icon"></svg-icon>
-            <span class="pl-2">{{ i18nRouter(item.meta.title) }}</span>
+            <span class="pl-2">{{ item.meta.title }}</span>
           </div>
         </template>
       </el-autocomplete>
@@ -24,55 +24,55 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref, nextTick } from "vue";
-import { Search } from "@element-plus/icons-vue";
-import { routerStore } from "@/store";
-import { i18nRouter, routeTreeToArray } from "@/utils";
-import { route, router } from "@/hooks";
-import { Menu } from "@/types";
-const { routerList: menuList } = routerStore();
-const openDialog = ref(false);
-const filterMenuList = (menuList: Menu[]) => {
-  console.log(menuList, "menuList");
-  const list = routeTreeToArray(menuList);
-  console.log(list, "list");
-  return list.map((item) => (item.isHide ? null : item));
-};
-const menu = filterMenuList(menuList);
-console.log(menu, "menu");
-const layoutSearchAutocompleteRef = ref();
-const menuQuery = ref("");
+import { ref, nextTick } from 'vue'
+import { Search } from '@element-plus/icons-vue'
+import { routerStore } from '@/store'
+import { routeTreeToArray } from '@/utils'
+import { route, router } from '@/hooks'
+import type { IRouter } from '@/types'
+const { routerList: menuList } = routerStore()
+const openDialog = ref(false)
+const filterMenuList = (menuList: IRouter[]) => {
+  console.log(menuList, 'menuList')
+  const list = routeTreeToArray(menuList)
+  console.log(list, 'list')
+  return list.map((item) => (item.meta.hidden === '0' ? null : item))
+}
+const menu = filterMenuList(menuList)
+console.log(menu, 'menu')
+const layoutSearchAutocompleteRef = ref()
+const menuQuery = ref('')
 const menuSearch = (queryString: string, callback: Function) => {
-  const result = menu.filter(menuQueryChange(queryString));
-  callback(result);
-};
+  const result = menu.filter(menuQueryChange(queryString))
+  callback(result)
+}
 const openSearch = () => {
-  openDialog.value = true;
+  openDialog.value = true
   nextTick(() => {
-    menuQuery.value = "";
+    menuQuery.value = ''
     // layoutSearchAutocompleteRef.value.focus();
-  });
-};
+  })
+}
 
 const menuQueryChange = (queryString: string) => {
   return (restaurant: any) => {
     const result =
       restaurant.path.toLowerCase().indexOf(queryString.toLowerCase()) > -1 ||
       restaurant.meta.title.toLowerCase().indexOf(queryString.toLowerCase()) > -1 ||
-      i18nRouter(restaurant.meta.title).indexOf(queryString.toLowerCase()) > -1;
-    return result;
-  };
-};
-const selectMenu = (val: Menu) => {
-  if (val.path !== route.value.path && val.redirect !== route.value.path) {
-    router.value.push(val.path);
+      restaurant.meta.title.indexOf(queryString.toLowerCase()) > -1
+    return result
   }
-  openDialog.value = false;
-};
+}
+const selectMenu = (val: IRouter) => {
+  if (val.path !== route.value.path && val.redirect !== route.value.path) {
+    router.value.push(val.path)
+  }
+  openDialog.value = false
+}
 const closeSearch = () => {
-  menuQuery.value = "";
-  openDialog.value = false;
-};
+  menuQuery.value = ''
+  openDialog.value = false
+}
 </script>
 <style lang="scss" scoped>
 .layout-search {
@@ -100,5 +100,5 @@ const closeSearch = () => {
 }
 </style>
 <script lang="ts">
-export default { name: "LayoutSearch" };
+export default { name: 'LayoutSearch' }
 </script>

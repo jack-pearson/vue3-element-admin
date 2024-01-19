@@ -6,14 +6,14 @@
           v-for="item in visitedViews"
           :key="item.name"
           :class="{
-            'is-active text-color-white bg-el-color-primary': path === item.path,
+            'is-active text-color-white bg-el-color-primary': path === item.path
           }"
           @click="onHandleClickSwitchRouter(item)"
           @contextmenu="onHandleContextMenu($event, item)"
           class="layout-tagView-ul-li pl-2 pr-2 h-full mr-2.5 relative cursor-pointer select-none flex items-center"
         >
           <svg-icon name="tagview-round" class="text-white mr-1" v-if="path === item.path"></svg-icon>
-          <span>{{ i18nRouter(item.meta.title) }}</span>
+          <span>{{ item.meta.title }}</span>
           <div
             v-if="visitedViews.length > 1 && !item.meta.isAffix"
             :class="{ 'ml-1': path !== item.path }"
@@ -29,46 +29,46 @@
   </div>
 </template>
 <script setup lang="ts">
-import { computed, getCurrentInstance, ref } from "vue";
-import { route, router } from "@/hooks";
-import ContextMenu from "./contextmenu.vue";
-import { i18nRouter } from "@/utils";
-import { tagViewStore } from "@/store";
-import { Menu } from "@/types";
+import { computed, getCurrentInstance, ref } from 'vue'
+import { route, router } from '@/hooks'
+import ContextMenu from './contextmenu.vue'
+import { tagViewStore } from '@/store'
+import type { IRouter } from '@/types'
 
-const contextmenuRef = ref<any>(null);
-const tagViewState = tagViewStore();
-const { proxy } = getCurrentInstance() as any;
-const visitedViews = computed(() => tagViewState.visitedViews);
-const path = computed(() => route.value.path);
-const onHandleClickSwitchRouter = (item: Menu) => {
-  if (item.path === path.value) return;
-  router.value.push(item.path);
-};
+const contextmenuRef = ref<any>(null)
+const tagViewState = tagViewStore()
+const { proxy } = getCurrentInstance() as any
+const visitedViews = computed(() => tagViewState.visitedViews)
+console.log(visitedViews, 'visitedViews')
+const path = computed(() => route.value.path)
+const onHandleClickSwitchRouter = (item: IRouter) => {
+  if (item.path === path.value) return
+  router.value.push(item.path)
+}
 const onHandleScroll = (e: any) => {
-  const eventDelta = e.wheelDelta || -e.deltaY * 40;
-  proxy.$refs.scrollbarRef.$refs.wrapRef.scrollLeft = eventDelta;
-};
+  const eventDelta = e.wheelDelta || -e.deltaY * 40
+  proxy.$refs.scrollbarRef.$refs.wrapRef.scrollLeft = eventDelta
+}
 
-const onHandleCloseTag = (v: Menu) => {
-  const findIndex = visitedViews.value.findIndex((t: Menu) => t.path === v.path);
-  const len = visitedViews.value.length;
-  if (len === 0) return;
+const onHandleCloseTag = (v: IRouter) => {
+  const findIndex = visitedViews.value.findIndex((t: IRouter) => t.path === v.path)
+  const len = visitedViews.value.length
+  if (len === 0) return
   if (path.value === v.path) {
     if (findIndex === len - 1) {
-      router.value.push(visitedViews.value[findIndex - 1].path);
+      router.value.push(visitedViews.value[findIndex - 1].path)
     } else {
-      router.value.push(visitedViews.value[findIndex + 1].path);
+      router.value.push(visitedViews.value[findIndex + 1].path)
     }
   }
-  tagViewState.removeCachedViews(v.name);
-  tagViewState.removeVisitedViews(v);
-};
-const onHandleContextMenu = (e: MouseEvent, item: Menu) => {
-  const { x, y } = e;
-  e.preventDefault();
-  contextmenuRef.value.openContextmenu({ x, y });
-};
+  tagViewState.removeCachedViews(v)
+  tagViewState.removeVisitedViews(v)
+}
+const onHandleContextMenu = (e: MouseEvent, item: IRouter) => {
+  const { x, y } = e
+  e.preventDefault()
+  contextmenuRef.value.openContextmenu({ x, y, current: item })
+}
 </script>
 <style lang="scss" scoped>
 .layout-tagView {
@@ -113,5 +113,5 @@ const onHandleContextMenu = (e: MouseEvent, item: Menu) => {
 </style>
 
 <script lang="ts">
-export default { name: "LayoutTagView" };
+export default { name: 'LayoutTagView' }
 </script>

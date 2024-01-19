@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
-import type { Menu, RouterStoreTypes } from '@/types'
+import type { IRouter, RouterStoreTypes } from '@/types'
 import { formatRoutes } from '@/utils'
-import { UserService } from '@/apis'
+import { SystemMenuService } from '@/apis'
 
 export const createRouter = (): RouterStoreTypes => {
   return {
@@ -12,12 +12,12 @@ export const createRouter = (): RouterStoreTypes => {
 export const routerStore = defineStore('routerStore', {
   state: createRouter,
   actions: {
-    getRouterList(): Promise<Menu[]> {
+    getRouterList(): Promise<IRouter[]> {
       return new Promise((resolve, reject) => {
-        UserService.getUserMenu()
+        SystemMenuService.getUserMenu()
           .then(({ data, code }: any) => {
             if (code === 200) {
-              const newRoute = formatRoutes(data.list)
+              const newRoute = formatRoutes(data)
               this.routerList = newRoute
               resolve(newRoute)
             } else {

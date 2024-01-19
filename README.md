@@ -9,7 +9,6 @@ node 18.16.0
 
 ## 功能清单
 
-- [x] 多语言
 - [ ] 全屏
 - [ ] 内嵌
 - [ ] 外链
@@ -32,12 +31,16 @@ node 18.16.0
 - [x] svg 组件
 - [x] axios 封装类型提示
 
-## 多语言
+## keepalive
 
-element-plus + vue-i18n
+必须在页面中设置 name 属性
+这个 name 属性值 需要和 菜单中的 name 属性值 关联上才可以
 
-- 代码主要存放再 `src/i18n/**` 文件中.
-- 通过 `el-config-provider` 组件,达到和 `element-plus` UI 库 进行关联.
+```vue
+<script lang="ts">
+export default { name: 'SystemMenu' }
+</script>
+```
 
 ## 菜单搜索
 

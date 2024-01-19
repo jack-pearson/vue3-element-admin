@@ -1,3 +1,4 @@
-@use './variables';  // Variables
-@use './var';  // 变量
-@use './animation';  // 动画
+@use './variables'; // Variables
+@use './var'; // 变量
+@use './animation'; // 动画
+@use '../element/el-select.scss';

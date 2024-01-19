@@ -32,13 +32,13 @@
                 </el-form-item>
                 <el-form-item>
                   <el-button type="primary" class="w-full" :loading="config.loading" @click="onSubmit">
-                    {{ $t("login.account.accountBtnText") }}
+                    {{ $t('login.account.accountBtnText') }}
                   </el-button>
                 </el-form-item>
               </el-form>
             </transition>
           </el-tab-pane>
-          <el-tab-pane :label="$t('login.tabs.more')" name="more"> {{ $t("login.more.text") }}</el-tab-pane>
+          <el-tab-pane :label="$t('login.tabs.more')" name="more"> {{ $t('login.more.text') }}</el-tab-pane>
         </el-tabs>
       </div>
     </div>
@@ -46,62 +46,62 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, getCurrentInstance } from "vue";
-import { userStore, settingsStore } from "@/store";
-import { LoginService } from "@/apis";
-import { router } from "@/hooks";
-import { Session } from "@/utils";
-const store = userStore();
-const { fixed: fixedStore } = settingsStore();
-const { proxy } = getCurrentInstance() as any;
+import { reactive, getCurrentInstance } from 'vue'
+import { userStore, settingsStore } from '@/store'
+import { LoginService } from '@/apis'
+import { router } from '@/hooks'
+import { Session } from '@/utils'
+const store = userStore()
+const { fixed: fixedStore } = settingsStore()
+const { proxy } = getCurrentInstance() as any
 const form = reactive({
-  account: "admin",
-  password: "123456",
-});
+  account: 'admin',
+  password: '123456'
+})
 const loginRules = reactive({
   account: [
-    { required: true, message: "请输入账号", trigger: "blur" },
+    { required: true, message: '请输入账号', trigger: 'blur' },
     {
       min: 3,
       max: 5,
-      message: "长度在 3 到 5 个字符",
-      trigger: "blur",
-    },
+      message: '长度在 3 到 5 个字符',
+      trigger: 'blur'
+    }
   ],
-  password: [{ required: true, message: "请输入密码", trigger: "blur" }],
-});
+  password: [{ required: true, message: '请输入密码', trigger: 'blur' }]
+})
 const config = reactive({
   isShowPassword: false,
   isCurrentTab: true,
-  loading: false,
-});
+  loading: false
+})
 const onTabsClick = () => {
-  config.isCurrentTab = !config.isCurrentTab;
-};
+  config.isCurrentTab = !config.isCurrentTab
+}
 const onChangeVisibleEye = () => {
-  config.isShowPassword = !config.isShowPassword;
-};
+  config.isShowPassword = !config.isShowPassword
+}
 const onSubmit = () => {
   proxy.$refs.loginForm.validate(async (valid: boolean) => {
     if (valid) {
-      config.loading = true;
+      config.loading = true
       try {
-        const { code, success, data: userInfo, message } = (await LoginService.login()) as any;
+        const { code, success, data: userInfo, message } = await LoginService.login(form)
         if (code === 200 && success) {
-          Session.set("token", userInfo.token);
-          Session.set("userInfo", userInfo);
-          await store.setUserInfo(userInfo);
-          router.value.replace({ path: "/", query: { keyword: "vue" } });
+          Session.set('token', userInfo.token)
+          Session.set('userInfo', userInfo)
+          await store.setUserInfo(userInfo)
+          router.value.replace({ path: '/', query: { keyword: 'vue' } })
         } else {
-          proxy.$message.error(message);
+          proxy.$message.error(message)
         }
       } catch (error) {
-        console.log(error, "登录请求失败");
+        console.log(error, '登录请求失败')
       }
-      config.loading = false;
+      config.loading = false
     }
-  });
-};
+  })
+}
 </script>
 
 <style lang="scss" scoped>
@@ -136,3 +136,7 @@ const onSubmit = () => {
   }
 }
 </style>
+
+<script lang="ts">
+export default { name: 'LoginPage' }
+</script>

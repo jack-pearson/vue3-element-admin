@@ -4,14 +4,14 @@
       <el-menu-item class="sub-menu select-none" :index="route.path">
         <template #title>
           <svg-icon :name="route.meta.icon"></svg-icon>
-          <span class="ml-3.5">{{ i18nRouter(route.meta.title) }}</span>
+          <span class="ml-3.5">{{ route.meta.title }}</span>
         </template>
       </el-menu-item>
     </template>
     <el-sub-menu v-else class="sub-menu select-none" :index="route.path" teleported>
       <template #title>
         <svg-icon :name="route.meta.icon"></svg-icon>
-        <span v-show="!settingsConfig.config.isCollapsed" class="ml-3.5">{{ i18nRouter(route.meta.title) }}</span>
+        <span v-show="!settingsConfig.config.isCollapsed" class="ml-3.5">{{ route.meta.title }}</span>
       </template>
       <SidebarItem v-for="child in route.children" :key="child.id" :route="child" />
     </el-sub-menu>
@@ -19,18 +19,18 @@
 </template>
 <script lang="ts">
 export default {
-  name: "SidebarItem",
-};
+  name: 'SidebarItem'
+}
 </script>
 
 <script setup lang="ts">
-import { isHide, hasChildren, i18nRouter } from "@/utils";
-import { toRefs } from "vue";
-import { settingsStore } from "@/store";
-import { Menu } from "@/types";
-const props = defineProps<{ route: Menu }>();
-const { route } = toRefs(props);
-const settingsConfig = settingsStore();
+import { isHide, hasChildren } from '@/utils'
+import { toRefs } from 'vue'
+import { settingsStore } from '@/store'
+import type { IRouter } from '@/types'
+const props = defineProps<{ route: IRouter }>()
+const { route } = toRefs(props)
+const settingsConfig = settingsStore()
 </script>
 
 <style lang="scss" scoped>

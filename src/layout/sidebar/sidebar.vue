@@ -22,22 +22,22 @@
 </template>
 
 <script lang="ts">
-export default { name: "Sidebar" };
+export default { name: 'SidebarComponent' }
 </script>
 
 <script setup lang="ts">
-import SidebarItem from "./SidebarItem.vue";
-import SidebarLogo from "./sidebarLogo.vue";
-import { computed } from "vue";
-import { route, router } from "@/hooks";
-import { routerStore, settingsStore } from "@/store";
-const routerConfig = routerStore();
-const settingsConfig = settingsStore();
-const { routerList: menuList } = routerConfig.$state;
-const activeMenu = computed(() => route.value.path);
+import SidebarItem from './SidebarItem.vue'
+import SidebarLogo from './sidebarLogo.vue'
+import { computed } from 'vue'
+import { route, router } from '@/hooks'
+import { routerStore, settingsStore } from '@/store'
+const routerConfig = routerStore()
+const settingsConfig = settingsStore()
+const { routerList: menuList } = routerConfig.$state
+const activeMenu = computed(() => route.value.path)
 const handleSelect = (key: string) => {
-  if (key !== activeMenu.value) router.value.push(key);
-};
+  if (key !== activeMenu.value) router.value.push(key)
+}
 </script>
 
 <style scoped lang="scss">

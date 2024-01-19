@@ -4,5 +4,5 @@
 <script setup lang="ts"></script>
 <style lang="scss" scoped></style>
 <script lang="ts">
-export default { name: "profile" };
+export default { name: 'ProfilePage' }
 </script>
