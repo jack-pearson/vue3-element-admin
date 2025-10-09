@@ -3,7 +3,7 @@ import { request } from '@/utils'
 export class SystemUserService {
   public static async query(data) {
     return request({
-      url: '/user/query',
+      url: 'admin/v1/user/query',
       method: 'get',
       params: data
     })
@@ -11,7 +11,7 @@ export class SystemUserService {
 
   public static async create(data: User) {
     return request({
-      url: '/user/create',
+      url: 'admin/v1/user/create',
       method: 'post',
       data
     })
@@ -19,7 +19,7 @@ export class SystemUserService {
 
   public static async update(data: User) {
     return request({
-      url: '/user/update',
+      url: 'admin/v1/user/update',
       method: 'post',
       data
     })
@@ -27,7 +27,7 @@ export class SystemUserService {
 
   public static async delete(id: User['id']) {
     return request({
-      url: `/user/delete/${id}`,
+      url: `admin/v1/user/delete/${id}`,
       method: 'delete'
     })
   }
